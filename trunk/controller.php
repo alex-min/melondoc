@@ -102,7 +102,7 @@ class				controller
     $url = PATH_MODELS.$module.''.$var.".php";
     if (!file_exists($url)) {return ;}
     include_once($url);
-    $this->loadClass($var);
+    $this->loadClass($var."Model");
     return $this->class[$var];
   }
 
