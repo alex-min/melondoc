@@ -116,9 +116,9 @@ class				controller
   }
   
   public static function	redirect($url) {header("Location: ".$url);}
-  public function		addJavascript($url) {$this->jsArray .= "<script type=\"text/javascript\" src=\"".JS."/".$url."\"></script>\n";}
+  public function		addJavascript($url) {$this->jsArray .= "<script type=\"text/javascript\" src=\"".JS."/".$url.".js\"></script>\n";}
 
-  public function		addCSS($url, $title = "Css") {$this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url."\" />\n";}
+  public function		addCSS($url, $title = "Css") {$this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";}
 
   public static function	json_send_array($array)
   {
