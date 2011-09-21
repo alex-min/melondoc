@@ -23,18 +23,18 @@ class				controller
   protected			$db;
   protected			$root;
 
-  private			$module;
-  private			$action;
-  private			$models;
-  private			$controller;
+  private				$module;
+  private				$action;
+  private				$models;
+  private				$controller;
   
   protected			$GET;
   protected			$POST ;
   protected			$FILES;
 
-  protected			$needLogin = 0;
-  private			$jsArray = "";
-  private			$cssArray = "";
+  protected			$needLogin	= 0;
+  private				$jsArray			= "";
+  private				$cssArray		= "";
 
   public function		__get($key) {return (isset($this->class[$key])) ? $this->class[$key] : NULL;}
 
@@ -75,8 +75,8 @@ class				controller
     $this->template->cssArray = $this->cssArray;
     if ($this->root->isAjax() == FALSE)
       {
-	$this->template->fetch($this->vue, $this->module);
-	$this->template->display();
+      	$this->template->fetch($this->vue, $this->module);
+      	$this->template->display();
       }
   }
 
@@ -85,17 +85,17 @@ class				controller
     $pageController = $objet;
     if (!method_exists($pageController, $this->action))
       {
-	if ($this->root->isAjax() == TRUE)
-	  exit();
-	self::redirect("/".str_replace("Controller", "", $this->controller));
-      }
+      	if ($this->root->isAjax() == TRUE)
+      		exit();
+      	self::redirect("/".str_replace("Controller", "", $this->controller));
+	  }
     $pageAction = $this->action;
     $pageController->$pageAction();
   }
 
   private function		loadClass($var)
   {
-    $test = new $var(&$this->class);
+    $test = new $var($this->class);
     if ($test)
       $this->class[$var] = $test;
   }
