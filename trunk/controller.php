@@ -8,18 +8,18 @@ class				controller
   protected			$db;
   protected			$root;
 
-  private				$module;
-  private				$action;
-  private				$models;
-  private				$controller;
+  private      			$module;
+  private      			$action;
+  private	       		$models;
+  private      			$controller;
   
   protected			$GET;
   protected			$POST ;
   protected			$FILES;
-
+  
   protected			$needLogin	= 0;
-  private				$jsArray			= "";
-  private				$cssArray		= "";
+  private      			$jsArray	= "";
+  private      			$cssArray	= "";
 
   public function		__get($key) {return (isset($this->class[$key])) ? $this->class[$key] : NULL;}
 
