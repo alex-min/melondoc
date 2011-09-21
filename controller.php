@@ -52,7 +52,7 @@ class				controller
 
   private function		start($objet)
   {
-    $this->addCSS("header.css", "design");
+    $this->addCSS("header", "design");
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
     $this->initAction($objet);
@@ -80,9 +80,9 @@ class				controller
 
   private function		loadClass($var)
   {
-    $test = new $var($this->class);
+  	$test = new $var($this->class);
     if ($test)
-      $this->class[$var] = $test;
+    	$this->class[$var] = $test;
   }
 
   public function		loadLibrary($var)
