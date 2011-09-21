@@ -9,9 +9,8 @@ class		db
   private static	$_instances = array();
 
   // ici on fait un multi ton
-  public function __construct($serveur, $user, $pass, $db)
+  public function __construct()
   {
-    self::getInstance($serveur, $user, $pass, $bd);
   }
 
   private function connect()

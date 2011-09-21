@@ -1,5 +1,5 @@
 <?php
-class		index : extends controller
+class		index extends controller
 {
   public function indexAction()
   {
