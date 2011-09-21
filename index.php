@@ -19,7 +19,7 @@ if ($rooter->isAjax() == FALSE)
   $rooter->checkErrorDispatch();
 
 include(PATH_CONTROLLERS.$rooter->getModule().$rooter->getController().".php");
-$class = $rooter->getController();
+$class = $rooter->getController()."Controller";
 $control = new $class;
 $control->init($rooter, $control);
 exit();
