@@ -32,7 +32,7 @@ class				controller
       {
 	$temp = str_replace(".php", "", str_replace("./library/", "", $value));
 	$this->loadLibrary($temp);
-      }
+     }
     $this->start($objet);
   }
 
@@ -103,7 +103,7 @@ class				controller
     if (!file_exists($url)) {return ;}
     include_once($url);
     $this->loadClass($var."Model");
-    return $this->class[$var];
+    return $this->class[$var."Model"];
   }
 
   public static function	sendMail($message, $email, $objet)
