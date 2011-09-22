@@ -60,9 +60,11 @@ class				controller
     $this->template->cssArray = $this->cssArray;
     if ($this->root->isAjax() == FALSE)
       {
-      	$this->template->fetch($this->vue, $this->module);
+      	$this->template->fetch($this->module);
       	$this->template->display();
       }
+    else if ($this->root->isAjax() == TRUE && $this->template->countView() > 0)
+      $this->tempalte->fetchAjax($this->module);
   }
 
   private function		initAction($objet)
@@ -73,7 +75,7 @@ class				controller
       	if ($this->root->isAjax() == TRUE)
       		exit();
       	self::redirect("/".str_replace("Controller", "", $this->controller));
-	  }
+      }
     $pageAction = $this->action;
     $pageController->$pageAction();
   }
@@ -116,7 +118,6 @@ class				controller
     mail($email, $objet, $message, $headers);
   }
   
-  public static function	redirect($url) {header("Location: ".$url);}
   public function		addJavascript($url) {$this->jsArray .= "<script type=\"text/javascript\" src=\"".JS."/".$url.".js\"></script>\n";}
 
   public function		addCSS($url, $title = "Css") {$this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";}
