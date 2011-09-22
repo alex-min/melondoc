@@ -4,6 +4,7 @@ class		template
   private	$data = array();
   private	$flux;
   private	$vue = array();
+  private	$json = array();
   public	$language;
   
   public function __construct()
@@ -24,7 +25,7 @@ class		template
       $this->setSuccess($msg);
     if ($url == "SELF")
       $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $_SERVER['REQUEST_URI']);
-    controller::redirect($url);
+    header("Location: ".$url);
     exit();
   }
 
@@ -41,11 +42,34 @@ class		template
     ob_end_clean();
   }
 
+  public function addJSON($array)
+  {
+    if (is_array($array))
+      $this->json = merge($this->json, $array);    
+  }
+
+  public function fetchAjax($module = "")
+  {
+    ob_start();
+    $this->loadView($module);
+    $this->json['_html_'] = ob_get_contents();
+    echo json_encode($this->json);
+    ob_end_clean();
+    exit;
+  }
+
   public function display() {echo $this->flux;}
   public function has($key) {return isset($this->data[$key]);}
   public function getData() {return $this->data;}
 
   public function setView($var) {$this->vue[$var] = $var;}
+  public function countView() {
+    $i = 0;
+    foreach ($this->vue AS $views)
+      if (file_exists($url))
+	$i++;
+    return $i;
+  }
 
   public function loadView($module)
   {

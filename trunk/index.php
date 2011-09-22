@@ -10,7 +10,6 @@ if (!session_id()) {
 
 date_default_timezone_set('Europe/Berlin');
 include('define.php');
-include('error.php');
 include('controller.php');
 include(PATH_LIB.'rooter.php');
 $rooter = new rooter();
