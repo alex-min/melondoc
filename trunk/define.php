@@ -10,10 +10,6 @@ define("PATH_LANG", "application/language/");
 define("IMAGES", "/public/images");
 define("CSS", "/public/css");
 define("JS", "/public/js");
-define("PATH_ERROR_SQL", PATH_VIEWS."/error/errorSQL.php");
-define("PATH_404", PATH_VIEWS."/error/404.html");
-define("PATH_NOVIEW", PATH_VIEWS."/error/noView.html");
-define("PATH_ERROR", PATH_VIEWS."/error/error.html");
 
 include('define_base.php');
 ?>
