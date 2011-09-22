@@ -25,13 +25,15 @@ class				controller
 
   public function		init(&$rooter, &$objet)
   {
+    $dont = array("rooter" => 0, "error" => 0);
     include_once("model.php");    
     $this->root = $rooter;
-    $array = glob("./library/*.php");
+    $array = glob("./".PATH_LIB."*.php");
     foreach ($array AS $value)
       {
-	$temp = str_replace(".php", "", str_replace("./library/", "", $value));
-	$this->loadLibrary($temp);
+	$temp = str_replace(".php", "", str_replace("./".PATH_LIB, "", $value));
+	if (array_key_exists($temp, $dont) === FALSE)
+	  $this->loadLibrary($temp);
      }
     $this->start($objet);
   }

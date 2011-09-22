@@ -74,14 +74,14 @@ class		template
   public function loadView($module)
   {
     extract($this->data);
-    include('application/views/HeaderView.php');
+    include('application/views/HeaderView.tpl');
     foreach ($this->vue AS $views)
       {
-	$url = PATH_VIEWS.$module.''.$views.".php";
+	$url = PATH_VIEWS.$module.''.$views.".tpl";
 	if (file_exists($url))
 	  include_once($url);
       }
-    include('application/views/FooterView.php');
+    include('application/views/FooterView.tpl');
   }
 
   public function       	loadLanguage($lang, $controller)

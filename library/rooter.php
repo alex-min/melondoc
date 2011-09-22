@@ -81,14 +81,12 @@ class		rooter
 
   public function checkErrorDispatch()
   {
-    include(PATH_LIB."error.php");
-    $error = new error;
     $view = PATH_VIEWS.$this->controller.".php";
     $model = PATH_MODELS.$this->controller.".php";
     $control = ($this->module) ? PATH_CONTROLLERS.$this->module.$this->controller.".php" : PATH_CONTROLLERS.$this->controller.".php";
     if (!file_exists($control))
       {
-
+	error::ErrorController();
 	exit();
       }
     return ;
