@@ -22,10 +22,11 @@ class		db
     }
     return ($this->_db);
   }
+
   public function getInstance($serveur, $user, $pass, $bd)
   {
     if (!isset($this->_db)) {
-      self::connect($serveur, $user, $pass, $bd);
+      $this->connect($serveur, $user, $pass, $bd);
     }
     return ($this->_db);
   }
