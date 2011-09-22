@@ -12,6 +12,7 @@ date_default_timezone_set('Europe/Berlin');
 include('define.php');
 include('controller.php');
 include(PATH_LIB.'rooter.php');
+include(PATH_LIB.'error.php');
 $rooter = new rooter();
 $rooter->parseURI($_SERVER['REQUEST_URI']);
 if ($rooter->isAjax() == FALSE)
