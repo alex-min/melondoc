@@ -53,7 +53,8 @@ class				controller
   private function		start($objet)
   {
     $this->addCSS("header", "design");
-    $this->addJavascript("header");
+    $this->addJavascript("config");
+    $this->addJavascript("framework");
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
     $this->initAction($objet);
