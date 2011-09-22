@@ -102,8 +102,9 @@ class				controller
     $url = PATH_MODELS.$module.''.$var.".php";
     if (!file_exists($url)) {return ;}
     include_once($url);
-    $this->loadClass($var."Model");
-    return $this->class[$var."Model"];
+    $var .= "Model";
+    $this->loadClass($var);
+    return $this->class[$var];
   }
 
   public static function	sendMail($message, $email, $objet)

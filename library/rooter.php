@@ -27,7 +27,7 @@ class		rooter
       $data = strisplashes(htmlspecialchars($data));
     return $data;
   }
-  
+ 
   public function parseURI($requete)
   {
     $uri = substr($requete, 1); // on enleve le premier caractere c'est a dire le /

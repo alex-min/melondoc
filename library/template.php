@@ -3,7 +3,7 @@ class		template
 {
   private	$data = array();
   private	$flux;
-  private	$vue;
+  private	$vue = array();
   public	$language;
   
   public function __construct()
@@ -36,7 +36,7 @@ class		template
   public function fetch($module = "")
   {
     ob_start();
-    $this->loadView($this->vue, $module);
+    $this->loadView($module);
     $this->flux = ob_get_contents();
     ob_end_clean();
   }
@@ -44,15 +44,19 @@ class		template
   public function display() {echo $this->flux;}
   public function has($key) {return isset($this->data[$key]);}
   public function getData() {return $this->data;}
-  public function setView($var) {$this->vue = $var;}
 
-  public function loadView($var, $module = "")
+  public function setView($var) {$this->vue[$var] = $var;}
+
+  public function loadView($module)
   {
     extract($this->data);
     include('application/views/HeaderView.php');
-    $url = PATH_VIEWS.$module.''.$var.".php";
-    if (file_exists($url))
-      include_once($url);
+    foreach ($this->vue AS $views)
+      {
+	$url = PATH_VIEWS.$module.''.$views.".php";
+	if (file_exists($url))
+	  include_once($url);
+      }
     include('application/views/FooterView.php');
   }
 

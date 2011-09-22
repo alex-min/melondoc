@@ -5,6 +5,7 @@ class		indexController extends controller
   {
     $this->template->titre = "MELONDOC";
     $this->template->setView("index");
+    $this->template->setView("test");
     $this->template->testdevar = "TOTO";
   }
 }
