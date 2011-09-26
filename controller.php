@@ -26,7 +26,7 @@ class				controller
   public function		init(&$rooter, &$objet)
   {
     $dont = array("rooter" => 0, "error" => 0);
-    include_once("model.php");    
+    include_once("model.php");
     $this->root = $rooter;
     $array = glob("./".PATH_LIB."*.php");
     foreach ($array AS $value)
@@ -34,7 +34,7 @@ class				controller
 	$temp = str_replace(".php", "", str_replace("./".PATH_LIB, "", $value));
 	if (array_key_exists($temp, $dont) === FALSE)
 	  $this->loadLibrary($temp);
-     }
+      }
     $this->start($objet);
   }
 
@@ -54,6 +54,7 @@ class				controller
 
   private function		start($objet)
   {
+    $this->KLogger->logInfo("--------------[START SCRIPT]------------------");
     $this->addCSS("header", "design");
     $this->addJavascript("config");
     $this->addJavascript("framework");
@@ -69,6 +70,7 @@ class				controller
       }
     else if ($this->root->isAjax() == TRUE && $this->template->countView() > 0)
       $this->tempalte->fetchAjax($this->module);
+    $this->KLogger->logInfo("--------------[END SCRIPT]------------------");
   }
 
   private function		initAction($objet)
@@ -77,7 +79,7 @@ class				controller
     if (!method_exists($pageController, $this->action))
       {
       	if ($this->root->isAjax() == TRUE)
-      		exit();
+	  exit();
       	self::redirect("/".str_replace("Controller", "", $this->controller));
       }
     $pageAction = $this->action;
@@ -86,9 +88,9 @@ class				controller
 
   private function		loadClass($var)
   {
-  	$test = new $var($this->class);
+    $test = new $var($this->class);
     if ($test)
-    	$this->class[$var] = $test;
+      $this->class[$var] = $test;
   }
 
   public function		loadLibrary($var)
@@ -96,9 +98,13 @@ class				controller
     $url = PATH_LIB.$var.".php";
     if (!file_exists($url))
       {
-	echo "Can't load library : ".$var;
+	if ($this->KLogger)
+	  $this->KLogger->logFatal("[Library] : ".$url);
 	return ;
       }
+    else
+      if ($this->KLogger)
+	$this->KLogger->logInfo("[Library] : ".$url);
     include_once($url);
     $this->loadClass($var);
   }
@@ -106,30 +112,34 @@ class				controller
   public function		loadModel($var, $module = "")
   {
     $url = PATH_MODELS.$module.''.$var.".php";
-    if (!file_exists($url)) {return ;}
+    if (!file_exists($url)) 
+      {
+	if ($this->KLogger)
+	  $this->KLogger->logFatal("[Model] : ".$var);
+	return ;
+      }
+    else
+      if ($this->KLogger)
+	$this->KLogger->logInfo("[Model] : ".$var);
     include_once($url);
     $var .= "Model";
     $this->loadClass($var);
     return $this->class[$var];
   }
 
-  public static function	sendMail($message, $email, $objet)
+  public function		addJavascript($url)
   {
-    $headers = 'From: "Test"<contact@test.fr>'."\n";
-    $headers .= 'Reply-To: contact@test.fr'."\n";
-    $headers .= 'Content-Type: text/plain; charset="iso-8859-1"'."\n";
-    $headers .= 'Content-Transfer-Encoding: 8bit';
-    mail($email, $objet, $message, $headers);
+    $this->jsArray .= "<script type=\"text/javascript\" src=\"".JS."/".$url.".js\"></script>\n";
+    if ($this->KLogger)
+      $this->KLogger->logInfo("[Js] : ".$url);
   }
   
-  public function		addJavascript($url) {$this->jsArray .= "<script type=\"text/javascript\" src=\"".JS."/".$url.".js\"></script>\n";}
-
-  public function		addCSS($url, $title = "Css") {$this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";}
-
-  public static function	json_send_array($array)
+  public function		addCSS($url, $title = "Css") 
   {
-    echo json_encode($array);
-    return ;
+    $this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";
+    if ($this->KLogger)
+      $this->KLogger->logInfo("[Css] : ".$url);
   }
+
 }
 ?>
