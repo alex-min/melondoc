@@ -6,7 +6,8 @@ class		model
 
   public function __construct()
   {
-    $this->db = database::getInstance(DB_HOST, DB_USER, DB_PASSW, DB_BASE);
+    $this->db = new db;
+    $this->db->getInstance(DB_HOST, DB_USER, DB_PASSW, DB_BASE);
   }
 }
 ?>
