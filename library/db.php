@@ -15,10 +15,10 @@ class		db
   {
     $this->_db = mysql_connect($serveur, $user, $pass);    
     if (!$this->_db) {
-      errorMVC::errorSQL("Echec de connection a la base sql");
+      error::ErrorSQL("Echec de connection a la base sql");
     }
     if (!mysql_select_db($bd)) {
-      errorMVC::errorSQL("Echec de connection a la base sql");
+      error::ErrorSQL("Echec de connection a la base sql");
     }
     return ($this->_db);
   }
@@ -37,28 +37,13 @@ class		db
     return (mysql_insert_id($this->_db));
   }
 
-  public function select($query) //
+  public function query($query) //
   {
     $res = mysql_query($query);
     if (!$res) {
-      errorMVC::errorSQL("Erreur base sql");
-    }
-    
-  }
-
-  public function delete() // surcouche pour delete
-  {
-
-  }
-  
-  public function insert() // surcouche pour insert
-  {
-
-  }
-
-  public function update() // surcouche pour  update
-  {
-
+      error::ErrorSQL("Erreur base sql");
+    }    
+    return ($res);
   }
 
   public function escape($value) {mysql_real_escape_string($value);} //mysql_real_escape_string
