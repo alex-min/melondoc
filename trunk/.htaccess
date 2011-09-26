@@ -16,3 +16,8 @@ ErrorDocument 500 /application/views/error/404.html
 Order allow,deny
 Deny from all
 </FilesMatch>
+
+<FilesMatch "\.(log)$">
+Order allow,deny
+Deny from all
+</FilesMatch>

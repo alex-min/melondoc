@@ -6,13 +6,21 @@ class		template
   private	$vue = array();
   private	$json = array();
   public	$language;
+  public	$KLogger;
   
-  public function __construct()
+  public function __construct($class)
   {
+    $this->KLogger = $class['KLogger'];
     if (isset($_SESSION['error']) && $_SESSION['error'])
-      $this->__set("__error", $_SESSION['error']);
+      {
+	$this->__set("__error", $_SESSION['error']);
+	$this->KLogger->logInfo("[error] ".$_SESSION['error']);
+      }
     if (isset($_SESSION['success']) && $_SESSION['success'])
-      $this->__set("__success", $_SESSION['success']);
+      {
+	$this->__set("__success", $_SESSION['success']);
+	$this->KLogger->logInfo("[success] ".$_SESSION['success']);
+      }
     unset($_SESSION['error']);
     unset($_SESSION['success']);
   }
@@ -25,6 +33,7 @@ class		template
       $this->setSuccess($msg);
     if ($url == "SELF")
       $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $_SERVER['REQUEST_URI']);
+    $this->KLogger->logInfo("[Redirect] ".$url);
     header("Location: ".$url);
     exit();
   }
@@ -54,6 +63,7 @@ class		template
     $this->loadView($module);
     $this->json['_html_'] = ob_get_contents();
     echo json_encode($this->json);
+    $this->KLogger->logDebug($this->json);
     ob_end_clean();
     exit;
   }
@@ -71,17 +81,24 @@ class		template
     return $i;
   }
 
-  public function loadView($module)
+  public function loadView($module, $ajax = false)
   {
     extract($this->data);
-    include('application/views/HeaderView.tpl');
+    if ($ajax == false)
+      include('application/views/HeaderView.tpl');
     foreach ($this->vue AS $views)
       {
 	$url = PATH_VIEWS.$module.''.$views.".tpl";
 	if (file_exists($url))
-	  include_once($url);
+	  {
+	    include_once($url);
+	    $this->KLogger->logInfo("[View] ".$views);
+	  }
+	else
+	  $this->KLogger->logFatal("[View] ".$views);
       }
-    include('application/views/FooterView.tpl');
+    if ($ajax == false)
+      include('application/views/FooterView.tpl');
   }
 
   public function       	loadLanguage($lang, $controller)
@@ -89,9 +106,11 @@ class		template
     $url = PATH_LANG.LANG."/".$controller.".php";
     if (!file_exists($url))
       {
-	echo "Can't load language file : ".$controller;
+	$this->KLogger->logFatal("[Language] ".$controller);
 	return;
       }
+    else
+      $this->KLogger->logInfo("[Language] ".$controller);
     require_once($url);
     if (isset($_) && !is_array($_))
       $_ = array();
