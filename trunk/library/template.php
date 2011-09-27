@@ -60,8 +60,11 @@ class		template
   public function fetchAjax($module = "")
   {
     ob_start();
-    $this->loadView($module);
-    $this->json['_html_'] = ob_get_contents();
+    if ($this->countView() > 0)
+      {
+	$this->loadView($module);
+	$this->json['_html_'] = ob_get_contents();
+      }
     $this->KLogger->logDebug($this->json);
     ob_end_clean();
     echo json_encode($this->json);
