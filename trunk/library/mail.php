@@ -7,11 +7,22 @@ class		mail
   //the third parameters is to define if $dest is a array or a string.
   //$head is for additional headers. For example, Cc, BCc, From, ...
   //$param is for additional parameters. For example -f.
-  public	$KLogger;
+  private	$class;
 
   public function			__construct($class)
   {
-    $this->KLogger = $class['KLogger'];
+    foreach ($class AS $key => $value)
+      $this->$key = $value;
+  }
+
+  private function __get($key)
+  {
+    return (isset($this->class[$key])) ? $this->class[$key] : NULL;
+  }
+
+  private function __set($key, $val)
+  {
+    $this->class[$key] = $val;
   }
 
   public function		sendMail($dest, $subject, $mess, $tab = false, $head = "", $param = "")
