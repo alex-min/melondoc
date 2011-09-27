@@ -1,8 +1,6 @@
 window.functions.module = {
 	
 	action:function(e){
-		fetchForm(e);
+		obj = fetchForm(e);
 	}
-	
-	
 }
