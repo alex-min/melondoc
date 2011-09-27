@@ -6,13 +6,24 @@ class user
 	private $lastName;
 	private $login;
 	private $connnected;
-	public $KLogger;
+	private $class;
 	
 	public function __construct($class)
 	{
-		$this->KLogger = $class['KLogger'];
+	  foreach ($class AS $key => $value)
+	    $this->$key = $value;
 	}
 	
+  private function __get($key)
+  {
+    return (isset($this->class[$key])) ? $this->class[$key] : NULL;
+  }
+
+  private function __set($key, $val)
+  {
+    $this->class[$key] = $val;
+  }
+
 	public function addUser($login, $firstName, $LastName, $mail, $password)
 	{
 		

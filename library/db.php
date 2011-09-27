@@ -6,9 +6,22 @@ class		db
   private		$_user;
   private		$_pass;
   private    static	$_db = false;
+  private		$class;
 
   // ici on fait un multi ton
-  public function __construct() {
+  public function __construct($class) {
+    foreach ($class AS $key => $value)
+      $this->$key = $value;
+  }
+
+  private function __get($key)
+  {
+    return (isset($this->class[$key])) ? $this->class[$key] : NULL;
+  }
+
+  private function __set($key, $val)
+  {
+    $this->class[$key] = $val;
   }
 
   private function connect($serveur, $user, $pass, $bd)
