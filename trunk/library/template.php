@@ -40,10 +40,10 @@ class		template
 
   private function setError($str) {$_SESSION['error'] = $str;}
   private function setSuccess($str) {$_SESSION['success'] = $str;}
-  public function __get($key, $bool = false) {
+  public function __get($key) {
     return isset($this->data[$key]) ? $this->data[$key] : NULL;
   }
-  public function __set($key, $value, $bool = false) {
+  public function __set($key, $value) {
     $this->data[$key] = $value;
   }
 

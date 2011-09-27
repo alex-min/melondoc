@@ -14,12 +14,12 @@ class		db
       $this->$key = $value;
   }
 
-  private function __get($key)
+  public function __get($key)
   {
     return (isset($this->class[$key])) ? $this->class[$key] : NULL;
   }
 
-  private function __set($key, $val)
+  public function __set($key, $val)
   {
     $this->class[$key] = $val;
   }
