@@ -24,7 +24,7 @@ class		rooter
       foreach ($data as $key => $value)
 	$data[self::clean($key)] = self::clean($value);
     else 
-      $data = strisplashes(htmlspecialchars($data));
+      $data = stripslashes(htmlspecialchars($data));
     return $data;
   }
  

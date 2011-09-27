@@ -72,7 +72,7 @@ $(document).ready(function(){
 
 	$("#test").click(function(){
 		ajax({
-			url: "/index/test",
+			url: "/index/testAction",
 			data: { test: "toto", plop: 1}
 		});
 	});
