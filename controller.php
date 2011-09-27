@@ -68,7 +68,7 @@ class				controller
       	$this->template->fetch($this->module);
       	$this->template->display();
       }
-    else if ($this->root->isAjax() == TRUE && $this->template->countView() > 0)
+    else if ($this->root->isAjax() == TRUE)
       $this->tempalte->fetchAjax($this->module);
     $this->KLogger->logInfo("--------------[END SCRIPT]------------------");
   }
