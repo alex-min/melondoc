@@ -25,7 +25,7 @@ class				controller
 
   public function		init(&$rooter, &$objet)
   {
-    $dont = array("rooter" => 0, "error" => 0);
+    $dont = array("rooter" => 0, "error" => 0, "image" => 0);
     include_once("model.php");
     $this->root = $rooter;
     $array = glob("./".PATH_LIB."*.php");
