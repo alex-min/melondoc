@@ -62,9 +62,9 @@ class		template
     ob_start();
     $this->loadView($module);
     $this->json['_html_'] = ob_get_contents();
-    echo json_encode($this->json);
     $this->KLogger->logDebug($this->json);
     ob_end_clean();
+    echo json_encode($this->json);
     exit;
   }
 

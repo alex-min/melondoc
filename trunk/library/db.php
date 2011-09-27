@@ -46,7 +46,7 @@ class		db
     }    
     $ret = new stdClass;
     $ret->count = mysql_num_rows($res);
-    $ret->query = $res;    
+    $ret->query = $res;
     $ret->result = mysql_fetch_row($res);
     return ($ret);
   }
