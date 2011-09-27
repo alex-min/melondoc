@@ -44,7 +44,12 @@ class		rooter
 	    $v++;
 	  }
       }
-    $this->controller = $array[$v++]; // on recupere le controller
+    if (strpos($array[$v], "?") === false) {
+      $this->controller = $array[$v++]; // on recupere le controller    
+    } else {
+      $pos = strpos($array[$v], "?");
+      $this->controller = substr($array[$v++], 0, $pos); // on recupere le controller    
+    }
     $this->Ajax = FALSE;
     if ($this->checkAjaxRequest() == TRUE)
       return ;
