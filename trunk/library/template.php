@@ -54,7 +54,7 @@ class		template
   public function addJSON($array)
   {
     if (is_array($array))
-      $this->json = merge($this->json, $array);    
+      $this->json = array_merge($this->json, $array);
   }
 
   public function fetchAjax($module = "")

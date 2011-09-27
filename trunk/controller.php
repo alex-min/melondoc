@@ -56,6 +56,7 @@ class				controller
   {
     $this->KLogger->logInfo("--------------[START SCRIPT]------------------");
     $this->addCSS("header", "design");
+    $this->addJavascript("jquery.1.6.4.min");
     $this->addJavascript("config");
     $this->addJavascript("framework");
     $this->init_variables();
@@ -69,7 +70,7 @@ class				controller
       	$this->template->display();
       }
     else if ($this->root->isAjax() == TRUE)
-      $this->tempalte->fetchAjax($this->module);
+      $this->template->fetchAjax($this->module);
     $this->KLogger->logInfo("--------------[END SCRIPT]------------------");
   }
 

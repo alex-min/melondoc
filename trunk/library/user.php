@@ -8,7 +8,7 @@ class user
 	private $connnected;
 	public $KLogger;
 	
-	public function __construct()
+	public function __construct($class)
 	{
 		$this->KLogger = $class['KLogger'];
 	}
