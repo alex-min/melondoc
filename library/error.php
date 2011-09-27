@@ -15,7 +15,12 @@ class error
 
   public static function ErrorSQL($query)
   {
-    self::fetchError("Erreur SQL", "Erreur SQL", "Une requête SQL a échouée");
+    if (DEBUG) {
+      self::fetchError("Erreur SQL", "Erreur SQL", "Une requête SQL a échouée : <br />"
+		       . mysql_error());
+    } else {
+      self::fetchError("Erreur SQL", "Erreur SQL", "Une requête SQL a échouée");
+    }
   }
   
   public static function ErrorController()

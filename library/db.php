@@ -37,13 +37,18 @@ class		db
     return (mysql_insert_id($this->_db));
   }
 
+  // @return 
   public function query($query) //
   {
     $res = mysql_query($query);
     if (!$res) {
       error::ErrorSQL("Erreur base sql");
     }    
-    return ($res);
+    $ret = new stdClass;
+    $ret->count = mysql_num_rows($res);
+    $ret->query = $res;    
+    $ret->result = mysql_fetch_row($res);
+    return ($ret);
   }
 
   public function escape($value) {mysql_real_escape_string($value);} //mysql_real_escape_string
