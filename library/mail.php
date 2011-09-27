@@ -39,30 +39,34 @@ class		mail
   public function		sendMailHtml($dest, $subject, $mess, $tab = false, $head = "", $param = "")
   {
     $mess = wordwrap($message, 70);
-    if ($tab == true)	{
-      $destinataires = "";
-      for ($i = 0; $dest[$i]; $i++)	{
-	$destinataires .= $dest[$i];
-	if ($dest[$i + 1])
-	  $destinataires .= ", ";
-      }
+    if ($tab == true)
+    {
+    	$destinataires = "";
+    	for ($i = 0; $dest[$i]; $i++)
+    	{
+    		$destinataires .= $dest[$i];
+    		if ($dest[$i + 1])
+    			$destinataires .= ", ";
+		}
     }
     else
       $destinaires = $dest;
-    if ($head == "")	{
+    if ($head == "")
+    {
       $head  = 'MIME-Version: 1.0' . "\r\n";
       $head .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     }
-    else ($head == "")	{
-	$headers  = 'MIME-Version: 1.0' . "\r\n";
-	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-	$headers .= $head;
-	$head = $headers;
-      }
+    else if ($head == "")	 // IL Y A PAS DE CONDITIONS DANS UN ELSE, ON MET UN ELSE IF
+    {
+    	$headers  = 'MIME-Version: 1.0' . "\r\n";
+    	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+    	$headers .= $head;
+    	$head = $headers;
+	}
     if ($param != "")
-      mail($destinataires, $subject, $mess, $head, $param);
+    	mail($destinataires, $subject, $mess, $head, $param);
     else if ($param == "")
-      mail($destinataires, $subject, $mess, $head);
-  }
+    	mail($destinataires, $subject, $mess, $head);
+	}
 }
 ?>
