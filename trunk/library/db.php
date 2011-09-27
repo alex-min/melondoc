@@ -47,7 +47,11 @@ class		db
     $ret = new stdClass;
     $ret->count = mysql_num_rows($res);
     $ret->query = $res;
-    $ret->result = mysql_fetch_row($res);
+    $ret->rows = array();
+    $i = 0;
+    while ($ret->rows[$i] = mysql_fetch_row($res)) {
+      ++$i;
+    }
     return ($ret);
   }
 
