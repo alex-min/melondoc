@@ -4,11 +4,17 @@ class latexviewController extends controller
 {
   public function indexAction()
   {
-    echo "miam";
-    
+    if (!isset($_POST["tek"])) {
+      $this->template->setView("postlatex");
+    }
+    else {
+      $this->addJavascript("latexview");
+      $this->addCss("latexview");
+      $this->addCss("error");
+      $this->template->latexContent = htmlentities($_POST["tek"]);
+      $this->template->setView("latexview");
+    }
   }
-  public function disableHeader()
-  { return (TRUE); }
 
 }
 
