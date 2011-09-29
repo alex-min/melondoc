@@ -19,6 +19,7 @@
 {
     padding: 40px 0 0 140px;
     background: url("/public/images/interdit.png") no-repeat;
+    color: white;
 }
 
 #block_erreur h2
