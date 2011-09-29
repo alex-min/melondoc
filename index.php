@@ -18,6 +18,7 @@ $rooter->parseURI($_SERVER['REQUEST_URI']);
 if ($rooter->isAjax() == FALSE)
   $rooter->checkErrorDispatch();
 
+
 include(PATH_CONTROLLERS.$rooter->getModule().$rooter->getController().".php");
 $class = $rooter->getController()."Controller";
 $control = new $class;

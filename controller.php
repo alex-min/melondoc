@@ -55,10 +55,16 @@ class				controller
   private function		start($objet)
   {
     $this->KLogger->logInfo("--------------[START SCRIPT]------------------");
-    $this->addCSS("header", "design");
-    $this->addJavascript("jquery.1.6.4.min");
-    $this->addJavascript("config");
-    $this->addJavascript("framework");
+    if (method_exists($objet, 'disableHeader') && $objet->disableHeader() == TRUE) {
+      $this->KLogger->logInfo("[call] call to light controller");
+      $disableHeader = TRUE;
+    } else {
+      $disableHeader = FALSE;
+      $this->addCSS("header", "design");
+      $this->addJavascript("jquery.1.6.4.min");
+      $this->addJavascript("config");
+      $this->addJavascript("framework");
+    }
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
     $this->initAction($objet);
@@ -66,7 +72,7 @@ class				controller
     $this->template->cssArray = $this->cssArray;
     if ($this->root->isAjax() == FALSE)
       {
-      	$this->template->fetch($this->module);
+      	$this->template->fetch($this->module, $disableHeader);
       	$this->template->display();
       }
     else if ($this->root->isAjax() == TRUE)
