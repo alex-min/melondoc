@@ -47,10 +47,10 @@ class		template
     $this->data[$key] = $value;
   }
 
-  public function fetch($module = "")
+  public function fetch($module = "", $disableHeader = FALSE)
   {
     ob_start();
-    $this->loadView($module);
+    $this->loadView($module, $disableHeader);
     $this->flux = ob_get_contents();
     ob_end_clean();
   }
@@ -88,10 +88,10 @@ class		template
     return $i;
   }
 
-  public function loadView($module, $ajax = false)
+  public function loadView($module, $disableHeader = false)
   {
     extract($this->data);
-    if ($ajax == false)
+    if ($disableHeader == false)
       include('application/views/HeaderView.tpl');
     foreach ($this->vue AS $views)
       {
@@ -104,7 +104,7 @@ class		template
 	else
 	  $this->KLogger->logFatal("[View] ".$views);
       }
-    if ($ajax == false)
+    if ($disableHeader == false)
       include('application/views/FooterView.tpl');
   }
 
