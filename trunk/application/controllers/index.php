@@ -8,11 +8,7 @@ class		indexController extends controller
   {
     $this->template->title = "MELONDOC";
     if (isset($_POST["tek"])) {
-      $str = tempnam("/tmp", "tek_file_");
-      $file = fopen($str, "w+");
-      chmod($str, 0744);
-      fwrite($file, $_POST["tek"]);      
-      fclose($file);
+      $str = $_POST["tek"];
       exec("latex --quiet -halt-on-error -output-directory '/tmp' $str", $output, $return);
       $this->template->result = $return;
       $errorList = array();
