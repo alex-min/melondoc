@@ -9,22 +9,60 @@ class		mail
   //$param is for additional parameters. For example -f.
   private	$class;
 
+  /**
+   * @fn function __construct($class)
+   * @brief 
+   * @file mail.php
+   * 
+   * @param class               
+   * @return		
+   */
   public function			__construct($class)
   {
     foreach ($class AS $key => $value)
       $this->$key = $value;
   }
 
+  /**
+   * @fn function __get($key)
+   * @brief 
+   * @file mail.php
+   * 
+   * @param key         
+   * @return		
+   */
   public function __get($key)
   {
     return (isset($this->class[$key])) ? $this->class[$key] : NULL;
   }
 
+  /**
+   * @fn function __set($key, $val)
+   * @brief 
+   * @file mail.php
+   * 
+   * @param key         
+   * @param val         
+   * @return		
+   */
   public function __set($key, $val)
   {
     $this->class[$key] = $val;
   }
 
+  /**
+   * @fn function sendMail($dest, $subject, $mess, $tab = false, $head = "", $param = "")
+   * @brief 
+   * @file mail.php
+   * 
+   * @param dest                
+   * @param subject             
+   * @param mess                
+   * @param tab         
+   * @param head                
+   * @param param		
+   * @return		
+   */
   public function		sendMail($dest, $subject, $mess, $tab = false, $head = "", $param = "")
   {
     $mess = wordwrap($message, 70);
@@ -47,6 +85,19 @@ class		mail
   }
   
   //this function is used for send mail with html. There is just a difference with the function precedently, we add a few lines in the headers.
+  /**
+   * @fn function sendMailHtml($dest, $subject, $mess, $tab = false, $head = "", $param = "")
+   * @brief 
+   * @file mail.php
+   * 
+   * @param dest                
+   * @param subject             
+   * @param mess                
+   * @param tab         
+   * @param head                
+   * @param param		
+   * @return		
+   */
   public function		sendMailHtml($dest, $subject, $mess, $tab = false, $head = "", $param = "")
   {
     $mess = wordwrap($message, 70);
@@ -67,7 +118,7 @@ class		mail
       $head  = 'MIME-Version: 1.0' . "\r\n";
       $head .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
     }
-    else if ($head == "")	 // IL Y A PAS DE CONDITIONS DANS UN ELSE, ON MET UN ELSE IF
+    else if ($head == "")
     {
     	$headers  = 'MIME-Version: 1.0' . "\r\n";
     	$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";

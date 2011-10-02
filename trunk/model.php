@@ -4,6 +4,14 @@ class		model
 {
   protected	$db;
 
+  /**
+   * @fn function __construct($class)
+   * @brief 
+   * @file model.php
+   * 
+   * @param class               
+   * @return		
+   */
   public function __construct($class)
   {
     $this->db = $class['db'];

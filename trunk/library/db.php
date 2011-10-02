@@ -9,21 +9,57 @@ class		db
   private		$class;
 
   // ici on fait un multi ton
+  /**
+   * @fn function __construct($class)
+   * @brief 
+   * @file db.php
+   * 
+   * @param class               
+   * @return		
+   */
   public function __construct($class) {
     foreach ($class AS $key => $value)
       $this->$key = $value;
   }
 
+  /**
+   * @fn function __get($key)
+   * @brief 
+   * @file db.php
+   * 
+   * @param key         
+   * @return		
+   */
   public function __get($key)
   {
     return (isset($this->class[$key])) ? $this->class[$key] : NULL;
   }
 
+  /**
+   * @fn function __set($key, $val)
+   * @brief 
+   * @file db.php
+   * 
+   * @param key         
+   * @param val         
+   * @return		
+   */
   public function __set($key, $val)
   {
     $this->class[$key] = $val;
   }
 
+  /**
+   * @fn function connect($serveur, $user, $pass, $bd)
+   * @brief 
+   * @file db.php
+   * 
+   * @param serveur             
+   * @param user                
+   * @param pass                
+   * @param bd  	
+   * @return		
+   */
   private function connect($serveur, $user, $pass, $bd)
   {
     $this->_db = mysql_connect($serveur, $user, $pass);    
@@ -36,6 +72,17 @@ class		db
     return ($this->_db);
   }
 
+  /**
+   * @fn function getInstance($serveur, $user, $pass, $bd)
+   * @brief 
+   * @file db.php
+   * 
+   * @param serveur             
+   * @param user                
+   * @param pass                
+   * @param bd  	
+   * @return		
+   */
   public function getInstance($serveur, $user, $pass, $bd)
   {
     if (!isset($this->_db)) {
@@ -43,14 +90,28 @@ class		db
     }
     return ($this->_db);
   }
-  // \multi ton
 
+  /**
+   * @fn function getLastId() // permet de recuperer la derniere clef primaire insere via mysql_insert_id()
+   * @brief 
+   * @file db.php
+   * 
+   * @param             
+   * @return		
+   */
   public function getLastId() // permet de recuperer la derniere clef primaire insere via mysql_insert_id();
   {
     return (mysql_insert_id($this->_db));
   }
 
-  // @return 
+  /**
+   * @fn function query($query)
+   * @brief 
+   * @file db.php
+   * 
+   * @param query               
+   * @return		
+   */
   public function query($query) //
   {
     $res = mysql_query($query);
@@ -68,7 +129,24 @@ class		db
     return ($ret);
   }
 
-  public function escape($value) {mysql_real_escape_string($value);} //mysql_real_escape_string
-  public function escape_html($value) {htmlentities($value);} // htmlentities
+  /**
+   * @fn function escape($value)
+   * @brief 
+   * @file db.php
+   * 
+   * @param value               
+   * @return		
+   */
+  public function escape($value) {mysql_real_escape_string($value);}
+
+  /**
+   * @fn function escape_html($value)
+   * @brief 
+   * @file db.php
+   * 
+   * @param value               
+   * @return		
+   */
+  public function escape_html($value) {htmlentities($value);}
 }
 ?>
