@@ -8,6 +8,14 @@ class		template
   public	$language;
   private	$KLogger;
 
+  /**
+   * @fn function __construct($class)
+   * @brief 
+   * @file template.php
+   * 
+   * @param class               
+   * @return		
+   */
   public function __construct($class)
   {
     $this->KLogger = $class['KLogger'];
@@ -25,6 +33,16 @@ class		template
     unset($_SESSION['success']);
   }
 
+  /**
+   * @fn function redirect($msg, $isError, $url = "SELF")
+   * @brief 
+   * @file template.php
+   * 
+   * @param msg         
+   * @param isError             
+   * @param url         
+   * @return		
+   */
   public function redirect($msg, $isError, $url = "SELF")
   {
     if ($isError == TRUE)
@@ -38,15 +56,60 @@ class		template
     exit();
   }
 
+  /**
+   * @fn function setError($str)
+   * @brief 
+   * @file template.php
+   * 
+   * @param str         
+   * @return		
+   */
   private function setError($str) {$_SESSION['error'] = $str;}
+
+  /**
+   * @fn function setSuccess($str)
+   * @brief 
+   * @file template.php
+   * 
+   * @param str         
+   * @return		
+   */
   private function setSuccess($str) {$_SESSION['success'] = $str;}
+
+  /**
+   * @fn function __get($key)
+   * @brief 
+   * @file template.php
+   * 
+   * @param key         
+   * @return		
+   */
   public function __get($key) {
     return isset($this->data[$key]) ? $this->data[$key] : NULL;
   }
+
+  /**
+   * @fn function __set($key, $value)
+   * @brief 
+   * @file template.php
+   * 
+   * @param key         
+   * @param value               
+   * @return		
+   */
   public function __set($key, $value) {
     $this->data[$key] = $value;
   }
 
+  /**
+   * @fn function fetch($module = "", $disableHeader = FALSE)
+   * @brief 
+   * @file template.php
+   * 
+   * @param module              
+   * @param disableHeader               
+   * @return		
+   */
   public function fetch($module = "", $disableHeader = FALSE)
   {
     ob_start();
@@ -55,12 +118,28 @@ class		template
     ob_end_clean();
   }
 
+  /**
+   * @fn function addJSON($array)
+   * @brief 
+   * @file template.php
+   * 
+   * @param array               
+   * @return		
+   */
   public function addJSON($array)
   {
     if (is_array($array))
       $this->json = array_merge($this->json, $array);
   }
 
+  /**
+   * @fn function fetchAjax($module = "")
+   * @brief 
+   * @file template.php
+   * 
+   * @param module              
+   * @return		
+   */
   public function fetchAjax($module = "")
   {
     ob_start();
@@ -75,11 +154,54 @@ class		template
     exit;
   }
 
+  /**
+   * @fn function display()
+   * @brief 
+   * @file template.php
+   * 
+   * @param             
+   * @return		
+   */
   public function display() {echo $this->flux;}
+
+  /**
+   * @fn function has($key)
+   * @brief 
+   * @file template.php
+   * 
+   * @param key         
+   * @return		
+   */
   public function has($key) {return isset($this->data[$key]);}
+
+  /**
+   * @fn function getData()
+   * @brief 
+   * @file template.php
+   * 
+   * @param             
+   * @return		
+   */
   public function getData() {return $this->data;}
 
+  /**
+   * @fn function setView($var)
+   * @brief 
+   * @file template.php
+   * 
+   * @param var         
+   * @return		
+   */
   public function setView($var) {$this->vue[$var] = $var;}
+
+  /**
+   * @fn function countView()
+   * @brief 
+   * @file template.php
+   * 
+   * @param             
+   * @return		
+   */
   public function countView() {
     $i = 0;
     foreach ($this->vue AS $views)
@@ -88,6 +210,15 @@ class		template
     return $i;
   }
 
+  /**
+   * @fn function loadView($module, $disableHeader = false)
+   * @brief 
+   * @file template.php
+   * 
+   * @param module              
+   * @param disableHeader               
+   * @return		
+   */
   public function loadView($module, $disableHeader = false)
   {
     extract($this->data);
@@ -108,6 +239,15 @@ class		template
       include('application/views/FooterView.tpl');
   }
 
+  /**
+   * @fn function loadLanguage($lang, $controller)
+   * @brief 
+   * @file template.php
+   * 
+   * @param lang                
+   * @param controller          
+   * @return		
+   */
   public function       	loadLanguage($lang, $controller)
   {
     $url = PATH_LANG.LANG."/".$controller.".php";

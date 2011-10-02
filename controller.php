@@ -21,8 +21,26 @@ class				controller
   private      			$jsArray	= "";
   private      			$cssArray	= "";
 
+  /**
+   * @fn function __get($key)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param key         
+   * @return		
+   */
   public function		__get($key) {return (isset($this->class[$key])) ? $this->class[$key] : NULL;}
 
+
+  /**
+   * @fn function init(&$rooter, &$objet)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param rooter              
+   * @param objet               
+   * @return		
+   */
   public function		init(&$rooter, &$objet)
   {
     $dont = array("rooter" => 0, "error" => 0, "image" => 0);
@@ -38,6 +56,14 @@ class				controller
     $this->start($objet);
   }
 
+  /**
+   * @fn function init_variables()
+   * @brief 
+   * @file controller.php
+   * 
+   * @param             
+   * @return		
+   */
   private function		init_variables()
   {
     // URL
@@ -52,6 +78,14 @@ class				controller
     $this->FILES = $this->root->getFILES();
   }
 
+  /**
+   * @fn function start($objet)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param objet               
+   * @return		
+   */
   private function		start($objet)
   {
     $this->KLogger->logInfo("--------------[START SCRIPT]------------------");
@@ -80,6 +114,14 @@ class				controller
     $this->KLogger->logInfo("--------------[END SCRIPT]------------------");
   }
 
+  /**
+   * @fn function initAction($objet)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param objet               
+   * @return		
+   */
   private function		initAction($objet)
   {
     $pageController = $objet;
@@ -93,6 +135,14 @@ class				controller
     $pageController->$pageAction();
   }
 
+  /**
+   * @fn function loadClass($var)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param var         
+   * @return		
+   */
   private function		loadClass($var)
   {
     $test = new $var($this->class);
@@ -100,6 +150,14 @@ class				controller
       $this->class[$var] = $test;
   }
 
+  /**
+   * @fn function loadLibrary($var)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param var         
+   * @return		
+   */
   public function		loadLibrary($var)
   {
     $url = PATH_LIB.$var.".php";
@@ -116,6 +174,15 @@ class				controller
     $this->loadClass($var);
   }
 
+  /**
+   * @fn function loadModel($var, $module = "")
+   * @brief 
+   * @file controller.php
+   * 
+   * @param var         
+   * @param module              
+   * @return		
+   */
   public function		loadModel($var, $module = "")
   {
     $url = PATH_MODELS.$module.''.$var.".php";
@@ -134,6 +201,14 @@ class				controller
     return $this->class[$var];
   }
 
+  /**
+   * @fn function addJavascript($url)
+   * @brief 
+   * @file controller.php
+   * 
+   * @param url         
+   * @return		
+   */
   public function		addJavascript($url)
   {
     $this->jsArray .= "<script type=\"text/javascript\" src=\"".JS."/".$url.".js\"></script>\n";
@@ -141,6 +216,15 @@ class				controller
       $this->KLogger->logInfo("[Js] : ".$url);
   }
   
+  /**
+   * @fn function addCSS($url, $title = "Css")
+   * @brief 
+   * @file controller.php
+   * 
+   * @param url         
+   * @param title               
+   * @return		
+   */
   public function		addCSS($url, $title = "Css") 
   {
     $this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";

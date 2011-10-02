@@ -1,6 +1,17 @@
 <?php
 class error
 {
+  /**
+   * @fn function fetchError($title, $title_h1, $text_erreur, $query = "")
+   * @brief 
+   * @file error.php
+   * 
+   * @param title               
+   * @param title_h1            
+   * @param text_erreur         
+   * @param query       	
+   * @return		
+   */
   public static function fetchError($title, $title_h1, $text_erreur, $query = "")
   {
     $text_ret = "Retourner à l'accueil";
@@ -13,6 +24,14 @@ class error
     exit();
   }
 
+  /**
+   * @fn function ErrorSQL($query)
+   * @brief 
+   * @file error.php
+   * 
+   * @param query               
+   * @return		
+   */
   public static function ErrorSQL($query)
   {
     if (DEBUG) {
@@ -23,6 +42,14 @@ class error
     }
   }
   
+  /**
+   * @fn function ErrorController()
+   * @brief 
+   * @file error.php
+   * 
+   * @param             
+   * @return		
+   */
   public static function ErrorController()
   {
     self::fetchError("Erreur 404", "Erreur 404", "Cette page n'existe pas");

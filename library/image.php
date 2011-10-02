@@ -4,6 +4,14 @@ final class Image {
   private $image;
   private $info;
 		
+  /**
+   * @fn function __construct($file)
+   * @brief 
+   * @file image.php
+   * 
+   * @param file                
+   * @return		
+   */
   public function __construct($file) {
     if (file_exists($file)) {
       $this->file = $file;
@@ -23,6 +31,14 @@ final class Image {
     }
   }
 		
+  /**
+   * @fn function create($image)
+   * @brief 
+   * @file image.php
+   * 
+   * @param image               
+   * @return		
+   */
   private function create($image) {
     $mime = $this->info['mime'];
 		
@@ -35,6 +51,15 @@ final class Image {
     }
   }	
 	
+  /**
+   * @fn function save($file, $quality = 100)
+   * @brief 
+   * @file image.php
+   * 
+   * @param file                
+   * @param quality             
+   * @return		
+   */
   public function save($file, $quality = 100) {
     $info = pathinfo($file);
     $extension = $info['extension'];
@@ -49,6 +74,15 @@ final class Image {
     imagedestroy($this->image);
   }	    
 	
+  /**
+   * @fn function resize($width = 0, $height = 0)
+   * @brief 
+   * @file image.php
+   * 
+   * @param width               
+   * @param height              
+   * @return		
+   */
   public function resize($width = 0, $height = 0) {
     if (!$this->info['width'] || !$this->info['height']) {
       return;
@@ -81,6 +115,15 @@ final class Image {
     $this->info['height'] = $height;
   }
     
+  /**
+   * @fn function watermark($file, $position = 'bottomright')
+   * @brief 
+   * @file image.php
+   * 
+   * @param file                
+   * @param position            
+   * @return		
+   */
   public function watermark($file, $position = 'bottomright') {
     $watermark = $this->create($file);
         
@@ -111,6 +154,17 @@ final class Image {
     imagedestroy($watermark);
   }
     
+  /**
+   * @fn function crop($top_x, $top_y, $bottom_x, $bottom_y)
+   * @brief 
+   * @file image.php
+   * 
+   * @param top_x               
+   * @param top_y               
+   * @param bottom_x            
+   * @param bottom_y    	
+   * @return		
+   */
   public function crop($top_x, $top_y, $bottom_x, $bottom_y) {
     $image_old = $this->image;
     $this->image = imagecreatetruecolor($bottom_x - $top_x, $bottom_y - $top_y);
@@ -122,6 +176,15 @@ final class Image {
     $this->info['height'] = $bottom_y - $top_y;
   }
     
+  /**
+   * @fn function rotate($degree, $color = 'FFFFFF')
+   * @brief 
+   * @file image.php
+   * 
+   * @param degree              
+   * @param color               
+   * @return		
+   */
   public function rotate($degree, $color = 'FFFFFF') {
     $rgb = $this->html2rgb($color);
 		
@@ -131,16 +194,47 @@ final class Image {
     $this->info['height'] = imagesy($this->image);
   }
 	    
+  /**
+   * @fn function filter($filter)
+   * @brief 
+   * @file image.php
+   * 
+   * @param filter              
+   * @return		
+   */
   private function filter($filter) {
     imagefilter($this->image, $filter);
   }
             
+  /**
+   * @fn function text($text, $x = 0, $y = 0, $size = 5, $color = '000000')
+   * @brief 
+   * @file image.php
+   * 
+   * @param text                
+   * @param x           
+   * @param y           
+   * @param size                
+   * @param color		
+   * @return		
+   */
   private function text($text, $x = 0, $y = 0, $size = 5, $color = '000000') {
     $rgb = $this->html2rgb($color);
         
     imagestring($this->image, $size, $x, $y, $text, imagecolorallocate($this->image, $rgb[0], $rgb[1], $rgb[2]));
   }
     
+  /**
+   * @fn function merge($file, $x = 0, $y = 0, $opacity = 100)
+   * @brief 
+   * @file image.php
+   * 
+   * @param file                
+   * @param x           
+   * @param y           
+   * @param opacity     	
+   * @return		
+   */
   private function merge($file, $x = 0, $y = 0, $opacity = 100) {
     $merge = $this->create($file);
 
@@ -150,6 +244,14 @@ final class Image {
     imagecopymerge($this->image, $merge, $x, $y, 0, 0, $merge_width, $merge_height, $opacity);
   }
 			
+  /**
+   * @fn function html2rgb($color)
+   * @brief 
+   * @file image.php
+   * 
+   * @param color               
+   * @return		
+   */
   private function html2rgb($color) {
     if ($color[0] == '#') {
       $color = substr($color, 1);
