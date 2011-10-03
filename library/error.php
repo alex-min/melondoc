@@ -54,5 +54,11 @@ class error
   {
     self::fetchError("Erreur 404", "Erreur 404", "Cette page n'existe pas");
   }
+  
+  public static function	ErrorMail($string)
+  {
+	$message = "Une erreur est survenue, le " .$string. " n'est pas definis.";
+	self::fetchError("Erreur Email", "Erreur Email", $message);
+  }
 }
 ?>
