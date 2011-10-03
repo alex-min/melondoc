@@ -41,9 +41,9 @@ class user
 		return $this->rights;
 	}
 	
-	public function getDocumentRights()
+	public function getDocumentRights($doc)
 	{
-		
+		$this->db->query("");
 	}
 	
 	public function deleteUser()
@@ -53,12 +53,18 @@ class user
 	
 	public function connectUser()
 	{
+		if (true == true)
+		{
+			$_SESSION['prenom'] = '';
+			$this->connected = TRUE;
+		}
 		
 	}
 	
 	public function disconnectUser()
 	{
-		
+		session_destroy();
+		$this->connected = FALSE;
 	}
 }
 ?>
