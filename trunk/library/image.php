@@ -12,8 +12,14 @@ final class Image {
    * @param file                
    * @return		
    */
-  public function __construct($file) {
-    if (file_exists($file)) {
+  public function __construct() {
+	$this->file = null;
+	$this->image = null;
+	$this->info = null;
+  }
+	
+  public function		__set($file)	{
+	if (file_exists($file)) {
       $this->file = $file;
 	    
       $info = getimagesize($file);
@@ -29,8 +35,7 @@ final class Image {
     } else {
       exit('Error: Could not load image ' . $file . '!');
     }
-  }
-		
+	}
   /**
    * @fn function create($image)
    * @brief 
