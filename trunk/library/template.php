@@ -18,6 +18,8 @@ class		template
    */
   public function __construct($class)
   {
+    if (!isset($_SESSION['lang']))
+      $_SESSION['lang'] = "FR";
     $this->KLogger = $class['KLogger'];
     if (isset($_SESSION['error']) && $_SESSION['error'])
       {
@@ -240,7 +242,7 @@ class		template
   }
 
   /**
-   * @fn function loadLanguage($lang, $controller)
+   * @fn function loadLanguage($controller)
    * @brief 
    * @file template.php
    * 
@@ -248,9 +250,10 @@ class		template
    * @param controller          
    * @return		
    */
-  public function       	loadLanguage($lang, $controller)
+  public function       	loadLanguage($controller)
   {
-    $url = PATH_LANG.LANG."/".$controller.".php";
+    $lang = (isset($_SESSION['lang'])) ? $_SESSION['lang'] : "FR";
+    $url = PATH_LANG.$lang."/".$controller.".php";
     if (!file_exists($url))
       {
 	$this->KLogger->logFatal("[Language] ".$controller);
