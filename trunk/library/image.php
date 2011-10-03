@@ -3,7 +3,7 @@ final class Image {
   private $file;
   private $image;
   private $info;
-		
+	private $class;
   /**
    * @fn function __construct($file)
    * @brief 
@@ -12,13 +12,43 @@ final class Image {
    * @param file                
    * @return		
    */
-  public function __construct() {
+  public function __construct($class) {
 	$this->file = null;
 	$this->image = null;
 	$this->info = null;
+    foreach ($class AS $key => $value)
+      $this->$key = $value;
   }
-	
-  public function		__set($file)	{
+
+  /**
+   * @fn function __get($key)
+   * @brief 
+   * @file image.php
+   * 
+   * @param key         
+   * @return		
+   */
+  public function __get($key)
+  {
+    return (isset($this->class[$key])) ? $this->class[$key] : NULL;
+  }
+
+  /**
+   * @fn function __set($key, $val)
+   * @brief 
+   * @file image.php
+   * 
+   * @param key         
+   * @param val         
+   * @return		
+   */
+  public function __set($key, $val)
+  {
+    $this->class[$key] = $val;
+  }
+
+  
+  public function	setImage($file)	{
 	if (file_exists($file)) {
       $this->file = $file;
 	    
