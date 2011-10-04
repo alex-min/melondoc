@@ -11,4 +11,5 @@ define("CSS", "/public/css");
 define("JS", "/public/js");
 define("SALT", "fdjs;has;jadg");
 include('define_base.php');
+
 ?>
