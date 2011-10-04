@@ -94,7 +94,7 @@ class				controller
       $disableHeader = TRUE;
     } else {
       $disableHeader = FALSE;
-      $this->addCSS("header", "design");
+      $this->addCSS("style", "design");
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
       $this->addJavascript("framework");
