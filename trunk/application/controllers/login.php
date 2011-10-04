@@ -4,6 +4,7 @@ class		loginController extends controller
   public function indexAction()
   {
     $this->template->loadLanguage("login");
+    $this->template->setView("header");
     if ($this->user->connectUser($_POST['login'], md5(SALT.$_POST['password'])) == TRUE)
       $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
     else
@@ -13,6 +14,7 @@ class		loginController extends controller
   public function inscriptionAction()
   {
     $this->template->loadLanguage("login");
+    $this->template->setView("header");
     $this->template->setView("inscription");
     if (isset($this->POST))
       {

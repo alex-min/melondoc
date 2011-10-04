@@ -98,7 +98,6 @@ class				controller
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
       $this->addJavascript("framework");
-      $this->template->setView("header");
     }
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
