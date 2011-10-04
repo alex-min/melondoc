@@ -4,7 +4,7 @@ class user
   private $id_user;
   private $firstName;
   private $lastName;
-  private $nickname;
+  private $login;
   private $mail;
   private $db;
   private $rights;
@@ -39,13 +39,13 @@ class user
   }
   public function addUser($login, $firstName, $LastName, $mail, $password)
   {
-  	if (!isLoginUsed($this->login))
+  	//if (!isLoginUsed($this->login))
   		$this->db->query("insert into users set login = $this->nickname, firstname = $this->firstName, lastname = $this->lastName, mail = $this->mail, password = $this->password, forum_rights = $this->rights");
   }
   
-  public function deleteUser()
+  public function deleteUser($id)
   {
-    $this->db->query("delete from users where id_user = $id_user");
+    $this->db->query("delete from users where id_user = $id");
   }
   
 
@@ -53,7 +53,7 @@ class user
   // sinon on fait rien
   public function needLogin()
   {
-    if (!$_SESSION[''])
+    if (! isset($_SESSION['user']))
 	 	$this->template->redirect();
   }
 
@@ -63,8 +63,10 @@ class user
   {
    if (isset($id_user) && isset($login) && isset($password) && isset($firstname) && isset($lastname) && isset($mail) && isset($forum_rights))
 	{
-		$_SESSION['user']['id_user'] = $id;
-		$_SESSION['user']['login'] = $login;
+		$_SESSION['user']['id_user'] = $this->id;
+		$_SESSION['user']['login'] = $this->login;
+		$_SESSION['user']['rights'] = $this->rights;
+		$_SESSION['user']['mail'] = $this->mail;
 		return (TRUE);
 	}
 	return (FALSE);
