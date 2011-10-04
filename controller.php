@@ -226,9 +226,9 @@ class				controller
    * @param title               
    * @return		
    */
-  public function		addCSS($url, $title = "Css") 
+  public function		addCSS($url, $title = "design") 
   {
-    $this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";
+    $this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />";
     if ($this->KLogger)
       $this->KLogger->logInfo("[Css] : ".$url);
   }
