@@ -117,10 +117,11 @@ class		db
     $res = mysql_query($query);
     if (!$res) {
       error::ErrorSQL("Erreur base sql");
-    }    
+    }
     $ret = new stdClass;
     $ret->count = mysql_num_rows($res);
     $ret->query = $res;
+    
     $ret->rows = array();
     $i = 0;
     while ($ret->rows[$i] = mysql_fetch_row($res)) {

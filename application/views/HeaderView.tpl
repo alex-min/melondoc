@@ -9,3 +9,9 @@
    </head>
 <body>
 <div id="wrapper">
+<div class="error">
+  <?php echo $__error;?>
+</div>
+<div class="success">
+  <?php echo $__success;?>
+</div>
