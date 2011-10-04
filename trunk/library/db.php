@@ -124,9 +124,10 @@ class		db
     
     $ret->rows = array();
     $i = 0;
-    while ($ret->rows[$i] = mysql_fetch_row($res)) {
-      ++$i;
+    while ($ret->rows[$i] = mysql_fetch_assoc($res)) {
+      $i++;
     }
+    $ret->row = isset($ret->rows[0]) ? $ret->rows[0] : array();
     return ($ret);
   }
 
