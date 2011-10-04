@@ -1,10 +1,11 @@
 <?php
 
+class indexController extends controller
 {
   public function indexAction()
   {
     $this->template->title = "MELONDOC";
-    if (isset($_POST["tek"])) {
+   /* if (isset($_POST["tek"])) {
       $str = $_POST["tek"];
       exec("latex --quiet -halt-on-error -output-directory '/tmp' $str", $output, $return);
       $this->template->result = $return;
@@ -65,7 +66,15 @@
     }*/
    $this->addJavascript("dialog");
    $this->addCSS("dialog");
+   
    $this->addCSS("sidebar");
+
+	// Chargement du javascript
+	$this->addCss("header");
+	$this->addJavascript("header");
+	$this->template->setView("header");
+   
+   
    	$this->template->setView("index");
   }
 }
