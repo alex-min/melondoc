@@ -9,15 +9,13 @@
    </head>
 <body>
 <div id="wrapper">
-<div class="error">
-  <?php
-if (isset($__error))
-echo $__error;
-?>
-</div>
-<div class="success">
-  <?php
-if (isset($__success))
-echo $__success;
-?>
-</div>
+  <?php if (isset($__error)) :?>
+  <div class="error">
+    <?php echo $__error;?>
+  </div>
+  <?php endif;?>
+  <?php if (isset($__success)) : ?>
+  <div class="success">
+    <?php echo $__success; ?>
+  </div>
+<?php endif;?>
