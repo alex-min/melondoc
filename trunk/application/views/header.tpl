@@ -1,1 +1,1 @@
- 
+<?php include("menu.tpl");?>
