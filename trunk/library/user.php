@@ -11,7 +11,7 @@ class user
   
   public function __get($key)
   {
-    return (isset($this->class[$key])) ? $this->class[$key] : NULL;
+    return ((isset($this->class[$key])) ? $this->class[$key] : NULL);
   }
 
   public function __set($key, $val)
@@ -22,8 +22,9 @@ class user
   private function isLoginUsed($login)
   {
     $handler = $this->db->query("SELECT * FROM users WHERE login = $login");
-    if($handler->count == 0) return (FALSE);
-    return TRUE;
+    if($handler->count == 0)
+    	return (FALSE);
+    return (TRUE);
   }
 
   public function addUser($login, $firstName, $LastName, $mail, $password)
@@ -71,7 +72,7 @@ class user
   public function disconnectUser()
   {
     session_destroy();
-    $this->template->redirect();
+    $this->template->redirect("", TRUE, "/login/index");
   }
   
 }
