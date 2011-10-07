@@ -25,8 +25,8 @@ $(document).ready(function(){
 	open.click(function(){
 		$(".current .close").toggle();
 		$(this).toggle();
-		$("#sidebar .content li").hide('fast', function(){
-			$("#sidebar .content").slideUp('fast');
+		$("#sidebar .content").slideUp('fast', function(){
+			$(this).children("li").hide('fast');
 		});
 		$(".current").removeClass("current");
 	});
