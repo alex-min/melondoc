@@ -15,17 +15,19 @@ $(document).ready(function(){
 		$(this).toggle();
 			
 		var name = $(this).attr("name");
-		$("#content li").hide('fast', function(){
-			$("#content li[name="+name+"]").show('fast');
-		});
-		$("#content").slideDown('medium');
+			$("#sidebar .content li").hide('fast', function(){
+				$("#sidebar .content li[name="+name+"]").show('fast', function(){
+					$("#sidebar .content").slideDown('fast');
+				});
+			});
 	});
-		
+
 	open.click(function(){
 		$(".current .close").toggle();
 		$(this).toggle();
-		$("#content li").hide('fast');
-		$("#content").slideUp('medium');
+		$("#sidebar .content li").hide('fast', function(){
+			$("#sidebar .content").slideUp('fast');
+		});
 		$(".current").removeClass("current");
 	});
 

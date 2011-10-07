@@ -1,3 +1,7 @@
+<div id="content">
+</div>
+
+
 <script type="text/javascript">
 
 function log_resultat(value){
