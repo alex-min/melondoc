@@ -1,0 +1,15 @@
+#ed_menu {background-color: #F2F1F0; width: 40px; height: 100%; border: 1px solid; position: absolute; top: 0px; padding-left: 5px}
+#ed_bottommenu {background-color: #F2F1F0; height: 40px; border: 1px solid; margin-left: 50px}
+.ed_insidemenu {background-color: #F2F1F0; width: 0%; height: 40px; border: 1px solid; ; float: left; overflow: hidden}
+.ed_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
+.ed_slide_scroll {text-decoration:  none; width:40px; height:40px; margin-top: 5px; margin-right:5px; display: block}
+.ed_block {margin-left: 100px; margin-top: 10px}
+.ed_block_menu {background-color: #F2F1F0; height: 40px; border: 1px solid; border-color: #CCCCCC;float : left;}
+.ed_block_content {margin-left: 50px;} /* adding menu size to margin */
+.ed_cross {width : 15px; height : 15px; display: block; float:left; background-color: #BBCCFF; border: 1px solid; border-color: #CCCCCC; margin-right: 3px; margin-left: 3px}
+.ed_content {float : left; }
+.spacer {clear: both}
+ul {list-style-type: circle;padding-left: 0;margin-left: 40px;}
+li {/*background: url(/public/images/ed_bullet.png) left center no-repeat*/; list-style-type: circle;}
+
+textarea {; resize: none}
