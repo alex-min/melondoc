@@ -1,77 +1,129 @@
 .tab {
-	height: 10px;
-	background: #272727;
-	border-bottom: 2px white solid;
+	height: 5px;
+	background: #333;
+
+	border-bottom: 1px solid white;
+	box-shadow: 0px 5px 5px #bbb;
+	-moz-box-shadow: 0px 5px 5px #bbb;
+	color: #727272;
 }
-.tab li {
-	width: 100px;
-	height: 25px;
-	display: inline;
-	padding: 10px;
-	background: #272727;
-}
+
 .tab ul {
-	padding: 0px 10px 0px 10px;
-	height: 30px;
+	z-index: 2;
 	margin: 0px;
-	color: white;
-	float: right;
-	clear: right;
+	padding: 5px 10px 0px 10px;
+	
+	background: #333;
+	
 	position: relative;
-	right: 150px;
+	height: 30px;
+	float: right;
+	
+	right: 100px;
+	top: 5px;
+	
 	text-align: center;
-	top: 10px;
-	background: #272727;
-	-moz-border-radius: 0px 0px 10px 10px;
-	border-left: 2px solid white;
-	border-right: 2px solid white;
-	border-bottom: 2px solid white;
+	background: #333;
+	
+	border-bottom: 1px solid white;
+	border-left: 1px solid white;
+	border-right: 1px solid white;
+	
+	border-radius: 0px 0px 6px 6px;
+	-moz-border-radius: 0px 0px 6px 6px;
+	
+	box-shadow: 0px 5px 5px #bbb;
+	-moz-box-shadow: 0px 5px 5px #bbb;
 }
-#content {
-	background: #272727;
-	width: 100%;
+
+.tab ul li {
+	position: relative;
+	width: 100px;
+	height: 20px;
+	display: inline;
+	color: #396;
+	margin-top: 5px;
+	padding: 5px 10px;
+	font-size: 14px;
+	background: #333;
+}
+.tab ul li .separator{
+	border-left: 1px white solid;
+	height: 90%;
+}
+
+
+
+#sidebar .content h3{
+	color: #396;
+	line-height: 0.9;
+}
+
+#sidebar .content {
+	color: #272727;
 	position: relative;
 	top: 0;
 	overflow: hidden;
 	text-align: left;
-	height: 100px;
-}
-.tab .close {
-	display: none;
-}
-.tab .open {
-	display: inline;
-	color: #AF3002;
+	width: 960px;
+	margin: 0 auto;
+	font-size: 0.85em;
 }
 #sidebar {
 	margin-right: auto;
 	margin-top: auto;
 	width: 100%;
-	position: absolute;
+	background: #333;
+	position: relative;
 	top: 0;
-}
-li .left {
-	background: red;
-	border: 1px solid red;
-	-moz-border-radius: 0px 0px 10px 10px;
-	width: 2px;
-}
-li .right {
-	background: red;
-	border: 1px solid red;
-	-moz-border-radius: 0px 0px 10px 10px;
-	width: 2px;
+	z-index: 100;
 }
 
+
+#sidebar a.close {
+	display: none;
+	color: #396;
+}
+#sidebar a.open {
+	display: inline;
+	color: #FA6E1E;
+}
 #sidebar a{
-	color: white;
+	position: relative;
 	text-decoration: none;
+	color: #396;
 }
-
 #sidebar a:hover {
-	color: #FFAD1F;
+	color: #88D2AD;
 }
 
-#content li{
+#sidebar .content li{
+	color: #272727;
+}
+
+
+/* LOGIN / INSCRIPTION */
+
+#sidebar .bloc{
+	float: left;
 	color: white;
+	font-size: 10px;
+}
+#sidebar .bloc.left{
+	border-left: 1px solid #CCC
+}
+#sidebar .bloc.right{
+	border-right: 1px solid #CCC
+}
+
+#sidebar .bloc h3{
+	font-size: 14px;
+}
+
+#sidebar input{
+	border: none;
+	padding: 4px;
+	
+	border-radius: 6px;
+	-moz-border-radius: 6px;
 }

@@ -1,47 +1,69 @@
-#block_erreur
-{
-    margin: 100px auto;
-    width: 400px;
-    background:#b22222; color:#fff;
-    border: solid #000 1px;
-    font-size:16px;
+html{
+	width: 100%;
+	height: 100%;
 }
 
-#block_erreur h1
-{
-    padding:0 0 0 10px; margin:0;
-    background:#8b0000;
-    border-bottom: solid #000 1px;
-    font-size:24px; font-style:italic;
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0px;
+	padding: 0px;
+	background: #EAEAEA;
+	font-family: Gill Sans MT, Gill Sans, Verdana, sans-serif;
+	color: #727272;
 }
 
-#block_erreur p
-{
-    padding: 40px 0 0 140px;
-    background: url("/public/images/interdit.png") no-repeat;
-    color: white;
+li {
+	list-style: none;
 }
 
-#block_erreur h2
-{
-    right: 0px;
-    margin: 0; padding: 0;
-    text-align: right;
-    padding-right:5px;
-    background:#8b0000;
-    border-top: solid 1px #000;
+#error_block{
+	width: 500px;
+	margin: 0 auto;
+	border: 1px solid #DDD;
+	border-radius: 6px;
+	-moz-border-radius: 6px;
+	background: white;
+	box-shadow: 5px 5px 10px #bbb;
+	-moz-box-shadow: 5px 5px 10px #bbb;
+	color: #727272;
+	margin-top: 10%;
+	padding: 10px;
+	padding-left: 20px;
 }
 
-#block_erreur h2 a
-{
-    padding-left: 20px;
-    background: url("/public/images/arrow_left.png") no-repeat; color: white;
-    text-decoration: none; font-size: 14px;
+#error_block h1 {
+	color: #FA6E1E;
 }
 
-#block_erreur .help
-{
-    padding: 40px 0 0 140px;
-    height: 65px;
-    background: url("/public/images/help.png") no-repeat; color: white;
+.button{
+    text-decoration:none;
+    background:#eee;
+    border:1px solid #bbb;
+    padding:5px 10px;
+    margin:0px 10px 10px 0px;
+    border-radius:6px;
+    -moz-border-radius:6px;
+    -webkit-border-radius:6px;
+    cursor:pointer;
+    box-shadow:0px 2px 3px #aaa;
+    -moz-box-shadow:0px 2px 3px #aaa;
+    -webkit-box-shadow:0px 2px 3px #aaa;
+    text-shadow:0px 1px 0px #fff;
+	position: relative;
+}
+.button:hover{
+	color:#000;
+}
+
+.button:visited{
+	color: #727272;
+}
+
+.button:active{
+	outline: none;
+    box-shadow: none ;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+	
 }

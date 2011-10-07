@@ -7,13 +7,12 @@
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 </head>
 <body>
-<div id="block_erreur">
-   <h1><?php echo $title_h1;?></h1>
-   <p><?php echo $text_erreur; ?></p>
-   <h2><a href="/index/index"><?php echo $text_ret;?></a></h2>
-   <?php if (DEBUG) :?>
-   <?php echo $query;?>
-   <?php endif; ?>
-</div>
+	<div id="error_block">
+		<h1><?php echo utf8_decode("Erreur 404: Page Introuvable.") ?></h1>
+		<p><?php echo utf8_decode("Désolé cette page semble ne pas exister."); ?></p>
+		<div style="text-align: center; padding: 10px;">
+			<a  class="button" href="/">Retourner a l'acceuil</a>
+		</div>
+	</div>
 </body>
 </html>
