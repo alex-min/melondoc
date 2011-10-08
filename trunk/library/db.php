@@ -116,7 +116,7 @@ class		db
   {
     $res = mysql_query($query);
     if (!$res) {
-      error::ErrorSQL("Erreur base sql");
+      error::ErrorSQL("Erreur base sql", $query);
     }
     $ret = new stdClass;
     $ret->count = mysql_num_rows($res);
