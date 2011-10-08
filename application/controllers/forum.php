@@ -20,32 +20,9 @@ class			forumController extends controller
 // $array = array($first, $second, $third);
 // $this->forum->reorderCategorie($array);
 	//$this->forum->deleteForum(2);
-	//$this->addCSS("forum", "design");
-	$ret = $this->forum->getEverything();
-	$cat = 0;
-	foreach ($ret->rows as $data)
-	{
-	  if ($cat != $data['id_categorie'])
-	    {
-	      $cat = $data['id_categorie'];
-	      echo '<tr>
-        <th class="titre"><strong>'.stripslashes(htmlspecialchars($data['name_cat'])).'
-        </strong></th>             
-        <th class="nombremessages"><strong>Sujets</strong></th>       
-        <th class="nombresujets"><strong>Messages</strong></th>       
-        <th class="derniermessage"><strong>Dernier message</strong></th>   
-        </tr><br>';
-		}
-		// echo 'toto';
-		echo'<tr><td>[]</td>
-    <td class="titre"><strong>
-    <a href="./voirforum.php?f='.$data['id_forum'].'">
-    '.stripslashes(htmlspecialchars($data['name_forum'])).'</a></strong>
-    <br />'.nl2br(stripslashes(htmlspecialchars($data['desc']))).'</td>
-    <td class="nombresujets">'.$data['nb_topics'].'</td>
-    <td class="nombremessages">'.$data['nb_reponses'].'</td>';
-	    //print_r($data);
-	}
+	$this->addCss("forum");
+	$this->template->ret = $this->forum->getEverything();
+	$this->template->setView("forum");
   }
 }
 ?>
