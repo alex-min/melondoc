@@ -51,21 +51,13 @@ class user
   // return true si ca a fonctionne, return false si ca a merde
   public function connectUser($login, $password)
   {
-   if (isset($id_user) && isset($login) && isset($password) && isset($firstname) && isset($lastname) && isset($mail) && isset($forum_rights))
-	{
-		$_SESSION['user']['id_user'] = $this->id;
-		$_SESSION['user']['login'] = $this->login;
-		$_SESSION['user']['rights'] = $this->rights;
-		$_SESSION['user']['mail'] = $this->mail;
-		return (TRUE);
-	}
-	return (FALSE);
+    
   }
   
   // return TRUE ou FALSE si le mec est loggue, check $_SESSION['user']
   public function isLogged()
   {
-    return (isset($_SESSION['user']) ? TRUE : FALSE);
+    return ((isset($_SESSION['user'])) ? TRUE : FALSE);
   }
 
   // session_destroy et redirection vers l'accueil : $this->template->redirect (voir prototypage)

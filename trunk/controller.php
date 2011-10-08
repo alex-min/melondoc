@@ -94,6 +94,7 @@ class				controller
       $disableHeader = TRUE;
     } else {
       $disableHeader = FALSE;
+      $this->template->loadLanguage("header");
       $this->addCSS("style", "design");
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
@@ -104,6 +105,7 @@ class				controller
     $this->initAction($objet);
     $this->template->jsArray = $this->jsArray;
     $this->template->cssArray = $this->cssArray;
+    $this->template->isLogged = $this->user->isLogged();
     if ($this->root->isAjax() == FALSE)
       {
       	$this->template->fetch($this->module, $disableHeader);
