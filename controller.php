@@ -229,7 +229,7 @@ class				controller
    */
   public function		addCSS($url, $title = "design") 
   {
-    $this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />";
+    $this->cssArray .= "<link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"".$title."\" href=\"".CSS."/".$url.".css\" />\n";
     if ($this->KLogger)
       $this->KLogger->logInfo("[Css] : ".$url);
   }
