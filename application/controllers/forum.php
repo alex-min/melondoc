@@ -20,7 +20,7 @@ class			forumController extends controller
 // $array = array($first, $second, $third);
 // $this->forum->reorderCategorie($array);
 	//$this->forum->deleteForum(2);
-	$this->addCss("forum");
+	$this->addCSS("forum", "design");
 	$this->template->ret = $this->forum->getEverything();
 	$this->template->setView("forum");
   }
