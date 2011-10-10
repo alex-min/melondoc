@@ -5,6 +5,15 @@ class indexController extends controller
   public function indexAction()
   {
     $this->template->title = "MELONDOC";
+    for ($i = 0; $i < 100; $i++)
+      $array[] = $i;
+    // PAGER SINGLE WORK PERFECTLY :D
+
+    /* $this->pager->setDatas($array); */
+    /* $res = $this->pager->getResult(1, 5); */
+    /* $result = $this->pager->getPagination("/index/index"); */
+    /* echo $result; */
+
    /* if (isset($_POST["tek"])) {
       $str = $_POST["tek"];
       exec("latex --quiet -halt-on-error -output-directory '/tmp' $str", $output, $return);
