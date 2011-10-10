@@ -155,7 +155,7 @@ class KLogger
       $severity = self::INFO;
       $logDirectory = rtrim($logDirectory, '\\/');
       
-      if ($severity === self::OFF) {
+      if ($severity === self::OFF || !DEBUG) {
 	return;
       }
       

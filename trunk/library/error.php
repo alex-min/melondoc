@@ -25,6 +25,19 @@ class error
   }
 
   /**
+   * @fn function errorPager()
+   * @brief 
+   * @file error.php
+   * 
+   * @param             
+   * @return		
+   */
+  public static function errorPager()
+  {
+    self::fetchError("Erreur Pager", "Erreur Pager", "Impossible de créer la pagination");
+  }
+
+  /**
    * @fn function ErrorSQL($query)
    * @brief 
    * @file error.php
