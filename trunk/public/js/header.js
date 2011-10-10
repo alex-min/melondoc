@@ -1,10 +1,6 @@
 $(document).ready(function(){
 
-	var close = $(".close");
-	var open = $(".open");
-	
-	close.click(function(){
-	
+	$(".close").click(function(){
 		$(".current .close").toggle();
 		$(".current .open").toggle();
 		$(".current").removeClass("current");
@@ -16,13 +12,14 @@ $(document).ready(function(){
 			
 		var name = $(this).attr("name");
 			$("#sidebar .content li").hide('fast', function(){
+
 				$("#sidebar .content li[name="+name+"]").show('fast', function(){
 					$("#sidebar .content").slideDown('fast');
 				});
 			});
 	});
 
-	open.click(function(){
+	$(".open").click(function(){
 		$(".current .close").toggle();
 		$(this).toggle();
 		$("#sidebar .content").slideUp('fast', function(){

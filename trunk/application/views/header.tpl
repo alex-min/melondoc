@@ -1,5 +1,5 @@
 <div id="sidebar">
-     	<div id="content" style="display: none">
+     	<div class="content" style="display: none">
 	     <?php if ($isLogged == FALSE) :?>
 		<ul>
 			<li name="index" style="display: none;">
