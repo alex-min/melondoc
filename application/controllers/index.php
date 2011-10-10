@@ -66,8 +66,6 @@ class indexController extends controller
     }*/
    $this->addJavascript("dialog");
    $this->addCSS("dialog");
-   
-   $this->addCSS("sidebar");
 
 	// Chargement du javascript
 	$this->addCss("header");
