@@ -145,9 +145,14 @@ function ed_createAppendNewBlock(node, blocktype, returnVal)
     var additional_end = "";
     switch (blocktype) {
     case "bullets":
-	additional_begin = '<ul>';
-	additional_end = '</ul>';
 	var createElemFunc = ed_createBulletContent;
+	break;
+    case "paragraph":
+	console.debug("hello world (miam)");
+	var createElemFunc = ed_createBulletContent;	
+	break;
+    case "upper":
+	var createElemFunc = ed_createContent;
 	break;
     default:
 	var createElemFunc = ed_createContent;
