@@ -1,0 +1,8 @@
+#ed_menu {position:fixed; top:0px; left:0px; width:100%; background-color: #F2F1F0; height: 40px; border: 1px solid}
+.ed_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
+.ed_documentarea {width: 816px; height: 1056px; background-color:#FFFFFF; margin-left: auto; margin-right: auto; border:1px solid; margin-top: 10px; cursor:text; display:none}
+#ed_cursor {text-decoration: blink; font-size: 30px}
+.droppable {height: 25px; border-width: 1px; 
+	   background: url(/public/images/ed_arrow_right.png) top left no-repeat; margin-left: -50px;
+	   background-size:20px 20px;}
+.dr_active {border-radius: 10px; border-style: dashed; background-color: #FFFFFF; height: 50px; display:block; background-size:50px 50px;}
