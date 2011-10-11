@@ -1,0 +1,21 @@
+boutons d'edition:
+- titre
+- sous-titre (\section)
+- paragraphe
+- tableaux
+- listes a puces
+
+modification du texte:
+- centre, justifie, aligne a gauche/droite
+- gras, italique, souligne
+- \texttt (style machine a ecrire, largement faisable en html).
+- Symboles : alpha, betta, [...], pi, TeX, LaTeX
+- Equations mathematiques (popup de render et render en image ensuite, on rend depuis le server).
+- puissances de base (possible directement en html). 
+   -> si plus complexe => equations mathematiques
+- indices de base(possible directement en html).
+   -> si plus complexe => equations mathematiques
+- copyright
+- trois petit points (\ldots).
+- citations (\cite)
+
