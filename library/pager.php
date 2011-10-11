@@ -1,11 +1,11 @@
 <?php
 class			pager
 {
-  private		$results;
+  private		$results = array();
   private		$class;
-  private		$number_per_page;
-  private		$nb_page_max;
-  private		$actual_page;
+  private		$number_per_page = 20;
+  private		$nb_page_max = 0;
+  private		$actual_page = 0;
 
   /**
    * @fn function __construct($class)
@@ -115,6 +115,27 @@ class			pager
   }
 
   /**
+   * @fn function getPageFromID($key)
+   * @brief get page from id 
+   * @file pager.php
+   * 
+   * @param key         
+   * @return		
+   */
+  public function	getPageFromID($id)
+  {
+    $array = array_keys($this->result);
+    $key = 0;
+    foreach ($array AS $k => $v)
+      if ($v == $id)
+	{
+	  $key = $k;
+	  break;
+	}
+    return $key / $this->number_per_page;
+  }
+
+  /**
    * @fn function getPagination($url)
    * @brief create html div with pagination dynamique
    * @file pager.php
@@ -137,10 +158,10 @@ class			pager
       {
 	if ($i < 0)
 	  $i = 0;
-	$my_class = 'pager_npage';
 	if ($i == $this->actual_page)
-	  $my_class = 'pager_apage';
-	$html .= '<a class="'.$my_class.'" href="'.$url.''.$get.''.($i + 1).'">'.($i + 1).'</a> ';
+	  $html .= '<span class="pager_apage">'.$i.'</span>';
+	else
+	  $html .= '<a class="pager_npage" href="'.$url.''.$get.''.($i + 1).'">'.($i + 1).'</a> ';
       }
     if (($this->actual_page + 10) < $this->nb_page_max)
       $html .= '<a href="'.$url.''.$get.''.($this->actual_page + 11).'"><img src="/public/images/next.png" alt="next"/></a>';
