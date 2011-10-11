@@ -149,6 +149,45 @@ class	forum
 		return $get;
 	}
 	
+	public function	forumExist($id)
+	{
+		$test = $this->db->query("select * from forum_forum where id = '".$id."'");
+		if ($test->count == 0)
+		return false;
+		return true;
+	}
+	
+	public function	topicExist($id)
+	{
+		$test = $this->db->query("select id from forum_topic where id = '".$id."'");
+		if ($test->count == 0)
+		return false;
+		return true;
+	}
+	
+	public function	postExist($id)
+	{
+		$test = $this->db->query("select id from forum_posts where id = '".$id."'");
+		if ($test->count == 0)
+		return false;
+		return true;
+	}
+	
+	
+	public function	getTopicsFromForum($id_forum)
+	{
+		$ret = $this->db->query("select forum_topic.id as 'id', forum_topic.name as 'name', forum_topic.creator, forum_topic.genre, forum_topic.id_last_post,
+		forum_topic.id_first_post, forum_topic.views, forum_topic.reponses, forum_topic.genre, forum_posts.id as 'id_post', 
+		forum_posts.auteur, forum_posts.date from forum_topic left join forum_posts on forum_topic.id_last_post = forum_posts.id where id_forum = '".$id_forum."' order by forum_posts.date desc");
+		return $ret;
+	}
+	
+	public function getPostsFromTopic($id_topic)
+	{
+	$ret = $this->db->query("select * from forum_posts where id_topic = '".$id_topic."'");
+	return $ret;
+	}
+	
 	public function getForumByName($name)
 	{
 		$ret = $this->db->query("select * from forum_forum where name = '".$name."'");

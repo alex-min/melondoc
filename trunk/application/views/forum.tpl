@@ -1,8 +1,11 @@
 <table>
 <?php
    $cat = 0;
+   $mess = 0;
    foreach ($ret->rows as $data)
 {
+if (empty($data['name_forum']))
+continue;
 if ($cat != $data['id_categorie'])
 {
 $cat = $data['id_categorie'];?>
@@ -15,15 +18,22 @@ $cat = $data['id_categorie'];?>
 </tr><br>
 <?php
    }
+   $mess += $data['nb_reponses'] + $data['nb_topics'];
+   $modo = unserialize($data['moderators']);
+   $mod ="";
    ?>
-<tr><td>[]</td>
+<tr>
   <td class="titre"><strong>
-      <a href="./voirforum.php?f='<?php echo $data['id_forum'];?>'">
+      <a href="/forum/voirForum?id=<?php echo $data['id_forum'];?>">
 	<?php echo stripslashes(htmlspecialchars($data['name_forum']));?></a></strong>
-    <br /><?php echo nl2br(stripslashes(htmlspecialchars($data['desc'])));?></td>
+    <br /><?php echo nl2br(stripslashes(htmlspecialchars($data['desc']))); ?><?php if (!empty($modo)) { ?><br />moderateurs :<?php  
+	$mod = implode(", ", $modo);
+	echo $mod;
+	} ?></td>
   <td class="nombresujets"><?php echo $data['nb_topics'];?></td>
   <td class="nombremessages"><?php echo $data['nb_reponses']; ?></td>
-  <?php
+  <td class="derniermessage"><a href="/forum/viewTopic?id=<?php echo $data['id_topic'];?>&amp;post=<?php echo $data['last_post'];?>">last message</a></td>
+  </tr><?php
      }
      ?>
 </table>
