@@ -97,13 +97,13 @@ class			pager
       $page = abs(intval($_GET['page']));
     $keys = array_keys($this->result);
     $this->number_per_page = $number_per_page;
-    $this->nb_page_max = count($keys) / $number_per_page;
+    $this->nb_page_max = (int) (count($keys) / $number_per_page) + 1;
     if ($page > $this->nb_page_max)
       $page = $this->nb_page_max;
     $this->actual_page = $page;
-
     $position_start = $number_per_page * ($page - 1);
     $position_end = $position_start + $number_per_page;
+
     if ($position_end > count($keys))
       $position_end = count($keys) - 1;
 
