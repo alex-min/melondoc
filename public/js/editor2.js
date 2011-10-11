@@ -121,6 +121,28 @@ $("#ed_menu").live('click', function () {
     console.debug("here");
 });
 
+
+function dropEvent(event, ui) {
+    var active_element = $($('.dr_active')[0]);
+    switch(ui.draggable.attr('alt')) {
+    case 'title':
+	droppable_to_title(active_element);	  
+	break;
+    case 'bullets':
+	droppable_to_bullets(active_element);
+	break;
+    case 'paragraph':
+	droppable_to_paragraph(active_element);
+	break;
+    default:
+	alert('Draggable element' + ui.draggable.attr('alt') + ' not implemented yet !');
+	break;
+    }
+    $('.dr_active').each(function () {
+	$(this).removeClass('dr_active');
+    });
+}
+
 $(document).ready(function () {
     var x = $(document).width() - $(document).width() / 3;
     var y = $(document).height();
@@ -184,8 +206,9 @@ function droppable_to_paragraph(drop) {
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_paragraph");
     drop.html(add_before_title + ed_inside_title);
-    drop.before(add_before_droppabe + ed_droppable);
+    drop.before("<div class=\"img_textarea\">" + "</div>");
     drop.after(add_before_droppabe + ed_droppable);
+	addButtonTextArea();
     $('.droppable').droppable( {
 	drop: dropEvent,
 	over: overEvent,
@@ -227,27 +250,6 @@ function droppable_to_bullets(drop) {
 	over: overEvent,
 	out: outEvent
     } );
-}
-
-function dropEvent(event, ui) {
-    var active_element = $($('.dr_active')[0]);
-    switch(ui.draggable.attr('alt')) {
-    case 'title':
-	droppable_to_title(active_element);	  
-	break;
-    case 'bullets':
-	droppable_to_bullets(active_element);
-	break;
-    case 'paragraph':
-	droppable_to_paragraph(active_element);
-	break;
-    default:
-	alert('Draggable element' + ui.draggable.attr('alt') + ' not implemented yet !');
-	break;
-    }
-    $('.dr_active').each(function () {
-	$(this).removeClass('dr_active');
-    });
 }
 
 function outEvent(event, ui) {    
