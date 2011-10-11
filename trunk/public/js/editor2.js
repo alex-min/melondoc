@@ -1,4 +1,4 @@
-var txt_area = '<textarea class="ed_area" title="Title"></textarea>\n';
+var txt_area = '<div contenteditable="true" class="ed_area" title="Title"></textarea>\n';
 var ed_inside_title = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
 var ed_inside_paragraph = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
 var ed_droppable = '<div class="droppable"></div>\n';
@@ -57,6 +57,12 @@ function rec_extract(elem) {
 			+  $($(child[t]).find('textarea')[0]).attr('value')
 		    + latex_assoc['ed_title'][1];
 	    }
+	    if ($(child[t]).hasClass('ed_paragraph'))
+	    {
+		txt += latex_assoc['ed_paragraph'][0] 
+			+  $($(child[t]).find('textarea')[0]).attr('value')
+		    + latex_assoc['ed_paragraph'][1];
+	    }
 	    console.log($(child[t]));
 	}
     }
@@ -77,7 +83,33 @@ $(".ed_documentarea").live('click', function () {
 });
 
 $(".ed_delete").live('click', function () {
-    
+    $(this).parent().remove();
+    $('.ed_block').each(function () {
+	if ($(this).children().length == 0)
+	    $(this).remove();
+    });
+    var c = 1;
+    while (c) {
+	c = 0;
+	$(".droppable").each(function () {
+	    if ($(this) != undefined &&
+		$(this).parent() != undefined &&
+		$(this).parent().get(0) != undefined &&
+		$(this).parent().get(0).tagName.toLowerCase() == "li") {
+		if ($($(this).parent().next().children()[0]).hasClass('droppable')) {
+		    $($(this).parent().next().children()[0]).remove();			
+		}
+	    }
+	    if ($(this).next().hasClass('droppable')) {
+		$(this).remove();
+		c = 1;
+	    }
+	});
+    }
+    $('li').each(function () {
+	if ($(this).children().length == 0)
+	    $(this).remove();	
+    });
 });
 
 $("#ed_textzone").append('<div class="ed_documentarea"></div>');
@@ -112,21 +144,27 @@ $(document).ready(function () {
     resizeAllTextArea();
 });
 
-
 function droppable_to_title(drop) {
     var type = drop.parent().get(0).tagName.toLowerCase();
     var add_before_title = '';
     var add_before_droppabe = '';
+    var add_after_title = '';
+    var add_after_droppable = '';    
+
     if (type == 'li') {
 	add_before_title = '<li>';
 	add_before_droppabe = '<li>';
+	add_after_droppable = '</li>\n';
+	add_after_title = '</li>\n';
     }
     
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_title");
     drop.html(add_before_title + ed_inside_title);
-    drop.before(add_before_droppabe + ed_droppable);
-    drop.after(add_before_droppabe + ed_droppable);
+    if (type == 'li')
+	drop = drop.parent();
+    drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
+    drop.after(add_before_droppabe + ed_droppable + add_after_droppable);
     $('.droppable').droppable( {
 	drop: dropEvent,
 	over: overEvent,
@@ -159,19 +197,31 @@ function droppable_to_bullets(drop) {
     var type = drop.parent().get(0).tagName.toLowerCase();
     var add_before_title = '';
     var add_before_droppabe = '';
+    var add_after_title = '';
+    var add_after_droppable = '';    
     if (type == 'li') {
-	add_before_title = '<li>';
-	add_before_droppabe = '<li>';
+	add_before_title = '\n';
+	add_before_droppabe = '<li>\n';
+	add_after_droppable = '</li>\n';
+	add_after_title = '</li>\n';
     }
-
+    
     drop.droppable({disabled: true});
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_bullets");
+    console.debug(ed_bullets_begin
+	      + '<li>\n' + ed_droppable + '</li>\n'
+		  + ed_bullets_end);
+    console.debug(add_before_droppabe + ed_droppable + add_after_droppable);
+    console.log(add_after_title + 
+		add_before_droppabe + ed_droppable + add_after_droppable);
     drop.html(ed_bullets_begin
-	      + '<li>' + ed_droppable
-	      + ed_bullets_end);
-    drop.before(add_before_droppabe + ed_droppable);
-    drop.after(add_before_droppabe + ed_droppable);
+	      + '<li>\n' + ed_droppable + '</li>\n'
+	      + ed_bullets_end);    
+    if (type == 'li')
+	drop = drop.parent();
+    drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
+    drop.after(add_before_droppabe + ed_droppable + add_after_droppable);
     $('.droppable').droppable( {
 	drop: dropEvent,
 	over: overEvent,
