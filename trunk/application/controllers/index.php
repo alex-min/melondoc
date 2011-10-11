@@ -13,7 +13,6 @@ class indexController extends controller
     /* $res = $this->pager->getResult(1, 5); */
     /* $result = $this->pager->getPagination("/index/index"); */
     /* echo $result; */
-
    /* if (isset($_POST["tek"])) {
       $str = $_POST["tek"];
       exec("latex --quiet -halt-on-error -output-directory '/tmp' $str", $output, $return);
