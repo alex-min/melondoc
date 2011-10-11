@@ -127,7 +127,7 @@ class			pager
     $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $url);
     $get = "?page=";
     if (!empty($_SERVER['QUERY_STRING']))
-      $get = $_SERVER['QUERY_STRING']."&page=";
+      $get = "?".$_SERVER['QUERY_STRING']."&page=";
     $html = '<div class="pager">';
     if (($end = $this->actual_page + 10) > $this->nb_page_max)
       $end = $this->nb_page_max;
