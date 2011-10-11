@@ -108,7 +108,7 @@ class			pager
       $position_end = count($keys) - 1;
 
     $array_result = array();
-    for ($i = $position_start; $i <= $position_end; $i++)
+    for ($i = $position_start; $i < $position_end; $i++)
       $array_result[] = $this->result[$i];
 
     return $array_result;
@@ -148,7 +148,11 @@ class			pager
     $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $url);
     $get = "?page=";
     if (!empty($_SERVER['QUERY_STRING']))
-      $get = "?".$_SERVER['QUERY_STRING']."&page=";
+      {
+	$_SERVER['QUERY_STRING'] = str_replace("?page=".$this->GET['page'], "", $_SERVER['QUERY_STRING']);
+	$_SERVER['QUERY_STRING'] = str_replace("&page=".$this->GET['page'], "", $_SERVER['QUERY_STRING']);
+	$get = "?".$_SERVER['QUERY_STRING']."&page=";
+      }
     $html = '<div class="pager">';
     if (($end = $this->actual_page + 10) > $this->nb_page_max)
       $end = $this->nb_page_max;
