@@ -30,20 +30,20 @@ class user
   public function addUser($login, $firstName, $LastName, $mail, $password)
   {
   	//if (!isLoginUsed($this->login))
-  		$this->db->query("insert into users set login = $this->nickname, firstname = $this->firstName, lastname = $this->lastName, mail = $this->mail, password = $this->password, forum_rights = $this->rights");
+  		$this->db->query("INSERT INTO users SET login = $login, firstname = $firstname, lastname = $lastName, mail = $mail, password = $password, forum_rights = $rights");
   }
   
   public function deleteUser($id)
   {
-    $this->db->query("delete from users where id_user = $id");
+    $this->db->query("DELETE FROM users WHERE id_user = $id");
   }
   
 
   // si le mec n'est pas loggue, on le redirige vers la page de connection
   // sinon on fait rien
-  public function needLogin()
+  public function needLogin($rightsNeeded)
   {
-    if (! isset($_SESSION['user']))
+    if (! isset($_SESSION['user']) & $_SESSION['user']['rights'] >= $rightsNeeded)
       $this->template->redirect("", FALSE,"/login/index");
   }
 
@@ -51,7 +51,14 @@ class user
   // return true si ca a fonctionne, return false si ca a merde
   public function connectUser($login, $password)
   {
-    
+    $handler = $this->db->query('SELECT * FROM users WHERE login = "$login" AND password = "$password"');
+	 if($handler->count == 0)
+	 	return (FALSE);
+	 $_SESSION['user']['login'] = $handler->rows['login'];
+	 $_SESSION['user']['firstname'] = $handler->rows['firstname'];
+	 $_SESSION['user']['lastname'] = $handler->rows['lastname'];
+	 $_SESSION['user']['rights'] = $handler->rows['rights'];
+	 return TRUE;
   }
   
   // return TRUE ou FALSE si le mec est loggue, check $_SESSION['user']
