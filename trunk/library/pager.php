@@ -148,8 +148,8 @@ class			pager
     $get = "?page=";
     if (!empty($_SERVER['QUERY_STRING']))
       {
-	$_SERVER['QUERY_STRING'] = str_replace("?page=".$this->GET['page'], "", $_SERVER['QUERY_STRING']);
-	$_SERVER['QUERY_STRING'] = str_replace("&page=".$this->GET['page'], "", $_SERVER['QUERY_STRING']);
+	$_SERVER['QUERY_STRING'] = str_replace("?page=".$_GET['page'], "", $_SERVER['QUERY_STRING']);
+	$_SERVER['QUERY_STRING'] = str_replace("&page=".$_GET['page'], "", $_SERVER['QUERY_STRING']);
 	$get = "?".$_SERVER['QUERY_STRING']."&page=";
       }
     $html = '<div class="pager">';
@@ -161,11 +161,11 @@ class			pager
       {
 	if ($i < 0)
 	  $i = 0;
-	if ($i == $this->actual_page - 1)
+	if (($i - 1) == $this->actual_page)
 	  $html .= '<span class="pager_apage">'.($i + 1).'</span>';
 	else
 	  $html .= '<a class="pager_npage" href="'.$url.''.$get.''.($i + 1).'">'.($i + 1).'</a> ';
-      }
+      } 
     if (($this->actual_page + 10) < $this->nb_page_max)
       $html .= '<a href="'.$url.''.$get.''.($this->actual_page + 11).'"><img src="/public/images/next.png" alt="next"/></a>';
     $html .= "</div>";
