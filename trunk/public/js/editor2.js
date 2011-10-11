@@ -1,4 +1,4 @@
-var txt_area = '<div contenteditable="true" class="ed_area" title="Title"></textarea>\n';
+var txt_area = '<div contenteditable="true" class="ed_area" title="Title"></div>\n';
 var ed_inside_title = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
 var ed_inside_paragraph = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
 var ed_droppable = '<div class="droppable"></div>\n';
@@ -34,8 +34,9 @@ function resizeAllTextArea() {
 }
 
 document.onkeydown = function checkTextareaSize(e) {
+ //   console.log($('.ed_area').height());
     if (e.which == 9) {
-	console.log(document.activeElement.tagName);
+//	console.log(document.activeElement.tagName);
 	if (document.activeElement.tagName == "TEXTAREA") {
 	    document.activeElement.value += '\t';
 	}
@@ -63,7 +64,7 @@ function rec_extract(elem) {
 			+  $($(child[t]).find('textarea')[0]).attr('value')
 		    + latex_assoc['ed_paragraph'][1];
 	    }
-	    console.log($(child[t]));
+//	    console.log($(child[t]));
 	}
     }
     return (txt);
@@ -72,7 +73,7 @@ function rec_extract(elem) {
 function ed_generateLatex() {
     var txt = '';
     $('.ed_documentarea').each(function () {
-	console.log($(this));
+//	console.log($(this));
 	txt += rec_extract($(this));
     });
     alert(txt);
@@ -118,7 +119,7 @@ $("#ed_textzone").append('<div class="ed_documentarea"></div>');
 $("#ed_menu").live('click', function () {
     // remove draggable propertie
     $('.ed_menu_icon').each(function() {$(this).removeClass('draggable');});    
-    console.debug("here");
+//    console.debug("here");
 });
 
 
@@ -232,15 +233,15 @@ function droppable_to_bullets(drop) {
     drop.droppable({disabled: true});
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_bullets");
-    console.debug(ed_bullets_begin
-	      + '<li>\n' + ed_droppable + '</li>\n'
-		  + ed_bullets_end);
-    console.debug(add_before_droppabe + ed_droppable + add_after_droppable);
-    console.log(add_after_title + 
-		add_before_droppabe + ed_droppable + add_after_droppable);
-    drop.html(ed_bullets_begin
-	      + '<li>\n' + ed_droppable + '</li>\n'
-	      + ed_bullets_end);    
+//    console.debug(ed_bullets_begin
+//	      + '<li>\n' + ed_droppable + '</li>\n'
+//		  + ed_bullets_end);
+//    console.debug(add_before_droppabe + ed_droppable + add_after_droppable);
+ //   console.log(add_after_title + 
+//		add_before_droppabe + ed_droppable + add_after_droppable);
+ //   drop.html(ed_bullets_begin
+//	      + '<li>\n' + ed_droppable + '</li>\n'
+//	      + ed_bullets_end);    
     if (type == 'li')
 	drop = drop.parent();
     drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
