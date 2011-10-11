@@ -10,5 +10,6 @@ continue;
 <tr>
 <td class = "autorbox">jsuis pas un pd</td>
 <td class = "messagebox"><?php echo nl2br($value['message']);?></td></tr>
-<?php } echo $next;?>
+<?php } ?>
 </table>	
+<div style="text-align:center;"><?php echo $next;?></div>
