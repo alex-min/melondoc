@@ -109,8 +109,7 @@ class			pager
 
     $array_result = array();
     for ($i = $position_start; $i < $position_end; $i++)
-      $array_result[] = $this->result[$i];
-
+      $array_result[] = $this->result[$keys[$i]];
     return $array_result;
   }
 
@@ -162,8 +161,8 @@ class			pager
       {
 	if ($i < 0)
 	  $i = 0;
-	if ($i == $this->actual_page - 1)
-	  $html .= '<span class="pager_apage">'.($i + 1).'</span>';
+	if ($i == $this->actual_page)
+	  $html .= '<span class="pager_apage">'.$i.'</span>';
 	else
 	  $html .= '<a class="pager_npage" href="'.$url.''.$get.''.($i + 1).'">'.($i + 1).'</a> ';
       }
