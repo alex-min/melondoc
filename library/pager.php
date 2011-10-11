@@ -124,11 +124,14 @@ class			pager
    */
   public function	getPagination($url)
   {
+    $get = "?page=";
+    if (!empty($_SERVER['QUERY_STRING']))
+      $get = $_SERVER['QUERY_STRING']."&&page=";
     $html = '<div class="pager">';
     if (($end = $this->actual_page + 10) > $this->nb_page_max)
       $end = $this->nb_page_max;
     if (($this->actual_page - 10) > 1)
-      $html .= '<a href="'.$url.'?page='.($this->actual_page - 11).'"><img src="/public/images/prev.png" alt="prev"/></a> ';
+      $html .= '<a href="'.$url.''.$get.''.($this->actual_page - 11).'"><img src="/public/images/prev.png" alt="prev"/></a> ';
     for ($i = ($this->actual_page - 10); $i < $end; $i++)
       {
 	if ($i < 0)
@@ -136,10 +139,10 @@ class			pager
 	$my_class = 'pager_npage';
 	if ($i == $this->actual_page)
 	  $my_class = 'pager_apage';
-	$html .= '<a class="'.$my_class.'" href="'.$url.'?page='.($i + 1).'">'.($i + 1).'</a> ';
+	$html .= '<a class="'.$my_class.'" href="'.$url.''.$get.''.($i + 1).'">'.($i + 1).'</a> ';
       }
     if (($this->actual_page + 10) < $this->nb_page_max)
-      $html .= '<a href="'.$url.'?page='.($this->actual_page + 11).'"><img src="/public/images/next.png" alt="next"/></a>';
+      $html .= '<a href="'.$url.''.$get.''.($this->actual_page + 11).'"><img src="/public/images/next.png" alt="next"/></a>';
     $html .= "</div>";
     return $html;
   }
