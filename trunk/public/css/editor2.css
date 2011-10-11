@@ -1,8 +1,14 @@
 #ed_menu {position:fixed; top:0px; left:0px; width:100%; background-color: #F2F1F0; height: 40px; border: 1px solid}
 .ed_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
-.ed_documentarea {width: 816px; height: 1056px; background-color:#FFFFFF; margin-left: auto; margin-right: auto; border:1px solid; margin-top: 10px; cursor:text; display:none}
+.ed_documentarea {width: 816px; height: 1056px; background-color:#FFFFFF; margin-left: auto; margin-right: auto; border:1px solid; margin-top: 10px; display:none}
 #ed_cursor {text-decoration: blink; font-size: 30px}
-.droppable {height: 25px; border-width: 1px; 
+.droppable {clear:both; height: 25px; border-width: 1px; 
 	   background: url(/public/images/ed_arrow_right.png) top left no-repeat; margin-left: -50px;
 	   background-size:20px 20px;}
 .dr_active {border-radius: 10px; border-style: dashed; background-color: #FFFFFF; height: 50px; display:block; background-size:50px 50px;}
+.ed_title textarea {border:0; cursor:text; width: 100%; resize:none; font-weight: bold; font-size:23px; text-align:center}
+.ed_paragraph textarea {border:0; cursor:text; width: 100%; resize:none; font-size:15px;}
+.ed_delete {cursor: pointer; margin-left: -50px;float: left; width:30px; height:30px}
+ul {list-style-type: circle; padding-left: 0; margin-left: 40px;}
+li {clear:both/*background: url(/public/images/ed_bullet.png) left center no-repeat*/; list-style-type: circle; padding-right: 30px}
+.ed_area {float:left}
