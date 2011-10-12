@@ -1,29 +1,28 @@
 $(document).ready(function(){
 
 	$(".close").click(function(){
-		$(".current .close").toggle();
-		$(".current .open").toggle();
+
+		$(".current .close, .current .open").toggle();
+		
 		$(".current").removeClass("current");
 		$(this).parent("li").addClass("current");
 			
+		$(".current .close, .current .open").toggle();
 			
-		$(".current .open").toggle();
-		$(this).toggle();
 			
 		var name = $(this).attr("name");
-			$("#sidebar .content li").hide('fast', function(){
-
-				$("#sidebar .content li[name="+name+"]").show('fast', function(){
-					$("#sidebar .content").slideDown('fast');
-				});
-			});
+		$("#sidebar .content li").hide('fast', function(){
+			$("#sidebar .content li[name="+name+"]").show();
+			$("#sidebar .content").slideDown('fast');
+		});
 	});
 
 	$(".open").click(function(){
-		$(".current .close").toggle();
-		$(this).toggle();
+		$(".current .close, .current .open").toggle();
+		
+		var name = $(this).attr("name");
 		$("#sidebar .content").slideUp('fast', function(){
-			$(this).children("li").hide('fast');
+			$("#sidebar .content li[name="+name+"]").hide();
 		});
 		$(".current").removeClass("current");
 	});
