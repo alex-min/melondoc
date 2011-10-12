@@ -72,15 +72,22 @@ class indexController extends controller
       $this->template->rows = $this->model->test()->rows;
       $this->template->testdevar = "TOTO";
     }*/
+   
+  // $this->addJavascript("jquery.require");
+   
+   $this->addJavascript("jquery.1.6.4.min");
+   $this->addJavascript("config");
    $this->addJavascript("dialog");
    $this->addCSS("dialog");
+   $this->addJavascript("framework");
+   
 
 	// Chargement du javascript
 	$this->addCss("header");
 	$this->addJavascript("header");
 	$this->template->setView("header");
    
-   
+   $this->template->loadLanguage("index");
    	$this->template->setView("index");
   }
 }

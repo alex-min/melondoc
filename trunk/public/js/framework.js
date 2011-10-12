@@ -1,3 +1,81 @@
+/*
+ * New framewrok
+ */
+
+// Fonction qui remplace alert(); plus jolie ...
+function $f_alert(value)
+{
+	function getObject(obj, recursion){
+		if (typeof(obj) == "object"){
+			var value = "{<br/>";
+			for (variable in obj){
+				for (var i = 0; i <= recursion; i++)
+					value += "&nbsp;&nbsp;";
+				value +=  variable + " : ";
+				value += getObject(obj[variable], recursion+1)
+				console.info(variable);
+				console.info(obj[variable]);
+			}
+			value += "<br/>"
+			for (var i = 0; i < recursion; i++)
+				value += "&nbsp;&nbsp;";
+			value += "}";
+			return value
+		}
+		else
+			return obj;
+	}
+
+	value = getObject(value, 0);
+	dialog({
+		content : value,
+		callback : function(){}
+	});
+};
+
+// Fonction qui permet d'executer une fonction autre que $f.myModule.myAction()
+function $f_exec(value){
+	console.log("text");
+}
+
+// Fonction qui permet d'executer une fonction apres le chargement d'un script
+function $f_require(value, callback){	
+}
+
+// Fonction qui fais une requete ajax pour le single framework
+function $f_ajax(){
+	
+}
+
+function $f_getform(id){
+	
+}
+
+function $f_sendform(id){
+	
+}
+
+window.$f  = {
+	
+		config	:
+			{
+				separator			: 	':',
+				path					: 	"/public/js",
+				identifier			: 	"myaction",
+				eventType			: 	"click"
+			},
+
+		alert				: 	$f_alert,
+		exec				: 	$f_exec,
+		require			: 	$f_require,
+		ajax				: 	$f_ajax,
+		getform		: 	$f_getform,
+		sendform		: 	$f_sendform
+}
+
+/*
+ * Ancien framework
+ */
 $(document).ready(function(){
 
 	function fetchForm(e){
@@ -91,8 +169,10 @@ $(document).ready(function(){
 					error("["+options.module+"] introuvable dans ["+url+"]");
 				else if (!functions[options.module][options.action])
 					error("Le module ["+options.module+"] ne contient aucune définition de ["+options.action+"] dans ["+url+"]");
-				else
+				else{
 					options.callback(options.target);
+					$f.module.action();
+				}
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
@@ -109,8 +189,10 @@ $(document).ready(function(){
 		var action = value.split(window.config.separator, 2)[1];
 		
 		/* Si on trouve une action qui correspond a celle voulu dans un module donnée on l execute*/
-		if (window.functions[module] && window.functions[module][action])
+		if (window.functions[module] && window.functions[module][action]){
 			window.functions[module][action]($(this));
+			$f.module.action();
+		}
 		/* Sinon on charge le fichier et ses composants puis on execute*/
 		else
 			loadComponent({
@@ -126,49 +208,19 @@ $(document).ready(function(){
 		
 	});
 	
-	function log_resultat(value){
+function log_resultat(value){
 	if (value)
 		console.info("Validate");
 	else
 		console.info("Cancel");
 }
 
+$f.alert("toto");
+$f.exec();
 
-function myalert(value){
+//obj = new Object();
+//obj.toto = new Object();
+//obj.toto.test = "plop";
 
-	function getObject(obj, recursion){
-		if (typeof(obj) == "object"){
-			var value = "{<br/>";
-			for (variable in obj){
-				for (var i = 0; i <= recursion; i++)
-					value += "&nbsp;&nbsp;";
-				value +=  variable + " : ";
-				value += getObject(obj[variable], recursion+1)
-				console.info(variable);
-				console.info(obj[variable]);
-			}
-			value += "<br/>"
-			for (var i = 0; i < recursion; i++)
-				value += "&nbsp;&nbsp;";
-			value += "}";
-			return value
-		}
-		else
-			return obj;
-	}
-
-	value = getObject(value, 0);
-	dialog({
-		content : value,
-		callback : alert
-	});
-}
-window.$alert = myalert;
-
-obj = new Object();
-obj.toto = new Object();
-obj.toto.test = "plop"
-
-//$alert(obj);
-
+	
 });

@@ -55,7 +55,7 @@ li {
 
 #content {
 	width: 920px;
-	height: 600px;
+	height-min: 600px;
 	background:  #E4E4E4;
 }
 

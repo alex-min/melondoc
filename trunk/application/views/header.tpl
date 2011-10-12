@@ -9,7 +9,7 @@
 						<form method="POST" action="/login/inscription">
 							<label for="insc_log"><?php echo $_lang['header_login'];?> : </label><input id="insc_log" type="text" name="login"/><br/>
 							<label for="insc_ema"><?php echo $_lang['header_password'];?> : </label><input id="insc_ema" type="text" name="email" /><br/><br/>
-							<a  style="margin-left: 50px;" class="button" href="/inscription">Inscription</a>
+							<a  style="margin-left: 50px;" class="button" href="/inscription"><?php echo $_lang['header_inscription']; ?></a>
 						</form>
 					</div>
 				</div>
