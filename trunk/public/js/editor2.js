@@ -7,6 +7,8 @@ var ed_bullets_end = '</ul>\n';
 var latex_assoc = new Array();
 latex_assoc['ed_title'] = new Array('\\title\{', '\}');
 latex_assoc['ed_paragraph'] = new Array('\\paragraph\{', '\}');
+latex_assoc['ed_bullets'] = new Array('\\begin\{itemize\}', '\\end\{itemize\}');
+latex_assoc['li'] = new Array('\\item', '');
 
 function resizeTextarea(t) {
     lines = t.value.split('\n');
@@ -49,27 +51,43 @@ document.onkeydown = function checkTextareaSize(e) {
 
 function rec_extract(elem) {
     var txt = '';
-    var child = elem[0].children;	
-    for (t = 0; t < child.length; t++) {
+    var child = elem.children();	
+    for (var t = 0; t < child.length; t++) {
 	if (!($(child[t]).hasClass('droppable'))) {
 	    if ($(child[t]).hasClass('ed_title'))
 	    {
 		txt += latex_assoc['ed_title'][0] 
-			+  $($(child[t]).find('textarea')[0]).attr('value')
+		    +  $($(child[t]).find('div')[0]).html()
 		    + latex_assoc['ed_title'][1];
 	    }
-	    if ($(child[t]).hasClass('ed_paragraph'))
+	   else if ($(child[t]).hasClass('ed_paragraph'))
 	    {
 		txt += latex_assoc['ed_paragraph'][0] 
-			+  $($(child[t]).find('textarea')[0]).attr('value')
+		    +  $($(child[t]).find('div')[0]).html()
 		    + latex_assoc['ed_paragraph'][1];
 	    }
-//	    console.log($(child[t]));
+	   else if ($(child[t]).hasClass('ed_bullets'))
+	    {
+		txt += rec_extract($(child[t]));
+		console.log($(child[t]));
+	    }
+	    else if ($(child[t]).get(0).tagName.toLowerCase() == "ul")
+		txt += latex_assoc['ed_bullets'][0] + rec_extract($(child[t])) + latex_assoc['ed_bullets'][1];
+	    else if ($(child[t]).get(0).tagName.toLowerCase() == "li")
+	    {
+		var tmp = rec_extract($(child[t]));
+		if (tmp != '')
+		    txt += latex_assoc['li'][0] + tmp + latex_assoc['li'][1];
+		console.log("miam");
+		console.log($($(child[t])));
+	    }
+	    else
+		rec_extract($(child[t]));
 	}
     }
     return (txt);
 }
-
+	
 function ed_generateLatex() {
     var txt = '';
     $('.ed_documentarea').each(function () {
@@ -240,13 +258,7 @@ function droppable_to_bullets(drop) {
     drop.droppable({disabled: true});
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_bullets");
-//    console.debug(ed_bullets_begin
-//	      + '<li>\n' + ed_droppable + '</li>\n'
-//		  + ed_bullets_end);
-//    console.debug(add_before_droppabe + ed_droppable + add_after_droppable);
- //   console.log(add_after_title + 
-//		add_before_droppabe + ed_droppable + add_after_droppable);
-   drop.html(ed_bullets_begin
+    drop.html(ed_bullets_begin
 	      + '<li>\n' + ed_droppable + '</li>\n'
 	      + ed_bullets_end);    
     if (type == 'li')
