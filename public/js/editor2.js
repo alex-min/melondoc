@@ -195,21 +195,28 @@ function droppable_to_title(drop) {
     } );
 }
 
+
 function droppable_to_paragraph(drop) {
     var type = drop.parent().get(0).tagName.toLowerCase();
     var add_before_title = '';
     var add_before_droppabe = '';
+    var add_after_title = '';
+    var add_after_droppable = '';    
+
     if (type == 'li') {
 	add_before_title = '<li>';
 	add_before_droppabe = '<li>';
+	add_after_droppable = '</li>\n';
+	add_after_title = '</li>\n';
     }
     
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_paragraph");
     drop.html(add_before_title + ed_inside_title);
-    drop.before("<div class=\"img_textarea\">" + "</div>");
-    drop.after(add_before_droppabe + ed_droppable);
-	addButtonTextArea();
+    if (type == 'li')
+	drop = drop.parent();
+    drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
+    drop.after(add_before_droppabe + ed_droppable + add_after_droppable);
     $('.droppable').droppable( {
 	drop: dropEvent,
 	over: overEvent,
@@ -229,7 +236,7 @@ function droppable_to_bullets(drop) {
 	add_after_droppable = '</li>\n';
 	add_after_title = '</li>\n';
     }
-    
+    console.log('ed_bullets call');
     drop.droppable({disabled: true});
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_bullets");
@@ -239,9 +246,9 @@ function droppable_to_bullets(drop) {
 //    console.debug(add_before_droppabe + ed_droppable + add_after_droppable);
  //   console.log(add_after_title + 
 //		add_before_droppabe + ed_droppable + add_after_droppable);
- //   drop.html(ed_bullets_begin
-//	      + '<li>\n' + ed_droppable + '</li>\n'
-//	      + ed_bullets_end);    
+   drop.html(ed_bullets_begin
+	      + '<li>\n' + ed_droppable + '</li>\n'
+	      + ed_bullets_end);    
     if (type == 'li')
 	drop = drop.parent();
     drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
