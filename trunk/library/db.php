@@ -2,11 +2,11 @@
 
 class		db
 {
-  private		$_serveur;
-  private		$_user;
-  private		$_pass;
-  private    static	$_db = false;
-  private		$class;
+  private			$_serveur;
+  private			$_user;
+  private			$_pass;
+  private static	$_db = false;
+  private			$class;
 
   // ici on fait un multi ton
   /**
