@@ -5,7 +5,7 @@ class			homeController extends controller
   {
     $this->user->needLogin();
     $this->template->setView("header");
-    $documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id']);
+    //    $documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id']);
   }
 
   public function	pagesAction() // ici c'est la page de quelqu'un d'autre

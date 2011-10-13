@@ -51,14 +51,13 @@ class user
   // return true si ca a fonctionne, return false si ca a merde
   public function connectUser($login, $password)
   {
-    $handler = $this->db->query('SELECT * FROM users WHERE login = "$login" AND password = "$password"');
-	 if($handler->count == 0)
-	 	return (FALSE);
-	 $_SESSION['user']['login'] = $handler->rows['login'];
-	 $_SESSION['user']['firstname'] = $handler->rows['firstname'];
-	 $_SESSION['user']['lastname'] = $handler->rows['lastname'];
-	 $_SESSION['user']['rights'] = $handler->rows['rights'];
-	 return TRUE;
+    $quey = $this->db->query('SELECT * FROM `users` WHERE `login` = "'.$login.'" AND `password` = "'.$password.'"');
+    if ($quey->count == 1)
+      {
+	$_SESSION['user'] = $quey->row;
+	return true;
+      }
+    return false;
   }
   
   // return TRUE ou FALSE si le mec est loggue, check $_SESSION['user']
