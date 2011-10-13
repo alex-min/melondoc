@@ -24,15 +24,19 @@ function createPages(pages)
     return (cur);
 }
 
-document.onmousedown = function () {
-    console.debug($("#lv_block").is(":focus"));
+$('.lv_page').live('mousedown', function () {
     var e=arguments[0]||event;
     var x = e.pageX;
     var y = e.pageY;
     var leftOffset = $("#lv_render").css("left");
     if (lv_view == 0) {
 	lv_updateview(); }
-    document.onmousemove = function(){
+    $('.lv_page').live('mousemove', function(){
+    if ($('.lv_page').length == 0)
+	{
+	    $("#lv_block").css({cursor : "default"});
+	    return ;
+	}
 	$("#lv_block").css({cursor : "-moz-grabbing"});
 	var e=arguments[0]||event;
 	var e1 = $("#lv_render").css("left");
@@ -59,25 +63,28 @@ document.onmousedown = function () {
 	$("#lv_block").scrollTop(moveY)
 	document.getElementById("lv_render").scrollTop = 500;
 	return false;
-    }
-    document.onmouseup = function(){
+    });
+    $('.lv_page').live('mouseup', function(){
 	document.onmousemove=null;
 	$("#lv_block").css({cursor : "-moz-grab"});
-    }
+    });
     return false;
-}
+});
+
 
 
 function loadPage() {
-
     var stat = document.getElementById("lv_latexcontent");
+    if (stat == undefined)
+	return ;
     $.post(
-	"/index/index",
+	"/render/index",
 	{tek : stat.innerHTML},
 	function(data) {
 	    var lv_s = document.getElementById("lv_status");
 	    lv_s.style.display = "none";
 	    var res = eval(data);
+	    console.log(stat.innerHTML);
 	    if (res[0] == 0) {		
 		var pages = createPages(res[1]);
 		lv_s.parentNode.insertBefore(pages, lv_s);		
@@ -89,7 +96,6 @@ function loadPage() {
 		    lv_updatepagenumber(page);
 		}
 		$("#lv_block").css({cursor : "-moz-grab"});
-		console.debug("here");
 	    } else { 
 		$("#lv_block").css({overflow : "hidden"});
 		var err = createError("Viewer error", res[1]);
@@ -109,6 +115,8 @@ function lv_single() {
 }
 
 function lv_updateview() {
+    if ($('.lv_page').length == 0)
+	return ;
     if (lv_view == 0)
     {
 	$("#lv_render").height(($(".lv_page").length ) * ($(".lv_page")[0].width + 10));
@@ -122,7 +130,6 @@ function lv_updateview() {
 }
 
 function lv_multiple() {
-   console.debug($(document).width());
     lv_view = 1;
     var left = ($(window).width() - $(".lv_page")[0].width * 2 + 10) / 2;
     var wi = $(".lv_page")[0].width * 2 + 10;
@@ -179,3 +186,4 @@ function lv_zoomout() {
     }
     lv_updateview();
 }
+
