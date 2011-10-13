@@ -44,33 +44,60 @@ function $f_require(value, callback){
 
 // Fonction qui fais une requete ajax pour le single framework
 function $f_ajax(){
-	
 }
 
+// Fonction qui renvoie un obj contenant les elements d'un formulaire
 function $f_getform(id){
-	
 }
 
 function $f_sendform(id){
-	
+}
+
+// Fonction qui ajouter un module (extend si existe deja)
+function $f_addmodule(module)
+{
+	var module_name;
+	for (var key in module)
+		if (typeof module[key] == "string" && key == "_name_")
+			module_name = module[key];
+	eval("var exist = $f."+module_name);
+	if (exist == undefined){
+		var new_module = "$f."+module_name+"="+module.toSource()+";";
+		console.warn(new_module);
+		eval(new_module);
+	}
+	else
+		$.extend(exist, module);
+}
+
+function $f_dispatch(options){
+	try{
+		eval("$f."+options.module+"."+options.action+"("+options.target.toSource()+")");
+	}
+	catch(e){
+		error("Erreur survenue dans le dispatch:"+e);
+	}
 }
 
 window.$f  = {
-	
-		config	:
-			{
-				separator			: 	':',
-				path					: 	"/public/js",
-				identifier			: 	"myaction",
-				eventType			: 	"click"
-			},
 
-		alert				: 	$f_alert,
-		exec				: 	$f_exec,
-		require			: 	$f_require,
-		ajax				: 	$f_ajax,
-		getform		: 	$f_getform,
-		sendform		: 	$f_sendform
+	config	:
+		{
+			separator			: 	':',
+			path				: 	"/public/js",
+			identifier			: 	"myaction",
+			eventType			: 	"click"
+		},
+
+	alert		: 	$f_alert,
+	exec		: 	$f_exec,
+	require		: 	$f_require,
+	ajax		: 	$f_ajax,
+	getform		: 	$f_getform,
+	sendform	: 	$f_sendform,
+	addmodule	: 	$f_addmodule,
+	dispatch	: 	$f_dispatch
+
 }
 
 /*
@@ -148,12 +175,12 @@ $(document).ready(function(){
 	}
 
 
-	$("#test").click(function(){
-		ajax({
-			url: "/index/testAction",
-			data: { test: "toto", plop: 1}
-		});
-	});
+	//$("#test").click(function(){
+	//	ajax({
+	//		url: "/index/testAction",
+	//		data: { test: "toto", plop: 1}
+	//	});
+	//});
 		
 	/* Fonction qui charge un fichier js*/
 	function loadComponent(options){
@@ -165,14 +192,16 @@ $(document).ready(function(){
 			dataType: "script",
 			success: function() {
 				info("Chargement de ["+url+"] termine.")
-				if (!functions[options.module])
-					error("["+options.module+"] introuvable dans ["+url+"]");
-				else if (!functions[options.module][options.action])
-					error("Le module ["+options.module+"] ne contient aucune définition de ["+options.action+"] dans ["+url+"]");
-				else{
-					options.callback(options.target);
-					$f.module.action();
-				}
+				//if (!functions[options.module])
+				//	error("["+options.module+"] introuvable dans ["+url+"]");
+				//else if (!functions[options.module][options.action])
+				//	error("Le module ["+options.module+"] ne contient aucune définition de ["+options.action+"] dans ["+url+"]");
+				//else{
+				//	options.callback(options.target);
+				options.callback(options.target);
+				//$f.module.action2();
+				//$f.module.action();
+				//}
 			},
 			error: function(xhr, ajaxOptions, thrownError){
 				error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
@@ -182,11 +211,11 @@ $(document).ready(function(){
 	}
 
 	/* Tous les éléments qui possède l'identifiant requis reagisse a l'eventType*/
-	$("["+window.config.identifier+"]").bind(window.config.eventType, function(){
+	$("["+$f.config.identifier+"]").bind($f.config.eventType, function(){
 		/* On récupère les différentes données de l'attribut*/
-		var value = $(this).attr(window.config.identifier);
-		var module = value.split(window.config.separator, 2)[0];
-		var action = value.split(window.config.separator, 2)[1];
+		var value = $(this).attr($f.config.identifier);
+		var module = value.split($f.config.separator, 2)[0];
+		var action = value.split($f.config.separator, 2)[1];
 		
 		/* Si on trouve une action qui correspond a celle voulu dans un module donnée on l execute*/
 		if (window.functions[module] && window.functions[module][action]){
@@ -194,29 +223,20 @@ $(document).ready(function(){
 			$f.module.action();
 		}
 		/* Sinon on charge le fichier et ses composants puis on execute*/
-		else
 			loadComponent({
 				type: "js",																					/* On précise l'extension du fichier (pour le moment seul le  'js' fonctionne)*/
 				module: module,																		/* On passe le module (qui est aussi le nom du fichier)*/
 				action: action,																			/* On passe l'action (qui correspond a une fonction du module)*/
-				path: window.config.path,														/* On passe le path qui donne le repertoire ou sont stock les js*/
+				path: $f.config.path,														/* On passe le path qui donne le repertoire ou sont stock les js*/
 				target: $(this),																			/* On passe l'élément qui a réagit à l' eventType*/
-				callback: function(e){																/* Le dispatch sera appelé en callback si le chargement réussit */
-					dispatch({module: module, action: action, target: e});
+				callback: function(e){	
+					$f.dispatch({module: module, action: action, target: e});
 				}
 			});
-		
 	});
-	
-function log_resultat(value){
-	if (value)
-		console.info("Validate");
-	else
-		console.info("Cancel");
-}
 
-$f.alert("toto");
-$f.exec();
+//$f.alert("toto");
+//$f.exec();
 
 //obj = new Object();
 //obj.toto = new Object();
