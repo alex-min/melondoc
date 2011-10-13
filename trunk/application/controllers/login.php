@@ -5,10 +5,15 @@ class		loginController extends controller
   {
     $this->template->loadLanguage("login");
     $this->template->setView("header");
-    if ($this->user->connectUser($_POST['login'], md5(SALT.$_POST['password'])) == TRUE)
+    if ($this->user->connectUser(mysql_real_escape_string($_POST['login']), md5(SALT.$_POST['password'])) == TRUE)
       $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
     else
       $this->template->redirect($this->template->language['login_error'], TRUE, "/index/index");
+  }
+
+  public function deconnexion()
+  {
+    $this->user-disconnectUser();
   }
 
   public function inscriptionAction()

@@ -97,8 +97,9 @@ class				controller
       $this->template->loadLanguage("header");
       $this->addCSS("style", "design");
       $this->addJavascript("jquery.1.6.4.min");
-      //$this->addJavascript("config");
-      //$this->addJavascript("framework");
+      $this->addJavascript("config");
+      $this->addJavascript("dialog");
+      $this->addJavascript("framework");
     }
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
