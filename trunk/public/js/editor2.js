@@ -5,10 +5,12 @@ var ed_droppable = '<div class="droppable"></div>\n';
 var ed_bullets_begin = '<ul>\n';
 var ed_bullets_end = '</ul>\n';
 var latex_assoc = new Array();
-latex_assoc['ed_title'] = new Array('\\title\{', '\}');
-latex_assoc['ed_paragraph'] = new Array('\\paragraph\{', '\}');
-latex_assoc['ed_bullets'] = new Array('\\begin\{itemize\}', '\\end\{itemize\}');
-latex_assoc['li'] = new Array('\\item', '');
+var ed_begin_document_demo = "\n\\documentclass{article}\n\n\\begin{document}\n\\title{This is a titlw}\n\\author{Alexandre MINETTE \\\\\n  \\texttt{\\dddddfdf{email:andyr@comp.leeds.ac.uk}}}\n\\date{Mai 2011}\n\n\\section{Introduction}\nMath XXX                               %%%(class number and section) \n\\hfill vjdioguiiuih ihsio osoh \\\\\n\\hfill oshfh osf hsoh sfoh sofh sfo hs fosfh. \\\\\n\\hfill sdihf i o s h f ohsfoho hsfos fhos fhohfo shohsfofhs. \\\\\n\\hfill jfospfj osfho shsof hsofh soh ososfhso. \\\\\n\\hfill shfo sjhfosf oshfoshf oshshf oshf osh sofjsofh sofhsofh snfosjfoshfs sofhsofh. \\\\\n\n\\paragraph{\nMdr.}\n\n\\newpage\n\nodfjposdjfpsdjfp spjf psjfps jpsjfp jpjf pj p jp pfj\n\n\\end{document}\n\n";
+
+latex_assoc['ed_title'] = new Array('\\title\{', '\}\n');
+latex_assoc['ed_paragraph'] = new Array('\\paragraph\{', '\}\n');
+latex_assoc['ed_bullets'] = new Array('\\begin\{itemize\}\n', '\\end\{itemize\}\n');
+latex_assoc['li'] = new Array('\\item ', '\n');
 
 function resizeTextarea(t) {
     lines = t.value.split('\n');
@@ -29,25 +31,12 @@ function resizeTextarea(t) {
     t.cols = maxLen;
 }
 
-function resizeAllTextArea() {
+function resizeAllTextArea() {    
     $("textarea").each(function () {
 	resizeTextarea(this);
     });
 }
 
-document.onkeydown = function checkTextareaSize(e) {
- //   console.log($('.ed_area').height());
-    if (e.which == 9) {
-//	console.log(document.activeElement.tagName);
-	if (document.activeElement.tagName == "TEXTAREA") {
-	    document.activeElement.value += '\t';
-	}
-    }
-    if (document.activeElement.tagName == "TEXTAREA") {
-	resizeTextarea(document.activeElement);
-    }
-
-}
 
 function rec_extract(elem) {
     var txt = '';
@@ -96,6 +85,27 @@ function ed_generateLatex() {
     });
     alert(txt);
 }
+
+function ed_renderToLatex()
+{
+    $.post("/latexview/index",
+	   {tek : ed_begin_document_demo},
+	   function (data) {
+	       $('.ed_frame').html(data);
+	       console.log(data);
+	       loadPage();
+	   });    
+}
+
+$('.ed_viewer').live('click', function () {
+    if ($('.ed_popup').css('display') == 'none') {
+	ed_renderToLatex();
+	$('.ed_popup').css({display:'block'});
+    }
+    else {
+	$('.ed_popup').css({display:'none'});
+    }
+});
 
 $(".ed_documentarea").live('click', function () {    
 
