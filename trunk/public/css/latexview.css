@@ -3,16 +3,16 @@ body {background-color : #E5E5E5;height:100%; width:100%}
 #lv_menu {background-color: #F2F1F0; width: 100%; height: 40px; border: 1px solid; z-index:1}
 .lv_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
 #lv_block {overflow-y:scroll; height:600px}
-#lv_render {; height:5000px; width:100%; left:0px; right:0px; z-index:-1; top:0px
+#lv_render {; height:5000px; width:100%; left:0px; right:0px; ; top:0px
 	    position: relative }
 #lv_status {display:block; margin-left: auto; margin-right: auto; margin-top:50px}
 .lv_page {display:block; margin-left: auto; margin-right: auto; border: 1px solid; border-color: #CCCCCC; text-align:center; float : none; margin-bottom:10px;}
 .lv_spacer {margin-top : 10px}
 #lv_latexcontent {display : none}
 #lv_pagenumber {display:inline; vertical-align:10px; margin-left:20px; margin-right: 100px}
-#lv_bottom {background-color: #F2F1F0; width: 100%; height: 40px; border: 1px solid;
-	 }
+#lv_bottom {background-color: #F2F1F0; width: 100%; height: 40px; border: 1px solid; margin-bottom:-50px}
 #lv_body {}
+#lv_render {background-color: #e5e5e5}
 
 
 
