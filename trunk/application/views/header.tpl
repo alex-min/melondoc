@@ -3,23 +3,27 @@
     <ul>
     <?php if ($isLogged == FALSE) :?>
       <li name="index" style="display: none;">
-	<div class="bloc left" style="width: 49%; text-align: center;">
+	<div class="bloc right" style="width: 49%; text-align: center;">
 	  <div style="text-align: left; width: 250px; margin: 25px auto;">
 	    <h3><?php echo $_lang['header_inscription'];?></h3>
 	    <form method="POST" action="/login/inscription">
 	      <label for="insc_log"><?php echo $_lang['header_login'];?> : </label><input id="insc_log" type="text" name="login"/><br/>
 	      <label for="insc_ema"><?php echo $_lang['header_password'];?> : </label><input id="insc_ema" type="text" name="email" /><br/><br/>
-	      <a  style="margin-left: 50px;" class="button" href="/inscription"><?php echo $_lang['header_inscription']; ?></a>
+	      <div style="display: block; height: 20px; width: 100%; text-align: center;">
+		<a  style="margin-left: 50px;" class="button" href="/inscription"><?php echo $_lang['header_inscription']; ?></a>
+	      </div>
 	    </form>
 	  </div>
 	</div>
-	<div class="bloc left right" style="width: 49%">
+	<div class="bloc" style="width: 49%">
 	  <div style="text-align: left;width: 250px; margin: 25px auto;">
 	    <h3><?php echo $_lang['header_connexion'];?></h3>
 	    <form method="POST" action="/login/index">
 	      <label for="log_log"><?php echo $_lang['header_login'];?> :</label> <input id="log_log" type="text" name="login"/><br/>
 	      <label for="log_pass"><?php echo $_lang['header_password'];?> :</label> <input id="log_pass" type="password" name="password"/><br/><br/>
-	      <a  style="margin-left: 50px;" class="button" href="/login/index"><?php echo $_lang['header_connexion'];?></a>
+	      <div style="display: block; height: 20px; width: 100%; text-align: center;">
+		<a  style="margin-left: 50px;" class="button" href="/login/index"><?php echo $_lang['header_connexion'];?></a>
+		</div>
 	    </form>
 	  </div>
 	</div>
