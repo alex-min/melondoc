@@ -117,13 +117,33 @@
 }
 
 #sidebar .bloc h3{
-	font-size: 14px;
+	font-size: 16px;
+	text-align: center;
+	border-bottom: 1px solid white;
+	padding: 15px;
+	text-transform: uppercase;
 }
 
 #sidebar input{
-	border: none;
+	border: 2px solid white;
 	padding: 4px;
-	
+	margin: 10px !important;
 	border-radius: 6px;
-	-moz-border-radius: 6px;
+	-moz-border-radius: 6px !important;
+	background: #E4E4E4;
+}
+#sidebar input:focus{
+    border-color: #FA6E1E;
+}
+
+#sidebar label{
+    width: 70px;
+    display: inline-block;
+    font-size: 14px;
+}
+#sidebar .button{
+    border: 2px solid white;
+    padding: 5px 10px;
+    margin: 0px 10px 0px 0px;
+    font-size: 15px;
 }
