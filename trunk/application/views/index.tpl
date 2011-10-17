@@ -1,4 +1,4 @@
-<style>
+<!--<style>
 	select{
 		border: none;
 		width: 100px;
@@ -83,4 +83,4 @@
 				<br />
 			</div>
 		</div>
-</div>
+</div>-->
