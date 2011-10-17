@@ -1,4 +1,4 @@
-var txt_area = '<div contenteditable="true" class="ed_area" title="Title"></div>\n';
+var txt_area = '<div selected="selected" contenteditable="true" class="ed_area" title="Title"></div>\n';
 var ed_inside_title = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
 var ed_inside_paragraph = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
 var ed_droppable = '<div class="droppable"></div>\n';
@@ -240,11 +240,14 @@ function droppable_to_paragraph(drop) {
     
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_paragraph");
-    drop.html(add_before_title + ed_inside_title);
+	drop.html("<div class=\"img_textarea\"></div>");
+    drop.append(add_before_title + ed_inside_title);
     if (type == 'li')
 	drop = drop.parent();
-    drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
+	addButtonTextArea();
+	drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
     drop.after(add_before_droppabe + ed_droppable + add_after_droppable);
+	
     $('.droppable').droppable( {
 	drop: dropEvent,
 	over: overEvent,

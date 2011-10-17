@@ -470,7 +470,7 @@ var nicEditorInstance = bkClass.extend({
 	disable : function() {
 		this.elm.setAttribute('contentEditable','false');
 	},
-	
+	// ATTENTION J ' AI MODIF J' AI MIS UNE FLECHE (EN FAITE NON) MAIS IL UTILISE BIEN window.getSelection ou l' autre si ca existe pas ?? A tester
 	getSel : function() {
 		return (window.getSelection) ? window.getSelection() : document.selection;	
 	},
