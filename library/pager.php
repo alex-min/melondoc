@@ -105,12 +105,12 @@ class			pager
     $position_end = $position_start + $number_per_page;
 
     if ($position_end > count($keys))
-      $position_end = count($keys) - 1;
+      $position_end = count($keys);
 
     $array_result = array();
     for ($i = $position_start; $i < $position_end; $i++)
       $array_result[] = $this->result[$keys[$i]];
-    return $array_result;
+    return (empty($array_result)) ? FALSE : $array_result;
   }
 
   /**
@@ -144,13 +144,16 @@ class			pager
    */
   public function	getPagination($url)
   {
+    if (count($this->results) <= 0)
+      return "";
     $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $url);
     $get = "?page=";
     if (!empty($_SERVER['QUERY_STRING']))
       {
-	$_SERVER['QUERY_STRING'] = str_replace("?page=".$_GET['page'], "", $_SERVER['QUERY_STRING']);
+	$_SERVER['QUERY_STRING'] = str_replace("page=".$_GET['page'], "", $_SERVER['QUERY_STRING']);
 	$_SERVER['QUERY_STRING'] = str_replace("&page=".$_GET['page'], "", $_SERVER['QUERY_STRING']);
-	$get = "?".$_SERVER['QUERY_STRING']."&page=";
+	if (!empty($_SERVER['QUERY_STRING']))
+	  $get = "?".$_SERVER['QUERY_STRING']."&page=";
       }
     $html = '<div class="pager">';
     if (($end = $this->actual_page + 10) > $this->nb_page_max)
