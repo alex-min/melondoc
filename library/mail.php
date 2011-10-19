@@ -16,10 +16,13 @@ class		mail
    * @param class               
    * @return		
    */
-  public function			__construct($class)
-  {
-    foreach ($class AS $key => $value)
-      $this->$key = $value;
+  public function __construct() {
+  }
+
+  public function loadLib($class) {
+    if (is_array($class))
+      foreach ($class AS $key => $value)
+	$this->$key = $value;
   }
 
   //this function is used for the error with the send mail.

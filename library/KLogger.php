@@ -149,7 +149,7 @@ class KLogger
      * @param integer $severity     One of the pre-defined severity constants
      * @return void
      */
-    public function __construct($severity)
+    public function __construct()
     {
       $logDirectory = dirname(__FILE__);
       $severity = self::INFO;
