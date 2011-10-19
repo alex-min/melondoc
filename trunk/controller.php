@@ -53,6 +53,9 @@ class				controller
 	if (array_key_exists($temp, $dont) === FALSE)
 	  $this->loadLibrary($temp);
       }
+    foreach ($this->class AS $obj)
+      if (method_exists($obj, "loadLib"))
+	$obj->loadLib($this->class);
     $this->start($objet);
   }
 

@@ -12,12 +12,16 @@ final class Image {
    * @param file                
    * @return		
    */
-  public function __construct($class) {
+  public function __construct() {
 	$this->file = null;
 	$this->image = null;
 	$this->info = null;
-    foreach ($class AS $key => $value)
-      $this->$key = $value;
+  }
+
+  public function loadLib($class) {
+    if (is_array($class))
+      foreach ($class AS $key => $value)
+	$this->$key = $value;
   }
 
   /**
