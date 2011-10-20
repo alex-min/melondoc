@@ -5,15 +5,21 @@ class		loginController extends controller
   {
     $this->template->loadLanguage("login");
     $this->template->setView("header");
-    if ($this->user->connectUser(mysql_real_escape_string($_POST['login']), md5(SALT.$_POST['password'])) == TRUE)
-      $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
+    if (count($this->POST) > 0)
+      {
+	if ($this->user->connectUser($_POST['login'], $_POST['password']) == TRUE)
+	  $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
+	else
+	  $this->template->redirect($this->template->language['login_error'], TRUE, "/index/index");
+      }
     else
-      $this->template->redirect($this->template->language['login_error'], TRUE, "/index/index");
+      $this->template->redirect("", FALSE, "/index/index");
   }
 
-  public function deconnexion()
+  public function deconnexionAction()
   {
-    $this->user-disconnectUser();
+    $this->user->needLogin();
+    $this->user->disconnectUser();
   }
 
   public function inscriptionAction()
@@ -21,21 +27,38 @@ class		loginController extends controller
     $this->template->loadLanguage("login");
     $this->template->setView("header");
     $this->template->setView("inscription");
-    if (isset($this->POST))
+    if (isset($this->POST) && isset($this->POST['form_login']))
       {
-	if ($this->checkForm($this->POST) != NULL)
-	  $this->template->redirect();
-	$this->user->addUser($this->POST['form_login'], $this->POST['form_first_name'], $this->POST['form_last_name'], $this->POST['form_email'], md5(SALT.$this->POST['form_password']));
+	if (($error = $this->checkForm($this->POST)) != NULL)
+	  $this->template->redirect($error, TRUE, "/login/inscription");
+	$this->user->addUser($this->POST);
+	$this->template->redirect("", FALSE, "/login/index");
       }
   }
   
-  private function checkForm($form)
+  private function checkForm()
   {
-    // check les erreurs possible a l'inscription et lance une redirection avec une erreur via template->redirect
-    $error = NULL;
     $domaines_interdits = array('trashmail.net', 'haltospam.com', 'yopmail.com', 'ephemail.net', 'brefemail.com', 'spamgourmet.com', 'jetable.net', 'jetable.com', 'jetable.org', 'mailinator.com', 'kleemail.com', 'iximail.com', 'spambox.us', 'link2mail.net', 'dodgeit.com', 'golfilla.info', 'senseless-entertainment.com', 'afrobacon.com', 'put2.net', 'mx0.wwwnew.eu', 'temporaryinbox.com', 'yopmail.net', 'cool.fr.nf','jetable.fr.nf','nospam.ze.tc','nomail.xl.cx', 'mega.zik.dj','speed.1s.fr','courriel.fr.nf','moncourrier.fr.nf','monemail.fr.nf','monmail.fr.nf', 'disposableinbox.com', 'tempinbox.com', 'DingBone.com', 'FudgeRub.com', 'BeefMilk.com', 'LookUgly.com', 'SmellFear.com');
+    $error = "";
+    if ($this->POST['form_login'] == NULL || strlen($this->POST['form_login']) < 4 ||
+	!preg_match("#^[a-zA-Z0-9-_]{3,}$#", $this->POST['form_login']))
+      $error .= $this->template->language['error_login'];
+    if ($this->POST['form_mdp'] == NULL || strlen($this->POST['form_mdp']) < 6)
+      $error .= $this->template->language['error_mdp'];
+    if ($this->POST['form_email'] == NULL || !preg_match("#^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$#", $this->POST['form_email']) || $this->model->emailExist($this->POST['form_email']) == TRUE)
+      $error .= $this->template->language['error_mail'];
+    list($compte, $domaine) = split("@", $this->POST['form_email'], 2);
+    if (in_array($domaine, $domaines_interdits))
+      $error .= $this->template->language['error_bidon_mail'];
+    if ($this->POST['form_mdp'] != $this->POST['form_mdp2'])
+      $error .= $this->template->language['error_mdp2'];
+    if (!$this->model->checkUsername($this->POST['form_login']))
+      $error .= $this->template->language['error_check_login'];
+    if ($this->POST['form_last_name'] == NULL || strlen($this->POST['form_last_name']) > 32 || strlen($this->POST['form_last_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_last_name']))
+      $error .= $this->template->language['error_checklastname'];
+    if ($this->POST['form_first_name'] == NULL || strlen($this->POST['form_first_name']) > 32 || strlen($this->POST['form_first_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_first_name']))
+      $error .= $this->template->language['error_checkfirstname'];
     return $error;
   }
-
 }
 ?>
