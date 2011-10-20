@@ -19,34 +19,25 @@ class user
 
   public function __set($key, $val)
   {
-  	$this->class[$key] = $val;
+    $this->class[$key] = $val;
   }
 
-  private function isLoginUsed($login)
+  public function addUser($array)
   {
-    $handler = $this->db->query("SELECT * FROM users WHERE login = $login");
-    if($handler->count == 0)
-    	return (FALSE);
-    return (TRUE);
-  }
-
-  public function addUser($login, $firstName, $LastName, $mail, $password)
-  {
-  	//if (!isLoginUsed($this->login))
-  		$this->db->query("INSERT INTO users SET login = $login, firstname = $firstname, lastname = $lastName, mail = $mail, password = $password, forum_rights = $rights");
+    $this->db->query('INSERT INTO `users` SET `login` = "'.$array['form_login'].'", `firstname` = "'.$array['form_first_name'].'", `lastname` = "'.$array['form_last_name'].'", `mail` = "'.$array['form_email'].'", `password` = "'.md5(SALT.$array['form_mdp']).'", `forum_rights` = "user"');
   }
   
   public function deleteUser($id)
   {
-    $this->db->query("DELETE FROM users WHERE id_user = $id");
+    $this->db->query("DELETE FROM `users` WHERE id_user = '".$id."'");
   }
   
 
   // si le mec n'est pas loggue, on le redirige vers la page de connection
   // sinon on fait rien
-  public function needLogin($rightsNeeded)
+  public function needLogin($rightsNeeded = "user")
   {
-    if (! isset($_SESSION['user']) & $_SESSION['user']['rights'] >= $rightsNeeded)
+    if (!isset($_SESSION['user']) && $_SESSION['user']['rights'] >= $rightsNeeded)
       $this->template->redirect("", FALSE,"/login/index");
   }
 
@@ -54,10 +45,13 @@ class user
   // return true si ca a fonctionne, return false si ca a merde
   public function connectUser($login, $password)
   {
+    $password = md5(SALT.$password);
+    $login = mysql_real_escape_string($login);
     $quey = $this->db->query('SELECT * FROM `users` WHERE `login` = "'.$login.'" AND `password` = "'.$password.'"');
     if ($quey->count == 1)
       {
 	$_SESSION['user'] = $quey->row;
+	unset($_SESSION['user']['password']);
 	return true;
       }
     return false;
@@ -73,7 +67,7 @@ class user
   public function disconnectUser()
   {
     session_destroy();
-    $this->template->redirect("", TRUE, "/login/index");
+    $this->template->redirect("", TRUE, "/index/index");
   }
   
 }

@@ -102,7 +102,10 @@ class				controller
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
       $this->addJavascript("dialog");
+      $this->addJavascript("header");
       $this->addJavascript("framework");
+      $this->addCSS("dialog");
+      $this->addCSS("header");
     }
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
@@ -135,7 +138,7 @@ class				controller
       {
       	if ($this->root->isAjax() == TRUE)
 	  exit();
-      	self::redirect("/".str_replace("Controller", "", $this->controller));
+      	$this->template->redirect("/".str_replace("Controller", "", $this->controller));
       }
     $pageAction = $this->action;
     $pageController->$pageAction();
