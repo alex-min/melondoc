@@ -1,4 +1,4 @@
-<?php
+B1;2802;0c<?php
 
 class		db
 {
@@ -123,17 +123,21 @@ class		db
     if (!$res) {
       error::ErrorSQL("Erreur base sql", $query);
     }
-    $ret = new stdClass;
-    $ret->count = mysql_num_rows($res);
-    $ret->query = $res;
-    
-    $ret->rows = array();
-    $i = 0;
-    while ($ret->rows[$i] = mysql_fetch_assoc($res)) {
-      $i++;
-    }
-    $ret->row = isset($ret->rows[0]) ? $ret->rows[0] : array();
-    return ($ret);
+    if (is_resource($res))
+      {
+	$ret = new stdClass;
+	$ret->count = mysql_num_rows($res);
+	$ret->query = $res;
+	
+	$ret->rows = array();
+	$i = 0;
+	while ($ret->rows[$i] = mysql_fetch_assoc($res)) {
+	  $i++;
+	}
+	$ret->row = isset($ret->rows[0]) ? $ret->rows[0] : array();
+	return ($ret);
+      }
+    return true;
   }
 
   /**
