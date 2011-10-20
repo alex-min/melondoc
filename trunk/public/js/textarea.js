@@ -1,3 +1,5 @@
+var current_obj;
+
 document.getElementByClassName = function(className, elmt)
 {
    var selection = new Array();
@@ -19,13 +21,6 @@ document.getElementByClassName = function(className, elmt)
 		 }
 
    return selection;
-}
-
-function	addButtonTextArea()
-{
-	$('.img_textarea').html("<img src=\"/public/images/bold.png\" class=\"bold\" alt=\"bold\" title=\"bold\" />");
-	$('.img_textarea').append("<img src=\"/public/images/separator.png\" alt=\"bold\" title=\"separator\" />");
-	$('.img_textarea').append("<img src=\"/public/images/italic.png\" alt=\"bold\" title=\"italic\" />");
 }
 
 function getCharacterOffsetWithin(range, node) {
@@ -51,34 +46,78 @@ function getCharacterOffsetWithin(range, node) {
     return charCount;
 }
 
-$(".ed_area").live('click', function () {
-	selectedText = '';
-	var field  = document.getElementById('div');
-	
+var start2;
+var end2;
+
+$(".bold").live('click', function () {
 	if (window.ActiveXObject) { // C'est IE
         var textRange = document.selection.createRange();            
         var currentSelection = textRange.text;
         textRange.text =  currentSelection ;
-    } else { // Ce n'est pas IE
-		var count = getCharacterOffsetWithin(window.getSelection().getRangeAt(0), this);
+    }
+	else { // Ce n'est pas IE
+		var count = getCharacterOffsetWithin(window.getSelection().getRangeAt(0), current_obj);
 		var start = window.getSelection().getRangeAt(0).startOffset;
 		var end = window.getSelection().getRangeAt(0).endOffset;
 		end = count + (end - start);
 		start = count;
-		var text2 = document.getSelection();
-		var text = $(this).text();
-		var html = $(this).html();
-		
-		var debut = text.slice(0, start);
-		var tmp = text.slice(start, end);
-		var fin = text.slice(end, text.length);
+		var html = $(current_obj).html();
+		if (start == end)
+			return;
+		checkHTML(html, start, end);
+		var debut = html.slice(0, start2);
+		var tmp = html.slice(start2, end2);
+		var fin = html.slice(end2, html.length);
 		var res = "<strong>" + tmp + "</strong>";
 		var res1 = debut + res + fin;
-		console.log(window.getSelection().getRangeAt(0).startOffset);
-		console.log(window.getSelection().getRangeAt(0).endOffset);
+//		console.log("debut = " + debut);
+//		console.log("tmp = " + tmp);
+//		console.log("fin = " + fin);
+//		console.log("res1 = " + res1);
+		res1 = epur_balise("<strong></strong><strong> </strong><strong>Salut</strong><strong><italic>toto</italic></strong><strong>titi<italic></italic><br /><strong><strong>toto</strong></strong><strong><strong>titi</strong>toto</strong>");
 		console.log(res1);
-		$(this).html(res1);
+		//$(current_obj).html(res1);
 		//window.getSelection().getRangeAt(0).startOffset = 0;
 		//window.getSelection().getRangeAt(0).endOffset = 0;
-    }
+	}
+});
+
+function	epur_balise(res1)	{
+	res1 = res1.replace(/<strong>/g, "<strong>\"");
+	res1 = res1.replace(/<\/strong>/g, "\"</strong>");
+	res1 = res1.replace(/<italic>/g, "<italic>\"");
+	res1 = res1.replace(/<\/italic>/g, "\"</italic>");
+	console.log(res1);
+	var reg = new RegExp("[<>]+", "g");
+	var tab = res1.split(reg);
+
+//	for (i = 0; i < tab.length; i++)
+	//	console.log(tab[i].search("strong"));
+	for (i = 0; i < tab.length; i++)	{
+		console.log(tab[i]);
+	}
+}
+
+function	checkHTML(html, start, end)	{
+	var tmp = "";
+	var len = 0;
+	for (var i = 0; html[i]; i++, len++)	{
+		if (html[i] == '<')	{
+			var j = 1;
+			while (html[i] && html[i] != '>')	{
+				i++;
+				j++;
+			}
+			start += j;
+			end += j;
+		}
+		if (i >= start)
+			break;
+	}
+	start2 = start;
+	end2 = end;
+}
+
+$(".ed_area").live('click', function () {
+	current_obj = this;
 });

@@ -240,11 +240,9 @@ function droppable_to_paragraph(drop) {
     
     drop.removeClass('droppable dr_active ui-droppable');
     drop.addClass("ed_block ed_paragraph");
-	drop.html("<div class=\"img_textarea\"></div>");
-    drop.append(add_before_title + ed_inside_title);
+    drop.html(add_before_title + ed_inside_title);
     if (type == 'li')
 	drop = drop.parent();
-	addButtonTextArea();
 	drop.before(add_before_droppabe + ed_droppable + add_after_droppable);
     drop.after(add_before_droppabe + ed_droppable + add_after_droppable);
 	
