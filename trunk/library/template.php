@@ -7,6 +7,7 @@ class		template
   private	$json = array();
   public	$language;
   private	$KLogger;
+  private	$twig;
 
   /**
    * @fn function __construct($class)
@@ -33,6 +34,9 @@ class		template
       }
     unset($_SESSION['error']);
     unset($_SESSION['success']);
+
+    $loader = new Twig_Loader_Filesystem(PATH_VIEWS);
+    $this->twig = new Twig_Environment($loader, array('cache' => false));
   }
 
   /**
@@ -223,12 +227,11 @@ class		template
    */
   public function loadView($module, $disableHeader = false)
   {
-    extract($this->data);
     if ($disableHeader == false)
-      include('application/views/HeaderView.tpl');
+      echo $twig->render(PATH_VIEWS.'HeaderView.html', $this->data);
     foreach ($this->vue AS $views)
       {
-	$url = PATH_VIEWS.$module.''.$views.".tpl";
+	$url = PATH_VIEWS.$module.''.$views.".html";
 	if (file_exists($url))
 	  {
 	    include_once($url);
@@ -238,7 +241,7 @@ class		template
 	  $this->KLogger->logFatal("[View] ".$views);
       }
     if ($disableHeader == false)
-      include('application/views/FooterView.tpl');
+      echo $twig->render(PATH_VIEWS.'FooterView.html', $this->data);
   }
 
   /**

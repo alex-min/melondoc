@@ -35,9 +35,9 @@ class user
 
   // si le mec n'est pas loggue, on le redirige vers la page de connection
   // sinon on fait rien
-  public function needLogin($rightsNeeded = "user")
+  public function needLogin()
   {
-    if (!isset($_SESSION['user']) && $_SESSION['user']['rights'] >= $rightsNeeded)
+    if (!isset($_SESSION['user']))
       $this->template->redirect("", FALSE,"/login/index");
   }
 

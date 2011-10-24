@@ -1,5 +1,5 @@
 <?php
-define("DEBUG", 1);
+define("DEBUG", 0);
 define("PATH_CONTROLLERS", "application/controllers/");
 define("PATH_VIEWS", "application/views/");
 define("PATH_MODELS", "application/models/");

@@ -43,6 +43,8 @@ class				controller
    */
   public function		init(&$rooter, &$objet)
   {
+    require_once("./".PATH_LIB."twig/lib/Twig/Autoloader.php");
+    Twig_Autoloader::register();
     $dont = array("rooter" => 0, "error" => 0);
     include_once("model.php");
     $this->root = $rooter;
@@ -104,6 +106,7 @@ class				controller
       $this->addJavascript("dialog");
       $this->addJavascript("header");
       $this->addJavascript("framework");
+      $this->addCSS("bootstrap/bootstrap");
       $this->addCSS("dialog");
       $this->addCSS("header");
 	  if (BOOTSTRAP){

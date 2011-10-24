@@ -161,6 +161,8 @@ class KLogger
       
       $this->_logFilePath = $logDirectory
 	. DIRECTORY_SEPARATOR
+	. "logs"
+	. DIRECTORY_SEPARATOR
 	. 'log_'
 	. date('Y-m-d')
 	. '.log';
