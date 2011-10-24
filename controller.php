@@ -104,11 +104,8 @@ class				controller
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
       $this->addJavascript("dialog");
-      $this->addJavascript("header");
       $this->addJavascript("framework");
-      $this->addCSS("bootstrap/bootstrap");
       $this->addCSS("dialog");
-      $this->addCSS("header");
 	  if (BOOTSTRAP){
 		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-alerts");
 		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-dropdown");
