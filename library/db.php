@@ -1,4 +1,4 @@
-B1;2802;0c<?php
+<?php
 
 class		db
 {
