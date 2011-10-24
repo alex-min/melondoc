@@ -228,20 +228,20 @@ class		template
   public function loadView($module, $disableHeader = false)
   {
     if ($disableHeader == false)
-      echo $twig->render(PATH_VIEWS.'HeaderView.html', $this->data);
+      echo $this->twig->render('HeaderView.html', $this->data);
     foreach ($this->vue AS $views)
       {
-	$url = PATH_VIEWS.$module.''.$views.".html";
-	if (file_exists($url))
+	$url = $module.''.$views.".html";
+	if (file_exists(PATH_VIEWS.$url))
 	  {
-	    include_once($url);
+	    echo $this->twig->render($url, $this->data);
 	    $this->KLogger->logInfo("[View] ".$views);
 	  }
 	else
 	  $this->KLogger->logFatal("[View] ".$views);
       }
     if ($disableHeader == false)
-      echo $twig->render(PATH_VIEWS.'FooterView.html', $this->data);
+      echo $this->twig->render('FooterView.html', $this->data);
   }
 
   /**

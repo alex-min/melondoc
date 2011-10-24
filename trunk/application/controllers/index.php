@@ -4,8 +4,7 @@ class indexController extends controller
 {
   public function indexAction()
   {
-    $this->template->setView("header");
-    
+    $this->template->setView("header");    
     $this->template->loadLanguage("index");
     $this->template->setView("index");
   }
