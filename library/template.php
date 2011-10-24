@@ -232,7 +232,7 @@ class		template
     foreach ($this->vue AS $views)
       {
 	$url = $module.''.$views.".html";
-	if (file_exists(PATH_VIEWS.$url))
+	if (file_exists(PATH_VIEWS.$module.$url))
 	  {
 	    echo $this->twig->render($url, $this->data);
 	    $this->KLogger->logInfo("[View] ".$views);
