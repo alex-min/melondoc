@@ -10,15 +10,15 @@ function $f_alert(value)
 			var value = "{<br/>";
 			for (variable in obj){
 				for (var i = 0; i <= recursion; i++)
-					value += "&nbsp;&nbsp;";
+					value += " ; ;";
 				value +=  variable + " : ";
 				value += getObject(obj[variable], recursion+1)
-				console.info(variable);
-				console.info(obj[variable]);
+//				console.info(variable);
+//				console.info(obj[variable]);
 			}
-			value += "<br/>"
+			value += "\n"
 			for (var i = 0; i < recursion; i++)
-				value += "&nbsp;&nbsp;";
+				value += " ; ;";
 			value += "}";
 			return value
 		}
@@ -27,15 +27,16 @@ function $f_alert(value)
 	}
 
 	value = getObject(value, 0);
-	dialog({
-		content : value,
-		callback : function(){}
-	});
+    alert(value);
+//	dialog({
+//		content : value,
+//		callback : function(){}
+//	});
 };
 
 // Fonction qui permet d'executer une fonction autre que $f.myModule.myAction()
 function $f_exec(value){
-	console.log("text");
+//	console.log("text");
 }
 
 // Fonction qui permet d'executer une fonction apres le chargement d'un script

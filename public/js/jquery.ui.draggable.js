@@ -44,14 +44,15 @@ $.widget("ui.draggable", $.ui.mouse, {
 	},
 	_create: function() {
 
-		if (this.options.helper == 'original' && !(/^(?:r|a|f)/).test(this.element.css("position")))
+		if (this.options.helper == 'original'
+		    && !(/^(?:r|a|f)/).test(this.element.css("position")))
 			this.element[0].style.position = 'relative';
 
 		(this.options.addClasses && this.element.addClass("ui-draggable"));
 		(this.options.disabled && this.element.addClass("ui-draggable-disabled"));
 
 		this._mouseInit();
-
+	    this._inside = false;
 	},
 
 	destroy: function() {
@@ -95,6 +96,9 @@ $.widget("ui.draggable", $.ui.mouse, {
 	},
 
 	_mouseStart: function(event) {
+	    console.log("[START]");
+	    if (navigator.appVersion.match(/MSIE 8.0/))
+		this._inside = true;
 
 		var o = this.options;
 
@@ -106,8 +110,12 @@ $.widget("ui.draggable", $.ui.mouse, {
 
 		//If ddmanager is used for droppables, set the global draggable
 		if($.ui.ddmanager)
-			$.ui.ddmanager.current = this;
-
+	    {
+		$.ui.ddmanager.current = this;
+	    }
+//	    this.element = $(event.currentTarget);
+//	    console.log("miam");
+//	    console.log(this);
 		/*
 		 * - Position generation -
 		 * This block generates everything position related - it's the core of draggables.
@@ -119,14 +127,12 @@ $.widget("ui.draggable", $.ui.mouse, {
 		//Store the helper's css position
 		this.cssPosition = this.helper.css("position");
 		this.scrollParent = this.helper.scrollParent();
-
-		//The element's absolute position on the page minus margins
+	    //The element's absolute position on the page minus margins
 		this.offset = this.positionAbs = this.element.offset();
 		this.offset = {
 			top: this.offset.top - this.margins.top,
 			left: this.offset.left - this.margins.left
 		};
-
 		$.extend(this.offset, {
 			click: { //Where the click happened, relative to the element
 				left: event.pageX - this.offset.left,
@@ -171,33 +177,41 @@ $.widget("ui.draggable", $.ui.mouse, {
 	},
 
 	_mouseDrag: function(event, noPropagation) {
-	    console.log('here');
+	    if (navigator.appVersion.match(/MSIE 8.0/) && this._inside == false)
+		this._mouseStart(event);
+		
 		//Compute the helpers position
 		this.position = this._generatePosition(event);
 		this.positionAbs = this._convertPositionTo("absolute");
-
+	    
 		//Call plugins and callbacks and use the resulting position if something is returned
-		if (!noPropagation) {
+	    if (noPropagation == false) {
 			var ui = this._uiHash();
 			if(this._trigger('drag', event, ui) === false) {
-				this._mouseUp({});
-				return false;
+			    this._mouseUp({});
+			    return false;
 			}
 			this.position = ui.position;
 		}
+//	    $f_alert(this.helper[0].style);
 		if(!this.options.axis || this.options.axis != "y")
 		    this.helper[0].style.left = this.position.left+'px';
 		if(!this.options.axis || this.options.axis != "x")
 		    this.helper[0].style.top = this.position.top+'px';
+//	    $f_alert(this.helper[0].style);
 		if($.ui.ddmanager) $.ui.ddmanager.drag(this, event);
 		return false;
 	},
 
 	_mouseStop: function(event) {
-		//If we are using droppables, inform the manager about the drop
-		var dropped = false;
+	    //If we are using droppables, inform the manager about the drop
+	    this._inside = false;
+	    var dropped = false;
 		if ($.ui.ddmanager && !this.options.dropBehaviour)
-			dropped = $.ui.ddmanager.drop(this, event);
+	    {
+		dropped = $.ui.ddmanager.drop(this, event);
+	    }
+	    
 
 		//if a drop comes from outside (a sortable)
 		if(this.dropped) {
@@ -226,7 +240,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 	},
 	
 	_mouseUp: function(event) {
-		if (this.options.iframeFix === true) {
+	    if (this.options.iframeFix === true) {
 			$("div.ui-draggable-iframeFix").each(function() { 
 				this.parentNode.removeChild(this); 
 			}); //Remove frame helpers
@@ -234,8 +248,12 @@ $.widget("ui.draggable", $.ui.mouse, {
 		
 		//If the ddmanager is used for droppables, inform the manager that dragging has stopped (see #5003)
 		if( $.ui.ddmanager ) $.ui.ddmanager.dragStop(this, event);
-		
-		return $.ui.mouse.prototype._mouseUp.call(this, event);
+	    
+	    var val = $.ui.mouse.prototype._mouseUp.call(this, event);
+
+	    this._create();
+	    
+		return val;
 	},
 	
 	cancel: function() {
@@ -257,7 +275,7 @@ $.widget("ui.draggable", $.ui.mouse, {
 			.find("*")
 			.andSelf()
 			.each(function() {
-				if(this == event.target) handle = true;
+				if(this == event.currentTarget) handle = true;
 			});
 
 		return handle;
@@ -270,7 +288,10 @@ $.widget("ui.draggable", $.ui.mouse, {
 		var helper = $.isFunction(o.helper) ? $(o.helper.apply(this.element[0], [event])) : (o.helper == 'clone' ? this.element.clone().removeAttr('id') : this.element);
 
 		if(!helper.parents('body').length)
-			helper.appendTo((o.appendTo == 'parent' ? this.element[0].parentNode : o.appendTo));
+	    {
+		$((o.appendTo == 'parent' ? this.element[0].parentNode : o.appendTo)).append(helper);
+		// helper.appendTo((o.appendTo == 'parent' ? this.element[0].parentNode : o.appendTo));
+	    }
 
 		if(helper[0] != this.element[0] && !(/(fixed|absolute)/).test(helper.css("position")))
 			helper.css("position", "absolute");
@@ -458,7 +479,6 @@ $.widget("ui.draggable", $.ui.mouse, {
 			}
 
 		}
-
 		return {
 			top: (
 				pageY																// The absolute mouse position
@@ -617,6 +637,7 @@ $.ui.plugin.add("draggable", "connectToSortable", {
 				}
 
 				//Provided we did all the previous steps, we can fire the drag event of the sortable on every draggable drag, when it intersects with the sortable
+
 				if(this.instance.currentItem) this.instance._mouseDrag(event);
 
 			} else {

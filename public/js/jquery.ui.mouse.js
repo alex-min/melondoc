@@ -25,26 +25,29 @@ $.widget("ui.mouse", {
 	},
 	_mouseInit: function() {
 		var self = this;
+	    console.log($(this.element));
 
-		this.element	   
-			.bind('mousedown.'+this.widgetName, function(event) {
-				return self._mouseDown(event);
-			})
-			.bind('click.'+this.widgetName, function(event) {
-				if (true === $.data(event.target, self.widgetName + '.preventClickEvent')) {
-				    $.removeData(event.target, self.widgetName + '.preventClickEvent');
+	    $(this.element).mousedown(function(event) {
+		console.log('dfdfdfd');
+			    return self._mouseDown(event);
+	    });
+
+	    $(this.element).click(function(event) {
+		console.log('[CLICK]:' + self.widgetName);
+				if (true === $.data(event.currentTarget, self.widgetName + '.preventClickEvent')) {
+				    $.removeData(event.currentTarget, self.widgetName + '.preventClickEvent');
 					event.stopImmediatePropagation();
 					return false;
 				}
-			});
 
+	    });
 		this.started = false;
 	},
 
 	// TODO: make sure destroying one instance of mouse doesn't mess with
 	// other instances of mouse
 	_mouseDestroy: function() {
-		this.element.unbind('.'+this.widgetName);
+	    this.element.unbind('.'+this.widgetName);
 	},
 
 	_mouseDown: function(event) {
@@ -109,7 +112,6 @@ $.widget("ui.mouse", {
 		if ($.browser.msie && !(document.documentMode >= 9) && !event.button) {
 			return this._mouseUp(event);
 		}
-
 		if (this._mouseStarted) {
 			this._mouseDrag(event);
 			return event.preventDefault();
@@ -126,20 +128,20 @@ $.widget("ui.mouse", {
 
 	_mouseUp: function(event) {
 		$(document)
-			.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
-			.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
-
+		.unbind('mousemove.'+this.widgetName, this._mouseMoveDelegate)
+		.unbind('mouseup.'+this.widgetName, this._mouseUpDelegate);
+	    
 		if (this._mouseStarted) {
-			this._mouseStarted = false;
-
-			if (event.target == this._mouseDownEvent.target) {
-			    $.data(event.target, this.widgetName + '.preventClickEvent', true);
-			}
-		    alert('calle');
-			this._mouseStop(event);
+		    this._mouseStarted = false;
+		    
+		    if (event.target == this._mouseDownEvent.target) {
+			$.data(event.target, this.widgetName + '.preventClickEvent', true);
+		    }
+		    this._mouseStop(event);		    
 		}
 
-		return false;
+	    this._mouseInit(event);
+	    return false;
 	},
 
 	_mouseDistanceMet: function(event) {
