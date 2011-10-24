@@ -8,18 +8,18 @@ class				controller
   protected			$db;
   protected			$root;
 
-  private      			$module;
-  private      			$action;
-  private	       		$models;
-  private      			$controller;
-  
+  private      		$module;
+  private      		$action;
+  private	       	$models;
+  private      		$controller;
+
   protected			$GET;
   protected			$POST ;
   protected			$FILES;
   
   protected			$needLogin	= 0;
-  private      			$jsArray	= "";
-  private      			$cssArray	= "";
+  private      		$jsArray	= "";
+  private      		$cssArray	= "";
 
   /**
    * @fn function __get($key)
@@ -106,6 +106,16 @@ class				controller
       $this->addJavascript("framework");
       $this->addCSS("dialog");
       $this->addCSS("header");
+	  if (BOOTSTRAP){
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-alerts");
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-dropdown");
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-modal");
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-scrollspy");
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-tabs");
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-twipsy");
+		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-popover");
+		$this->addCss(PATH_BOOTSTRAP_CSS."bootstrap");
+	  }
     }
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);

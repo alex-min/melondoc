@@ -1,4 +1,4 @@
-<div id="sidebar">
+<div id="sidebar" class="topbar">
   <div class="content" style="display: none">
     <ul>
       <li name="index" style="display: none;">
