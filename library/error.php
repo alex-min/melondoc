@@ -17,7 +17,7 @@ class error
     $text_ret = "Retourner à l'accueil";
     $link_css = CSS."/error.css";
     ob_start();
-    include("application/views/_error.tpl");
+    include("application/views/_error.html");
     $flux = ob_get_contents();
     ob_end_clean();
     echo $flux;
