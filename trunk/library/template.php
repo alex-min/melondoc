@@ -22,18 +22,18 @@ class		template
     if (!isset($_SESSION['lang']))
       $_SESSION['lang'] = "FR";
     $this->KLogger = $class['KLogger'];
-    if (isset($_SESSION['error']) && $_SESSION['error'])
+    if (isset($_SESSION['__error']) && $_SESSION['__error'])
       {
-	$this->__set("__error", $_SESSION['error']);
-	$this->KLogger->logInfo("[error] ".$_SESSION['error']);
+	$this->__set("__error", $_SESSION['__error']);
+	$this->KLogger->logInfo("[error] ".$_SESSION['__error']);
       }
-    if (isset($_SESSION['success']) && $_SESSION['success'])
+    if (isset($_SESSION['__success']) && $_SESSION['__success'])
       {
-	$this->__set("__success", $_SESSION['success']);
-	$this->KLogger->logInfo("[success] ".$_SESSION['success']);
+	$this->__set("__success", $_SESSION['__success']);
+	$this->KLogger->logInfo("[success] ".$_SESSION['__success']);
       }
-    unset($_SESSION['error']);
-    unset($_SESSION['success']);
+    unset($_SESSION['__error']);
+    unset($_SESSION['__success']);
 
     $loader = new Twig_Loader_Filesystem(PATH_VIEWS);
     $this->twig = new Twig_Environment($loader, array('cache' => false));
@@ -70,7 +70,7 @@ class		template
    * @param str         
    * @return		
    */
-  private function setError($str) {$_SESSION['error'] = $str;}
+  private function setError($str) {$_SESSION['__error'] = $str;}
 
   /**
    * @fn function setSuccess($str)
@@ -80,7 +80,7 @@ class		template
    * @param str         
    * @return		
    */
-  private function setSuccess($str) {$_SESSION['success'] = $str;}
+  private function setSuccess($str) {$_SESSION['__success'] = $str;}
 
   /**
    * @fn function __get($key)

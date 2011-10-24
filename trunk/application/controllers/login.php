@@ -5,15 +5,14 @@ class		loginController extends controller
   {
     $this->template->loadLanguage("login");
     $this->template->setView("header");
+    $this->template->setView("connexion");
     if (count($this->POST) > 0)
       {
 	if ($this->user->connectUser($_POST['login'], $_POST['password']) == TRUE)
 	  $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
 	else
-	  $this->template->redirect($this->template->language['login_error'], TRUE, "/index/index");
+	  $this->template->redirect($this->template->language['login_error'], TRUE, "/login/index");
       }
-    else
-      $this->template->redirect("", FALSE, "/index/index");
   }
 
   public function deconnexionAction()
@@ -32,8 +31,8 @@ class		loginController extends controller
 	if (($error = $this->checkForm($this->POST)) != NULL)
 	  $this->template->redirect($error, TRUE, "/login/inscription");
 	$this->user->addUser($this->POST);
-	$this->template->redirect("", FALSE, "/login/index");
       }
+    $this->template->redirect("", FALSE, "/login/index");
   }
   
   private function checkForm()
