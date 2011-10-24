@@ -26,6 +26,11 @@ var ed_slide_menu = '<div class="ed_menu_container"><div class="ed_insidemenu">'
 var ed_begin_block_content = '<div class="ed_block_content">';
 var ed_end_block_content = '</div>';
 
+$.post("http://v2intra.local.epitech-nancy.fr/susie/index/subscribe?json", { id: "237" },
+       function(data) {
+	   alert("Data Loaded: " + data);
+       });
+
 function ed_cleanTree() {
     $("li").each(function() { 	
 	

@@ -84,7 +84,6 @@ function loadPage() {
 	    var lv_s = document.getElementById("lv_status");
 	    lv_s.style.display = "none";
 	    var res = eval(data);
-	    console.log(stat.innerHTML);
 	    if (res[0] == 0) {		
 		var pages = createPages(res[1]);
 		lv_s.parentNode.insertBefore(pages, lv_s);		

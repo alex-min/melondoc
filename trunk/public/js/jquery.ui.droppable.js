@@ -108,7 +108,7 @@ $.widget("ui.droppable", {
 
 	_drop: function(event,custom) {
 
-		var draggable = custom || $.ui.ddmanager.current;
+	    var draggable = custom || $.ui.ddmanager.current;
 		if (!draggable || (draggable.currentItem || draggable.element)[0] == this.element[0]) return false; // Bail if draggable and droppable are same element
 
 		var childrenIntersection = false;
@@ -127,7 +127,9 @@ $.widget("ui.droppable", {
 		if(this.accept.call(this.element[0],(draggable.currentItem || draggable.element))) {
 			if(this.options.activeClass) this.element.removeClass(this.options.activeClass);
 			if(this.options.hoverClass) this.element.removeClass(this.options.hoverClass);
-			this._trigger('drop', event, this.ui(draggable));
+		    console.log("plop");
+		    console.log(event);
+		    this._trigger('drop', event, this.ui(draggable));
 			return this.element;
 		}
 
@@ -153,7 +155,9 @@ $.extend($.ui.droppable, {
 $.ui.intersect = function(draggable, droppable, toleranceMode) {
 
 	if (!droppable.offset) return false;
-
+    
+    if (navigator.appVersion.match(/MSIE 8.0/) && draggable.position == undefined)
+	return (false);
 	var x1 = (draggable.positionAbs || draggable.position.absolute).left, x2 = x1 + draggable.helperProportions.width,
 		y1 = (draggable.positionAbs || draggable.position.absolute).top, y2 = y1 + draggable.helperProportions.height;
 	var l = droppable.offset.left, r = l + droppable.proportions.width,
@@ -211,7 +215,6 @@ $.ui.ddmanager = {
 			if(m[i].options.disabled || (t && !m[i].accept.call(m[i].element[0],(t.currentItem || t.element)))) continue;	//No disabled and non-accepted
 			for (var j=0; j < list.length; j++) { if(list[j] == m[i].element[0]) { m[i].proportions.height = 0; continue droppablesLoop; } }; //Filter out elements in the current dragged item
 			m[i].visible = m[i].element.css("display") != "none"; if(!m[i].visible) continue; 									//If the element is not visible, continue
-
 			if(type == "mousedown") m[i]._activate.call(m[i], event); //Activate the droppable if used directly from draggables
 
 			m[i].offset = m[i].element.offset();
