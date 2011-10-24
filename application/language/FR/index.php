@@ -1,4 +1,12 @@
 <?php
+
+$_['project_name'] = "melonDoc";
+
+$_['accueil'] = "Accueil";
+$_['accueil'] = "Contact";
+$_['inscription'] = "Inscription";
+$_['connexion'] = "Connexion";
+
 $_['title'] = "melonDoc";
 $_['header_login'] = "Login";
 $_['header_password'] = "Password";
