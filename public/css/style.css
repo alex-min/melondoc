@@ -2,3 +2,6 @@ body
 {
     font-family: "HelveticaNeue-Light","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,sans-serif;
 }
+#main-content {
+    padding-top:50px;
+}

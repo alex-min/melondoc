@@ -39,7 +39,6 @@ class user
   {
     if (!isset($_SESSION['user']))
       $this->template->redirect("", FALSE,"/login/index");
-    
   }
 
   // recupere les donnees de l'user a mettre en session dans $_SESSION['user'], (pas le mdp),

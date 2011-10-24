@@ -1,21 +1,26 @@
 <div class="topbar">
-	<div class="fill">
-		<div class="container">
-			<a class="brand" href="#">
-				{%  if _lang.project_name is defined  %}
-					{{  _lang.project_name }}
-				{% else %}
-					"projectName"
-				{%  endif  %}
-			</a>
-			<div class="pull-right">
-				<ul class="nav">
-					<li class="active"><a href="#">Accueil</a></li>
-					<li><a href="#about">Contact</a></li>
-					<li><a href="#contact">Forum</a></li>
-					<li><a href="#contact">Connexion</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+  <div class="fill">
+    <div class="container">
+      <a class="brand" href="#">
+	{%  if _lang.project_name is defined  %}
+	{{ _lang.project_name }}
+	{% else %}
+	"projectName"
+	{%  endif  %}
+      </a>
+      <div class="pull-right">
+	<ul class="nav">
+	  <li class="active"><a href="/home/index">Accueil</a></li>
+	  <li><a href="#about">Contact</a></li>
+	  <li><a href="/forum">Forum</a></li>
+	  {% if isLogged %}
+	  <li><a href="/login/index">{{_lang.header_deconnexion}}</a></li>
+	  {% else %}
+	  <li><a href="/login/index">{{_lang.header_connexion}}</a></li>
+	  {% endif %}
+	</ul>
+      </div>
+    </div>
+  </div>
 </div>
+<div class="content">

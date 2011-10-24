@@ -14,9 +14,9 @@
    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
    </head>
 <body>
-<div id="wrapper">
+<div class="container" id="main-content">
 	{%  if __error is defined %}
-  		<div class="error">{{  __error  }}</div>
+  		<div class="alert-message error">{{  __error  }}</div>
   	{% elseif __success is defined %}
-		<div class="success">{{  __success  }}</div>
+		<div class="alert-message success">{{  __success  }}</div>
 	{%  endif%}
