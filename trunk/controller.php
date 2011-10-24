@@ -100,7 +100,7 @@ class				controller
     } else {
       $disableHeader = FALSE;
       $this->template->loadLanguage("header");
-      $this->addCSS("style", "design");
+      //$this->addCSS("style", "design");
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
       $this->addJavascript("dialog");
@@ -115,6 +115,10 @@ class				controller
 		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-twipsy");
 		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-popover");
 		$this->addCss(PATH_BOOTSTRAP_CSS."bootstrap");
+	  }
+	  else{
+		$this->addCSS("header");
+		$this->addCSS("style", "design");
 	  }
     }
     $this->init_variables();
