@@ -123,7 +123,6 @@ $('.ed_viewer').live('click', function () {
 $('.ed_area').live('keydown', function () {
     var cur_area = $(this);
     $(".ed_area").each(function () {
-	console.log("here !!");
 	if ($(this).attr("_moz_dirty") !== undefined) {
 	    console.log($(this));
 	    $(this).remove();
