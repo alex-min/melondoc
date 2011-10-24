@@ -100,26 +100,22 @@ class				controller
     } else {
       $disableHeader = FALSE;
       $this->template->loadLanguage("header");
-      //$this->addCSS("style", "design");
       $this->addJavascript("jquery.1.6.4.min");
       $this->addJavascript("config");
       $this->addJavascript("dialog");
       $this->addJavascript("framework");
       $this->addCSS("dialog");
-	  if (BOOTSTRAP){
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-alerts");
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-dropdown");
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-modal");
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-scrollspy");
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-tabs");
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-twipsy");
-		$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-popover");
-		$this->addCss(PATH_BOOTSTRAP_CSS."bootstrap");
-	  }
-	  else{
-		$this->addCSS("header");
-		$this->addCSS("style", "design");
-	  }
+      if (BOOTSTRAP){
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-alerts");
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-dropdown");
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-modal");
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-scrollspy");
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-tabs");
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-twipsy");
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-popover");
+	$this->addCss(PATH_BOOTSTRAP_CSS."bootstrap");
+      }
+      $this->addCSS("style", "design");
     }
     $this->init_variables();
     $this->model = $this->loadModel($this->models, $this->module);
