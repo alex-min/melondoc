@@ -1,21 +1,21 @@
-[<?php echo $result ?>, <?php 
- echo '[';
- if ($result != 0) {
-   $len = count($errorList);
-   foreach ($errorList as $err) {
-     echo '"', $err, '"';
-     if ($len != 1)
-       echo ',';
-     $len--;
-   }
- } else {
-   $len = count($renderImages);
-   foreach ($renderImages as $img) {
-     echo '"', $img, '"';
-     if ($len != 1)
-       echo ',';
-     $len--;
-   }   
- }
- echo ']';
-?>]
+[{{ result }}, [
+{% if result != 0 %}
+  {% set a = 0 %}
+  {% set len = renderImages|length %}
+  {% for err in errorList %}
+	'{{ err|e }}'
+{% if a != len - 1 %},{% endif %}
+	{% set a = a + 1 %}
+ {% endfor %}
+{% else %}
+  {% set a = 0 %}
+  {% set len = renderImages|length %}
+  {% for img in renderImages %}
+	'{{ img|e }}'
+	{% if a != len - 1 %},{% endif %}
+	{% set a = a + 1 %}
+	{% endfor %}
+{% endif %}
+
+]
+]
