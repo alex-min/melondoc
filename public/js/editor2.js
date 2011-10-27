@@ -104,13 +104,16 @@ function ed_renderToLatex()
     $.post("/latexview/index",
 	   {tek : ed_begin_document_demo},
 	   function (data) {
+	       console.log($('.ed_frame'));
 	       $('.ed_frame').html(data);
-	       loadPage();
+	       $('.ed_popup').css({display: 'block'});
+	       console.log(data);
+	       loadPage();	       
 	   });    
 }
 
 
-$('.ed_viewer').live('click', function () {
+$('.ed_viewer').click(function () {
     if ($('.ed_popup').css('display') == 'none') {
 	ed_renderToLatex();
 	$('.ed_popup').css({display:'block'});
@@ -180,23 +183,19 @@ $(".ed_delete").live('click', function () {
     });
 });
 
-var g_to = 0;
-$(".ed_switch").live('click', function () {
-    if (g_to) {
-	g_to = 0;
-	return (false);
-    }
-    $(".ed_switch_dialog").css({
+
+function ed_switchHandler (event) {
+    $(this).die();
+    console.log("HELLO WORLD\n");
+   $(".ed_switch_dialog").css({
 	visibility:'visible',
 	position:'absolute',
 	top:$(this).position().top + $(this).height() + 5 + 'px',
 	left:$(this).position().left + parseInt($(this).css("margin-left")) + 'px'
     });
     $(".ed_switch_dialog").slideToggle(800);    
- 
-    g_to = 1;
     return (false);
-});
+}
 
 
 $("#ed_textzone").append('<div ieclass="ed_documentarea" class="ed_documentarea"></div>');
@@ -206,6 +205,7 @@ $("#ed_menu").live('click', function () {
     // remove draggable propertie
     $('.ed_menu_icon').each(function() {$(this).removeClass('draggable');});    
 //    console.debug("here");
+    
 });
 
 
@@ -229,6 +229,7 @@ function dropEvent(event, ui) {
     $('.dr_active').each(function () {
 	$(this).removeClass('dr_active');
     });
+    $('.ed_switch').bind('click', ed_switchHandler);
 }
 
 
@@ -399,4 +400,34 @@ function draggableHelper () {
     return ('<img id="drag_elm" src="./public/images/ed_content.png" width="50" height="50"/>');
 }
 
+function loadXMLDoc(XMLname)
+{
+    var xmlDoc;
+    if (window.XMLHttpRequest)
+    {
+	xmlDoc=new window.XMLHttpRequest();
+	xmlDoc.open("GET",XMLname,false);
+	xmlDoc.send("");
+	return xmlDoc.responseXML;
+    }
+// IE 5 and IE 6
+    else if (ActiveXObject("Microsoft.XMLDOM"))
+    {
+	xmlDoc=new ActiveXObject("Microsoft.XMLDOM");
+	xmlDoc.async=false;
+	xmlDoc.load(XMLname);
+	return xmlDoc;
+    }
+    alert("Error loading document!");
+    return null;
+}
 
+/* function xml_to_block(content)
+{
+    var doc = HTMLtoDOM(content);
+    $(doc).each(function () { console.log($(this).get(0).tagName);});
+//    console.log(xml2array(content));
+}
+
+
+xml_to_block("<html><head></head><body><p>hello</p></body></html>"); */
