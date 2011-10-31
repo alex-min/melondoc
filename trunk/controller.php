@@ -147,8 +147,8 @@ class				controller
     if (!method_exists($pageController, $this->action))
       {
       	if ($this->root->isAjax() == TRUE)
-	  exit();
-      	$this->template->redirect("/".str_replace("Controller", "", $this->controller));
+	  		exit();
+      	$this->template->redirect("", FALSE, "/".str_replace("Controller", "", $this->controller));
       }
     $pageAction = $this->action;
     $pageController->$pageAction();

@@ -26,7 +26,7 @@ class		template
       {
 	$this->__set("__error", $_SESSION['__error']);
 	$this->KLogger->logInfo("[error] ".$_SESSION['__error']);
-      }
+      }	
     if (isset($_SESSION['__success']) && $_SESSION['__success'])
       {
 	$this->__set("__success", $_SESSION['__success']);
