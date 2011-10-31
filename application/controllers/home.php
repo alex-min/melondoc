@@ -5,15 +5,10 @@ class			homeController extends controller
   {
     $this->user->needLogin();
     $this->template->setView("header");
-    //    $documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id']);
+	$id = $_SESSION['user']['user_id']; 
+    if (isset($_GET['id']))
+		$id = intval($_GET['id']);
+    $documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id']);
   }
-
-  public function	pagesAction() // ici c'est la page de quelqu'un d'autre
-  {
-    $this->user->needLogin();
-    $this->template->setView("header");
-    $user_id = intval($this->GET['id']);
-  }
-
 }
 ?>
