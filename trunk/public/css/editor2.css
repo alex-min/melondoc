@@ -1,3 +1,15 @@
+body {position:absolute; top:0px; left:0px}
+#ed_table_menu {display: none; position:absolute; top:0px; left:0px}
+#ed_table_menu table {border: 1px solid; border-collapse: separate;
+		      width: 50px; background-color: #FFFFFF; border-spacing: 3px}
+#ed_table_menu tr td.active {background-color: #E3E9FF}
+#ed_table_menu tr td {margin-right: 10px;
+		      border: 1px solid; height:1px; width: 1px;
+			      border-color: black}
+#ed_table_menu tr td.inactive {background-color: #DDDDDD}
+#ed_table_menu table {margin: 0}
+#ed_table_menu caption {background-color: #FFFFFF; border: 1px solid; 
+			height: 30px; }
 #ed_main {; height:100%; width:100%}
 #ed_menu {position:fixed; top:0px; left:0px; width:100%; background-color: #F2F1F0; height: 40px; border: 1px solid;}
 .ed_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
