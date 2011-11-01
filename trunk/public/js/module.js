@@ -21,22 +21,7 @@ $f.addmodule({
 	}),
 
 	action:function(e){
-		console.log("start action")
-		console.log(this.user.test);
-		console.log("end action");
-		// definition de ma fonction
-	}
-
-});
-
-$f.addmodule({
-	
-	_name_:"module",
-
-	action2:function(e){
-		console.log("start action2")
-		console.log(this.user.test);
-		console.log("end action2");
+		$f.alert("load");
 		// definition de ma fonction
 	}
 
