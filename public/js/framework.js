@@ -13,8 +13,6 @@ function $f_alert(value)
 					value += " ; ;";
 				value +=  variable + " : ";
 				value += getObject(obj[variable], recursion+1)
-//				console.info(variable);
-//				console.info(obj[variable]);
 			}
 			value += "\n"
 			for (var i = 0; i < recursion; i++)
@@ -27,16 +25,51 @@ function $f_alert(value)
 	}
 
 	value = getObject(value, 0);
-    alert(value);
-//	dialog({
-//		content : value,
-//		callback : function(){}
-//	});
+    //alert(value);
+	dialog({
+		content : value,
+		callback : function(){}
+	});
 };
 
+function $f_loadmodule(module, callback) {
+  	
+	var url = $f.config.path+"/"+module+".js";
+	$.ajax({
+		type: "GET",
+		url: url,
+		dataType: "script",
+		success: function() {
+			if (callback)
+				callback();
+		},
+		error: function(xhr, ajaxOptions, thrownError){
+			error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
+		}
+	});
+}
+
 // Fonction qui permet d'executer une fonction autre que $f.myModule.myAction()
-function $f_exec(value){
-//	console.log("text");
+function $f_exec(value, el){
+	var module = value.split($f.config.separator, 2)[0];
+	var action = value.split($f.config.separator, 2)[1];
+
+	var success =
+		$f_dispatch({
+			'module': module,
+			'action': action,
+			'target': el
+		});
+	if (!success){
+		$f_loadmodule(module, function(){
+			$f_dispatch({
+				'module': module,
+				'action': action,
+				'target': el,
+				'error': true
+			});
+		});
+	}
 }
 
 // Fonction qui permet d'executer une fonction apres le chargement d'un script
@@ -44,7 +77,38 @@ function $f_require(value, callback){
 }
 
 // Fonction qui fais une requete ajax pour le single framework
-function $f_ajax(){
+function $f_ajax(options){
+	console.info("ajax start");
+	var url = new Object();
+	url.controller = options.url.slice(1).split("/")[0];
+	url.action = options.url.slice(1).split("/")[1];
+	if (!options.type) options.type = "get";
+	if (!options.success) options.success = ajax_success;
+	if (!options.error) options.error = ajax_error;
+	if (options.action == true || options.action == undefined)
+		url.action += "Action";
+	jQuery.extend(options.data, url);
+	console.info("ajax end");
+	if (options.rewrite == true){
+		console.log("rewrite");
+		$.ajax({
+			url: "/ajax/index",
+			type: options.type,
+			data: options.data,
+			success: options.success(),
+			error: options.error()
+		});
+	}
+	else{
+		console.log("not rewrite");
+		$.ajax({
+			url: options.url,
+			type: options.type,
+			data: options.data,
+			success: options.success(),
+			error: options.error()
+		});
+	}
 }
 
 // Fonction qui renvoie un obj contenant les elements d'un formulaire
@@ -64,7 +128,6 @@ function $f_addmodule(module)
 	eval("var exist = $f."+module_name);
 	if (exist == undefined){
 		var new_module = "$f."+module_name+"="+module.toSource()+";";
-		console.warn(new_module);
 		eval(new_module);
 	}
 	else
@@ -72,23 +135,36 @@ function $f_addmodule(module)
 }
 
 function $f_dispatch(options){
-	try{
-		eval("$f."+options.module+"."+options.action+"("+options.target.toSource()+")");
+	var mod,act,funct;
+	eval("mod = $f."+options.module);
+	if (mod != undefined)
+	{
+		eval("act = mod."+options.action);
+		if (act != undefined)
+		{
+			eval("funct = $f."+options.module+"."+options.action);
+			funct();
+		}
+		else if (options.error)
+			console.warn("La fonction ["+options.action+"] n'est pas definie dans le module ["+options.module+"].");
+		else
+			return false;
 	}
-	catch(e){
-		error("Erreur survenue dans le dispatch:"+e);
-	}
+	else if (options.error)
+		console.warn("Le module ["+options.module+"] n'existe pas.");
+	else
+		return false;
+	return true;
 }
 
 window.$f  = {
 
-	config	:
-		{
-			separator			: 	':',
-			path				: 	"/public/js",
-			identifier			: 	"myaction",
-			eventType			: 	"click"
-		},
+	config:{
+		separator			: 	':',
+		path				: 	"/public/js",
+		identifier			: 	"myaction",
+		eventType			: 	"click"
+	},
 
 	alert		: 	$f_alert,
 	exec		: 	$f_exec,
@@ -96,17 +172,11 @@ window.$f  = {
 	ajax		: 	$f_ajax,
 	getform		: 	$f_getform,
 	sendform	: 	$f_sendform,
-	addmodule	: 	$f_addmodule,
-	dispatch	: 	$f_dispatch
+	addmodule	: 	$f_addmodule
 
 }
 
-/*
- * Ancien framework
- */
-$(document).ready(function(){
-
-	function fetchForm(e){
+	/*function fetchForm(e){
 		var elem = e.parent("form");
 		var obj = new Object();
 		if (elem.length > 0){
@@ -129,31 +199,6 @@ $(document).ready(function(){
 	}
 	window.fetchForm = fetchForm;
 
-	function dispatch(options)	{
-		try			{	functions[options.module][options.action](options.target);	}
-		catch(e)	{	error("Erreur survenue dans le dispatch:"+e);							}
-	}
-	
-	/* Fonction de debugug (affiche les infos dans la console)*/
-	function info(msg)			{	console.info(msg)			}
-	window.info = info;
-	
-	function warn(msg)		{	console.warn(msg);		}
-	window.warn = warn;
-	
-	function error(msg)		{	console.error(msg);		}
-	window.error = error;
-	
-	function debug(msg)	{	console.debug(msg);	}
-	window.debug = debug;
-
-	/*
-	 * 		ajax({
-	 * 			url: "/index/action",
-	 * 			data: obj,
-	 * 			
-	 * 		});
-	 */
 	function ajax_success()	{	info("La requete a bien reussit");	}
 	function ajax_error()			{	error("La requete a échouée");		}
 	function ajax(obj){
@@ -175,73 +220,45 @@ $(document).ready(function(){
 		});
 	}
 
-
-	//$("#test").click(function(){
-	//	ajax({
-	//		url: "/index/testAction",
-	//		data: { test: "toto", plop: 1}
-	//	});
-	//});
-		
-	/* Fonction qui charge un fichier js*/
-	function loadComponent(options){
-	
-		var url = options.path+"/"+options.module+"."+options.type;
-		$.ajax({
-			type: "GET",
-			url: url,
-			dataType: "script",
-			success: function() {
-				info("Chargement de ["+url+"] termine.")
-				//if (!functions[options.module])
-				//	error("["+options.module+"] introuvable dans ["+url+"]");
-				//else if (!functions[options.module][options.action])
-				//	error("Le module ["+options.module+"] ne contient aucune définition de ["+options.action+"] dans ["+url+"]");
-				//else{
-				//	options.callback(options.target);
-				options.callback(options.target);
-				//$f.module.action2();
-				//$f.module.action();
-				//}
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-				error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
-			}
-		});
-	
-	}
-
 	/* Tous les éléments qui possède l'identifiant requis reagisse a l'eventType*/
-	$("["+$f.config.identifier+"]").bind($f.config.eventType, function(){
-		/* On récupère les différentes données de l'attribut*/
+	/*$("["+$f.config.identifier+"]").bind($f.config.eventType, function(){
+		console.log("old");
 		var value = $(this).attr($f.config.identifier);
 		var module = value.split($f.config.separator, 2)[0];
 		var action = value.split($f.config.separator, 2)[1];
 		
-		/* Si on trouve une action qui correspond a celle voulu dans un module donnée on l execute*/
+		var mod,act,funct;
+		eval("mod = $f."+module);
+		if (mod != undefined){
+			eval("act = mod."+action);
+			if (act != undefined){
+				console.log("its ok")
+				eval("funct = $f."+module+"."+action);
+				funct();
+			}
+		}
 		if (window.functions[module] && window.functions[module][action]){
 			window.functions[module][action]($(this));
 			$f.module.action();
 		}
-		/* Sinon on charge le fichier et ses composants puis on execute*/
+		else{
 			loadComponent({
-				type: "js",																					/* On précise l'extension du fichier (pour le moment seul le  'js' fonctionne)*/
-				module: module,																		/* On passe le module (qui est aussi le nom du fichier)*/
-				action: action,																			/* On passe l'action (qui correspond a une fonction du module)*/
-				path: $f.config.path,														/* On passe le path qui donne le repertoire ou sont stock les js*/
-				target: $(this),																			/* On passe l'élément qui a réagit à l' eventType*/
-				callback: function(e){	
+				type: "js",																					
+				module: module,																		
+				action: action,																			
+				path: $f.config.path,														
+				target: $(this),																			
+				callback: function(e){
 					$f.dispatch({module: module, action: action, target: e});
 				}
 			});
+		}
+	});*/
+
+$(document).ready(function(){
+
+	$("#t").live('click', function(){
+		$f.exec("module:action", $(this));
 	});
-
-//$f.alert("toto");
-//$f.exec();
-
-//obj = new Object();
-//obj.toto = new Object();
-//obj.toto.test = "plop";
-
 	
 });
