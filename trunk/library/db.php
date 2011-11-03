@@ -131,7 +131,8 @@ class		db
 	
 	$ret->rows = array();
 	$i = 0;
-	while ($ret->rows[$i] = mysql_fetch_assoc($res)) {
+	while (($res = mysql_fetch_assoc($res))) {
+	  $ret->rows[$i] = $resultat;
 	  $i++;
 	}
 	$ret->row = isset($ret->rows[0]) ? $ret->rows[0] : array();

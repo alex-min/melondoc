@@ -13,8 +13,8 @@ class			homeController extends controller
     if (($documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id'])) !== FALSE)
 	{
   		$this->pager->setDatas($documents);
-  		$this->template->documents = $this->pager->getResults();
-		$this->template->pagination = $this->pager->getPagination("/home/index");  
+  		$this->template->documents = $this->pager->getResult();
+		$this->template->pagination = $this->pager->getPagination("/home/index"); 
 	}
 	else
 		$this->template->noDocuments = $this->template->language['home_no_documents'];
