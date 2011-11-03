@@ -1,5 +1,11 @@
 {% if noDocuments is defined %}
-{{noDocuments}}
+<span class="label">{{noDocuments}}</span>
 {% else %}
-	{{"ICI LA BOUCLE DE DOCS ET LA PAGINATION"}}
+	<table>
+		{% for key, doc in documents%}
+		<tr>
+			<td>{{key}}</td><td>{{doc.nom}}</td><td>{{doc.path_template}}</td>
+		</tr>
+		{%endfor%}
+	</table>
 {% endif %}

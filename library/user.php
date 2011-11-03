@@ -70,7 +70,7 @@ class user
   public function	getRights($user_id)
   {
   	$array = array();
-  	$query = $this->db->query('SELECT * FROM `user_rights` WHERE `user_id` = "'.$user_id.'"');
+  	$query = $this->db->query('SELECT * FROM `users_rights` WHERE `user_id` = "'.$user_id.'"');
   	if ($query->count > 0)
 	{
 		foreach ($query->rows AS $right)
