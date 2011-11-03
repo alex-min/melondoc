@@ -10,11 +10,12 @@ class			homeController extends controller
 	$id = $_SESSION['user']['user_id']; 
     if (isset($_GET['id']))
 		$id = intval($_GET['id']);
+	$this->addJavascript("home");
     if (($documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id'])) !== FALSE)
 	{
   		$this->pager->setDatas($documents);
   		$this->template->documents = $this->pager->getResult();
-		$this->template->pagination = $this->pager->getPagination("/home/index"); 
+		$this->template->pagination = $this->pager->getPagination("/home/index");
 	}
 	else
 		$this->template->noDocuments = $this->template->language['home_no_documents'];

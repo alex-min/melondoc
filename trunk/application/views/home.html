@@ -1,11 +1,24 @@
 {% if noDocuments is defined %}
 <span class="label">{{noDocuments}}</span>
 {% else %}
-	<table>
+<form method="POST" action="" />
+	<a href="#" class="btn primary">{{_lang.home_doc_create}}</a>
+	<input class="btn primary" type="submit" value="{{_lang.home_doc_delete}}"/>
+	<hr />
+	<table id="table_doc" class="zebra-striped">
+		<thead>
+			<tr>
+				<th><input id="checkAll" type="checkbox" /></th>
+				<th>{{_lang.home_doc_name}}</th>
+			</tr>
+		</thead>
 		{% for key, doc in documents%}
 		<tr>
-			<td>{{key}}</td><td>{{doc.nom}}</td><td>{{doc.path_template}}</td>
+			<td width="10"><input type="checkbox" name="doc[{{doc.id_document}}]"/></td><td>{{doc.nom}}</td>
 		</tr>
 		{%endfor%}
 	</table>
+</form>
+<hr />
+	{{pagination | raw}}
 {% endif %}

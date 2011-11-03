@@ -128,10 +128,10 @@ class		db
 	$ret = new stdClass;
 	$ret->count = mysql_num_rows($res);
 	$ret->query = $res;
-	
+
 	$ret->rows = array();
 	$i = 0;
-	while (($res = mysql_fetch_assoc($res))) {
+	while (($resultat = mysql_fetch_assoc($res))) {
 	  $ret->rows[$i] = $resultat;
 	  $i++;
 	}
