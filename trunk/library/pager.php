@@ -151,6 +151,8 @@ class			pager
       return "";
     $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $url);
     $get = "?page=";
+    if (!isset($_GET['page']))
+      $_GET['page'] = '';
     if (!empty($_SERVER['QUERY_STRING']))
       {
 	$_SERVER['QUERY_STRING'] = str_replace("page=".$_GET['page'], "", $_SERVER['QUERY_STRING']);

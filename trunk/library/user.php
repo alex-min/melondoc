@@ -2,6 +2,7 @@
 class user
 {
   private $class;
+  private $user_rights;
   
   public function __construct() {
   }
@@ -38,7 +39,10 @@ class user
   public function needLogin()
   {
     if (!isset($_SESSION['user']))
+	{
+	  unset($_SESSION);
       $this->template->redirect("", FALSE,"/login/index");
+	}
   }
 
   // recupere les donnees de l'user a mettre en session dans $_SESSION['user'], (pas le mdp),
@@ -50,11 +54,37 @@ class user
     $quey = $this->db->query('SELECT * FROM `users` WHERE `login` = "'.$login.'" AND `password` = "'.$password.'"');
     if ($quey->count == 1)
       {
-	$_SESSION['user'] = $quey->row;
-	unset($_SESSION['user']['password']);
-	return true;
+		$_SESSION['user'] = $quey->row;
+		$this->stockMyRights();
+		unset($_SESSION['user']['password']);
+		return true;
       }
     return false;
+  }
+  
+  private function	stockMyRights()
+  {
+  	$this->user_rights = $this->getRights($_SESSION['user']['user_id']);
+  }
+  
+  public function	getRights($user_id)
+  {
+  	$array = array();
+  	$query = $this->db->query('SELECT * FROM `user_rights` WHERE `user_id` = "'.$user_id.'"');
+  	if ($query->count > 0)
+	{
+		foreach ($query->rows AS $right)
+			$array[$right['document_id']] = $right['user_right'];
+		return $array;
+	}
+	return FALSE;
+  }
+  
+  public function	hasRight($doc_id, $type = "owner")
+  {
+  	if (isset($this->user_rights[$doc_id]) && $this->user_rights[$doc_id] == $type)
+		return TRUE;
+	return FALSE;
   }
   
   // return TRUE ou FALSE si le mec est loggue, check $_SESSION['user']
