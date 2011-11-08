@@ -1,14 +1,24 @@
-var txt_area = '<div contenteditable="true" class="ed_area" title="Title"></div>\n';
+var txt_area_begin = '<div contenteditable="true" class="ed_area" title="Title">';
+var txt_area_end = '</div>\n';
+var txt_area = txt_area_begin + txt_area_end;
 var ed_switch_dialog = '<div class="ed_switch_dialog">'
 +  '<img class="ed_menu_icon draggable" alt="title" src="/public/images/ed_title.png" />'
 +   '<img class="ed_menu_icon draggable" alt="bullets" src="/public/images/ed_bullets.png" />'
 '</div>';
 var ed_switch_dialog_begin = '<div class="ed_switch_dialog">';
 var ed_switch_dialog_end = '</div>';
+var ed_context_modifier = '<img class="ed_switch" src="/public/images/ed_arrow_down.png" />' +  
+    '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete" />\n';
 var ed_switch_dialog = '';
-var ed_inside_title = '<img class="ed_switch" src="/public/images/ed_arrow_down.png" />' +  
-    '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete" />\n' + txt_area;
-var ed_inside_paragraph = '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete"></img>\n' + txt_area;
+var ed_title_begin = '<div class="ed_block ed_title">'
+    + ed_context_modifier + txt_area_begin;
+var ed_title_end = txt_area_end + '</div>';
+
+var ed_inside_title = ed_context_modifier + txt_area;
+var ed_paragraph_begin = '<div class="ed_block ed_paragraph">' + 
+    ed_context_modifier + txt_area_begin;
+var ed_paragraph_end = txt_area_end + '</div>';
+var ed_inside_paragraph = ed_context_modifier + txt_area;
 var ed_droppable = '<div class="droppable"></div>\n';
 var ed_bullets_begin = '<img class="ed_delete ed_bullets" src="/public/images/ed_delete_bullets.png"/><ul>\n';
 var ed_bullets_end = '</ul>\n';
@@ -117,15 +127,17 @@ function rec_extract(elem) {
     return (txt);
 }
 
-var xml_str = '<xml> <droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /> </xml>';
+var xml_str = '<xml> <droppable/><paragraph>Paragraph example</paragraph><droppable /><title>Title example</title><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /> </xml>';
 
 function xml_to_dom (string) {
-    var balise=string.match(/<.*?>/g);
+    var balise=string.match(/(<.*?>)|([^><]*)/g);
     var html = '';
     for (var i = 0; i < balise.length; ++i)
     {
 	switch (balise[i]) {
-	case '<droppable />':
+	case '<droppable>':
+	case '<droppable/>':
+ 	case '<droppable />':
 	    html += ed_droppable;
 	    break;
 	case '<table>':
@@ -146,6 +158,24 @@ function xml_to_dom (string) {
 	case '</item>':
 	    html += ed_item_end;
 	    break;
+	case '<title>':
+	    html += ed_title_begin;
+	    break;
+	case '</title>':
+	    html += ed_title_end;
+	    break;
+	case '<paragraph>':
+	    html += ed_paragraph_begin;
+	    break;
+	case '</paragraph>':
+	    html += ed_paragraph_end;
+	    break;
+	case '':
+	case '</xml>':
+	case '<xml>':
+	    break;
+	default:
+	    html += balise[i];
 	}
 	html += '\n';
     }
@@ -153,7 +183,7 @@ function xml_to_dom (string) {
 }
 
 
-//xml_to_dom(xml_str);
+xml_to_dom(xml_str);
 	
 function ed_generateLatex() {
     var txt = '<xml>\n';
