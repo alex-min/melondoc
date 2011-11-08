@@ -1,9 +1,9 @@
 {% if noDocuments is defined %}
 <span class="label">{{noDocuments}}</span>
 {% else %}
-<form method="POST" action="" />
+<form method="POST" action="/home/deleteDoc" id="delete_doc"/>
 	<a href="#" class="btn primary">{{_lang.home_doc_create}}</a>
-	<input class="btn primary" type="submit" value="{{_lang.home_doc_delete}}"/>
+	<input class="btn primary" type="submit" value="{{_lang.home_doc_delete}}" onclick="$f.exec('home:checkDeleteDocs');return false;"/>
 	<hr />
 	<table id="table_doc" class="zebra-striped">
 		<thead>
