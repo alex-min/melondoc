@@ -16,7 +16,13 @@
 <body>
 <div class="container" id="main-content">
 	{%  if __error is defined %}
-  		<div class="alert-message error">{{  __error  }}</div>
+  		<div class="alert-message error">
+  			<a class="close" href="#">x</a>
+  			{{  __error  }}
+  			</div>
   	{% elseif __success is defined %}
-		<div class="alert-message success">{{  __success  }}</div>
+		<div class="alert-message success">
+			<a class="close" href="#">x</a>
+			{{  __success  }}
+			</div>
 	{%  endif%}

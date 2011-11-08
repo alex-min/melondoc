@@ -6,4 +6,21 @@ $(document).ready(function(){
         	else
             	cases.attr('checked', false);
     	});
+	
+});
+
+function home_checkDeleteDocs(e)
+{
+	// ici la requete ajax vers homeController -> 
+	$("#delete_doc input[type=checkbox]:checked").parent().parent().remove();	
+}
+
+$f.addmodule({
+	
+	_name_:"home",
+	
+	checkDeleteDocs:function(e){
+		home_checkDeleteDocs(e);
+	}
+
 });

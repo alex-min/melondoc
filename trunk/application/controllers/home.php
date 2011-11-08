@@ -10,7 +10,7 @@ class			homeController extends controller
 	$id = $_SESSION['user']['user_id']; 
     if (isset($_GET['id']))
 		$id = intval($_GET['id']);
-	$this->addJavascript("home");
+	//x$this->addJavascript("home");
     if (($documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id'])) !== FALSE)
 	{
   		$this->pager->setDatas($documents);
@@ -19,6 +19,14 @@ class			homeController extends controller
 	}
 	else
 		$this->template->noDocuments = $this->template->language['home_no_documents'];
+  }
+  
+  public function	deleteDocAjax()
+  {
+  	$this->user->needLogin();
+	$this->template->loadLanguage("home");
+	foreach ($this->POST['doc'] AS $key => $val)
+		$this->model->deleteDoc($key);
   }
 }
 ?>
