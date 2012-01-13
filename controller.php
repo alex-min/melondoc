@@ -100,7 +100,7 @@ class				controller
     } else {
       $disableHeader = FALSE;
       $this->template->loadLanguage("header");
-      $this->addJavascript("jquery.1.6.4.min");
+      $this->addJavascript("jquery-1.7.min"); 
       $this->addJavascript("config");
       $this->addJavascript("dialog");
       $this->addJavascript("framework");
