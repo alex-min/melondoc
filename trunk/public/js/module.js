@@ -1,10 +1,10 @@
   /**
    * @fn
    *
-   *	$f.addmodule({
-   *		_name_: $nomModule,
+   *	$f.$nomModule = {
    *		$maVariable: $value,
-   *		$maFonction: function($args){}   			
+   *		$maFonction: function(e){},
+   *     $maFonction2: function(e){}
    *	});
    *
    * @brief 
@@ -12,17 +12,14 @@
    * 
    */
 
-$f.addmodule({
-	
-	_name_:"module",
-	
-	user: new Object({
-		test:"toto"
-	}),
+$f.module = {
+   action:function(e){
+      $f.alert("load");
+      // definition de ma fonction
+   },
 
-	action:function(e){
-		$f.alert("load");
-		// definition de ma fonction
-	}
-
-});
+   action2:function(e){
+      $f.alert("load2");
+      // definition de ma fonction
+   }
+};
