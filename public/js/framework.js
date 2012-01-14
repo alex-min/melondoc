@@ -2,6 +2,7 @@
  * New framewrok
  */
 
+
 // Fonction qui remplace alert(); plus jolie ...
 function $f_alert(value)
 {
@@ -33,18 +34,18 @@ function $f_alert(value)
 };
 
 function $f_loadmodule(module, callback) {
-  	
 	var url = $f.config.path+"/"+module+".js";
-	$.ajax({
+	$f.ajax({
 		type: "GET",
 		url: url,
 		dataType: "script",
-		success: function() {
-			if (callback)
+		success: function(data, textStatus) {
+			if (callback){
 				callback();
+			}
 		},
 		error: function(xhr, ajaxOptions, thrownError){
-			error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
+			console.error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
 		}
 	});
 }
@@ -53,7 +54,6 @@ function $f_loadmodule(module, callback) {
 function $f_exec(value, el){
 	var module = value.split($f.config.separator, 2)[0];
 	var action = value.split($f.config.separator, 2)[1];
-
 	var success =
 		$f_dispatch({
 			'module': module,
@@ -78,7 +78,6 @@ function $f_require(value, callback){
 
 // Fonction qui fais une requete ajax pour le single framework
 function $f_ajax(options){
-	console.info("ajax start");
 	var url = new Object();
 	url.controller = options.url.slice(1).split("/")[0];
 	url.action = options.url.slice(1).split("/")[1];
@@ -88,25 +87,30 @@ function $f_ajax(options){
 	if (options.action == true || options.action == undefined)
 		url.action += "Action";
 	jQuery.extend(options.data, url);
-	console.info("ajax end");
 	if (options.rewrite == true){
-		console.log("rewrite");
 		$.ajax({
 			url: "/ajax/index",
 			type: options.type,
 			data: options.data,
-			success: options.success(),
-			error: options.error()
+			success: function(data, textStatus){
+				options.success(data, textStatus);
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+				options.error(xhr, ajaxOptions, thrownError);
+			}
 		});
 	}
 	else{
-		console.log("not rewrite");
 		$.ajax({
 			url: options.url,
 			type: options.type,
 			data: options.data,
-			success: options.success(),
-			error: options.error()
+			success: function(data, textStatus){
+				options.success(data, textStatus);
+			},
+			error: function(xhr, ajaxOptions, thrownError){
+				options.error(xhr, ajaxOptions, thrownError);
+			}
 		});
 	}
 }
@@ -118,21 +122,6 @@ function $f_getform(id){
 function $f_sendform(id){
 }
 
-// Fonction qui ajouter un module (extend si existe deja)
-function $f_addmodule(module)
-{
-	var module_name;
-	for (var key in module)
-		if (typeof module[key] == "string" && key == "_name_")
-			module_name = module[key];
-	eval("var exist = $f."+module_name);
-	if (exist == undefined){
-		var new_module = "$f."+module_name+"="+module.toSource()+";";
-		eval(new_module);
-	}
-	else
-		$.extend(exist, module);
-}
 
 function $f_dispatch(options){
 	var mod,act,funct;
@@ -171,9 +160,7 @@ window.$f  = {
 	require		: 	$f_require,
 	ajax		: 	$f_ajax,
 	getform		: 	$f_getform,
-	sendform	: 	$f_sendform,
-	addmodule	: 	$f_addmodule
-
+	sendform	: 	$f_sendform
 }
 
 	/*function fetchForm(e){
@@ -220,8 +207,14 @@ window.$f  = {
 		});
 	}
 
-	/* Tous les éléments qui possède l'identifiant requis reagisse a l'eventType*/
-	/*$("["+$f.config.identifier+"]").bind($f.config.eventType, function(){
+	class="framework" rel="mouseover-module:action"
+
+
+
+	/* Tous les éléments qui possède l'identifiant requis reagisse a l'eventType
+	$("["+$f.config.identifier+"]").bind($f.config.eventType, function(){
+		$f.exec("module:action", $(this));
+
 		console.log("old");
 		var value = $(this).attr($f.config.identifier);
 		var module = value.split($f.config.separator, 2)[0];
@@ -254,11 +247,3 @@ window.$f  = {
 			});
 		}
 	});*/
-
-$(document).ready(function(){
-
-	$("#t").live('click', function(){
-		$f.exec("module:action", $(this));
-	});
-	
-});
