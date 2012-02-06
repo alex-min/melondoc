@@ -6,10 +6,11 @@
    	<img class="ed_menu_icon draggable" alt="paragraph" src="/public/images/ed_upper.png" />
    	<img onclick="ed_generateLatex();" class="ed_generate ed_menu_icon" alt="generate" src="/public/images/ed_generate.png" />
 	<img src="/public/images/separator.png" alt="bold" title="separator" />
-	<img src="/public/images/bold.png" class="bold" alt="bold" title="bold" />
+	<img src="/public/images/bold.png" alt="bold" title="bold" style="font-weight:bold" onclick="document.execCommand('bold', false, '')" />
 	<img src="/public/images/separator.png" alt="bold" title="separator" />
-	<img src="/public/images/italic.png" class="italic" alt="bold" title="italic" />
+	<img src="/public/images/italic.png" alt="italic" title="italic" style="font-weight:italic" onclick="document.execCommand('italic', false, '')"/>
 	<img src="/public/images/separator.png" alt="bold" title="separator" />
+	<img src="/public/images/underline.png" alt="underline" title="underline" style="font-weight:underline" onclick="document.execCommand('underline', false, '')"/>
 </div>
 <p id="ed_cursor">|</p>
 <div id="ed_textzone">
