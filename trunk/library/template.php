@@ -265,7 +265,7 @@ class		template
     else
       $this->KLogger->logInfo("[Language] ".$controller);
     require_once($url);
-    if (isset($_) && !is_array($_))
+    if (!isset($_) || !is_array($_))
       $_ = array();
     if (is_array($this->language))
       $this->language = array_merge($this->language, $_);

@@ -3,9 +3,11 @@ class			userController extends controller
 {
   public function indexAction()
   {
-    $this->template->loadLanguage("login");
-    $this->template->setView("header");
-    $this->template->setView("connexion");
+    $this->template->loadLanguage("user");
+  }
+
+  public function connexionAction()
+  {
     if (count($this->POST) > 0)
       {
 	if ($this->user->connectUser($_POST['login'], $_POST['password']) == TRUE)
@@ -24,7 +26,6 @@ class			userController extends controller
   public function inscriptionAction()
   {
     $this->template->loadLanguage("login");
-    $this->template->setView("header");
     $this->template->setView("inscription");
     if (isset($this->POST) && isset($this->POST['form_login']))
       {

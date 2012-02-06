@@ -3,9 +3,13 @@ class			homeController extends controller
 {
   public function	indexAction() // ici c'est l'home du mec
   {
+    $this->template->loadLanguage("home");
+  }
+  
+  public function	listAction()
+  {
     $this->user->needLogin();
     $this->template->loadLanguage("home");
-    $this->template->setView("header");
     $this->template->setView("home");
     $id = $_SESSION['user']['user_id']; 
     if (isset($_GET['id']))

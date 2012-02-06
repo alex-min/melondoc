@@ -5,7 +5,7 @@
 	{%  if _lang.project_name is defined  %}
 	{{ _lang.project_name }}
 	{% else %}
-	"projectName"
+	MelonDoc
 	{%  endif  %}
       </a>
       <div class="pull-right">
@@ -14,13 +14,39 @@
 	  <li><a href="#about">Contact</a></li>
 	  <li><a href="/forum">Forum</a></li>
 	  {% if isLogged %}
-	  <li><a href="/login/index">{{_lang.header_deconnexion}}</a></li>
+	  <li><a href="/user/deconnexion">{{_lang.header_deconnexion}}</a></li>
 	  {% else %}
-	  <li><a href="/login/index">{{_lang.header_connexion}}</a></li>
+	  <li><a href="#modal_connexion" data-toggle="modal" >{{_lang.header_connexion_inscription}}</a></li>
 	  {% endif %}
 	</ul>
       </div>
     </div>
   </div>
 </div>
-<div class="content">
+<!-- modal de connexion / inscription -->
+  <div class="modal hide fade" id="modal_connexion">
+    <div class="modal-header">
+      <a class="close" data-dismiss="modal">×</a>
+      <h3>{{_lang.header_connexion_inscription}}</h3>
+    </div>
+    <div class="modal-body">
+      <form method="POST" class="form-stacked" action="/login/index">
+	<div class="control-group">
+	  <label class="control-label" for="email">{{_lang.header_email}} :</label>
+	  <div class="controls">
+	    <input type="text" name="login" /><br />
+	    <span class="help-inline hide">{{_lang.email_invalid}}</span>
+	  </div>
+	</div>
+	<div class="control-group">
+	<label class="control-label" for="login">{{_lang.header_password}}</label>
+	  <div class="controls">
+	    <input type="password" name="password" /><br />
+	    <span class="help-inline hide">{{_lang.password_invalid}}</span>
+	  </div>
+	</div>
+      </form>
+    </div>
+    <div class="modal-footer">
+    </div>
+  </div>
