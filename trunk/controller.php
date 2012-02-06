@@ -139,7 +139,7 @@ class				controller
   private function		initAction($objet)
   {
     $pageController = $objet;
-    if (COUNTDOWN)
+    if (COUNTDOWN && $this->root->getcontroller() != "countdown")
       {
 	$this->template->redirect("", TRUE, "/countdown/");
 	return ;
