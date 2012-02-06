@@ -49,7 +49,7 @@ function getCharacterOffsetWithin(range, node) {
 var start2;
 var end2;
 
-$(".bold").live('click', function () {
+$(".bold2").live('click', function () {
 	if (window.ActiveXObject) { // C'est IE
         var textRange = document.selection.createRange();            
         var currentSelection = textRange.text;
@@ -81,7 +81,7 @@ $(".bold").live('click', function () {
 	}
 });
 
-$(".italic").live('click', function () {
+$(".italic2").live('click', function () {
 	if (window.ActiveXObject) { // C'est IE
         var textRange = document.selection.createRange();            
         var currentSelection = textRange.text;
