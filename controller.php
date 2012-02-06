@@ -106,6 +106,9 @@ class				controller
       $this->addJavascript("framework");
       $this->addCSS("dialog");
       if (BOOTSTRAP){
+	$this->cssArray .= "<link rel=\"stylesheet/less\" href=\"/public/less/bootstrap.less\" />\n";
+	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap");
+	$this->addJavascript("less-1.2.1.min");
       }
       $this->addCSS("style", "design");
     }
