@@ -1,0 +1,439 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"text",
+				"textStatus"
+			],
+			[
+				"new",
+				"new_module"
+			],
+			[
+				"lo",
+				"log"
+			],
+			[
+				"list",
+				"list	list-style: type position image"
+			],
+			[
+				"re",
+				"repeat-x"
+			],
+			[
+				"backgr",
+				"background	background-color: hex"
+			],
+			[
+				"p",
+				"package"
+			],
+			[
+				"con",
+				"contenu"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
+			"settings":
+			{
+				"buffer_size": 61441,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_en-en.xml",
+			"settings":
+			{
+				"buffer_size": 60821,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/gahon_a/Desktop/TODO_ENSEM",
+			"settings":
+			{
+				"buffer_size": 633,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ruby",
+				"Set Syntax: Ruby on Rails"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ins",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Contr",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 472.0
+	},
+	"console":
+	{
+		"height": 129.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/gahon_a/My Projects/rtype/serveur/include.h",
+		"/C/Users/gahon_a/Desktop/loiq-0.3.1a/INSTALL",
+		"/C/wamp/www/melondoc/application/views/index.html",
+		"/C/wamp/www/melondoc/public/css/style.css",
+		"/C/wamp/www/melondoc/application/views/home.html",
+		"/C/wamp/www/melondoc/public/js/jquery-1.7.js",
+		"/C/wamp/www/melondoc/public/js/jquery-1.7.min.js",
+		"/C/wamp/www/melondoc/controller.php",
+		"/C/wamp/www/melondoc/public/js/module.js",
+		"/C/Users/gahon_a/My Projects/rtype/client/headers/Settings.hh",
+		"/C/wamp/www/melondoc/public/js/framework.js",
+		"/C/Users/gahon_a/My Projects/rtype/serveur/client.cpp",
+		"/C/Users/gahon_a/Downloads/network-selector (1).cpp",
+		"/C/Users/gahon_a/My Projects/rtype/serveur/iportablesocket.h",
+		"/C/Users/gahon_a/My Projects/rtype/serveur/protocolNetwork.h",
+		"/C/Users/gahon_a/Downloads/network-sockets-udp.cpp",
+		"/C/Users/gahon_a/Downloads/network-sockets.cpp",
+		"/C/Users/gahon_a/My Projects/rtype/serveur/unixnetworkmanager.h",
+		"/C/Users/gahon_a/My Projects/rtype/serveur/unixnetworkmanager.cpp",
+		"/C/Users/gahon_a/Downloads/network-sockets-tcp.cpp",
+		"/C/Users/gahon_a/My Projects/rtype/serveur/inetworkmanager.h",
+		"/C/wamp/www/melondoc/define_base.php",
+		"/C/wamp/www/melondoc/melondoc.sublime-project",
+		"/C/Users/gahon_a/Desktop/hosts",
+		"/C/wamp/bin/apache/Apache2.2.21/conf/extra/httpd-vhosts.conf",
+		"/C/Windows/System32/drivers/etc/hosts",
+		"/C/Users/gahon_a/My Projects/Flash/www/xml/langues.xml",
+		"/C/Sites/SProjet/app/assets/stylesheets/application.css",
+		"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_en-en.xml",
+		"/C/Sites/SProjet/app/views/acceuil/index.html.erb",
+		"/C/Sites/SProjet/config/routes.rb",
+		"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
+		"/C/Users/gahon_a/My Projects/Flash/www/xml/define_en-en.xml",
+		"/C/Sites/SProjet/app/assets/stylesheets/scaffolds.css.scss",
+		"/C/Sites/SProjet/Gemfile",
+		"/C/Users/gahon_a/Desktop/Highlighting.rb",
+		"/C/Sites/SProjet/app/views/layouts/application.html.erb",
+		"/C/Sites/SProjet/app/controllers/application_controller.rb",
+		"/C/Sites/SProjet/SProjet.sublime-project",
+		"/C/Sites/SProjet/app/helpers/application_helper.rb",
+		"/C/Sites/SProjet/app/assets/javascripts/application.js",
+		"/C/Sites/SProjet/app/assets/images/rails.png",
+		"/C/Sites/SProjet/config.ru",
+		"/C/Users/gahon_a/Desktop/test.erb",
+		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/BeautifyRuby/README.md",
+		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
+		"/C/user.js",
+		"/C/Program Files/Sublime Text 2/sublime_plugin.py",
+		"/C/Program Files/Sublime Text 2/Pristine Packages/C++.sublime-package",
+		"/C/Users/gahon_a/Desktop/PROTOTYP/resource.h",
+		"/C/Users/gahon_a/Desktop/dist/examples/data/example.theme",
+		"/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
+		"/C/Users/gahon_a/Desktop/PROTOTYP/AnimGenerator.h",
+		"/C/Users/gahon_a/Desktop/PROTOTYP/AnimGenerator.cpp",
+		"/C/Users/gahon_a/My Projects/XNA-Samples/Asteroids/Sprites/Player.cs",
+		"/C/Users/gahon_a/My Projects/XNA-Samples/Asteroids/Sprites/Bullet.cs",
+		"/C/Users/gahon_a/Desktop/rtype/client/rtype-client.cbp",
+		"/C/Users/gahon_a/Desktop/uml/StockConsommable.h",
+		"/C/Users/gahon_a/Desktop/uml/Stewards.h",
+		"/C/Users/gahon_a/Desktop/uml/PointDeVente.h",
+		"/C/Users/gahon_a/Desktop/uml/Promotion.h",
+		"/C/Users/gahon_a/Desktop/uml/Pilote.h",
+		"/C/Users/gahon_a/Desktop/uml/PlanningPersonnel.h",
+		"/C/Users/gahon_a/Desktop/uml/PlanningAvion.h",
+		"/C/Users/gahon_a/Desktop/uml/Planning.h",
+		"/C/Users/gahon_a/Desktop/uml/Vol.h",
+		"/C/Users/gahon_a/Desktop/uml/Personnel.h",
+		"/C/Users/gahon_a/Desktop/uml/ListeAttente.h",
+		"/C/Users/gahon_a/Desktop/uml/PersonnelAuSol.h",
+		"/C/Users/gahon_a/Desktop/uml/Paiement.h",
+		"/C/Users/gahon_a/Desktop/uml/Consommable.h",
+		"/C/Users/gahon_a/Desktop/uml/Internet.h",
+		"/C/Users/gahon_a/Desktop/uml/Comptoir.h",
+		"/C/Users/gahon_a/Desktop/uml/CompteRendu.h",
+		"/C/Users/gahon_a/Desktop/uml/CompteRendu.cpp",
+		"/C/Users/gahon_a/Desktop/uml/Compagnie.h",
+		"/C/Users/gahon_a/Desktop/uml/Client.h",
+		"/C/Users/gahon_a/Desktop/uml/CarteEmbarquement.h",
+		"/C/Users/gahon_a/Desktop/uml/Billet.h",
+		"/C/Users/gahon_a/Desktop/uml/Bagage.h",
+		"/C/Users/gahon_a/Desktop/uml/Bagage.cpp",
+		"/C/Users/gahon_a/Desktop/uml/Avion.h",
+		"/C/Users/gahon_a/Desktop/uml/Avion.cpp",
+		"/C/Users/gahon_a/Desktop/uml/Agence.h",
+		"/C/Users/gahon_a/Desktop/uml/Aeroport.h",
+		"/C/Users/gahon_a/Desktop/uml/Activite.h",
+		"/C/Users/gahon_a/Desktop/uml/A180.h",
+		"/C/Users/gahon_a/Desktop/uml/A150.h",
+		"/C/Users/gahon_a/Desktop/rtype/IUpdateable.h",
+		"/C/Users/gahon_a/Desktop/rtype/DrawableGameComponent.h",
+		"/C/Users/gahon_a/Desktop/rtype/IDrawable.h",
+		"/C/Users/gahon_a/Desktop/rtype/ISoundComponent.h",
+		"/C/Users/gahon_a/Desktop/rtype/SoundComponent.cpp",
+		"/C/Users/gahon_a/Desktop/rtype/DrawableGameComponent.cpp",
+		"/C/Users/gahon_a/Desktop/rtype/SoundComponent.h",
+		"/C/Users/gahon_a/Desktop/rtype/IGameComponent.h",
+		"/C/Users/gahon_a/Desktop/rtype/Game.h",
+		"/C/Users/gahon_a/Desktop/rtype/GameTime.h",
+		"/C/Users/gahon_a/Desktop/rtype/Game.cpp",
+		"/C/Users/gahon_a/Desktop/rtype/GameComponent.cpp",
+		"/C/Users/gahon_a/Desktop/rtype/GameComponent.h",
+		"/C/Users/gahon_a/Desktop/jquery.fancybox-1.0.0.js",
+		"/C/Users/gahon_a/Desktop/EnsemFlash.txt",
+		"/C/Mes Sites Web/AutoRepair/livedemo00.template-help.com/wt_35249/index.html",
+		"/C/Mes Sites Web/index.html",
+		"/C/Users/gahon_a/My Projects/Flash/_www/xml/content2_fr-fr.xml",
+		"/C/Mes Sites Web/AutoRepair/index.html",
+		"/C/Users/gahon_a/Downloads/JS-Attach.xadd",
+		"/F/My Documents/Flash/_fla_/global/ensem/Page.as",
+		"/C/Users/gahon_a/My Projects/ENSEM/www/xml/content2_fr-fr.xml",
+		"/C/Users/gahon_a/Downloads/Shooter_Project_Windows/Shooter/Shooter/Shooter/Game1.cs"
+	],
+	"find":
+	{
+		"height": 32.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"international",
+			"www.",
+			"<a ",
+			"se loger",
+			"doctorat",
+			"dictorat",
+			"f_addmodule",
+			"callback",
+			"loadmodule",
+			"error",
+			"interna",
+			" ",
+			">",
+			"rub_a",
+			"accueil",
+			"Base",
+			"image",
+			"ville univer",
+			"vie associa",
+			"DIPLOME",
+			"ILS TE",
+			"temoigne",
+			"c",
+			"itemLoadCallback",
+			"itemArray",
+			"itemsArr",
+			"val",
+			"MOIGNE",
+			"TEMOIGNE",
+			"video",
+			"youtube",
+			"decouvrir",
+			"decoi",
+			"partenaires",
+			".</"
+		],
+		"highlight": false,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
+					"settings":
+					{
+						"buffer_size": 61441,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								58243,
+								58243
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 21326.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_en-en.xml",
+					"settings":
+					{
+						"buffer_size": 60821,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								22020,
+								22020
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3763.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/C/Users/gahon_a/Desktop/TODO_ENSEM",
+					"settings":
+					{
+						"buffer_size": 633,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								449,
+								449
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 267.0,
+	"status_bar_visible": true
+}
