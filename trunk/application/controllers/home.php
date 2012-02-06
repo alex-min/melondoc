@@ -16,13 +16,15 @@ class     homeController extends controller
       $id = intval($_GET['id']);
     $this->addJavascript("home");
     if (($documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id'])) !== FALSE)
-      {
-	$this->pager->setDatas($documents);
-	$this->template->documents = $this->pager->getResult();
-	$this->template->pagination = $this->pager->getPagination("/home/index");
-      }
+    {
+      $this->pager->setDatas($documents);
+      $this->template->documents = $this->pager->getResult();
+      $this->template->pagination = $this->pager->getPagination("/home/index");
+    }
     else
       $this->template->noDocuments = $this->template->language['home_no_documents'];
+    $this->addCss("video-js");
+    $this->addJavascript("video-js");
   }
   
   public function	deleteDocAjax()
