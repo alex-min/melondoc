@@ -7,4 +7,9 @@ class			countdownController extends controller
 		$this->addJavascript("jquery.countdown");
 		$this->template->setView("countdown");
 	}
+
+	public function disableHeader()
+	{
+		return true;
+	}
 }
