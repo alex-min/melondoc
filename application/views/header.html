@@ -29,12 +29,11 @@
       <a class="close" data-dismiss="modal">×</a>
       <ul class="tabs">
 	<li class="active"><a href="#tab_connexion" data-toggle="tab">{{_lang.header_connexion}}</a></li>
-	<li><a href="#tab_inscription" data-toggle="tab">{{_lang.header_inscription}}</a></li>
       </ul>
     </div>
     <div class="modal-body">
       <div class="tab-content">
-	<div class="tab-pane active">
+	<div class="tab-pane active" id="tab_connexion">
 	  <form method="POST" class="form-stacked" action="/login/index">
 	    <div class="control-group">
 	      <label class="control-label" for="email">{{_lang.header_email}} :</label>
