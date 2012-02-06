@@ -19,7 +19,8 @@ define("JS", "/public/js");
 
 // Salt pour le 
 define("SALT", "fdjs;has;jadg");
-
+define("FB_APPID", "");
+define("FB_SECRET_KEY", "");
 // Include des define pour la bdd
 include('define_base.php');
 
