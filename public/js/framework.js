@@ -116,7 +116,10 @@ function $f_ajax(options){
 }
 
 // Fonction qui renvoie un obj contenant les elements d'un formulaire
-function $f_getform(id){
+function $f_getform(id)
+{
+	console.info($("form #"+id).first().serialize());
+	return false;
 }
 
 function $f_sendform(id){
