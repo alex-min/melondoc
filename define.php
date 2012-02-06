@@ -21,7 +21,7 @@ define("JS", "/public/js");
 define("SALT", "fdjs;has;jadg");
 define("FB_APPID", "");
 define("FB_SECRET_KEY", "");
-define("COUNTDOWN", TRUE);
+define("COUNTDOWN", 0);
 // Include des define pour la bdd
 include('define_base.php');
 
