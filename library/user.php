@@ -25,7 +25,8 @@ class user
 
   public function addUser($array)
   {
-    $this->db->query('INSERT INTO `users` SET `login` = "'.$array['form_login'].'", `firstname` = "'.$array['form_first_name'].'", `lastname` = "'.$array['form_last_name'].'", `mail` = "'.$array['form_email'].'", `password` = "'.md5(SALT.$array['form_mdp']).'", `forum_rights` = "user"');
+    // `firstname` = "'.$array['form_first_name'].'", `lastname` = "'.$array['form_last_name'].'",
+    $this->db->query('INSERT INTO `users` SET `login` = "'.$array['form_login'].'", `mail` = "'.$array['form_email'].'", `password` = "'.md5(SALT.$array['form_mdp']).'", `forum_rights` = "user"');
   }
   
   public function deleteUser($id)
@@ -47,17 +48,17 @@ class user
 
   // recupere les donnees de l'user a mettre en session dans $_SESSION['user'], (pas le mdp),
   // return true si ca a fonctionne, return false si ca a merde
-  public function connectUser($login, $password)
+  public function connectUser($email, $password)
   {
     $password = md5(SALT.$password);
-    $login = mysql_real_escape_string($login);
-    $quey = $this->db->query('SELECT * FROM `users` WHERE `login` = "'.$login.'" AND `password` = "'.$password.'"');
+    $email = mysql_real_escape_string($email);
+    $query = $this->db->query('SELECT * FROM `users` WHERE (`mail` = "'.$email.'" OR `login` = "'.$email.'") AND `password` = "'.$password.'"');
     if ($query->count == 1)
       {
-		$_SESSION['user'] = $quey->row;
-		$this->stockMyRights();
-		unset($_SESSION['user']['password']);
-		return true;
+	$_SESSION['user'] = $quey->row;
+	$this->stockMyRights();
+	unset($_SESSION['user']['password']);
+	return true;
       }
     return false;
   }

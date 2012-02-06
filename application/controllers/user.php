@@ -8,12 +8,13 @@ class			userController extends controller
 
   public function connexionAction()
   {
+    $this->template->loadLanguage("user");
     if (count($this->POST) > 0)
       {
-	if ($this->user->connectUser($_POST['login'], $_POST['password']) == TRUE)
+	if ($this->user->connectUser($_POST['email'], $_POST['password']) == TRUE)
 	  $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
 	else
-	  $this->template->redirect($this->template->language['login_error'], TRUE, "/login/index");
+	  $this->template->redirect($this->template->language['login_error'], TRUE, "/user/index");
       }
   }
 
@@ -25,19 +26,21 @@ class			userController extends controller
 
   public function inscriptionAction()
   {
-    $this->template->loadLanguage("login");
+    $this->template->loadLanguage("user");
     $this->template->setView("inscription");
     if (isset($this->POST) && isset($this->POST['form_login']))
       {
 	if (($error = $this->checkForm($this->POST)) != NULL)
-	  $this->template->redirect($error, TRUE, "/login/inscription");
+	  $this->template->redirect($error, TRUE, "/home/index");
 	$this->user->addUser($this->POST);
+	$this->user->connectUser($this->POST['form_email'], $this->POST['form_mdp']);
       }
-    $this->template->redirect("", FALSE, "/login/index");
+    $this->template->redirect("", FALSE, "/home/index");
   }
   
-  private function checkForm()
+  private function checkForm($POST)
   {
+    $this->POST = $POST;
     $domaines_interdits = array('trashmail.net', 'haltospam.com', 'yopmail.com', 'ephemail.net', 'brefemail.com', 'spamgourmet.com', 'jetable.net', 'jetable.com', 'jetable.org', 'mailinator.com', 'kleemail.com', 'iximail.com', 'spambox.us', 'link2mail.net', 'dodgeit.com', 'golfilla.info', 'senseless-entertainment.com', 'afrobacon.com', 'put2.net', 'mx0.wwwnew.eu', 'temporaryinbox.com', 'yopmail.net', 'cool.fr.nf','jetable.fr.nf','nospam.ze.tc','nomail.xl.cx', 'mega.zik.dj','speed.1s.fr','courriel.fr.nf','moncourrier.fr.nf','monemail.fr.nf','monmail.fr.nf', 'disposableinbox.com', 'tempinbox.com', 'DingBone.com', 'FudgeRub.com', 'BeefMilk.com', 'LookUgly.com', 'SmellFear.com');
     $error = "";
     if ($this->POST['form_login'] == NULL || strlen($this->POST['form_login']) < 4 ||
@@ -54,10 +57,10 @@ class			userController extends controller
       $error .= $this->template->language['error_mdp2'];
     if (!$this->model->checkUsername($this->POST['form_login']))
       $error .= $this->template->language['error_check_login'];
-    if ($this->POST['form_last_name'] == NULL || strlen($this->POST['form_last_name']) > 32 || strlen($this->POST['form_last_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_last_name']))
-      $error .= $this->template->language['error_checklastname'];
-    if ($this->POST['form_first_name'] == NULL || strlen($this->POST['form_first_name']) > 32 || strlen($this->POST['form_first_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_first_name']))
-      $error .= $this->template->language['error_checkfirstname'];
+    /* if ($this->POST['form_last_name'] == NULL || strlen($this->POST['form_last_name']) > 32 || strlen($this->POST['form_last_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_last_name'])) */
+    /*   $error .= $this->template->language['error_checklastname']; */
+    /* if ($this->POST['form_first_name'] == NULL || strlen($this->POST['form_first_name']) > 32 || strlen($this->POST['form_first_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_first_name'])) */
+    /*   $error .= $this->template->language['error_checkfirstname']; */
     return $error;
   }
 }
