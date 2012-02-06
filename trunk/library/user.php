@@ -52,7 +52,7 @@ class user
     $password = md5(SALT.$password);
     $login = mysql_real_escape_string($login);
     $quey = $this->db->query('SELECT * FROM `users` WHERE `login` = "'.$login.'" AND `password` = "'.$password.'"');
-    if ($quey->count == 1)
+    if ($query->count == 1)
       {
 		$_SESSION['user'] = $quey->row;
 		$this->stockMyRights();
