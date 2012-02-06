@@ -107,8 +107,8 @@ class				controller
       $this->addJavascript("framework");
       $this->addCSS("dialog");
       if (BOOTSTRAP){
+	$this->addJavascript("less-1.2.0.min");
 	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap");
-	$this->addJavascript("less-1.2.1.min");
       }
       $this->addCSS("style", "design");
     }
