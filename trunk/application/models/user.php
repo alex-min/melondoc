@@ -1,5 +1,5 @@
 <?php
-class			loginModel extends model
+class			userModel extends model
 {
   public function checkUsername($login)
   {
