@@ -8,4 +8,8 @@ class EditorController extends controller
     $this->addJavascript("editor");
     $this->template->setView("editor");
   }
+  public function disableHeader()
+  {
+
+  }
 }
