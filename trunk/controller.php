@@ -159,11 +159,13 @@ class				controller
    */
   private function		loadClass($var)
   {
-    $test = new $var($this->class);
-    if ($test)
-      $this->class[$var] = $test;
+    if (class_exists($var))
+      {
+	$test = new $var($this->class);
+	if ($test)
+	  $this->class[$var] = $test;
+      }
   }
-
   /**
    * @fn function loadLibrary($var)
    * @brief 
