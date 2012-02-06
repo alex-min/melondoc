@@ -106,14 +106,6 @@ class				controller
       $this->addJavascript("framework");
       $this->addCSS("dialog");
       if (BOOTSTRAP){
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-alerts");
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-dropdown");
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-modal");
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-scrollspy");
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-tabs");
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-twipsy");
-	$this->addJavascript(PATH_BOOTSTRAP_JS."bootstrap-popover");
-	$this->addCss(PATH_BOOTSTRAP_CSS."bootstrap");
       }
       $this->addCSS("style", "design");
     }
