@@ -2,19 +2,13 @@
 <span class="label">{{noDocuments}}</span>
 {% else %}
 <form method="POST" action="/home/deleteDoc" id="delete_doc"/>
-<a href="#" class="btn primary">{{_lang.home_doc_create}}</a>
-<input class="btn primary" type="submit" value="{{_lang.home_doc_delete}}" onclick="$f.exec('home:checkDeleteDocs');return false;"/>
+<a href="#modal_new" class="btn btn-primary" data-toggle="modal">{{_lang.home_doc_create}}</a>
 <hr />
 <table id="table_doc" class="zebra-striped">
-  <thead>
-    <tr>
-      <th><input id="checkAll" type="checkbox" /></th>
-      <th>{{_lang.home_doc_name}}</th>
-			</tr>
-  </thead>
   {% for key, doc in documents%}
   <tr>
-    <td width="10"><input type="checkbox" name="{{doc.id_document}}"/></td><td>{{doc.nom}}</td>
+    <td class="span2"><a href="/home/deleteDoc?doc={{doc.id_document}}" onclick=""><i class="icon-remove"></i></a></td>
+    <td class="span10"><strong>{{doc.nom}}</strong></td>
   </tr>
   {%endfor%}
 </table>
@@ -22,3 +16,18 @@
 <hr />
 {{pagination | raw}}
 {% endif %}
+<div id="modal_new" class="modal hide fade in">
+  <div class="modal-header">
+    <h2>{{_lang.header_create_new}}</h2>
+  </div>
+  <div class="modal-body">
+    {% if notemplates is defined %}
+    {% for key, temp in templates%}
+    <!-- ICI DES VISUELS POUR LES DIFFERENTS TYPE DE FICHIERS -->
+    <a href="/home/new?type={{temp.template_id}}"><img src="/public/images/{{temp.template_image}}" alt="{{temp.template_description}}" /></a>
+    {% endfor %}
+    {% else %}
+    {{noTemplates}}
+    {% endif %}
+  </div>
+</div>

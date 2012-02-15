@@ -99,12 +99,13 @@ class				controller
       $disableHeader = TRUE;
     } else {
       $disableHeader = FALSE;
-	$this->cssArray .= "<link rel=\"stylesheet/less\" href=\"/public/less/bootstrap.less\" />\n";
+      $this->cssArray .= "<link rel=\"stylesheet/less\" href=\"/public/less/bootstrap.less\" />\n";
       $this->template->loadLanguage("header");
       $this->addJavascript("jquery-1.7.min"); 
       $this->addJavascript("config");
       $this->addJavascript("dialog");
       $this->addJavascript("framework");
+      $this->addJavascript("header");
       $this->addCSS("dialog");
       if (BOOTSTRAP){
 	$this->addJavascript("less-1.2.0.min");

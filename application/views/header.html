@@ -10,9 +10,12 @@
       </a>
       <div class="pull-right">
 	<ul class="nav">
-	  <li class="active"><a href="/home/index">Accueil</a></li>
-	  <li><a href="#about">Contact</a></li>
-	  <li><a href="/forum">Forum</a></li>
+	  <li><a href="/index/index">{{_lang.header_index}}</a></li>
+	  {% if isLogged %}
+	  <li><a href="/home/index">{{_lang.header_files}}</a></li>
+	  {% endif %}
+	  <li><a href="/user/contact">{{_lang.header_contact}}</a></li>
+	  <li><a href="/forum">{{_lang.header_forum}}</a></li>
 	  {% if isLogged %}
 	  <li><a href="/user/deconnexion">{{_lang.header_deconnexion}}</a></li>
 	  {% else %}
