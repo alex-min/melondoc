@@ -52,10 +52,10 @@ class user
   {
     $password = md5(SALT.$password);
     $email = mysql_real_escape_string($email);
-    $query = $this->db->query('SELECT * FROM `users` WHERE (`mail` = "'.$email.'" OR `login` = "'.$email.'") AND `password` = "'.$password.'"');
+    $query = $this->db->query('SELECT * FROM `users` WHERE (`mail` = "'.$email.'" OR `login` = "'.$email.'") AND `password` = "'.$password.'" LIMIT 1');
     if ($query->count == 1)
       {
-	$_SESSION['user'] = $quey->row;
+	$_SESSION['user'] = $query->row;
 	$this->stockMyRights();
 	unset($_SESSION['user']['password']);
 	return true;

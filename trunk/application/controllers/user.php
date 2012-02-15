@@ -12,7 +12,9 @@ class			userController extends controller
     if (count($this->POST) > 0)
       {
 	if ($this->user->connectUser($_POST['email'], $_POST['password']) == TRUE)
-	  $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
+	  {
+	    $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
+	  }
 	else
 	  $this->template->redirect($this->template->language['login_error'], TRUE, "/user/index");
       }
@@ -62,6 +64,18 @@ class			userController extends controller
     /* if ($this->POST['form_first_name'] == NULL || strlen($this->POST['form_first_name']) > 32 || strlen($this->POST['form_first_name']) < 4 || !preg_match("#^[a-zA-Z0-9-]{3,}$#", $this->POST['form_first_name'])) */
     /*   $error .= $this->template->language['error_checkfirstname']; */
     return $error;
+  }
+
+  public function		contactAction()
+  {
+
+    $this->template->loadLanguage("user");
+    $this->template->setView("contact");
+    if (isset($this->POST['']))
+      {
+	
+	$this->template->redirect($this->template->language['contact_success'], TRUE, "/index/index");
+      }
   }
 }
 ?>
