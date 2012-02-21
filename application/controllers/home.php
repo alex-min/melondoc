@@ -10,8 +10,8 @@ class     homeController extends controller
     if (isset($_GET['id']))
       $id = intval($_GET['id']);
     $this->addJavascript("home");
-    if (($this->template->templates = $this->model->getListTemplate()) == FALSE)
-      $this->template->noTemplates = $this->template->language['home_no_templates'];
+    if (($this->template->categories = $this->model->getListCategorie()) == FALSE)
+      $this->template->noCategories = $this->template->language['home_no_categories'];
     if (($documents = $this->model->getListDocumentsFromUserID($_SESSION['user']['user_id'])) !== FALSE)
     {
       $this->pager->setDatas($documents);

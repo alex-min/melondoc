@@ -75,8 +75,7 @@ class		rooter
       $this->controller = substr($array[$v++], 0, $pos); // on recupere le controller    
     }
     $this->Ajax = FALSE;
-    if ($this->checkAjaxRequest() == TRUE)
-      return ;
+    $this->checkAjaxRequest();
     $this->action = (isset($array[$v])) ? $array[$v] : NULL; // de meme pour l'action
     $pattern = "?".$_SERVER['QUERY_STRING'];
     $this->action = str_replace($pattern, "", $this->action); // on enleve les variables GET de l'action pour eviter d'avoir quelque chose comme toto?titi=tata
@@ -122,7 +121,7 @@ class		rooter
    * @param             
    * @return		
    */
-  public function getController()	{return ($this->Ajax) ? $this->controller : $this->controller;}
+  public function getController()	{return $this->controller;}
   /**
    * @fn function getAction()
    * @brief 
@@ -183,15 +182,20 @@ class		rooter
    */
   private function checkAjaxRequest()
   {
-    if ($this->controller == "ajax")
+    if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
       {
 	$this->Ajax = TRUE;
-	$this->controller = $this->GET['controller'];
-	$this->action = $this->GET['action'];
-	$control = PATH_CONTROLLERS.$this->controller.".php";
-	if (file_exists($control) == FALSE){exit();}
 	return TRUE;
       }
+    /* if ($this->controller == "ajax") */
+    /*   { */
+    /* 	$this->Ajax = TRUE; */
+    /* 	$this->controller = $this->GET['controller']; */
+    /* 	$this->action = $this->GET['action']; */
+    /* 	$control = PATH_CONTROLLERS.$this->controller.".php"; */
+    /* 	if (file_exists($control) == FALSE){exit();} */
+    /* 	return TRUE; */
+    /*   } */
     return FALSE;
   }
 

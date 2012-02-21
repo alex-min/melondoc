@@ -35,5 +35,13 @@ class		homeModel extends model
       return FALSE;
     return $query->rows;
   }
+
+  public function	getListCategorie()
+  {
+    $query = $this->db->query('SELECT * FROM `categories`');
+    if ($query->count <= 0)
+      return FALSE;
+    return $query->rows;
+  }
 }
 ?>
