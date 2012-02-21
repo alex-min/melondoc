@@ -59,5 +59,6 @@ class		homeModel extends model
       return FALSE;
     return $query->rows;
   }
+
 }
 ?>

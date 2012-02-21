@@ -4,9 +4,14 @@ class     homeController extends controller
   public function	indexAction()
   {
     $this->user->needLogin();
+    $this->template->loadLanguage("header");
     $this->template->loadLanguage("home");
-    $this->template->setView("account.html");
-    
+    $this->template->setView("account");
+    $this->template->infos = $_SESSION['user'];
+    if (isset($_POST['form_lastname']))
+      {
+
+      }
   }
     
   public function	getList()
@@ -25,7 +30,7 @@ class     homeController extends controller
 	echo '<ul class="jqueryFileTree">';
 	if (($documents = $this->model->getDocumentsFromUserIDAndCategorie($_SESSION['user']['user_id'], $_POST['dir'])))
 	  foreach ($documents AS $doc)
-	    echo '<li class="file ext_txt"><a href="#" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
+	    echo '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove"></i></a><a href="#"><i class="icon-edit"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
 	echo '</ul>';
       }
     return ;
