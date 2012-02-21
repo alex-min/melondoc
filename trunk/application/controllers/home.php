@@ -32,7 +32,7 @@ class     homeController extends controller
 	  foreach ($documents AS $doc)
 	    {
 	      echo "<div class='hide fade in modal' id='rights_".$doc['id_document']."'>";
-	      echo '<div class="modal-header"></div>';
+	      echo '<div class="modal-header">'.$this->template->language['home_edit_rights'].''.$doc['nom'].'</div>';
 	      echo '<div class="modal-body"></div>';
 	      echo '<div class="modal-footer"></div>';
 	      echo "</div>";

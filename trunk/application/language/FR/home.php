@@ -7,4 +7,5 @@ $_['home_success_delete'] = "Document supprimé avec succès.";
 $_['home_no_templates'] = "Il n'y a pas de templates pour le moment";
 $_['home_no_categories'] = "Il n'y a pas de catégories pour le moment";
 $_['home_fail_select_template'] = "Ce template n'existe pas.";
+$_['home_edit_rights'] = "Editer les droits du document ";
 ?>
