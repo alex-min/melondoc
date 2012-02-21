@@ -14,7 +14,7 @@
 
 $f.module = {
    action:function(e){
-      $f.alert("load");
+      var obj = $f.sendform("inscription", null, null);
       // definition de ma fonction
    },
 
