@@ -210,43 +210,20 @@ window.$f  = {
 		});
 	}
 
-	class="framework" rel="mouseover-module:action"
 
 
 
-	/* Tous les éléments qui possède l'identifiant requis reagisse a l'eventType
-	$("["+$f.config.identifier+"]").bind($f.config.eventType, function(){
-		$f.exec("module:action", $(this));
+	/*
+	** <div click="module:action"></div>
+	** <div mouseenter="module:action"></div>
+	** <div mouseleave="module:action"></div>
+	** <div focusin="module:action"></div>
+	** <div focusout="module:action"></div>
+	*/
 
-		console.log("old");
-		var value = $(this).attr($f.config.identifier);
-		var module = value.split($f.config.separator, 2)[0];
-		var action = value.split($f.config.separator, 2)[1];
-		
-		var mod,act,funct;
-		eval("mod = $f."+module);
-		if (mod != undefined){
-			eval("act = mod."+action);
-			if (act != undefined){
-				console.log("its ok")
-				eval("funct = $f."+module+"."+action);
-				funct();
-			}
-		}
-		if (window.functions[module] && window.functions[module][action]){
-			window.functions[module][action]($(this));
-			$f.module.action();
-		}
-		else{
-			loadComponent({
-				type: "js",																					
-				module: module,																		
-				action: action,																			
-				path: $f.config.path,														
-				target: $(this),																			
-				callback: function(e){
-					$f.dispatch({module: module, action: action, target: e});
-				}
-			});
-		}
-	});*/
+	function dispatcher(e){$f.exec($(this).attr(e.type))};
+	$("[click]").bind("click", dispatcher);
+	$("[mouseenter]").bind("mouseenter", dispatcher);
+	$("[mouseleave]").bind("mouseleave", dispatcher);
+	$("[focusin]").bind("focusin", dispatcher);
+	$("[focusout]").bind("focusout", dispatcher);
