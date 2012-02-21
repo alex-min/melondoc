@@ -12,7 +12,7 @@
 	<ul class="nav">
 	  <li><a href="/index/index">{{_lang.header_index}}</a></li>
 	  {% if isLogged %}
-	  <li><a href="/home/index">{{_lang.header_files}}</a></li>
+	  <li><a href="/home/index">{{_lang.header_account}}</a></li>
 	  {% endif %}
 	  <li><a href="/user/contact">{{_lang.header_contact}}</a></li>
 	  <li><a href="/forum">{{_lang.header_forum}}</a></li>
@@ -27,80 +27,80 @@
   </div>
 </div>
 <!-- modal de connexion / inscription -->
-  <div class="modal hide fade" id="modal_connexion">
-    <div class="modal-body">
-      <a class="close" data-dismiss="modal">×</a>
-      <ul class="nav nav-tabs">
-	<li class="active"><a href="#tab_connexion" data-toggle="tab">{{_lang.header_connexion}}</a></li>
-	<li><a href="#tab_inscription" data-toggle="tab">{{_lang.header_inscription}}</a></li>
-      </ul>
-      <div class="tab-content">
-	<!-- connexion -->
-	<div class="tab-pane active" id="tab_connexion">
-	  <table>
-	    <tr>
-	      <td id="connexion_right">
-		<form method="POST" class="form-stacked" action="/user/connexion">
-		  <div class="control-group">
-		    <label class="control-label" for="email">{{_lang.header_email}} / {{_lang.header_login}} :</label>
-		    <div class="controls">
-		      <input type="text" name="email" /><br />
-		      <span class="help-inline hide">{{_lang.email_invalid}}</span>
-		    </div>
+<div class="modal hide fade" id="modal_connexion">
+  <div class="modal-body">
+    <a class="close" data-dismiss="modal">×</a>
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab_connexion" data-toggle="tab">{{_lang.header_connexion}}</a></li>
+      <li><a href="#tab_inscription" data-toggle="tab">{{_lang.header_inscription}}</a></li>
+    </ul>
+    <div class="tab-content">
+      <!-- connexion -->
+      <div class="tab-pane active" id="tab_connexion">
+	<table>
+	  <tr>
+	    <td id="connexion_right">
+	      <form method="POST" class="form-stacked" action="/user/connexion">
+		<div class="control-group">
+		  <label class="control-label" for="email">{{_lang.header_email}} / {{_lang.header_login}} :</label>
+		  <div class="controls">
+		    <input type="text" name="email" /><br />
+		    <span class="help-inline hide">{{_lang.email_invalid}}</span>
 		  </div>
-		  <div class="control-group">
-		    <label class="control-label" for="login">{{_lang.header_password}}</label>
-		    <div class="controls">
-		      <input type="password" name="password" /><br />
-		      <span class="help-inline hide">{{_lang.password_invalid}}</span>
-		    </div>
+		</div>
+		<div class="control-group">
+		  <label class="control-label" for="login">{{_lang.header_password}}</label>
+		  <div class="controls">
+		    <input type="password" name="password" /><br />
+		    <span class="help-inline hide">{{_lang.password_invalid}}</span>
 		  </div>
-		  <input type="submit" class="btn-primary" value="{{_lang.header_connexion}}"/>
-		</form>
-	      </td>
-	      <td>
-		<a class="btn btn-primary" href="#">{{_lang.header_facebook}}</a>
-	      </td>
-	    </tr>
-	  </table>
-	</div>
-	<!-- inscription -->
-	<div class="tab-pane" id="tab_inscription">
-	  <form method="POST" class="form-stacked" action="/user/inscription">
-	    <div class="control-group">
-	      <label class="control-label" for="form_login">{{_lang.header_login}} :</label>
-	      <div class="controls">
-		<input type="text" name="form_login" /><br />
-		<span class="help-inline hide">{{_lang.login_invalid}}</span>
-	      </div>
+		</div>
+		<input type="submit" class="btn-primary" value="{{_lang.header_connexion}}"/>
+	      </form>
+	    </td>
+	    <td>
+	      <a class="btn btn-primary" href="#">{{_lang.header_facebook}}</a>
+	    </td>
+	  </tr>
+	</table>
+      </div>
+      <!-- inscription -->
+      <div class="tab-pane" id="tab_inscription">
+	<form method="POST" class="form-stacked" action="/user/inscription">
+	  <div class="control-group">
+	    <label class="control-label" for="form_login">{{_lang.header_login}} :</label>
+	    <div class="controls">
+	      <input type="text" name="form_login" /><br />
+	      <span class="help-inline hide">{{_lang.login_invalid}}</span>
 	    </div>
-	    <div class="control-group">
-	      <label class="control-label" for="form_email">{{_lang.header_email}} :</label>
-	      <div class="controls">
-		<input type="text" name="form_email" /><br />
-		<span class="help-inline hide">{{_lang.email_invalid}}</span>
-	      </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label" for="form_email">{{_lang.header_email}} :</label>
+	    <div class="controls">
+	      <input type="text" name="form_email" /><br />
+	      <span class="help-inline hide">{{_lang.email_invalid}}</span>
 	    </div>
-	    <div class="control-group">
-	      <label class="control-label" for="form_mdp">{{_lang.header_password}}</label>
-	      <div class="controls">
-		<input type="password" name="form_mdp" /><br />
-		<span class="help-inline hide">{{_lang.password_invalid}}</span>
-	      </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label" for="form_mdp">{{_lang.header_password}}</label>
+	    <div class="controls">
+	      <input type="password" name="form_mdp" /><br />
+	      <span class="help-inline hide">{{_lang.password_invalid}}</span>
 	    </div>
-	    <div class="control-group">
-	      <label class="control-label" for="form_mdp2">{{_lang.header_verif_password}}</label>
-	      <div class="controls">
-		<input type="password" name="form_mdp2" /><br />
-		<span class="help-inline hide">{{_lang.password_invalid}}</span>
-	      </div>
+	  </div>
+	  <div class="control-group">
+	    <label class="control-label" for="form_mdp2">{{_lang.header_verif_password}}</label>
+	    <div class="controls">
+	      <input type="password" name="form_mdp2" /><br />
+	      <span class="help-inline hide">{{_lang.password_invalid}}</span>
 	    </div>
-	    <input type="submit" class="btn-primary" value="{{_lang.header_inscription}}"/>
-	  </form>
-	</div>
+	  </div>
+	  <input type="submit" class="btn-primary" value="{{_lang.header_inscription}}"/>
+	</form>
       </div>
     </div>
-    <div class="modal-footer">
-    </div>
   </div>
+  <div class="modal-footer">
+  </div>
+</div>
   

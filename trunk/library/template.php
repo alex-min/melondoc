@@ -156,7 +156,8 @@ class		template
       }
     $this->KLogger->logDebug($this->json);
     ob_end_clean();
-    echo json_encode($this->json);
+    if (count($this->json) > 0)
+      echo json_encode($this->json);
     exit;
   }
 
