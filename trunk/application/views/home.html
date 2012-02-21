@@ -21,11 +21,11 @@
     <h2>{{_lang.header_create_new}}</h2>
   </div>
   <div class="modal-body">
-    {% if notemplates is defined %}
+    {% if noCategories is defined %}
     {% for key, temp in categorie %}
 
     <!-- ICI DES VISUELS POUR LES DIFFERENTS TYPE DE FICHIERS -->
-    <a href="/home/new?type={{temp.template_id}}"><img src="/public/images/{{temp.template_image}}" alt="{{temp.template_description}}" /></a>
+    <a href="/home/new?type={{temp.id_category}}"><img src="/public/images/{{temp.avatar}}" alt="{{temp.description}}" /></a>
 
     {% endfor %}
     {% else %}
