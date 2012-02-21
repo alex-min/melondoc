@@ -35,7 +35,7 @@ function $f_alert(value)
 
 function $f_loadmodule(module, callback) {
 	var url = $f.config.path+"/"+module+".js";
-	$f.ajax({
+	$.ajax({
 		type: "GET",
 		url: url,
 		dataType: "script",
@@ -76,55 +76,43 @@ function $f_exec(value, el){
 function $f_require(value, callback){	
 }
 
-// Fonction qui fais une requete ajax pour le single framework
-function $f_ajax(options){
-	var url = new Object();
-	url.controller = options.url.slice(1).split("/")[0];
-	url.action = options.url.slice(1).split("/")[1];
-	if (!options.type) options.type = "get";
-	if (!options.success) options.success = ajax_success;
-	if (!options.error) options.error = ajax_error;
-	if (options.action == true || options.action == undefined)
-		url.action += "Action";
-	jQuery.extend(options.data, url);
-	if (options.rewrite == true){
-		$.ajax({
-			url: "/ajax/index",
-			type: options.type,
-			data: options.data,
-			success: function(data, textStatus){
-				options.success(data, textStatus);
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-				options.error(xhr, ajaxOptions, thrownError);
-			}
-		});
-	}
-	else{
-		$.ajax({
-			url: options.url,
-			type: options.type,
-			data: options.data,
-			success: function(data, textStatus){
-				options.success(data, textStatus);
-			},
-			error: function(xhr, ajaxOptions, thrownError){
-				options.error(xhr, ajaxOptions, thrownError);
-			}
-		});
-	}
-}
+
 
 // Fonction qui renvoie un obj contenant les elements d'un formulaire
 function $f_getform(id)
 {
-	console.info($("form #"+id).first().serialize());
-	return false;
+	var elem = $("form#"+id).first();
+	var obj = new Object();
+	var count = 0;
+	elem.children("input,textarea,select").each(function(index){
+		var name = $(this).attr("name");
+		if (name == undefined){
+			name = "no_name_"+count++;
+			console.warn("Attribut `name` non definie. Valeur attribue {"+name+"}");
+		}
+		var value = $(this).val();
+		obj[name] = value;
+	});
+	var info = {
+		"_url_": elem.attr("action"),	
+		"_type_": (elem.attr("type") != undefined)?(elem.attr("type")):("POST")
+	}
+	jQuery.extend(obj, info);
+	return obj;
 }
 
-function $f_sendform(id){
+function $f_sendform(id, csuccess, cerror)
+{
+	var obj = $f.getform(id);
+	$.ajax({
+		type: obj._type_,
+		url: obj._url_,
+		dataType: "JSON",
+		data: obj,
+		success: csuccess,
+		error: cerror
+	});
 }
-
 
 function $f_dispatch(options){
 	var mod,act,funct;
@@ -161,7 +149,6 @@ window.$f  = {
 	alert		: 	$f_alert,
 	exec		: 	$f_exec,
 	require		: 	$f_require,
-	ajax		: 	$f_ajax,
 	getform		: 	$f_getform,
 	sendform	: 	$f_sendform
 }
@@ -222,8 +209,8 @@ window.$f  = {
 	*/
 
 	function dispatcher(e){$f.exec($(this).attr(e.type))};
-	$("[click]").bind("click", dispatcher);
-	$("[mouseenter]").bind("mouseenter", dispatcher);
-	$("[mouseleave]").bind("mouseleave", dispatcher);
-	$("[focusin]").bind("focusin", dispatcher);
-	$("[focusout]").bind("focusout", dispatcher);
+	$("[click]").live("click", dispatcher);
+	$("[mouseenter]").live("mouseenter", dispatcher);
+	$("[mouseleave]").live("mouseleave", dispatcher);
+	$("[focusin]").live("focusin", dispatcher);
+	$("[focusout]").live("focusout", dispatcher);
