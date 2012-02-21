@@ -22,9 +22,11 @@
   </div>
   <div class="modal-body">
     {% if notemplates is defined %}
-    {% for key, temp in templates%}
+    {% for key, temp in categorie %}
+
     <!-- ICI DES VISUELS POUR LES DIFFERENTS TYPE DE FICHIERS -->
     <a href="/home/new?type={{temp.template_id}}"><img src="/public/images/{{temp.template_image}}" alt="{{temp.template_description}}" /></a>
+
     {% endfor %}
     {% else %}
     {{noTemplates}}
