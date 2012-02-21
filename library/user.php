@@ -42,7 +42,7 @@ class user
     if (!isset($_SESSION['user']))
 	{
 	  $this->template->loadLanguage("header");
-	  $this->template->redirect($this->template->language['header_need_login'], TRUE,"/home/index");
+	  $this->template->redirect($this->template->language['header_need_login'], TRUE,"/index/index");
 	}
   }
 

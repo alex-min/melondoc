@@ -105,7 +105,9 @@ class				controller
       $this->addJavascript("config");
       $this->addJavascript("dialog");
       $this->addJavascript("framework");
+      $this->addJavascript("jqueryFileTree");
       $this->addJavascript("header");
+      $this->addCSS("jqueryFileTree");
       $this->addCSS("dialog");
       if (BOOTSTRAP){
 	$this->addJavascript("less-1.2.1.min");
