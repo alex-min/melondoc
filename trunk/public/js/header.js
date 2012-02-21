@@ -1,5 +1,5 @@
 function openFile(file) {
-    alert(file);
+    
 }
  
 $(document).ready( function() {
@@ -10,7 +10,5 @@ $(document).ready( function() {
 	expandSpeed: 750,
 	collapseSpeed: 750,
 	multiFolder: false
-    }, function(file) {
-        openFile(file);
-    });
+    }, function(file){});
 });
