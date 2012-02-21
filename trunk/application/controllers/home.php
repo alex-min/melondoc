@@ -28,9 +28,14 @@ class     homeController extends controller
     if (isset($_POST['dir']) && strlen($_POST['dir']) > 0)
       {
 	echo '<ul class="jqueryFileTree">';
+	echo "<div class='hide fade in modal' id='rights_".$doc['id_document']."'>";
+	echo '<div class="modal-header"></div>';
+	echo '<div class="modal-body"></div>';
+	echo '<div class="modal-footer"></div>';
+	echo "</div>";
 	if (($documents = $this->model->getDocumentsFromUserIDAndCategorie($_SESSION['user']['user_id'], $_POST['dir'])))
 	  foreach ($documents AS $doc)
-	    echo '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove"></i></a><a href="#"><i class="icon-edit"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
+	    echo '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
 	echo '</ul>';
       }
     return ;

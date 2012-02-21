@@ -41,7 +41,9 @@ class		homeModel extends model
   public function	addDocument($template_id, $user_id, $name)
   {
     $this->db->query('INSERT INTO `documents` SET `nom` = "'.$name.'", `user_id` = "'.$user_id.'", `template_id` = "'.$template_id.'"');
-    return $this->db->getLastId();
+    $id = $this->db->getLastId();
+    $this->db->query('INSERT INTO `users_rights` SET `user_right` = "owner", `user_id` = "'.$user_id.'", `document_id` = "'.$id.'"');
+    return $id;
   }
 
   public function	getListTemplate()
