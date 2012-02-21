@@ -19,15 +19,16 @@
 {% endif %}
 <div class="container-fluid" id="main-content">
   <div class="row-fluid">
+    {% include 'filesbar.html' %}
     <div>
-	{%  if __error is defined %}
-  		<div class="alert alert-error">
-  			<a class="close" data-dismiss="alert" href="#">x</a>
-  			{{  __error|raw}}
-  			</div>
+    {%  if __error is defined %}
+  	  <div class="alert alert-error">
+  		  <a class="close" data-dismiss="alert" href="#">x</a>
+  			  {{  __error|raw}}
+  		</div>
   	{% elseif __success is defined %}
-		<div class="alert alert-success">
-			<a class="close" data-dismiss="alert" href="#">x</a>
-			{{  __success|raw}}
-			</div>
-	{%  endif%}
+		  <div class="alert alert-success">
+			  <a class="close" data-dismiss="alert" href="#">x</a>
+			  {{  __success|raw}}
+		  </div>
+    {%  endif%}
