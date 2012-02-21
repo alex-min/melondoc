@@ -36,7 +36,7 @@ class     homeController extends controller
 	      echo '<div class="modal-body"></div>';
 	      echo '<div class="modal-footer"></div>';
 	      echo "</div>";
-	      echo '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
+	      echo '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove icon-white"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit icon-white"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
 	    }
 	echo '</ul>';
       }
