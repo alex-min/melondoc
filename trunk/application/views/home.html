@@ -3,18 +3,6 @@
 {% else %}
 <form method="POST" action="/home/deleteDoc" id="delete_doc"/>
 <a href="#modal_new" class="btn btn-primary" data-toggle="modal">{{_lang.home_doc_create}}</a>
-<hr />
-<table id="table_doc" class="zebra-striped">
-  {% for key, doc in documents%}
-  <tr>
-    <td class="span2"><a href="/home/deleteDoc?doc={{doc.id_document}}" onclick=""><i class="icon-remove"></i></a></td>
-    <td class="span10"><strong>{{doc.nom}}</strong></td>
-  </tr>
-  {%endfor%}
-</table>
-</form>
-<hr />
-{{pagination | raw}}
 {% endif %}
 <div id="modal_new" class="modal hide fade in">
   <div class="modal-header">
@@ -31,11 +19,5 @@
     {% else %}
     {{noTemplates}}
     {% endif %}
-  </div>
-</div>
-
-<div class="row">
-  <div id="tree" class="span3">
-    
   </div>
 </div>
