@@ -16,7 +16,7 @@ class			userController extends controller
 	    $this->template->redirect($this->template->language['login_success'].$_SESSION['user']['login'], FALSE, "/home/index");
 	  }
 	else
-	  $this->template->redirect($this->template->language['login_error'], TRUE, "/user/index");
+	  $this->template->redirect($this->template->language['login_error'], TRUE, "/index/index");
       }
   }
 
@@ -33,7 +33,7 @@ class			userController extends controller
     if (isset($this->POST) && isset($this->POST['form_login']))
       {
 	if (($error = $this->checkForm($this->POST)) != NULL)
-	  $this->template->redirect($error, TRUE, "/home/index");
+	  $this->template->redirect($error, TRUE, "/index/index");
 	$this->user->addUser($this->POST);
 	$this->user->connectUser($this->POST['form_email'], $this->POST['form_mdp']);
       }
