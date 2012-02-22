@@ -1,0 +1,255 @@
+
+	<div id="controls" class="light">
+		<a href="#" class="prev"><img src="/public/images/documentation/icon_arrow-up_light.png" alt="" width="28" height="31" /></a>
+		<a href="#" class="next"><img src="/public/images/documentation/icon_arrow-down_light.png" alt="" width="28" height="31" /></a>
+	</div>
+	
+	<div id="wrapper">
+		<div id="main">
+			<div style="text-align: center; padding: 40px;">
+				<h1><i>EasyJquery</i></h1>
+
+			</div>
+			
+			<div class="section">
+				<h2>Introduction</h2><br/><br/>
+
+				<p>
+					Pourquoi <b>EasyJquery</b> ? Tout simplement car ce framework js est une surcouhe de jquery et qu'il a pour de but de simplifier l'utilisation de celui-ci et de rendre le code plus clair et mieux structurer.
+				</p>
+
+			</div>
+
+			<div class="section">
+				<h2>Configuration</h2><br/><br/>
+
+				<p>
+					Le framework est un objet, comme jquery.<br/>
+					Cet objet sera le point d'entrée.
+				</p><br/>
+
+				<pre class="code" lang="js">$f</pre><br/>
+
+				<p>
+					Pour modifier les éléments de configuration vous devrez accéder à l'objet config : 
+				</p><br/><br/>
+
+				<pre class="code" lang="js">$f.config</pre><br/>
+
+				<p>
+					Cet objet possède quelques variables utilisée par le framework comme:
+				</p><br/><br/>
+
+<pre class="code" lang="js">
+$f.config.separator	// Default ':'
+$f.config.path 		// Default '/public/js'
+</pre><br/>
+				<p>
+					Le 'path' correspond bien évidemment au répertoire javascript du site.<br/>
+					Le 'separator', lui, correspond au séparateur utilisé pour appeler les actions des modules
+				</p>
+
+			</div>
+			<div class="section">
+				<h2>Fonctions</h2>
+				<br/>
+
+				<h3>Alert</h3><br/>
+
+				<p style="">
+					Cette fonction sert à remplacer la fonction alerte de base. Elle gère en plus l'affichage d'objets et les formate de manière lisible.
+				</p>
+				
+				<h5>Code Javascript</h5><br/>
+
+<pre class="code" lang="js">
+	/*
+	** Remplace la fonction alert de base, permet l'affichage d'objet bien formaté
+	*/
+
+	$f.alert( ceQueJeVeux );
+</pre><br/>
+
+				<h3>Exec</h3><br/>
+
+				<p style="">
+					Cette fonction sert à appeler une action d'un module (reçoit une string en param "module:action")
+				</p>
+
+				<h5>Code Javascript</h5><br/>
+
+<pre class="code" lang="js">
+	/*
+	** Permet d'executer une action d'un module
+	*/
+	
+	$f.exec( "monModule:monAction" );
+</pre><br/>
+
+				<h3>GetForm</h3><br/>
+				
+				<p style="">
+					Cette fonction sert a récupérer les données d'un formulaire sous forme d'objet, elle s'occupe de récupérer les données du formulaire (input, textarea, select).
+					<br/><br/>
+					L'Objet récupéré contient également 2 variable suplémentaire: _url_ et _type_ (si non renseigné valeur a POST)
+				</p>
+
+				<h5>Code Javascript</h5><br/>
+
+<pre class="code" lang="js">
+	/*
+	** Permet de recuperer un objet type JSON a partir de l'id d'un formulaire
+	*/
+	
+	$f.getform( "idDuFormulaire" );
+
+</pre><br/>
+
+				<h5>Code Html</h5><br/>
+
+<pre class="code" lang="html">
+	<form id="idDuFormulaire" action="pathRequestAjax" type="typeRequest">
+		<input name="input1"/>
+		<select name="select1">
+			<option></option>
+		</select>
+		<textarea name="textarea1"></textarea>
+	</form>
+</pre><br/>
+
+				<h5>Objet Récupéré</h5><br/>
+
+<pre class="code" lang="js">
+	var obj =
+	{
+		_url_     : 'pathRequestAjax' // 
+		_type_    : 'typeRequest'     // POST par default
+		input1    : 'valeur',
+		select1   : 'valeur',
+		textarea1 : 'valeur'
+	}
+</pre><br/>
+
+
+				<h3>SendForm</h3><br/>
+
+				<p style="">
+					Cette fonction sert a envoyer les données d'un formulaire en AJAX, elle s'occupe de récupérer l'url du formulaire ainsi que le type d'envoi (GET ou POST). La valeur par default pour le type est POST.
+					<br/><br/>
+					Cette fonction prend egalement 2 paramètre en plus de l'id du formulaire: function success et function error (pour traiter le retour AJAX)
+				</p>
+
+				<h5>Code Javascript</h5><br/>
+
+<pre class="code" lang="js">
+	/*
+	** Permet d'envoyer en AJAX un objet type JSON a partir de l'id d'un formulaire
+	*/
+
+	$f.sendform( "idDuFormulaire" );
+</pre><br/>
+
+				<h5>Code Html</h5><br/>
+
+<pre class="code" lang="html">
+	<form id="idDuFormulaire" action="pathRequestAjax" type="typeRequest">
+		<input name="input1"/>
+		<select name="select1">
+			<option></option>
+		</select>
+		<textarea name="textarea1"></textarea>
+		<input />
+	</form>
+</pre><br/>
+
+				<h5>Code Php</h5><br/>
+
+<pre class="code" lang="html">
+	print_r($this->_POST) // ou  print_r($this->_GET);
+
+	/*
+		Array
+		(
+	    	['_url_']     => pathRequestAjax
+	    	['_type_']    => typeRequest
+	    	['input1']    => 'valeur'
+	    	['select1']   => 'valeur'
+	    	['textarea1'] => 'valeur'
+	    	['no_name_0'] => 'valeur' -> Warning console JS
+		)
+	*/
+</pre><br/>
+
+			</div>
+			<div class="section">
+				<h2>Modules</h2><br/>
+				<p>TODO</p>
+			</div>
+			<div class="section">
+				<h2>Utilisation</h2><br/>
+				<p>TODO</p>
+			</div>
+			<div class="section">
+				<h2>Download</h2><br/>
+				<p>TODO</p>
+			</div>
+		</div><!-- [END] #main -->
+	</div><!-- [END] #wrapper -->
+
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		
+		// instantiate page scroller plugin
+		
+		var navLabel = new Array(
+			'Introduction',
+			'Configuration',
+			'Fonctions',
+			'Modules',
+			'Utilisation',
+			'Download'
+		);
+		
+		$('#main').pageScroller({ navigation: navLabel });
+		
+		/*	AVAILABLE OPTIONS:
+		 *	currentSection 				starting position
+		 *	sectionClass				class of each section
+		 *	navigationClass 			navigation element class
+		 *	scrollOffset				offset target area from top of section
+		 *	animationSpeed	 			change duration of animation in miliseconds
+		 *	animationBefore 		 	callback: assign a function before animation
+		 *	animationComplete 	 		callback: assign a function after animation
+		 *	onChange					callback: assign a function for when section changes
+		*/		
+		
+		// assigns "next" API function to button
+		
+		$('.next').click(function(e){
+			e.preventDefault();
+			pageScroller.next();
+		});
+		
+		//assigns "prev" API function to button	
+			
+		$('.prev').click(function(e){
+			e.preventDefault();
+			pageScroller.prev();
+		});
+		
+		$('.jumpTo').click(function(e){
+			e.preventDefault();
+			pageScroller.goTo(4);
+		});
+					
+	});
+		
+	</script>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('pre.code').highlight({source:0, zebra:1, indent:'space', list:'ol'});
+		});
+	</script>
