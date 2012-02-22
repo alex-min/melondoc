@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"_",
+				"_url_"
+			],
+			[
+				"att",
+				"attr"
+			],
+			[
+				"get",
+				"getform"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"mo",
+				"module"
+			],
+			[
 				"a",
 				"auto"
 			],
@@ -14,10 +34,6 @@
 			[
 				"ini",
 				"initLoaderModuleProgress"
-			],
-			[
-				"mo",
-				"monIntro"
 			],
 			[
 				"text",
@@ -56,18 +72,50 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
+			"file": "public/js/framework.js",
 			"settings":
 			{
-				"buffer_size": 61509,
+				"buffer_size": 4926,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/views/HeaderView.html",
+			"settings":
+			{
+				"buffer_size": 1131,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "application/views/filesbar.html",
+			"settings":
+			{
+				"buffer_size": 237,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
+			"file": "public/js/filesbar.js",
 			"settings":
 			{
-				"buffer_size": 784,
+				"buffer_size": 732,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/less/filesbar.less",
+			"settings":
+			{
+				"buffer_size": 422,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "public/js/module.js",
+			"settings":
+			{
+				"buffer_size": 428,
 				"line_ending": "Windows"
 			}
 		}
@@ -148,12 +196,26 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/melondoc/application/controllers/index.php",
+		"/C/wamp/www/melondoc/application/views/index.html",
+		"/C/wamp/www/melondoc/public/less/bootstrap.less",
+		"/C/wamp/www/melondoc/public/less/filesbar.less",
+		"/C/wamp/www/melondoc/public/less/breadcrumbs.less",
+		"/C/wamp/www/melondoc/public/less/alerts.less",
+		"/C/wamp/www/melondoc/public/less/accordion.less",
+		"/C/wamp/www/melondoc/public/less/hero-unit.less",
+		"/C/wamp/www/melondoc/application/views/header.html",
+		"/C/wamp/www/melondoc/application/views/editor2.html",
+		"/C/wamp/www/melondoc/application/views/home.html",
+		"/C/wamp/www/melondoc/public/less/button-groups.less",
+		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/User/Base File.sublime-settings",
+		"/C/wamp/www/melondoc/define.php",
+		"/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
+		"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
 		"/C/Users/gahon_a/Desktop/HelveticaNeue.dfont",
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/Camaleon/Camaleon.sublime-settings",
 		"/C/Users/gahon_a/Desktop/ircbot.rb",
 		"/C/Users/gahon_a/Desktop/netsoul.rb",
-		"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
-		"/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
 		"/C/Users/gahon_a/Desktop/rss.rb",
 		"/C/wamp/www/melondoc/index.php",
 		"/C/wamp/www/melondoc/library/forum.php",
@@ -163,10 +225,8 @@
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/Default/Global.sublime-settings",
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
 		"/C/wamp/www/melondoc/controller.php",
-		"/C/wamp/www/melondoc/define.php",
 		"/C/wamp/www/melondoc/public/js/framework.js",
 		"/C/wamp/www/melondoc/public/css/styles.css",
-		"/C/wamp/www/melondoc/application/views/index.html",
 		"/C/wamp/www/melondoc/public/css/video-js.css",
 		"/C/wamp/www/melondoc/application/controllers/home.php",
 		"/C/wamp/www/melondoc/public/css/style.css",
@@ -177,7 +237,6 @@
 		"/C/wamp/www/melondoc/application/views/countdown.html",
 		"/C/wamp/www/melondoc/application/controllers/countdown.php",
 		"/C/wamp/www/melondoc/public/js/script.js",
-		"/C/wamp/www/melondoc/application/views/header.html",
 		"/C/Users/gahon_a/My Projects/Flash/_fla_/menu/src/menu/MainMenu.as",
 		"/C/Users/gahon_a/My Projects/ENSEM_ORIGIN/_fla/menu/src/menu/MainMenu.as",
 		"/C/Users/gahon_a/My Projects/ENSEM_ORIGIN/_fla/menu/src/menu/LoaderSWF.as",
@@ -214,7 +273,6 @@
 		"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_en-en.xml",
 		"/C/Users/gahon_a/My Projects/rtype/serveur/include.h",
 		"/C/Users/gahon_a/Desktop/loiq-0.3.1a/INSTALL",
-		"/C/wamp/www/melondoc/application/views/home.html",
 		"/C/wamp/www/melondoc/public/js/jquery-1.7.js",
 		"/C/wamp/www/melondoc/public/js/jquery-1.7.min.js",
 		"/C/wamp/www/melondoc/public/js/module.js",
@@ -265,17 +323,7 @@
 		"/C/Users/gahon_a/Desktop/uml/PointDeVente.h",
 		"/C/Users/gahon_a/Desktop/uml/Promotion.h",
 		"/C/Users/gahon_a/Desktop/uml/Pilote.h",
-		"/C/Users/gahon_a/Desktop/uml/PlanningPersonnel.h",
-		"/C/Users/gahon_a/Desktop/uml/PlanningAvion.h",
-		"/C/Users/gahon_a/Desktop/uml/Planning.h",
-		"/C/Users/gahon_a/Desktop/uml/Vol.h",
-		"/C/Users/gahon_a/Desktop/uml/Personnel.h",
-		"/C/Users/gahon_a/Desktop/uml/ListeAttente.h",
-		"/C/Users/gahon_a/Desktop/uml/PersonnelAuSol.h",
-		"/C/Users/gahon_a/Desktop/uml/Paiement.h",
-		"/C/Users/gahon_a/Desktop/uml/Consommable.h",
-		"/C/Users/gahon_a/Desktop/uml/Internet.h",
-		"/C/Users/gahon_a/Desktop/uml/Comptoir.h"
+		"/C/Users/gahon_a/Desktop/uml/PlanningPersonnel.h"
 	],
 	"find":
 	{
@@ -293,6 +341,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"extend",
 			"<a",
 			"link_red",
 			"se deplacer",
@@ -381,59 +430,166 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 4,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
+					"file": "public/js/framework.js",
 					"settings":
 					{
-						"buffer_size": 61509,
+						"buffer_size": 4926,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								27333,
-								27333
+								2357,
+								2357
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/XML/XML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 7685.0,
+						"translation.y": 1980.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
+					"file": "application/views/HeaderView.html",
 					"settings":
 					{
-						"buffer_size": 784,
+						"buffer_size": 1131,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								437,
-								437
+								779,
+								779
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 486.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "application/views/filesbar.html",
+					"settings":
+					{
+						"buffer_size": 237,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/js/filesbar.js",
+					"settings":
+					{
+						"buffer_size": 732,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								699,
+								699
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 66.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/less/filesbar.less",
+					"settings":
+					{
+						"buffer_size": 422,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								277,
+								277
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/js/module.js",
+					"settings":
+					{
+						"buffer_size": 428,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								335,
+								335
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

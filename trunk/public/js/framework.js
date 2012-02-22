@@ -141,14 +141,11 @@ window.$f  = {
 
 	config:{
 		separator			: 	':',
-		path				: 	"/public/js",
-		identifier			: 	"myaction",
-		eventType			: 	"click"
+		path				: 	"/public/js"
 	},
 
 	alert		: 	$f_alert,
 	exec		: 	$f_exec,
-	require		: 	$f_require,
 	getform		: 	$f_getform,
 	sendform	: 	$f_sendform
 }
