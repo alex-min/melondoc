@@ -14,6 +14,14 @@ class		homeModel extends model
     return true;
   }
 
+  public function	getRightsFromDocID($doc_id)
+  {
+    $query = $this->db->query('SELECT * FROM `users_rights` WHERE `document_id` = "'.$doc_id.'"');
+    if ($query->count > 0)
+      return $query->rows;
+    return FALSE;
+  }
+
   public function	getDocumentsFromUserIDAndCategorie($user_id, $categorie_id)
   {
     $query = $this->db->query('SELECT d.*, t.*, c.* FROM `documents` d LEFT JOIN `templates` t ON (d.`template_id` = t.`template_id`) LEFT JOIN `categories` c ON (t.`categorie_id` = c.`id_category`) WHERE d.`user_id` = "'.$user_id.'" AND d.`deleted` = 0 AND t.`categorie_id` = "'.$categorie_id.'"');
