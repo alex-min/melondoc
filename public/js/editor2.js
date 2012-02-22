@@ -70,6 +70,72 @@ function html_to_latex(html) {
     return (replace);
 }
 
+function rec_extract_real_xml(elem) {
+    var txt = '';
+    var child = elem.children();	
+    for (var t = 0; t < child.length; t++) {
+	if (!($(child[t]).hasClass('droppable'))) {
+	    if ($(child[t]).hasClass('ed_title'))
+	    {
+		var r = html_to_latex($($(child[t]).find('div')[0]).html());
+		if (r) {
+		    txt += latex_assoc['ed_title'][0] 
+			+ r +
+			+ latex_assoc['ed_title'][1];
+		}
+	    }
+	   else if ($(child[t]).hasClass('ed_paragraph'))
+	    {
+		var r = html_to_latex($($(child[t]).find('div')[0]).html())
+		if (r)
+		    txt += latex_assoc['ed_paragraph'][0] 
+		    +  html_to_latex($($(child[t]).find('div')[0]).html())
+		    + latex_assoc['ed_paragraph'][1];
+	    }
+	   else if ($(child[t]).hasClass('ed_bullets'))
+	    {
+		txt += rec_extract_real_xml($(child[t]));
+	    }
+	   else if ($(child[t]).hasClass('ed_table_content'))
+	    {
+		var t2 = rec_extract_real_xml($(child[t]));
+		if (t2)
+		    txt += '<table>' + t2 + '</table>';
+	    }
+	   else if ($(child[t]).hasClass('ed_item'))
+	    {
+		var t2 = rec_extract_real_xml($(child[t]));
+		if (t2)
+		    txt += '<item>' + t2 + '</item>';
+	    }
+	   else if ($(child[t]).hasClass('ed_row'))
+	    {
+		var t2 = rec_extract_real_xml($(child[t]));
+		if (t2)
+		    txt += '<row>' + t2 + '</row>';
+	    }
+	    else if ($(child[t]).get(0).tagName.toLowerCase() == "ul") {
+		var r = rec_extract_real_xml($(child[t]));
+		if (r)
+		    txt += latex_assoc['ed_bullets'][0] + r + latex_assoc['ed_bullets'][1];
+	    }
+	    else if ($(child[t]).get(0).tagName.toLowerCase() == "li")
+	    {
+		var tmp = rec_extract_real_xml($(child[t]));
+		if (tmp != '')
+		    txt += latex_assoc['li'][0] + tmp + latex_assoc['li'][1];
+	    }
+	    else
+		txt += rec_extract_real_xml($(child[t]));
+	}
+	else {
+	    txt += '';
+	}
+    }
+    return (txt);
+}
+
+
 function rec_extract(elem) {
     var txt = '';
     var child = elem.children();	
@@ -126,6 +192,7 @@ function rec_extract(elem) {
     }
     return (txt);
 }
+
 
 var xml_str = '<xml> <droppable/><paragraph>Paragraph example</paragraph><droppable /><title>Title example</title><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /> </xml>';
 
@@ -188,7 +255,7 @@ xml_to_dom(xml_str);
 function ed_generateLatex() {
     var txt = '<xml>\n';
     $('.ed_documentarea').each(function () {
-	txt += rec_extract($(this));
+	txt += rec_extract_real_xml($(this));
     });
     txt += '\n</xml>';
     alert(txt);
