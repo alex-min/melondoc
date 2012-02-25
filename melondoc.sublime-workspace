@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"var",
+				"variable"
+			],
+			[
+				"error",
+				"error"
+			],
+			[
+				"warn",
+				"warn"
+			],
+			[
+				"de",
+				"debug"
+			],
+			[
+				"obj",
+				"obj"
+			],
+			[
 				"_",
 				"_url_"
 			],
@@ -72,50 +92,21 @@
 	"buffers":
 	[
 		{
-			"file": "public/js/framework.js",
+			"contents": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<contenu>\n\n	<!--HEADER-->\n	<header>\n		<site_name>\n			<![CDATA[fly2ensem.com]]>\n		</site_name>\n		<site_slogan>\n			<![CDATA[bien partis pour aller loin]]>\n		</site_slogan>\n		<site_navigation>\n			<accueil		rubrique=\"rub_a\">\n				<![CDATA[Hall d'Accueil]]>\n			</accueil>\n			<ensem			rubrique=\"rub_b\">\n				<![CDATA[Découvrir l'ENSEM]]>\n			</ensem>\n			<sejour			rubrique=\"rub_c\">\n				<![CDATA[Votre séjour à Nancy]]>\n			</sejour>\n			<international	rubrique=\"rub_d\">\n				<![CDATA[Parcours International]]>\n			</international>\n			<travel			rubrique=\"rub_e\">\n				<![CDATA[Carnets de voyage]]>\n			</travel>\n			<events			rubrique=\"rub_f\">\n				<![CDATA[Evènements à bord]]>\n			</events>\n			<previous>\n				<![CDATA[Page précédente]]>\n			</previous>\n		</site_navigation>\n	</header>\n\n	<!--	 FOOTER		-->\n	<footer>\n		<text_label>\n			<![CDATA[ENSEM-2, avenue de la Foret de Haye - 54516 Vandoeuvre-les-Nancy | Standard: 03 83 59 55 43 | Service de scolarite: 03 83 59 55 10 | ]]>\n		</text_label>\n		<text_link_contact>\n			<![CDATA[Nous contacter]]>\n		</text_link_contact>\n		<text_link_mentions>\n			<![CDATA[Mentions légales |]]>\n		</text_link_mentions>\n		<text_link_copyright>\n			<![CDATA[Copyright]]>\n		</text_link_copyright>\n	</footer>\n\n\n<!--	 CONTENU	-->\n	\n	<!-- HALL D'ACCUEIL -->\n	<rubrique id=\"rub_a\" urlrewriting=\"accueil\" titrepage=\"ENSEM - HALL D'ACCUEIL\">\n		<navigation></navigation>\n		<contenus>\n			<contenu template=\"home\" id=\"0\">\n				<titre>\n					<elem><![CDATA[DECOUVREZ LES PARCOURS DE FORMATION DE L'ENSEM,]]></elem>\n					<elem><![CDATA[ORGANISEZ VOTRE SEJOUR A NANCY ET PREPAREZ-VOUS]]></elem>\n					<elem><![CDATA[A UN DECOLLAGE SANS NUAGES.]]></elem>\n				</titre>\n				\n				<a titre=\"ADMISSION 1A\" texte=\"\" more=\"link\" link=\"\">\n					<![CDATA[<p class=\"justify\">Vous êtes élève de classe préparatoire scientifique ou titulaire d'une licence scientifique, d'un DUT scientifique ou d'un BTS avec une année de classe spéciale ATS... Consultez les conditions d’admission en première année.</p>]]>\n				</a>\n				\n				<b titre=\"1A TRONC COMMUN\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_bc\">\n					<![CDATA[<p class=\"justify\">Les enseignements du tronc commun offrent à l’élève-ingénieur une solide formation en sciences de l’ingénieur (Mathématiques, Mécanique, Électricité et Sciences de l’Information) ainsi qu’une large ouverture sur les disciplines générales : langues étrangères, connaissance de l’entreprise, conférences et visites de sites industriels, activités sportives... Un équilibre pédagogique qui signe la marque « ENSEM ».</p>]]>\n				</b>\n				\n				<c titre=\"1A TRONC COMMUN\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_bc\">\n					<![CDATA[<p class=\"justify\">Les enseignements du tronc commun offrent à l’élève-ingénieur une solide formation en sciences de l’ingénieur (Mathématiques, Mécanique, Électricité et Sciences de l’Information) ainsi qu’une large ouverture sur les disciplines générales : langues étrangères, connaissance de l’entreprise, conférences et visites de sites industriels, activités sportives... Un équilibre pédagogique qui signe la marque « ENSEM ».</p>]]>\n				</c>\n				\n				<d titre=\"STAGE INDUSTRIEL : 1 MOIS\" more=\"none\">\n					<![CDATA[<p class=\"justify\">Au cours des stages et des projets qui jalonnent leur scolarité, les élèves ingénieurs font l’apprentissage de la vie en entreprise : ils plongent au coeur des réalités économiques dès leur entrée à l’école et cultivent le sens des responsabilités, et ce dès leur stage industriel d’un mois en fin de première année.</p>]]>\n				</d>\n\n				<e titre=\"2A TRONC COMMUN, FILIERE ET MODULES ELECTIFS\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_e\">\n					<![CDATA[<p class=\"justify\">Au tronc commun s’ajoutent dès la deuxième année des enseignements spécifiques correspondant au choix de filière : Mécanique, Génie Électrique ou Ingénierie des Systèmes Automatisés. L’élève peut y approfondir une thématique et personnaliser sa formation au travers d’un large choix de modules électifs.</p>]]>\n				</e>\n				\n				<f titre=\"STAGE LINGUISTIQUE OU TECHNIQUE: 1 MOIS\" more=\"none\">\n					<![CDATA[<p class=\"justify\">Au cours des stages et des projets qui jalonnent leur scolarité, les élèves ingénieurs font l’apprentissage de la vie en entreprise : ils plongent au coeur des réalités économiques dès leur entrée à l’école et cultivent le sens des responsabilités.En fin de de 2e année,  le stage 'technicien', non obligatoire mais vivement conseillé  est une opportunité d'ouverture sur l'étranger.</p>]]>\n				</f>\n				\n				<g titre=\"FILIERE GENIE ELECTRIQUE\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_g\">\n					<![CDATA[<p class=\"justify\">Distribution et transport d’électricité, construction de machines électriques, de convertisseurs, conception et mise en oeuvre de leur commande... La formation répond aux attentes traditionnelle du secteur.   Mais se posiitonne également sur le terrain des systèmes embarqués (automobiles, avions), des réseaux locaux (BTP, sidérurgie, pétrole) et des procédés sidérurgiques (brassage, pompage des métaux liquides).</p>]]>\n				</g>\n				\n				<h titre=\"3A PARCOURS DE FILIERES OU PARCOURS TRANSVERSES\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_hrs\" >\n					<![CDATA[<p class=\"justify\">En 3ème année, l’organisation modulaire des enseignements permet à l’élève de se former dans les disciplines de son choix et d’acquérir savoir-faire et expertise dans les domaines correspondant à son projet professionnel. Il peut ainsi poursuivre un enseignement de spécialité au sein de sa filière ou opter pour un parcours transverse : « Énergie » et « Systèmes autonomes et technologies embarquées ».</p>]]>\n				</h>\n				\n				<i titre=\"STAGE INGÉNIEUR: 6 MOIS\" more=\"none\">\n					<![CDATA[<p class=\"justify\">Au cours des stages et des projets qui jalonnent leur scolarité, les élèves ingénieurs font l’apprentissage de la vie en entreprise  jusqu’au stage ingénieur bien souvent accompagné par une promesse d’embauche : cette immersion de 6 mois dans le monde industriel est une occasion pour le stagiaire de mettre en application ses connaissances par la réalisation d'études concrètes directement utilisables par l'entreprise d'accueil.</p>]]>\n				</i>\n				\n				<j titre=\"FILIERE MECANIQUE\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_j\">\n					<![CDATA[<p class=\"justify\">Équipe enseignante pluridisciplinaire, contacts industriels dans les domaines de l'Air-Espace, de l'Énergie et de l'Automobile, formation poussée en Mécanique Numérique... La filière forme des ingénieurs opérationnels polyvalents et particulièrement sensibilisés à la Mécanique des Milieux Continus.</p>]]>\n				</j>\n				\n				<k titre=\"FILIERE INGENIERIE DES SYSTEMES AUTOMATISES\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_k\">\n					<![CDATA[<p class=\"justify\">Grâce à une large intégration de l'Automatique, de l'Informatique et de l'Électronique, complétant la formation de base en Électro-Mécanique, les Ingénieurs de la filière ISA ont la capacité d'exercer tout métier ou fonction relevant de la conception, de la construction, et de l'exploitation des systèmes automatisés.</p>]]>\n				</k>\n				\n				<l titre=\"LA LIBERTÉ EN +\" more=\"none\">\n					<![CDATA[<p class=\"justify\">L’ENSEM a fait le choix de la liberté. Profil généraliste ou plus spécialisé, l’élève-ingénieur a l’opportunité de construire son propre itinéraire de formation en composant avec les multiples options qui sont proposées tout au long du cursus. Et ce, dès son entrée en deuxième année.</p>]]>\n				</l>\n				\n				<m titre=\"L’ESPRIT D’ÉQUIPE EN +\" more=\"none\">\n					<![CDATA[<p class=\"justify\">À l’ENSEM, les cours sont complétés par des séances tutorées en petits groupes, qui ont pour but de développer le travail en autonomie et l’esprit d’équipe. Un accent particulier est mis sur les travaux pratiques et sur les langues étrangères.</p>]]>\n				</m>\n				\n				<o titre=\"ADMISSION 2A\" more=\"link\" link=\"\">\n					<![CDATA[<p class=\"justify\">Vous êtes étudiant de niveau M1 ou titulaire d'un diplôme Bac+4.	Vous êtes salarié ou demandeur d'emploi et titulaire d'un DUT ou BTS et vous souhaitez reprendre des études supérieures après trois années d’expérience professionnelle. Consultez les conditions d’admission en deuxième année.</p>]]>\n				</o>\n				\n				<r titre=\"3A PARCOURS DE FILIERES\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_hrs\">\n					<![CDATA[<p class=\"justify\">En 3ème année, l’organisation modulaire des enseignements permet à l’élève de se former dans les disciplines de son choix et d’acquérir savoir-faire et expertise dans les domaines correspondant à son projet professionnel. Il peut ainsi poursuivre un enseignement de spécialité au sein de sa filière ou opter pour un parcours transverse : « Énergie » et « Systèmes autonomes et technologies embarquées ».</p>]]>\n				</r>\n				\n				<s titre=\"3A PARCOURS TRANSVERSES\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_hrs\">\n					<![CDATA[<p class=\"justify\">En 3ème année, l’organisation modulaire des enseignements permet à l’élève de se former dans les disciplines de son choix et d’acquérir savoir-faire et expertise dans les domaines correspondant à son projet professionnel. Il peut ainsi poursuivre un enseignement de spécialité au sein de sa filière ou opter pour un parcours transverse : « Énergie » et « Systèmes autonomes et technologies embarquées ».</p>]]>\n				</s>\n\n				<p titre=\"\" more=\"none\" link=\"\">\n					<![CDATA[<p class=\"justify\">Diplômé de l’ENSEM, vous pouvez prolonger en doctorat dans un des domaines d’excellence des laboratoires partenaires de l’École :<br/><a class=\"blue\" href=\"/www/#/fr-fr/decouvrir-ensem/laboratoires-de-recherche\">Énergie, Mécanique,matériaux<br/>Informatique, Automatique,<br/>Électronique et Mathématiques.</a></p>]]>\n				</p>\n				\n				<q titre=\"\" more=\"popup\" more_name=\"EN SAVOIR PLUS\" link=\"shadow_q\" >\n					<![CDATA[<p class=\"justify\">Porté par une formation en prise directe avec les besoins des entreprises, l’ingénieur ENSEM a le choix des destinations professionnelles.</p>]]>\n				</q>\n				\n				<t titre=\"\" more=\"none\">\n					<![CDATA[<p class=\"justify\">Grâce à son profil pluridisciplinaire le jeune dipômé ENSEM accède très vite à des postes de haute responsabilité.</p><br/><br/><p class=\"right\"><b><a href=\"/www/#/fr-fr/carnets-de-voyage\">CARTES POSTALES</a></b></p>]]>\n				</t>\n			\n			</contenu>\n		</contenus>\n	</rubrique>\n	\n	<!-- DECOUVRIR L'ENSEM -->\n	<rubrique id=\"rub_b\" urlrewriting=\"decouvrir-ensem\" titrepage=\"123ENSEM - DECOUVRIR L'ENSEM - Histoires et Valeurs\" type=\"compo\">\n		<navigation>\n			<btn id=\"1\" urlrewriting=\"histoire-et-valeurs\" titrepage=\"123ENSEM - DECOUVRIR L'ENSEM - Histoires et Valeurs\"><!-- ID btn ne doit jamais être 0, commencer à 1 -->\n				<intitule>\n					<![CDATA[HISTOIRES ET VALEURS]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"2\" urlrewriting=\"environnement-de-formation\" titrepage=\"\">\n				<intitule>\n					<![CDATA[ENVIRONNEMENT<br />DE FORMATION]]>\n				</intitule>\n				<sous_btn>\n					<sousbtn id=\"7\" urlrewriting=\"ecole\" titrepage=\"ENSEM - DECOUVRIR L'ENSEM - école\">\n						<intitule>\n							<![CDATA[École]]>\n						</intitule>\n					</sousbtn>\n					<sousbtn id=\"8\" urlrewriting=\"universite-de-lorraine\" titrepage=\"ENSEM - DECOUVRIR L'ENSEM - Université de Lorraine\">\n						<intitule>\n							<![CDATA[Université de Lorraine]]>\n						</intitule>\n					</sousbtn>\n				</sous_btn>\n			</btn>\n			<btn id=\"3\" urlrewriting=\"laboratoires-de-recherche\" titrepage=\"ENSEM - DECOUVRIR L'ENSEM - Laboratoires de recherche\">\n				<intitule>\n					<![CDATA[LABORATOIRES<br />DE RECHERCHE]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"4\" urlrewriting=\"relations-industrielles\" titrepage=\"ENSEM - DECOUVRIR L'ENSEM - Relations Industrielles\">\n				<intitule>\n					<![CDATA[RELATIONS<br />INDUSTRIELLES]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"5\" urlrewriting=\"international\" titrepage=\"ENSEM - DECOUVRIR L'ENSEM - International\">\n				<intitule>\n					<![CDATA[INTERNATIONAL]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n		</navigation>\n		<contenus>\n			<contenu id=\"1\" template=\"T1\">\n				<top>\n					<elem>\n						<![CDATA[GRANDE ECOLE RATTACHE AU RESEAU DES ENSI, L'ENSEM FORME EN 3 ANS]]>\n					</elem>\n					<elem>\n						<![CDATA[LES INGENIEURS AUX COMPETENCES DE HAUT NIVEAU, UN TICKER CHOC POUR]]>\n					</elem>\n					<elem>\n						<![CDATA[DE FUTURS DIPLOMES DESIREUX D'EVOLUER RAPIDEMENT VERS DES POSTES]]>\n					</elem>\n					<elem>\n						<![CDATA[A RESPONSABILITE]]>\n					</elem>\n				</top>\n				<content type=\"carousel\">\n					<elem type=\"video\" lien=\"videos/granjon.flv\" lien_image=\"images/diaporama/granjon.jpg\" legende=\"Depuis plus de cent ans, l’ENSEM fonde sa réputation sur une formation pluriscientifique, qui a su évoluer avec son temps en s’adaptant aux besoins de l’industrie. Présentation d’Yves Granjon, le directeur de l’École.\"/>\n				</content>\n				<right>\n					<![CDATA[<b><span class=\"big\"><span class=\"blue\">7 000</span></span><br/>ingénieurs diplômés<br/>depuis sa création en 1900<br/><br/><span class=\"big\"><span class=\"orange\">+ 400</span></span><br/>Elèves-ingénieurs accueillis<br/>et 130 diplômés chaque année<br/><br/><span class=\"big\"><span class=\"pink\">1/8</span></span><br/>Une cinquantaine<br/>d’enseignants permanents,<br/>soit 1 pour 8 élèves<br/><br/><span class=\"big\"><span class=\"gray\">18 000</span></span><br/>Surface en m2 de locaux<br/>dédiée à l’enseignement<br/>et à la recherche<br/><br/><span class=\"big\"><span class=\"green\">35%</span></span><br/>La forte implication du monde industriel se retrouve dans le conseil de l’École<br/>qui est composé pour plus d’un tiers<br/>de personnalités issues du monde de l’entreprise.</b>]]>\n				</right>\n				<bottom>\n					<![CDATA[ceci est un test ceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un testceci est un test <b><a href=\"http://www.google.fr\" target=\"_blank\" class=\"link_red\">google</a></b>]]>\n				</bottom>\n			</contenu>\n			\n			<contenu id=\"7\" template=\"T1\">\n				<top>\n					<elem>\n						<![CDATA[L’ENSEM BÉNÉFICIE D’UN ENVIRONNEMENT DE PREMIER PLAN, GRÂCE À SON]]>\n					</elem>\n					<elem>\n						<![CDATA[ADOSSEMENT À L’INSTITUT NATIONAL POLYTECHNIQUE DE LORRAINE (INPL),]]>\n					</elem>\n					<elem>\n						<![CDATA[ÉTABLISSEMENT LEADER EN INGÉNIERIE DURABLE ET PIÈCE MAÎTRESSE]]>\n					</elem>\n					<elem>\n						<![CDATA[DE LA FUTURE UNIVERSITÉ DE LORRAINE]]>\n					</elem>\n				</top>\n				<content type=\"carousel\">\n					<elem type=\"video\" lien=\"videos/didierjean.flv\" lien_image=\"images/diaporama/didierjean.jpg\" legende=\"Professeur dans les disciplines de la mécanique, Sophie Didierjean consacre ses activités de recherche à la pile à combustible au sein d’un des laboratoires de l’École, le LEMTA. Témoignage.\"/>\n					<elem type=\"video\" lien=\"videos/galbrun.flv\" lien_image=\"images/diaporama/galbrun.jpg\" legende=\"Ingénieur de recherche à l’ENSEM, Ernest Galbrun nous présente la Plate-forme Système Autonomes et Mobiles Interactifs : un banc d’essai pour les élèves-ingénieurs qui optent en 2ème année pour l’Ingénierie des Systèmes Automatisés.\"/>\n					<elem type=\"video\" lien=\"videos/pierfederici.flv\" lien_image=\"images/diaporama/pierfederici.jpg\" legende=\"Éolienne, panneaux photovoltaïques, piles à combustible, systèmes de stockage, la salle énergie est une plate-forme scientifique que nous détaille Serge Pierfédérici, enseignant dans les disciplines du Génie Électrique.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/1.jpg\" legende=\"Le Centre de Documentation du site : 32 000 ouvrages, 577 périodiques sans oublier la documentation électronique en réseau, l’accès aux bases de données...à découvrir sur  www.scd.inpl-nancy.fr\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/2.jpg\" legende=\"Le Centre de Documentation du site : 32 000 ouvrages, 577 périodiques sans oublier la documentation électronique en réseau, l’accès aux bases de données...à découvrir sur  www.scd.inpl-nancy.fr\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/3.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/4.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/5.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/6.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/7.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/8.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/9.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/10.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/11.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/12.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/13.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/14.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n					<elem type=\"photo\" lien=\"\" lien_image=\"images/diaporama/15.jpg\" legende=\"Le bâtiment de l’ENSEM abrite 15 salles de TD, 3 amphis, 1 salle audiovisuelle langues vivantes, 11 salles informatiques, des salles spécifiques de TP pour chaque discipline.\"/>\n				</content>\n				<right></right>\n				<bottom></bottom>\n			</contenu>\n			\n			<contenu id=\"8\" temlate=\"T1\">\n				<top>\n					<elem>\n						<![CDATA[EN 2012, L'UNIVERSITÉ DE LORRAINE RÉUNIRA EN UN SEUL  ÉTABLISSEMENT]]>\n					</elem>\n					<elem>\n						<![CDATA[L'INSTITUT NATIONAL POLYTECHNIQUE DE LORRAINE, L'UNIVERSITÉ HENRI POINCARÉ-]]>\n					</elem>\n					<elem>\n						<![CDATA[NANCY 1, L'UNIVERSITÉ NANCY 2 ET L'UNIVERSITÉ PAUL VERLAINE-METZ.]]>\n					</elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"universite.jpg\" />\n				</content>\n				<right></right>\n				<bottom>\n					<![CDATA[<p class=\"justify\">Le 1er janvier 2012, date de sa naissance officielle, l’Université de Lorraine proposera à ses 53 000 étudiants un très large éventail de formations, en sciences de la matière et du vivant comme en sciences de l'homme et de la société. Labellisée par l’État dans le cadre de l’Opération Campus qui entend faire émerger 12 campus attractifs sur la scène internationale, l’Université de Lorraine va engager un ambitieux programme d’investissement immobilier. Un levier de choix pour relever le double défi de l’excellence et de la proximité.<br/><br/><p><p class=\"right\"><b>EN SAVOIR PLUS<br><a href=\"http://vers.univ-lorraine.fr\" target=\"_blank\"><span class=\"red\">http://vers.univ-lorraine.fr</span></a></b></p>]]>\n				</bottom>\n			</contenu>\n			\n			<contenu id=\"3\" temlate=\"T1\">\n				<top>\n					<elem>\n						<![CDATA[L’ENSEM BÉNÉFICIE DES COMPÉTENCES D’ENSEIGNANTS-CHERCHEURS RATTACHÉS À CINQ]]>\n					</elem>\n					<elem>\n						<![CDATA[LABORATOIRES DE RENOMMÉE INTERNATIONALE, LABELLISÉS PAR LE CNRS. C’EST POUR LES]]>\n					</elem>\n					<elem>\n						<![CDATA[ÉLÈVES-INGÉNIEURS L’ASSURANCE DE DISPOSER D’UN ENSEIGNEMENT SANS CESSE ACTUALISÉ]]>\n					</elem>\n					<elem>\n						<![CDATA[ET TOUJOURS LIÉ AUX PROBLÉMATIQUES DU MONDE ÉCONOMIQUE ET DE LA SOCIÉTÉ.]]>\n					</elem>\n				</top>\n				<content type=\"mosaique\">\n					<elem id=\"1\">\n						<![CDATA[Le LEMTA, Laboratoire d’Énergétique et de Mécanique Théorique et Appliquée se concentre sur l’utilisation rationnelle de l’énergie, la maîtrise des écoulements, le comportement thermomécanique des matériaux, la biomécanique...<br/><b><span class=\"black\"><a href=\"http://www.lemta.fr/\">www.lemta.fr</a></span></b>]]>\n					</elem>\n\n					<elem id=\"2\">\n						<![CDATA[Le CRAN, Centre de Recherche en Automatique de Nancy, couvre un large spectre de compétences en automatique, traitement du signal, productique et génie informatique.<br/><b><span class=\"black\"><a href=\"http://www.cran.uhp-nancy.fr/\">www.cran.uhp-nancy.fr</a></span></b>]]>\n					</elem>\n					<elem id=\"3\">\n						<![CDATA[L’IECN, Institut Élie Cartan de Nancy, est l’un des plus importants laboratoires de mathématiques de France. Un réservoir d’excellence dont les compétences alimentent la pédagogie de l’École.<br/><b><span class=\"black\"><a href=\"http://www.iecn.u-nancy.fr/\">www.iecn.u-nancy.fr</a></span></b>]]>\n					</elem>\n					<elem id=\"4\">\n						<![CDATA[Le GREEN, Groupe de Recherche en Électrotechnique et Électronique de Nancy, traite de l’énergie électrique depuis sa production jusqu’à son utilisation.<br/><b><span class=\"black\"><a href=\"http://www.green.uhp-nancy.fr\">www.green.uhp-nancy.fr</a></span></b>]]>\n					</elem>\n					<elem id=\"5\">\n						<![CDATA[Le LORIA, Laboratoire Lorrain de Recherche en Informatique et ses Applications, rayonne à l’échelle internationale dans le domaine des Sciences et Technologies de l’Information et de la Communication.<br/><b><span class=\"black\"><a href=\"http://www.loria.fr/\">www.loria.fr</a></span></b>]]>\n					</elem>\n				</content>\n				<right></right>\n				<bottom></bottom>\n			</contenu>\n			\n			<contenu id=\"4\" temlate=\"T1\">\n				<top>\n					<elem>\n						<![CDATA[L’ENSEM DISPOSE D’UN SOLIDE SERVICE DES RELATIONS INDUSTRIELLES, VÉRITABLE]]>\n					</elem>\n					<elem>\n						<![CDATA[OUTIL STRATÉGIQUE QUI ANALYSE EN PERMANENCE LE MARCHÉ DE L’EMPLOI, EFFECTUE]]>\n					</elem>\n					<elem>\n						<![CDATA[AU PLUS PRÈS LE SUIVI DES OFFRES D’EMBAUCHE ET GÈRE LE PLACEMENT DES JEUNES]]>\n					</elem>\n					<elem>\n						<![CDATA[DIPLÔMÉS.]]>\n					</elem>\n				</top>\n				<content type=\"carousel\">\n					<elem type=\"video\" lien=\"videos/astruc.flv\" lien_image=\"images/diaporama/astruc.jpg\" legende=\"Témoignage de Michel ASTRUC, Directeur-adjoint à la Direction générale de GDF-Suez et Président du Conseil de l'ENSEM.\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\">Les relations avec les entreprises constituent à l’évidence un des points forts de l’école. <br/>Stage de fin de première année, stage technique, stage ingénieur de 6 mois en fin de 3ème année, interventions d’industriels dans le cursus, visites d’entreprises et partenariats jalonnent le parcours de formation comme autant de points de rencontre entre l’élève-ingénieur et le monde industriel... et de garanties en termes d’insertion professionnelle. <br/>Si l’ENSEM entretient des liens avec la plupart des grands groupes industriels français et internationaux, dont certains font partie de son conseil, elle peut aussi compter sur un réseau de plus de 4 000 ingénieurs en activité. Un tremplin idéal pour de futurs diplômés désireux de s’investir dans des projets d’envergure et d’évoluer rapidement vers des postes à responsabilité.</p><br/><br/><p class=\"right\"><a href=\"/www/#/fr-fr/carnets-de-voyage\"><br/><b>LES DIPLÔMÉS TÉMOIGNENT</b></a></p>]]>\n				</right>\n				<bottom>\n					<![CDATA[LES PARTENAIRES DE L’ENSEM (PARTNERS OF ENSEM) : AIR FRANCE Industrie, AIRBUS France, AIRBUS UK, ALTADIS, AQUINTOS GmBH, ARCELOR Research, AREVA, ARTHUS, CEA, CENTER FOR ADVANCED POWER SYSTEMS, CRISTALLERIE de St Louis, CHRU Nancy-Brabois, COLAS Est, CONVERTEAM, COOPER Standard Automotive, DELPHI, EADS, EDF, EURO CFD, FAURECIA, FRANCE TELECOM, GDF, HELION, HISPANO SUIZA, HYDROGENICS GmBH, IFP, IMAGINE, INEO, INRS, IFP, IRSN, JEUMONT SA, LOHR Industrie, MBDA, MESSIER-BUGATTI, ONERA, PHILIPS semiconductors, PSA, RATP, RENAULT, Robert BOSCH GmBH, SAFT, SAGEM, SAINT GOBAIN Research, SCHLUMBERGER, SCHNEIDER Electric, SEGULA, SIEMENS, SINGLE BUOY MOORINGS Inc, SITA, SNCF, SNECMA, SOLSI Sarl, TDF, THALES, TOTAL, TRANE, UGINE et ALZ, UNILOG, VALEO, VB FRANCE SA, VEOLIA Eau ...]]>\n				</bottom>\n				<partenaires>\n					<![CDATA[LES PARTENAIRES DE L’ENSEM : AIR FRANCE Industrie, AIRBUS France, AIRBUS UK, ALTADIS, AQUINTOS GmBH, ARCELOR Research, AREVA, ARTHUS, CEA, CENTER FOR ADVANCED POWER SYSTEMS, CRISTALLERIE de St Louis, CHRU Nancy-Brabois, COLAS Est, CONVERTEAM, COOPER Standard Automotive, DELPHI, EADS, EDF, EURO CFD, FAURECIA, FRANCE TELECOM, GDF, HELION, HISPANO SUIZA, HYDROGENICS GmBH, IFP, IMAGINE, INEO, INRS, IFP, IRSN, JEUMONT SA, LOHR Industrie, MBDA, MESSIER-BUGATTI, ONERA, PHILIPS semiconductors, PSA, RATP, RENAULT, Robert BOSCH GmBH, SAFT, SAGEM, SAINT GOBAIN Research, SCHLUMBERGER, SCHNEIDER Electric, SEGULA, SIEMENS, SINGLE BUOY MOORINGS Inc, SITA, SNCF, SNECMA, SOLSI Sarl, TDF, THALES, TOTAL, TRANE, UGINE et ALZ, UNILOG, VALEO, VB FRANCE SA, VEOLIA Eau ...]]>\n				</partenaires>\n			</contenu>\n\n			<contenu id=\"5\" template=\"inter\">\n				<top>\n					<elem><![CDATA[POSITIONNÉE SUR LA SCÈNE INTERNATIONALE AVEC L’AMBITION DE DÉVELOPPER]]></elem>\n					<elem><![CDATA[SA VISIBILITÉ, L’ENSEM ENTRETIENT DES RELATIONS ÉTROITES AVEC UNE VINGTAINE]]></elem>\n					<elem><![CDATA[D’ÉTABLISSEMENTS ÉTRANGERS ET MÈNE AVEC EUX UNE POLITIQUE ACTIVE D’ÉCHANGES]]></elem>\n					<elem><![CDATA[D’ÉTUDIANTS.]]></elem>\n				</top>\n				<content type=\"planisphere\">\n					<![CDATA[Stage ou année de formation à l’international, l’École encourage ses élèves-ingénieurs à vivre cette expérience dans l’un des établissements partenaires.....]]>\n				</content>\n			</contenu>\n\n		</contenus>\n	</rubrique>\n	\n<!-- VOTRE SEJOUR A NANCY -->\n\n	<rubrique id=\"rub_c\" urlrewriting=\"votre-sejour-a-nancy\" titrepage=\"ENSEM - VOTRE SEJOUR A NANCY - Se loger &amp; se restaurer\" type=\"compo\">\n		<navigation>\n			<btn id=\"1\" urlrewriting=\"se-loger-et-se-restaurer\" titrepage=\"ENSEM - VOTRE SEJOUR A NANCY - Se loger &amp; se restaurer\">\n				<intitule>\n					<![CDATA[SE LOGER &amp;<br />SE RESTAURER]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"2\" urlrewriting=\"se-deplacer\" titrepage=\"ENSEM - VOTRE SEJOUR A NANCY - Se déplacer\">\n				<intitule>\n					<![CDATA[SE DÉPLACER]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"3\" urlrewriting=\"s-ouvrir-a-la-vie-associative\" titrepage=\"ENSEM - VOTRE SEJOUR A NANCY - S'ouvrir à la vie associative\">\n				<intitule>\n					<![CDATA[S'OUVRIR À LA<br />VIE ASSOCIATIVE]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"4\" urlrewriting=\"sortir-en-ville\" titrepage=\"ENSEM - VOTRE SEJOUR A NANCY - Sortir en ville\">\n				<intitule>\n					<![CDATA[SORTIR EN VILLE]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"5\" urlrewriting=\"bouger\" titrepage=\"ENSEM - VOTRE SEJOUR A NANCY - Bouger\">\n				<intitule>\n					<![CDATA[BOUGER]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n		</navigation>\n		<contenus>\n			<contenu id=\"1\" temlate=\"T1\">\n				<top>\n					<elem><![CDATA[SITUEE SUR LES HAUTEURS DE NANCY AVEC VUE IMPRENABLE SUR L'HIPPODROME]]>\n					</elem>\n					<elem><![CDATA[DE BRABOIS, L'ENSEM PARTAGE SON CAMPUS AVEC DEUX AUTRES ECOLES]]></elem>\n					<elem><![CDATA[D'INGENIEURS, TOUT Y EST REUNI POUR UN SEJOUR DES PLUS AGREABLES.]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"4.jpg\" legende=\"Au coeur de la Résidence INPL située à deux pas de l'École, des studios simples ou doubles de 25 ou 38 m2.\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><img src=\"images/3.jpg\" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Se loger. Facile ! La Résidence INPL réserve aux élèves-ingénieurs de 1ère année 260 studios entièrement équipés, de 25 ou 38 m2. Vous y serez à 5 minutes à pied de l'ENSEM et à 10 minutes du Restaurant Universitaire le plus proche. Tout aussi simple, le logement en ville ou en périphérie immédiate, l'offre de chambres et d'appartements disponibles dépassant largement la demande.<br/><br/>Se restaurer. Nancy compte 8 Restaurants Universitaires, avec salles \"traditionnelles\", brasseries et salles spécialisées (pizzeria, chinois, crêperie…). Le plus proche est à 5 minutes.<br/><br/><span class=\"red\">Site web de la résidence INPL :<br/><a href=\"http://www.adinpl.fr\" target=\"_blank\"><b>http://www.adinpl.fr</b></a><br/>Site web du CROUS de Nancy-Metz :<br/><a href=\"http://www.crous-nancy-metz.fr\" target=\"_blank\"><b>http://www.crous-nancy-metz.fr</b></a></span></p>]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"2\" temlate=\"T1\">\n				<top>\n					<elem><![CDATA[DESSERVIE PAR LE TRAM, L'ENSEM EST EN CONNEXION DIRECTE]]></elem>\n					<elem><![CDATA[AVEC LE CENTRE-VILLE ET LES PRINCIPAUX SITE D'INTERET]]></elem>\n					<elem><![CDATA[UNIVERSITAIRE.]]></elem>\n				</top>\n				<content type=\"map\"></content>\n				<right>\n					<![CDATA[<p class=\"justify\"><img src=\"images/1.jpg\" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><span class=\"blue\">Se déplacer. Une station de tram au pied de l’École ! La ligne dessert la gare, le centre-ville et les différents sites universitaires.<br/><br/><a href=\"http://www.reseau-stan.com\"><b>www.reseau-stan.com</b></a></span></p>]]>\n				</right>\n				<bottom>\n					<![CDATA[<br/><b>> VENIR À NANCY</b><br/><br/><b>En voiture :</b><br/><span class=\"red\"><b>votre itinéraire jusqu'à l'ENSEM // TODO</b></span><br/><br/><b>En train :</b><i>Gare TGV de Nancy Ville</i> : trains directs à 1 h 30 de Paris et Luxembourg Ville<br/><i>Gare Lorraine TGV </i>: trains directs à 2 h de Lille Europe, 4 h de Rennes, 5 h de Bordeaux, 2 h 40 de Francfort<br/><span class=\"red\"><a href=\"http://www.voyages-sncf.com\" target=\"_blank\"><b>www.voyages-sncf.com</b></a></span>]]>\n				</bottom>\n			</contenu>\n\n			<contenu id=\"3\" temlate=\"T1\">\n				<top>\n					<elem><![CDATA[A NANCY,VILLE UNIVERSITAIRE DE 40 000 ETUDIANTS, LES ELEVES-INGENIEURS]]></elem>\n					<elem><![CDATA[DE L'ENSEM NE SONT PAS LES DERNIERS A PARTICIPER AUX ACTIVITES ASSOCIATIVES.]]></elem>\n				</top>\n				<content type=\"carousel\">\n					<elem type=\"video\" lien=\"videos/pichavant.flv\" lien_image=\"images/diaporama/pichavant.jpg\" legende=\"Élève-ingénieur de deuxième année, Céline Pichavant contribue en présidente active au bon fonctionnement du club Marathon Shell et à la réussite de l’équipe-projet inscrite dans la compétition.\"></elem>\n					<elem type=\"video\" lien=\"videos/roussel.flv\" lien_image=\"images/diaporama/roussel.jpg\" legende=\"Activités et clubs, soirées, voyages, week-ends... La vie étudiante à l’ENSEM présentée par Valentin Roussel,  élève-ingénieur de deuxième année et président du Bureau des élèves.\"></elem>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><img src=\"images/11.jpg\" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>S'ouvrir à la vie associative. À l’ENSEM, BDE, BDA, BDS et Cercle (le foyer de l’école) rivalisent d’initiatives pour vous proposer un calendrier associatif riche en événements. Parmi les rendez-vous marquants : le marathon-Shell, compétition automobile mondiale labellisée développement durable à laquelle participe chaque année un équipage projet de l’École ; les 24 heures de Stan qui voient des étudiants issus d’une vingtaine d’écoles et d’universités se lancer dans une course folle à bord de leurs gigantesques chars anthropomobiles.<br/><br/><span class=\"red\">Le BdE - Bureau des Élèves - de l'ENSEM<br/>Tél. 03 83 59 55 50 / 55 49 (Cercle)<br/><a href=\"http://eleves.ensem.inpl-nancy.fr\" target=\"_blank\"><b>http://eleves.ensem.inpl-nancy.fr</b></a></span></p>\n					]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"4\" temlate=\"T1\">\n				<top>\n					<elem><![CDATA[AU DELA DE LA MAJESTE DE LA PLACE STANISLAS, CLASSE AU PATRIMOINE]]></elem>\n					<elem><![CDATA[MONDIAL DE L'UNESCO, NANCy S'AFFIRME COMME UNE VILLE MULTIPLE ET]]></elem>\n					<elem><![CDATA[EPANOUIE QUI EST CONNUE POUR SON INCONTESTABLE DOUCEUR DE VIE.]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"0.jpg\" legende=\"Saluee pour son cadre de vie et son environnement a taille humaine, Nancy est la plus latine des villes de l' Est\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><img src=\"images/2.jpg\" /><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Nancy a tout d’une grande. Tout sans les inconvénients. Pas étonnant qu’elle se classe régulièrement en tête du classement des villes où il fait bon vivre.<br/><br/><br/><span class=\"red\"><a href=\"http://www.toutnancy.com\" target=\"_blank\"><b>www.toutnancy.com</b></a><br/><a href=\"http://www1.nancy.fr\" target=\"_blank\"><b>www1.nancy.fr</b></a><br/><a href=\"http://www.grand-nancy.org\" target=\"_blank\"><b>www.grand-nancy.org</b></a><br/><a href=\"http://www.ot-nancy.fr\" target=\"_blank\"><b>www.ot-nancy.fr</b></a></span></p>\n					]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"5\" temlate=\"T1\">\n				<top>\n					<elem><![CDATA[TERRAINS DE SPORT, MURS D'ESCALADE, SALLES DE MUSCULATION ET DE DANSE,]]></elem>\n					<elem><![CDATA[PISCINE... LES 40 000 ETUDIANTS NANCEIENS NE SONT PAS TOUS SPORTIFS, MAIS]]></elem>\n					<elem><![CDATA[RARES SONT CEUX QUI N'ONT JAMAIS PROFITE DES INSTALLATIONS UNIVERSITAIRES]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"6.jpg\" legende=\"Sport loisir, sport nature, sport passion, sport d'équipe... Vous avez l'embarras du choix\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><img src=\"images/5.jpg\"/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Bouger. Bien plus que du sport, le slogan du SIUAP, Service Inter-universitaire des activités physiques, n’a rien d’usurpé. Il renvoie à une approche nouvelle de la pratique sportive, vécue comme un vecteur d’équilibre, de santé et d’intégration sociale. Dans son catalogue, une cinquantaine d’activités qui s’adressent chaque année à plus de 10 000 pratiquants, étudiants et personnels : des disciplines aquatiques à la danse de salon, en passant par la connaissance de soi et la gestion du stress...<br/><br/><br/><br/><br/><span class=\"red\"><a href=\"http://www.siuap.u-nancy.fr\" target=\"_blank\"><b>www.siuap.u-nancy.fr</b></a></span></p>\n					]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n		</contenus>\n	</rubrique>\n	\n	<!-- CARNETS DE VOYAGE -->\n	<rubrique id=\"rub_d\" urlrewriting=\"carnets-de-voyage\" titrepage=\"ENSEM - CARNETS DE VOYAGE - Pierre Scacchi ingénieur études aéroconseil\" type=\"compo\">\n		<navigation>\n			<btn id=\"1\" urlrewriting=\"pierre-scacchi-ingenieur-etudes-aeroconseil\" titrepage=\"ENSEM - CARNETS DE VOYAGE - Pierre Scacchi ingénieur études aéroconseil\">\n				<intitule>\n					<![CDATA[PIERRE SCACCHI<br/>INGÉNIEUR ÉTUDES AÉROCONSEIL]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"2\" urlrewriting=\"guillaume-jarysa-dautel-chief-executive-officer-devolia\" titrepage=\"ENSEM - CARNETS DE VOYAGE - Guillaume Jarysa-Dautel chief executive officer devolia\">\n				<intitule>\n					<![CDATA[GUILLAUME JARYSA-DAUTEL<br />CHIEF EXECUTIVE OFFICER DEVOLIA]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"3\" urlrewriting=\"alexandra-mabeau-controleur-de-projet-edf\" titrepage=\"ENSEM - CARNETS DE VOYAGE - Alexandra Mabeau contrôleur de projet edf\">\n				<intitule>\n					<![CDATA[ALEXANDRA MABEAU<br />CONTRÔLEUR DE PROJET EDF]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n		</navigation>\n		<contenus>\n			<contenu id=\"\" template=\"T2\">\n				<image lien=\"CarnetDeVoyage/carnet_de_voyage_1.png\"/>\n				<label texte=\"J'ai été recruté par Aéroconseil\" />\n			</contenu>\n			<contenu id=\"\" template=\"T2\">\n				<image lien=\"CarnetDeVoyage/carnet_de_voyage_2.png\"/>\n				<label texte=\"J'ai ouvert une filiale Devolia à New York\" />\n			</contenu>\n			<contenu id=\"\" template=\"T2\">\n				<image lien=\"CarnetDeVoyage/carnet_de_voyage_3.png\"/>\n				<label texte=\"EDF m'a embauchée avant la fin du stage\" />\n			</contenu>\n		</contenus>\n		<!--<modules_centre></modules_centre>-->\n	</rubrique>\n\n<!-- EVENEMENTS A BORD -->\n\n	<rubrique id=\"rub_e\" urlrewriting=\"evenements-a-bord\" titrepage=\"ENSEM - EVENEMENTS A BORD - l'ensem se distingue à l'eco marathon shell 2011\" type=\"compo\">\n		<navigation>\n			<btn id=\"1\" urlrewriting=\"l-ensem-se-distingue-a-l-eco-marathon-shell-2011\" titrepage=\"ENSEM - ÉVÉNEMENTS À BORD - l'ensem se distingue à l'eco marathon shell 2011\">\n				<intitule>\n					<![CDATA[L'ENSEM SE DISTINGUE<br/>À L'ECO MARATHON SHELL 2011]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"2\" urlrewriting=\"bientot-une-nouvelle-formation-a-l-ensem\" titrepage=\"ENSEM - ÉVÉNEMENTS À BORD - Bientôt une nouvelle formation à l’ENSEM\">\n				<intitule>\n					<![CDATA[BIENTÔT UNE NOUVELLE FORMATION<br />À L’ENSEM]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"3\" urlrewriting=\"des-drones-a-l-ensem\" titrepage=\"ENSEM - ÉVÉNEMENTS À BORD - Des drones à l’ENSEM\">\n				<intitule>\n					<![CDATA[DES DRONES À L’ENSEM]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"4\" urlrewriting=\"une-collaboration-exemplaire-avec-une-entreprise-lorraine\" titrepage=\"ENSEM - ÉVÉNEMENTS À BORD - Une collaboration exemplaire avec une entreprise lorraine\">\n				<intitule>\n					<![CDATA[UNE COLLABORATION EXEMPLAIRE<br />AVEC UNE ENTREPRISE LORRAINE]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"5\" urlrewriting=\"les-vehicules-de-demain-sont-deja-a-l-ensem\" titrepage=\"ENSEM - ÉVÉNEMENTS À BORD - Les véhicules de demain sont déjà à l’ENSEM\">\n				<intitule>\n					<![CDATA[LES VÉHICULES DE DEMAIN<br />SONT DÉJÀ À L’ENSEM]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n		</navigation>\n		<contenus>\n\n			<contenu id=\"1\" template=\"T3\">\n				<titre>\n					<![CDATA[L’ENSEM SE DISTINGUE À L’ECO MARATHON SHELL 2011]]>\n				</titre>\n				<texte>\n					<![CDATA[L’E2M, véhicule prototype Urban Concept réalisé entièrement par les élèves de l’Ecole et fonctionnant à l’hydrogène, s’est illustré les 28 et 29 mai derniers sur le circuit EuroSpeedway à Lausitz en Allemagne en se hissant à la 9ème place du classement de la catégorie Urban Concepts Hydrogène. L’ENSEM est ainsi la première Ecole Française de sa catégorie en affichant une consommation de 1 kWh pour 39 km parcourus.]]>\n				</texte>\n				<image lien=\"Evenement/1.jpg\"/>\n			</contenu>\n\n			<contenu id=\"2\" template=\"T3\">\n				<titre>\n					<![CDATA[BIENTÔT UNE NOUVELLE FORMATION À L’ENSEM]]>\n				</titre>\n				<texte>\n					<![CDATA[Une nouvelle formation d’ingénieurs devrait bientôt voir le jour à l’ENSEM, dans le domaine des Mathématiques et Sciences et Techniques de l’Information et de la Communication : Maths-STIC, tel est pour le moment le nom de code de ce nouveau diplôme qui sera proposé par l’Ecole et qui se concentrera sur l’interface entre les mondes physique et numérique, en insistant sur la modélisation, la simulation, le contrôle, le traitement du signal, de l’information et de l’image.]]>\n				</texte>\n				<image lien=\"Evenement/2.jpg\"/>		\n			</contenu>\n\n			<contenu id=\"3\" template=\"T3\">\n				<titre>\n					<![CDATA[DES DRONES À L’ENSEM]]>\n				</titre>\n				<texte>\n					<![CDATA[Accueillant déjà une flotte de robots mobiles autonomes, la plate-forme SAMI (Systèmes Autonomes Mobiles Interactifs) qui permet aux élèves de l’Ecole de se confronter aux technologies les plus récentes en matière de pilotage de systèmes autonomes intelligents, vient de s’équiper d’une escadre de drones. Ces avions sans pilote sont commandés à distance, surveillés par des caméras infrarouges et recueillent des informations (en particulier des images vidéos) qu’ils retransmettent en temps réel aux opérateurs distants.]]>\n				</texte>\n				<image lien=\"Evenement/3.jpg\"/>\n			</contenu>\n\n			<contenu id=\"4\" template=\"T3\">\n				<titre>\n					<![CDATA[UNE COLLABORATION EXEMPLAIRE AVEC UNE ENTREPRISE]]>\n				</titre>\n				<texte>\n					<![CDATA[C’est l’histoire de la rencontre d’une entreprise lorraine, ER3I, possédant un savoir-faire dans la modernisation et l’instrumentation de turbines hydrauliques et d’une Ecole, la nôtre, possédant une turbine Francis et qui se voit offrir une seconde jeunesse. C’est aussi l’histoire de la rencontre entre les compétences techniques d’une entreprise et l’expertise scientifique des laboratoires de l’ENSEM. Résultat : une instrumentation complète équipe désormais la turbine hydraulique de l’Ecole au bénéfice des élèves qui disposent d’un équipement ultramoderne et l’entreprise partenaire dispose d’un banc d’essais pour des campagnes de développement de nouveaux produits. Au bout d’une année de collaboration, deux projets de fin d’études, un stage de fin de formation et une embauche viennent confirmer l’intérêt de ce type de collaboration.]]>\n				</texte>\n				<image lien=\"Evenement/4.jpg\"/>\n			</contenu>\n\n			<contenu id=\"5\" template=\"T3\">\n				<titre>\n					<![CDATA[LES VÉHICULES DE DEMAIN SONT DÉJÀ À L’ENSEM]]>\n				</titre>\n				<texte>\n					<![CDATA[Technologies embarquées, nouvelles formes d’énergie, moteurs révolutionnaires, équipements innovants, la voiture du futur ne ressemblera assurément pas à ce que nous connaissons aujourd’hui. Les recherches d’aujourd’hui nourrissent la formation théorique et pratique de nos futurs diplômés, en particulier au travers de plates-formes technologiques. Début 2012, une plate-forme véhicule du futur sera à disposition des élèves de l’Ecole qui pourront ainsi acquérir les bases pratiques qui leur permettront, à leur sortie de l’Ecole, de faire bénéficier le monde industriel des acquis scientifiques et technologiques les plus récents.]]>\n				</texte>\n				<image lien=\"Evenement/5.jpg\"/>\n			</contenu>\n		</contenus>\n	</rubrique>\n\n	<!-- ADMISSIONS -->\n	<rubrique id=\"rub_f\" urlrewriting=\"admissions\" titrepage=\"ENSEM - ADMISSIONS\" type=\"admissions\">\n		<navigation></navigation>\n		<!--<modules_centre></modules_centre>-->\n	</rubrique>\n	\n	<!-- NOUS CONTACTER -->\n	<rubrique id=\"rub_g\" urlrewriting=\"nous-contacter\" titrepage=\"ENSEM - NOUS CONTACTER\" type=\"compo\">\n		<navigation></navigation>\n		<contenus>\n			<contenu template=\"contact\">\n				<formulaire>\n					<lastname_tag	value=\"Nom}\">			</lastname_tag>\n					<firstname_tag	value=\"Prénom\">			</firstname_tag>\n					<to_tag			value=\"Destinataire\">	</to_tag>\n					<subject_tag	value=\"Objet\">			</subject_tag>\n					<submit_tag		value=\"Envoyer\">		</submit_tag>\n				</formulaire>\n				<informations>\n					<direction titre=\"Direction\">\n						<elem position=\"Directeur.\"								name=\"M.Yves GRANJON.\">				</elem>\n						<elem position=\"Assistante de direction.\"				name=\"Melle Caroline SCHREPFF.\">	</elem>\n						<elem position=\"Secrétaire général.\"					name=\"Mme Marie-José LEDRU.\">		</elem>\n						<elem position=\"Directeur des études.\"					name=\"M.Michel DUFAUT.\">			</elem>\n						<elem position=\"Directeur des relations industrielles.\"	name=\"M.Alain LEFEVRE.\">			</elem>\n					</direction>\n					<service_relations titre=\"SERVICE DES RELATIONS INTERNATIONALES\">\n						<elem position=\"Responsable.\"							name=\"M.Noureddinne TAKORABET.\">	</elem>\n					</service_relations>\n					<service_scolarite titre=\"SERVICE DE SCOLARITÉ\">\n						<elem position=\"Responsable.\"							name=\"Mme.Monique BILON.\">		</elem>\n					</service_scolarite>\n					\n					<filiere_mecanique titre=\"FILIÈRE MÉCANIQUE\">\n						<elem position=\"Responsable.\"							name=\"Mme Sophie DIDIERJEAN.\">	</elem>\n					</filiere_mecanique>\n					<filiere_electrique titre=\"FILIÈRE GÉNIE ÉLECTRIQUE\">\n						<elem position=\"Responsable.\"							name=\"M.Farid MEIBODY-TABAR.\">	</elem>\n					</filiere_electrique>\n					<filiere_systeme_auto titre=\"FILIÈRE INGÉNIERIE DES SYSTÈMES AUTOMATISÉS\">\n						<elem position=\"Responsable.\"							name=\"M.Didier WOLF.\">	</elem>\n					</filiere_systeme_auto>\n				</informations>\n			</contenu>\n		</contenus>\n	</rubrique>\n\n	<!-- FOREIGN STUDENTS -->\n	<rubrique id=\"rub_h\" urlrewriting=\"foreign-students\" titrepage=\"ENSEM - FOREIGN STUDENTS - Le diplôme d'ingénieur\" type=\"compo\">\n		<navigation>\n			<btn id=\"1\" urlrewriting=\"le-diplome-d-ingenieur\" titrepage=\"ENSEM - FOREIGN STUDENTS - Le diplôme d'ingénieur\">\n				<intitule>\n					<![CDATA[LE DIPLÔME<br />D'INGÉNIEUR]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"2\" urlrewriting=\"le-programme-national-n-plus-i\" titrepage=\"ENSEM - FOREIGN STUDENTS - Le programme national n+i\">\n				<intitule>\n					<![CDATA[LE PROGRAMME<br />NATIONAL N+I]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"3\" urlrewriting=\"les-sejours-de-courte-duree\" titrepage=\"ENSEM - FOREIGN STUDENTS - Les séjours de courte durée\">\n				<intitule>\n					<![CDATA[LES SÉJOURS DE<br />COURTE DURÉE]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"4\" urlrewriting=\"formalites-pedagogiques\" titrepage=\"ENSEM - FOREIGN STUDENTS - Formalités pédagogiques\">\n				<intitule>\n					<![CDATA[FORMALITÉS<br />PÉDAGOGIQUES]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n			<btn id=\"5\" urlrewriting=\"formalites-administratives\" titrepage=\"ENSEM - FOREIGN STUDENTS - Formalités administratives\">\n				<intitule>\n					<![CDATA[FORMALITÉS<br />ADMINISTRATIVES]]>\n				</intitule>\n				<sous_btn></sous_btn>\n			</btn>\n		</navigation>\n		<contenus>\n\n			<contenu id=\"1\" template=\"T1\">\n				<top>\n					<elem><![CDATA[DU SÉJOUR DE COURTE DURÉE PERMETTANT DE CAPITALISER DES CRÉDITS]]></elem>\n					<elem><![CDATA[ECTS AU CURSUS LONG COURONNÉ PAR LE TITRE D’INGÉNIEUR ENSEM, L’ECOLE]]></elem>\n					<elem><![CDATA[PROPOSE AUX ÉTUDIANTS ÉTRANGERS UN LARGE ÉVENTAIL DE POSSIBILITÉS.]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"7.jpg\" legende=\"Inscrit dans le schéma européen LMD, le diplôme d’ingénieur confère automatiquement le titre de Master.\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><b>L’EXCELLENCE SCIENTIFIQUE<br/>À LA FRANÇAISE</b><br/><br/>Figurant parmi les plus prestigieux diplômes français, les diplômes d’ingénieurs sont réservés à des étudiants sélectionnés. Ils confèrent automatiquement le titre de Master et sont reconnus par les entreprises comme des labels d’excellence.<br/><br/>Comme tous les diplômes d’ingénieurs, le diplôme de l’ENSEM est protégé par la loi et accrédité par la commission des titres d’ingénieurs (CTI) qui examine périodiquement la formation proposée par l’Ecole. L’Ecole possède par ailleurs le label EUR-ACE (European Accreditation of Engineering Programmes) délivré par l’ENAEE (European Network for Accreditation of Engineering Education). Le diplôme d’ingénieur de l’ENSEM confère également le grade de Master.<br/><br/>L’ENSEM accueille sur dossier des étudiants de niveau bachelor. Le diplôme d’ingénieur ENSEM ne peut être délivré que si l’étudiant effectue au moins deux années d’études à l’Ecole.</p>]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"2\" template=\"T1\">\n				<top>\n					<elem><![CDATA[L’ENSEM FAIT PARTIE DU RÉSEAU NATIONAL FRANÇAIS N+I QUI PERMET]]></elem>\n					<elem><![CDATA[À DES ÉTUDIANTS DU MONDE ENTIER DE FAIRE UNE PARTIE DE LEURS]]></elem>\n					<elem><![CDATA[ÉTUDES EN FRANCE POUR OBTENIR LE GRADE DE MASTER.]]></elem> \n				</top>\n				<content type=\"image\">\n					<elem lien=\"12.jpg\" legende=\"\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><b>n+i à l’ENSEM</b><br/><br/><br/>Diplôme délivré : diplôme d'ingénieur de l’Ecole Nationale Supérieure d'Electricité et de Mécanique validant 5 années d’études supérieures et conférant le grade de Master. <br/>Durée des études : 2 ans (4 semestres)<br/>Niveau requis : être titulaire au minimum d’un diplôme de Bachelor<br/>Admission : sur dossier et entretien<br/>Statut  : élève-ingénieur<br/>Langue d'enseignement : français, spécialement adapté aux non francophones pendant le 1er semestre.<br/><br/><b><br/><img src=\"images/14.jpg\" /><br/><br/>Document à télécharger<br/><br/><span class=\"blue\">Le programme n+i</span><br/><br/><br/><br/>ACCÉDER AU SITE n+i<br/><span class=\"red\">http://www.nplusi.com</span></b></p>]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"3\" template=\"T1\">\n				<top>\n					<elem><![CDATA[L’ENSEM ACCUEILLE DES ÉTUDIANTS ÉTRANGERS POUR UN SÉJOUR]]></elem>\n					<elem><![CDATA[DE 6 À 12 MOIS DANS LE CADRE D’ACCORDS DE PARTENARIAT AVEC LEUR]]></elem>\n					<elem><![CDATA[UNIVERSITÉ D’ORIGINE.]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"10.jpg\" legende=\"\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\">L’accueil en court séjour se fait dans le cadre du programme Socrates-ERASMUS pour les étudiants de l’Union Européenne ou sur la base d’autres programmes internationaux pour les étudiants hors Union Européenne.<br/><br/>Les étudiants ne peuvent obtenir le diplôme d’ingénieur mais leur période d’études est validée par leur université d’origine. Pour les Européens, cette validation se fait au travers du transfert des crédits ECTS qu’ils auront acquis à l’Ecole.<br/>Les séjours de courte durée peuvent être constitués :<br/>- d’un ou deux semestre(s) de cours <br/>- d’un semestre de <b><span class=\"red\">stage en laboratoire.</span></b><br/><br/>Les étudiants sélectionnent dans le programme de l’Ecole les enseignements qu’ils souhaitent suivre et signent un contrat d’études (learning agreement) qui doit être validé par l’université d’origine et par l’ENSEM.</p>]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"4\" template=\"T1\">\n				<top>\n					<elem><![CDATA[LA DATE LIMITE POUR ENVOYER LE DOSSIER DE CANDIDATURE EST FIXÉE AU]]></elem>\n					<elem><![CDATA[15 MAI POUR LE 1ER SEMESTRE DE L’ANNÉE À VENIR ET AU 1ER NOVEMBRE]]></elem>\n					<elem><![CDATA[POUR LE 2ÈME SEMESTRE.]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"9.jpg\" legende=\"CV, Lettre de motivation, Relevés de notes , (3 années précédentes), Contrat d’études , Formulaire de candidature\"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>Les candidats à l’admission doivent remplir le formulaire de canndidature approprié (application form) ainsi que le contrat d’études (par lequel ils devront sélectionner leurs cours). <br/>Le candidat à un stage en laboratoire doit indiquer le sujet de son projet de recherche sur son contrat d’études. <br/><br/><br/><b><img src=\"images/14.jpg\" /><br/><br/>Documents à télécharger<br/><br/><span class=\"blue\">Le contrat d’études</span><br/><span class=\"blue\">Le formulaire de candidature</span></b></p>]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n			<contenu id=\"5\" template=\"T1\">\n				<top>\n					<elem><![CDATA[LES ÉTUDIANTS ÉTRANGERS S’INSCRIVENT ET S’ACQUITTENT DES FRAIS UNE]]></elem>\n					<elem><![CDATA[FOIS ARRIVÉS À L’ENSEM. DANS LE CAS D’UN ÉCHANGE AVEC UNE UNIVERSITÉ]]></elem>\n					<elem><![CDATA[PARTENAIRE, ILS RÈGLENT LEUR INSCRIPTION DANS LEUR ÉTABLISSEMENT]]></elem>\n					<elem><![CDATA[D’ORIGINE ET SONT INSCRITS EN TANT QUE STAGIAIRES (CURSUS NON DIPLÔMANT).]]></elem>\n				</top>\n				<content type=\"image\">\n					<elem lien=\"8.jpg\" legende=\"La carte étudiant donne accès aux bibliothèques universitaires et à différents clubs de sport. Elle permet également aux non-européens de demander un permis de résidence si leur séjour court sur plus de trois mois. \"/>\n				</content>\n				<right>\n					<![CDATA[<p class=\"justify\"><b>INSCRIPTIONS :<br/>LA CHECK-LIST</b><br/><br/>• Carte d’identité<br/>• Carte d’étudiant de l’université d’origine <br/>• Preuve d’identité (certificat de naissance, copie de passeport et de visa) <br/>• Preuve d’assurance santé mentionnant les coûts médicaux pris en charge et les dates de début et de fin de séjour en France : en l’absence d’un tel document, les étudiants devront opter pour l’assurance maladie étudiante française<br/>• 2 photographies de type « passeport » <br/><br/>Pour les étudiants en échanges<br/>• Preuve d’inscription dans l’université d’origine <br/>• Preuve du statut : Certificat Erasmus, Tempus, lettre d’admission d’une Ecole de l’INPL précisant les dates du séjour à Nancy<br/><br/>Il est conseillé aux étudiants de souscrire à une assurance santé rapatriement.</p>]]>\n				</right>\n				<bottom></bottom>\n			</contenu>\n\n		</contenus>\n	</rubrique>\n	<rubrique id=\"popup\">\n		<popup id=\"bc\">\n			<titre>\n				<elem><![CDATA[L'ENSEM FORME EN 3 ANS DES INGÉNIEURS DONT LES COMPÉTENCES EN GÉNIE]]></elem>\n				<elem><![CDATA[ÉLECTRIQUE, EN MÉCANIQUE ET EN SCIENCES DE L'INFORMATION CONTRIBUENT]]></elem>\n				<elem><![CDATA[A TRANSFORMER LE PROGRÈS SCIENTIFIQUE EN INNOVATIONS RESPONSABLES]]></elem>\n				<elem><![CDATA[AU SERVICE DE LA SOCIETE, UN TICKET CHOC POUR DES CARRIÈRES D'AVENIR]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">Les enseignements de tronc commun représentent la totalité de la formation de 1ère année et 60 % de celle qui est dispensée en 2ème année, soit au total la moitié du cursus de l’élève-ingénieur ENSEM.  Un dispositif pédagogique qui conjugue connaissances fondamentales dans les Sciences de l’Ingénieur et ouverture sur les domaines non scientifiques.<br/>Au programme de la première année, plus de 500 heures de modules scientifiques en Mathématiques, Mécanique, Électricité et Sciences de l’Information auxquels s’ajoutent près de 300 heures de formation générale : langues, gestion de projet, outils logiciels, communication et expression, activité sportive, connaissance de l’entreprise...</p><br/><br/><p class=\"right\"><b>PROGRAMME DÉTAILLÉ À TÉLÉCHARGER<img src=\"images/13.jpg\" /><br/>Tronc commun S5<br/>Tronc commun S6</p>]]>\n			</texte>\n		</popup>\n		<popup id=\"e\">\n			<titre>\n				<elem><![CDATA[L'ENSEM FORME EN 3 ANS DES INGÉNIEURS DONT LES COMPÉTENCES EN GÉNIE]]></elem>\n				<elem><![CDATA[ÉLECTRIQUE, EN MÉCANIQUE ET EN SCIENCES DE L'INFOIRMATION CONTRIBUENT]]></elem>\n				<elem><![CDATA[À TRANSFORMER LE PROGRÈS SCIENTIFIQUE EN INNOVATIONS RESPONSABLES]]></elem>\n				<elem><![CDATA[AU SERVICE DE LA SOCIÉTÉ. UN TICKET CHOC POUR DES CARRIÈRES D'AVENIR.]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">En deuxième année, l’élève ingénieur ENSEM choisit sa filière parmi les trois domaines d’excellence de l’École : génie électrique, mécanique et ingénierie des systèmes automatisés. Il approfondit ainsi une thématique spécifique tout en poursuivant sa formation de tronc commun qui représente encore 60 % des enseignements.<br/><br/>Au final, il peut se construire un parcours sur mesure grâce à un large choix de modules électifs.</p><p class=\"right\"><b><br/><br/>PROGRAMMES DÉTAILLÉS À TÉLÉCHARGER<br/><br/>Formation Generale-2A<br/>Modules Electifs-2A<br/>Modules GE-2A<br/>Modules ISA-2A<br/>Modules MECA-2A<br/>Tronc Commun Scientifique 2A<br/></b></p>]]>\n			</texte>\n		</popup>\n		<popup id=\"g\">\n			<titre>\n				<elem><![CDATA[LA FILIÈRE RÉPOND AUX ATTENTES TRADITIONNELLE DU SECTEUR DE]]></elem>\n				<elem><![CDATA[L'ÉLECTRICITÉ AINSI QU'AUX BESOINS DE TOUS LES INDUSTRIELS METTANT]]></elem>\n				<elem><![CDATA[EN OEUVRE DES PROCÉDÉS ÉLECTRIQUES.]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">La formation est en forte adéquation avec le milieu industriel et ses problématiques émergentes.<br/>Dès le début de la deuxième année, les élèves ingénieurs suivent des modules de spécialisation en génie électrique  :  un volume de formation de 280 h environ (soit 1/3 du total) que complètent les enseignements de Tronc Commun.<br/>La Troisième année propose un enseignement à la carte.<br/>Durant le semestre 9, chaque élève suit  les modules de Formation Générale ainsi que ceux du parcours individualisé qu'il a choisi.<br/>Au cours du semestre 10, il effectue un stage ingénieur en entreprise (6 mois).</p>]]>\n			</texte>\n		</popup>\n		<popup id=\"hrs\">\n			<titre>\n				<elem><![CDATA[L'ENSEM FORME EN 3 ANS DES INGÉNIEURS DONT LES COMPÉTENCES EN GÉNIE]]></elem>\n				<elem><![CDATA[ÉLECTRIQUE, EN MÉCANIQUE ET EN SCIENCES DE L'INFORMATION CONTRIBUENT]]></elem>\n				<elem><![CDATA[A TRANSFORMER LE PROGRÈS SCIENTIFIQUE EN INNOVATIONS RESPONSABLES]]></elem>\n				<elem><![CDATA[AU SERVICE DE LA SOCIETE, UN TICKET CHOC POUR DES CARRIÈRES D'AVENIR]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">Après deux années passées à l’ENSEM, l’élève-ingénieur a face à lui plusieurs orientations possibles et le choix entre une multitude de parcours de spécialité et deux parcours transverses: , « Énergie » et « Systèmes autonomes et technologies embarquées ».<br/>Il peut aussi décider de réviser sa trajectoire : formation en partenariat avec une entreprise, troisième année dans une autre école d’ingénieurs, double diplôme international dans un établissement partenaire de l’École (Georgia Tech...), Master orienté recherche dans l’un des laboratoires associés, année de césure...<br/>Une chose est sûre, quoi qu’il décide, ses études à l’ENSEM l’ont mis dans les meilleures dispositions pour réussir. Et le stage d’ingénieur qu’il effectue au dernier semestre se conclut souvent par une embauche.</p>]]>\n			</texte>\n\n		</popup>\n		<popup id=\"j\">\n			<titre>\n				<elem><![CDATA[LA FILIÈRE FORME DES INGÉNIEURS OPÉRATIONNELS POLYVALENTS ET]]></elem>\n				<elem><![CDATA[PARTICULIÈREMENT SENSIBILISÉS À LA MÉCANIQUE DES MILIEUX CONTINUS.]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">Dès le début de la deuxième année, les élèves ingénieurs qui entrent dans la filière Mécanique suivent des modules de spécialisation  : <br/>Un volume de formation de 280 h (soit 1/3 du total) que complètent les enseignements de Tronc Commun.<br/><br/>La Troisième année propose trois parcours spécifiques :<br/>• Maitrise des Transferts de Chaleur et de Matière (MTCM)<br/>• Fluide - Modélisation et Calcul (FMC)<br/>• Mécanique et Ingénierie des Solides et des Structures (MISS)<br/><br/>Durant le semestre 9, chaque élève suit  les modules de Formation Générale ainsi que ceux du parcours de spécialisation qu'il a choisi.<br/>Au cours du semestre 10, il effectue un stage ingénieur en entreprise (6 mois).</p>]]>\n			</texte>\n		</popup>\n		<popup id=\"k\">\n			<titre>\n				<elem><![CDATA[LA FILIÈRE ISA SE CARACTÉRISE PAR UNE LARGE INTÉGRATION]]></elem>\n				<elem><![CDATA[DE L'AUTOMATIQUE, DE L'INFORMATIQUE ET DE L'ÉLECTRONIQUE.]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">Dès le début de la deuxième année, les élèves ingénieurs qui entrent dans la filière Mécanique suivent des modules de spécialisation  : <br/>Un volume de formation de 280 h (soit 1/3 du total) que complètent les enseignements de Tronc Commun.<br/><br/>La Troisième année propose trois parcours spécifiques :<br/>• Maitrise des Transferts de Chaleur et de Matière (MTCM)<br/>• Fluide - Modélisation et Calcul (FMC)<br/>• Mécanique et Ingénierie des Solides et des Structures (MISS)<br/><br/>Durant le semestre 9, chaque élève suit  les modules de Formation Générale ainsi que ceux du parcours de spécialisation qu'il a choisi.<br/>Au cours du semestre 10, il effectue un stage ingénieur en entreprise (6 mois).</p>]]>\n			</texte>\n		</popup>\n		<popup id=\"q\">\n			<titre>\n				<elem><![CDATA[CONSTRUCTION AUTOMOBILE ET AÉRONAUTIQUE, ÉNERGIE, SURETÉ]]></elem>\n				<elem><![CDATA[INDUSTRIELLE, GRANDS PROJETS, BUREAU D'ÉTUDES...L'INGÉNIEUR ENSEM]]></elem>\n				<elem><![CDATA[EST RECHERCHÉ PAR TOUS LES GRANDS GROUPES INDUSTRIELS ET EMBAUCHÉ]]></elem>\n				<elem><![CDATA[DANS TOUS LES SECTEURS DE LA VIE ÉCONOMIQUE]]></elem>\n			</titre>\n			<texte>\n				<![CDATA[<p class=\"justify\">L’ENSEM dispose d’un solide service des relations industrielles, véritable outil stratégique qui analyse en permanence le marché de l’emploi, effectue au plus près le suivi des offres d’embauche et gère le placement des jeunes diplômés.<br/><br/><b>CLASSE AFFAIRES</b><br/>Servi par sa formation pluriscientifique, le jeune ingénieur ENSEM présente l’avantage d’être immédiatement opérationnel et de pouvoir évoluer rapidement vers des postes à haute responsabilité. Un profil qui lui vaut de réussir dans tous les secteurs de la vie économique.</p><br/><br/><b>Salaire débutant</b><br/>32 500 à 37 000 € bruts<br/><b>Salaire moyen à trois ans d’ancienneté</b><br/>40 000 € bruts <br/>(Source L’EXPANSION - TOWERS WATSON / Enquête salaires Jeunes diplômés 2010)]]>\n			</texte>\n		</popup>\n	</rubrique>\n\n</contenu>",
+			"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
+			"file_size": 64572,
+			"file_write_time": 129746017211234592,
 			"settings":
 			{
-				"buffer_size": 4926,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/HeaderView.html",
-			"settings":
-			{
-				"buffer_size": 1131,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "application/views/filesbar.html",
-			"settings":
-			{
-				"buffer_size": 237,
+				"buffer_size": 61951,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "public/js/filesbar.js",
+			"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_en-en.xml",
 			"settings":
 			{
-				"buffer_size": 732,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/less/filesbar.less",
-			"settings":
-			{
-				"buffer_size": 422,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "public/js/module.js",
-			"settings":
-			{
-				"buffer_size": 428,
+				"buffer_size": 57997,
 				"line_ending": "Windows"
 			}
 		}
@@ -127,11 +118,19 @@
 		"selected_items":
 		[
 			[
-				"insta",
+				"install ",
 				"Package Control: Install Package"
 			],
 			[
+				"brow",
+				"Preferences: Browse Packages"
+			],
+			[
 				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"insta",
 				"Package Control: Install Package"
 			],
 			[
@@ -179,7 +178,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 386.0
+		"width": 514.0
 	},
 	"console":
 	{
@@ -196,10 +195,28 @@
 	},
 	"file_history":
 	[
+		"/C/wamp/www/melondoc/public/js/dialog.js",
+		"/C/wamp/www/melondoc/public/js/framework.js",
+		"/C/Users/gahon_a/My Projects/Flash/www/index.php",
+		"/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
+		"/C/wamp/www/melondoc/public/css/documentation/style.css",
+		"/C/wamp/www/melondoc/application/views/easyjquery.html",
+		"/C/wamp/www/melondoc/application/controllers/documentation.php",
+		"/C/wamp/www/scroller/index.html",
+		"/C/wamp/www/melondoc/application/controllers/user.php",
+		"/C/wamp/www/melondoc/public/js/documentation/highlight.js",
+		"/C/wamp/www/melondoc/public/css/documentation/highlight.css",
+		"/C/wamp/www/scroller/stylesheets/highlight.css",
+		"/C/wamp/www/melondoc/application/controllers/home.php",
 		"/C/wamp/www/melondoc/application/controllers/index.php",
+		"/C/wamp/www/scroller/demo.html",
+		"/C/wamp/www/melondoc/public/js/module.js",
+		"/C/wamp/www/melondoc/public/less/filesbar.less",
+		"/C/wamp/www/melondoc/public/js/filesbar.js",
+		"/C/wamp/www/melondoc/application/views/filesbar.html",
+		"/C/wamp/www/melondoc/application/views/HeaderView.html",
 		"/C/wamp/www/melondoc/application/views/index.html",
 		"/C/wamp/www/melondoc/public/less/bootstrap.less",
-		"/C/wamp/www/melondoc/public/less/filesbar.less",
 		"/C/wamp/www/melondoc/public/less/breadcrumbs.less",
 		"/C/wamp/www/melondoc/public/less/alerts.less",
 		"/C/wamp/www/melondoc/public/less/accordion.less",
@@ -210,7 +227,6 @@
 		"/C/wamp/www/melondoc/public/less/button-groups.less",
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/User/Base File.sublime-settings",
 		"/C/wamp/www/melondoc/define.php",
-		"/C/Users/gahon_a/My Projects/Flash/www/css/style.css",
 		"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
 		"/C/Users/gahon_a/Desktop/HelveticaNeue.dfont",
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/Camaleon/Camaleon.sublime-settings",
@@ -225,15 +241,12 @@
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/Default/Global.sublime-settings",
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/Package Control/Package Control.sublime-settings",
 		"/C/wamp/www/melondoc/controller.php",
-		"/C/wamp/www/melondoc/public/js/framework.js",
 		"/C/wamp/www/melondoc/public/css/styles.css",
 		"/C/wamp/www/melondoc/public/css/video-js.css",
-		"/C/wamp/www/melondoc/application/controllers/home.php",
 		"/C/wamp/www/melondoc/public/css/style.css",
 		"/C/wamp/www/melondoc/public/css/jquery.countdown.css",
 		"/C/wamp/www/melondoc/public/js/jquery.countdown.js",
 		"/C/Users/gahon_a/Desktop/index.html",
-		"/C/wamp/www/melondoc/application/views/HeaderView.html",
 		"/C/wamp/www/melondoc/application/views/countdown.html",
 		"/C/wamp/www/melondoc/application/controllers/countdown.php",
 		"/C/wamp/www/melondoc/public/js/script.js",
@@ -275,7 +288,6 @@
 		"/C/Users/gahon_a/Desktop/loiq-0.3.1a/INSTALL",
 		"/C/wamp/www/melondoc/public/js/jquery-1.7.js",
 		"/C/wamp/www/melondoc/public/js/jquery-1.7.min.js",
-		"/C/wamp/www/melondoc/public/js/module.js",
 		"/C/Users/gahon_a/My Projects/rtype/client/headers/Settings.hh",
 		"/C/Users/gahon_a/My Projects/rtype/serveur/client.cpp",
 		"/C/Users/gahon_a/Downloads/network-selector (1).cpp",
@@ -310,20 +322,7 @@
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/BeautifyRuby/README.md",
 		"/C/Users/gahon_a/AppData/Roaming/Sublime Text 2/Packages/User/Package Control.sublime-settings",
 		"/C/user.js",
-		"/C/Program Files/Sublime Text 2/sublime_plugin.py",
-		"/C/Program Files/Sublime Text 2/Pristine Packages/C++.sublime-package",
-		"/C/Users/gahon_a/Desktop/PROTOTYP/resource.h",
-		"/C/Users/gahon_a/Desktop/dist/examples/data/example.theme",
-		"/C/Users/gahon_a/Desktop/PROTOTYP/AnimGenerator.h",
-		"/C/Users/gahon_a/Desktop/PROTOTYP/AnimGenerator.cpp",
-		"/C/Users/gahon_a/My Projects/XNA-Samples/Asteroids/Sprites/Bullet.cs",
-		"/C/Users/gahon_a/Desktop/rtype/client/rtype-client.cbp",
-		"/C/Users/gahon_a/Desktop/uml/StockConsommable.h",
-		"/C/Users/gahon_a/Desktop/uml/Stewards.h",
-		"/C/Users/gahon_a/Desktop/uml/PointDeVente.h",
-		"/C/Users/gahon_a/Desktop/uml/Promotion.h",
-		"/C/Users/gahon_a/Desktop/uml/Pilote.h",
-		"/C/Users/gahon_a/Desktop/uml/PlanningPersonnel.h"
+		"/C/Program Files/Sublime Text 2/sublime_plugin.py"
 	],
 	"find":
 	{
@@ -341,6 +340,33 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"fr-fr",
+			"img",
+			"CARTES",
+			"CARTES POSTALE",
+			"CARTES POSTALES",
+			"CARTES",
+			"CARTES POSTALE",
+			"CARTE POSTALE",
+			"COMMON COURSES",
+			"height",
+			"scrol",
+			"scroll",
+			"href",
+			"100",
+			"100%",
+			"max-height",
+			"mqx",
+			"img",
+			"media",
+			"img",
+			"url",
+			"active",
+			"ol ",
+			"ol",
+			"dec",
+			"deci",
+			"decimal",
 			"extend",
 			"<a",
 			"link_red",
@@ -430,166 +456,59 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "public/js/framework.js",
+					"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml",
 					"settings":
 					{
-						"buffer_size": 4926,
+						"buffer_size": 61951,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2357,
-								2357
+								381,
+								381
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/XML/XML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1980.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "application/views/HeaderView.html",
+					"file": "/C/Users/gahon_a/My Projects/Flash/www/xml/content2_en-en.xml",
 					"settings":
 					{
-						"buffer_size": 1131,
+						"buffer_size": 57997,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								779,
-								779
+								21834,
+								21834
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/XML/XML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "application/views/filesbar.html",
-					"settings":
-					{
-						"buffer_size": 237,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								198,
-								198
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "public/js/filesbar.js",
-					"settings":
-					{
-						"buffer_size": 732,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								699,
-								699
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 66.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "public/less/filesbar.less",
-					"settings":
-					{
-						"buffer_size": 422,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								277,
-								277
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "public/js/module.js",
-					"settings":
-					{
-						"buffer_size": 428,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								335,
-								335
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 3,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 8934.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -603,7 +522,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"layout":
 	{
@@ -638,6 +557,10 @@
 		"height": 0.0,
 		"selected_items":
 		[
+			[
+				"",
+				"/C/Users/gahon_a/My Projects/Flash/www/xml/content2_fr-fr.xml"
+			]
 		],
 		"width": 0.0
 	},
