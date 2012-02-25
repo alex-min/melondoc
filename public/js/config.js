@@ -18,14 +18,6 @@ window.$f  = {
 	error		: 	$f_error, 
 }
 
-/*
-** <div click="module:action"></div>
-** <div mouseenter="module:action"></div>
-** <div mouseleave="module:action"></div>
-** <div focusin="module:action"></div>
-** <div focusout="module:action"></div>
-*/
-
 function dispatcher(e){$f.exec($(this).attr(e.type), $(this))};
 	
 	$("[click]").live("click", dispatcher);
