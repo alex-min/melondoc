@@ -9,15 +9,21 @@ function $f_alert(value)
 	function getObject(obj, recursion){
 		if (typeof(obj) == "object"){
 			var value = "{<br/>";
+			var i = 0;
 			for (variable in obj){
+				if (typeof(variable) == "function")
+					return "function()";
+				$f.log
+				if (i++ != 0)
+					value += ',<br/>';
 				for (var i = 0; i <= recursion; i++)
-					value += " ; ;";
+					value += "&nbsp&nbsp&nbsp";
 				value +=  variable + " : ";
 				value += getObject(obj[variable], recursion+1)
 			}
-			value += "\n"
+			value += "<br/>"
 			for (var i = 0; i < recursion; i++)
-				value += " ; ;";
+				value += "&nbsp&nbsp&nbsp";
 			value += "}";
 			return value
 		}
@@ -26,7 +32,7 @@ function $f_alert(value)
 	}
 
 	value = getObject(value, 0);
-    //alert(value);
+
 	dialog({
 		content : value,
 		callback : function(){}
@@ -45,7 +51,8 @@ function $f_loadmodule(module, callback) {
 			}
 		},
 		error: function(xhr, ajaxOptions, thrownError){
-			console.error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
+			if ($f.config.debug == true)
+				console.error("loadComponent : type["+ajaxOptions+"], erreur["+thrownError+"], impossible d'atteindre ["+url+"]");
 		}
 	});
 }
@@ -72,12 +79,6 @@ function $f_exec(value, el){
 	}
 }
 
-// Fonction qui permet d'executer une fonction apres le chargement d'un script
-function $f_require(value, callback){	
-}
-
-
-
 // Fonction qui renvoie un obj contenant les elements d'un formulaire
 function $f_getform(id)
 {
@@ -88,7 +89,8 @@ function $f_getform(id)
 		var name = $(this).attr("name");
 		if (name == undefined){
 			name = "no_name_"+count++;
-			console.warn("Attribut `name` non definie. Valeur attribue {"+name+"}");
+			if ($f.config.debug == true)
+				console.warn("Attribut `name` non definie. Valeur attribue {"+name+"}");
 		}
 		var value = $(this).val();
 		obj[name] = value;
@@ -123,91 +125,41 @@ function $f_dispatch(options){
 		if (act != undefined)
 		{
 			eval("funct = $f."+options.module+"."+options.action);
-			funct();
+			funct(options.target);
 		}
-		else if (options.error)
+		else if (options.error && $f.config.debug == true)
 			console.warn("La fonction ["+options.action+"] n'est pas definie dans le module ["+options.module+"].");
 		else
 			return false;
 	}
-	else if (options.error)
+	else if (options.error && $f.config.debug == true)
 		console.warn("Le module ["+options.module+"] n'existe pas.");
 	else
 		return false;
 	return true;
 }
 
-window.$f  = {
-
-	config:{
-		separator			: 	':',
-		path				: 	"/public/js"
-	},
-
-	alert		: 	$f_alert,
-	exec		: 	$f_exec,
-	getform		: 	$f_getform,
-	sendform	: 	$f_sendform
+function $f_log(obj)
+{
+	if (window.navigator.appName != 'Microsoft Internet Explorer')
+		if ($f.config.debug == true)
+			console.log(obj);
 }
-
-	/*function fetchForm(e){
-		var elem = e.parent("form");
-		var obj = new Object();
-		if (elem.length > 0){
-			elem.children("input,textarea,select").each(function(index){
-				var name = $(this).attr("name");
-				var value = $(this).val();
-				obj[name] = value;
-			})
-			debug(obj);
-		}
-		else{
-			$("body").children("input,textarea,select").each(function(index){
-				var name = $(this).attr("name");
-				var value = $(this).val();
-				obj[name] = value;
-			})
-			debug(obj);
-		}
-		return obj;
-	}
-	window.fetchForm = fetchForm;
-
-	function ajax_success()	{	info("La requete a bien reussit");	}
-	function ajax_error()			{	error("La requete a échouée");		}
-	function ajax(obj){
-		var url = new Object();
-		url.controller = obj.url.slice(1).split("/")[0];
-		url.action = obj.url.slice(1).split("/")[1];
-		info("Requete ajax: "+url.controller+"/"+url.action);
-		if (!obj.type) obj.type = "get";
-		if (!obj.success) obj.success = ajax_success;
-		if (!obj.error) obj.error = ajax_error;
-		jQuery.extend(obj.data, url);
-		info(obj.data);
-		$.ajax({
-			url: "/ajax/index",
-			type: obj.type,
-			data: obj.data,
-			success: obj.success(),
-			error: obj.error()
-		});
-	}
-
-
-
-
-	/*
-	** <div click="module:action"></div>
-	** <div mouseenter="module:action"></div>
-	** <div mouseleave="module:action"></div>
-	** <div focusin="module:action"></div>
-	** <div focusout="module:action"></div>
-	*/
-
-	function dispatcher(e){$f.exec($(this).attr(e.type))};
-	$("[click]").live("click", dispatcher);
-	$("[mouseenter]").live("mouseenter", dispatcher);
-	$("[mouseleave]").live("mouseleave", dispatcher);
-	$("[focusin]").live("focusin", dispatcher);
-	$("[focusout]").live("focusout", dispatcher);
+function $f_info(obj)
+{
+	if (window.navigator.appName != 'Microsoft Internet Explorer')
+		if ($f.config.debug == true)
+			console.info(obj);
+}
+function $f_warn(obj)
+{
+	if (window.navigator.appName != 'Microsoft Internet Explorer')
+		if ($f.config.debug == true)
+			console.warn(obj);
+}
+function $f_error(obj)
+{
+	if (window.navigator.appName != 'Microsoft Internet Explorer')
+		if ($f.config.debug == true)
+			console.error(obj);
+}

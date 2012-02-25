@@ -11,7 +11,7 @@ function dialog(args){
 		content 		: 	"",
 		confirm			: 	false, 		// Ok and Cancel buttons
 		verify			:	false,		// Yes and No buttons
-		input				:	false, 		// Text input (can be true or string for default text)
+		input			:	false, 		// Text input (can be true or string for default text)
 		animate			:	false,		// Groovy animation (can true or number, default is 400)
 		textOk			:	'Ok',		// Ok button default text
 		textCancel		: 	'Cancel',	// Cancel button default text

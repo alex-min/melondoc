@@ -14,7 +14,7 @@
 
 $f.module = {
    action:function(e){
-      var obj = $f.sendform("inscription", null, null);
+      $f.warn(e);
       // definition de ma fonction
    },
 

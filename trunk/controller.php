@@ -101,10 +101,10 @@ class				controller
       $disableHeader = FALSE;
       $this->cssArray .= "<link rel=\"stylesheet/less\" href=\"/public/less/bootstrap.less\" />\n";
       $this->template->loadLanguage("header");
-      $this->addJavascript("jquery-1.7.min"); 
-      $this->addJavascript("config");
+      $this->addJavascript("jquery-1.7.min");
       $this->addJavascript("dialog");
       $this->addJavascript("framework");
+      $this->addJavascript("config");
       $this->addJavascript("jqueryFileTree");
       $this->addJavascript("header");
       $this->addCSS("dialog");
