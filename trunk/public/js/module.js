@@ -13,6 +13,7 @@
    */
 
 $f.module = {
+   
    action:function(e){
       $f.warn(e);
       // definition de ma fonction

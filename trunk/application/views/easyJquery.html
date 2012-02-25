@@ -25,7 +25,8 @@
 
 				<p>
 					Le framework est un objet, comme jquery.<br/>
-					Cet objet sera le point d'entrée.
+					Cet objet sera le point d'entrée.<br/>
+					Le fichier de configuration du framework est 'config.js' (dans /public/js)
 				</p><br/>
 
 				<pre class="code" lang="js">$f</pre><br/>
@@ -41,12 +42,14 @@
 				</p><br/><br/>
 
 <pre class="code" lang="js">
-$f.config.separator	// Default ':'
-$f.config.path 		// Default '/public/js'
+$f.config.separator // Default ':'
+$f.config.path  	// Default '/public/js'
+$f.config.debug     // Default true
 </pre><br/>
 				<p>
 					Le 'path' correspond bien évidemment au répertoire javascript du site.<br/>
-					Le 'separator', lui, correspond au séparateur utilisé pour appeler les actions des modules
+					Le 'separator', lui, correspond au séparateur utilisé pour appeler les actions des modules<br/>
+					Le 'debug' active ou non l'affichage des logs/errors dans la console.
 				</p>
 
 			</div>
@@ -164,7 +167,7 @@ $f.config.path 		// Default '/public/js'
 
 				<h5>Code Php</h5><br/>
 
-<pre class="code" lang="html">
+<pre class="code" lang="php">
 	print_r($this->_POST) // ou  print_r($this->_GET);
 
 	/*
@@ -180,18 +183,83 @@ $f.config.path 		// Default '/public/js'
 	*/
 </pre><br/>
 
+				<h3>Log, Info, Warn, Error</h3><br/>
+
+				<p style="">
+					Ces fonctions servent à utiliser les fonctions de logs ... classique (muette si debug a false)<br/>
+					IE sort une erreur lorsqu'il rencontre l'objet console. Une vérification du navigateur est faite pour éviter ces erreurs.
+				</p>
+
+				<h5>Code Javascript</h5><br/>
+
+<pre class="code" lang="js">
+	/*
+	** Utilisation des fonctions de logs
+	*/
+	
+	$f.log( obj );
+	$f.info( obj );
+	$f.warn( obj );
+	$f.error( obj );
+</pre><br/>
+
 			</div>
 			<div class="section">
-				<h2 onclick="$f.alert({toto: 'titi', tata: []});">Modules</h2><br/>
-				<p>TODO</p>
+				<h2>Modules</h2><br/>
+<p>
+Les modules sont là pour permettre de retrouver du code facilement mais aussi pour éviter de charger du code javascript inutilement (chargement à l'utilisation).<br/>
+<br/>
+Pour définir un module, il faut créer un fichier portant le nom de votre module.<br/>
+Exemple: Je veux un module 'forum' pour gérer le js de mon forum, je créer un fichier 'forum.js'<br/>
+<br/>
+Puis dans ce fichier, définir un module qui contiendra toute nos actions :
+</p><br/>
+				<h5>Code Javascript</h5><br/>
+
+<pre class="code" lang="js">
+	/*
+	** Définition d'un module
+	** nomDeMonModule = 'forum' -> nomDuFichier
+	*/
+	
+	$f.nomDeMonModule = {
+	   
+	   // L'argument 'e' correspond a la cible de l'event (click sur un bouton: e == bouton)
+	   nomDeMonAction:function(e){
+	      // definition de ma fonction
+	   },
+
+	   nomDeMonAutreAction:function(e){
+	      // definition de ma fonction
+	   }
+	};
+</pre><br/>
+
 			</div>
 			<div class="section">
 				<h2>Utilisation</h2><br/>
-				<p>TODO</p>
-			</div>
-			<div class="section">
-				<h2>Download</h2><br/>
-				<p>TODO</p>
+
+<p>
+	Voici quelques exemple d'utilisation (appel aux modules/actions) dans les pages html (views)<br/>
+	Je tiens à rappeler que vous n'avez pas besoin de charger les fichiers js autres que ceux des plugins.<br/>
+</p>				
+
+				<h5>Code Html</h5><br/>
+
+<pre class="code" lang="html">
+
+	<!-- Exemple sur des div, valable sur tout les éléments du DOM -->
+
+	<div click="module:action"></div>
+	<div mouseenter="module:action"></div>
+	<div mouseleave="module:action"></div>
+	<div focusin="module:action"></div>
+	<div focusout="module:action"></div>
+
+	<!-- D' autres type d'event comme les keydown ... sont à venir -->
+
+</pre><br/>
+
 			</div>
 		</div><!-- [END] #main -->
 	</div><!-- [END] #wrapper -->
@@ -207,8 +275,7 @@ $f.config.path 		// Default '/public/js'
 			'Configuration',
 			'Fonctions',
 			'Modules',
-			'Utilisation',
-			'Download'
+			'Utilisation'
 		);
 		
 		$('#main').pageScroller({ navigation: navLabel });
@@ -250,6 +317,6 @@ $f.config.path 		// Default '/public/js'
 
 	<script type="text/javascript">
 		$(document).ready(function(){
-			$('pre.code').highlight({source:0, zebra:1, indent:'space', list:'ol'});
+			$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
 		});
 	</script>
