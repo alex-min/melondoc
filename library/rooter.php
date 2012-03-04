@@ -142,15 +142,6 @@ class		rooter
    */
   public function getModule()		{return $this->module;}
 
-  /**
-   * @fn function getView()
-   * @brief 
-   * @file rooter.php
-   * 
-   * @param             
-   * @return		
-   */
-  public function getView()		{return $this->controller;}
 
   /**
    * @fn function getModel()
@@ -187,15 +178,6 @@ class		rooter
 	$this->Ajax = TRUE;
 	return TRUE;
       }
-    /* if ($this->controller == "ajax") */
-    /*   { */
-    /* 	$this->Ajax = TRUE; */
-    /* 	$this->controller = $this->GET['controller']; */
-    /* 	$this->action = $this->GET['action']; */
-    /* 	$control = PATH_CONTROLLERS.$this->controller.".php"; */
-    /* 	if (file_exists($control) == FALSE){exit();} */
-    /* 	return TRUE; */
-    /*   } */
     return FALSE;
   }
 
