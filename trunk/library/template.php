@@ -226,7 +226,7 @@ class		template
    * @param disableHeader               
    * @return		
    */
-  public function loadView($module, $disableHeader = false)
+  private function loadView($module, $disableHeader = false)
   {
     if ($disableHeader == false)
       echo $this->twig->render('HeaderView.html', $this->data);
