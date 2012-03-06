@@ -1,7 +1,6 @@
 {% if noDocuments is defined %}
 <span class="label">{{noDocuments}}</span>
 {% else %}
-<form method="POST" action="/home/deleteDoc" id="delete_doc"/>
 <a href="#modal_new" class="btn btn-primary" data-toggle="modal">{{_lang.home_doc_create}}</a>
 {% endif %}
 <div id="modal_new" class="modal hide fade in">
