@@ -28,7 +28,7 @@ var doc_x = 0;
 var doc_y = 0;
 var ed_menu_spacer = '<div style="ed_menu_spacer"></div>';
 var ed_table_menu_parent = undefined;
-var ed_table_begin = '<table class="ed_table_content"><tbody>';
+var ed_table_begin = '<table class="ed_table_content table table-bordered"><tbody>';
 var ed_table_end = '</tbody></table>';
 var ed_row_begin = '<tr class="ed_row">';
 var ed_row_end = '</tr>';

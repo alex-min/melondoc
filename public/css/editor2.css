@@ -1,4 +1,3 @@
-body {position:absolute; top:0px; left:0px}
 #ed_table_menu {display: none; position:absolute; top:0px; left:0px}
 #ed_table_menu table {border: 1px solid; border-collapse: separate;
 		      width: 50px; background-color: #FFFFFF; border-spacing: 3px}
@@ -7,11 +6,11 @@ body {position:absolute; top:0px; left:0px}
 		      border: 1px solid; height:1px; width: 1px;
 			      border-color: black}
 #ed_table_menu tr td.inactive {background-color: #DDDDDD}
-#ed_table_menu table {margin: 0}
+#ed_table_menu table {margin: 0; border:1 px solid black; width:100%;}
 #ed_table_menu caption {background-color: #FFFFFF; border: 1px solid; 
 			height: 30px; }
 #ed_main {; height:100%; width:100%}
-#ed_menu {position:fixed; top:0px; left:0px; width:100%; background-color: #F2F1F0; height: 40px; border: 1px solid;}
+#ed_menu {position:fixed; top:40px; left:0px; width:100%; background-color: #F2F1F0; height: 40px; border: 1px solid;}
 .ed_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
 .ed_documentarea {width: 816px; height: 1056px; background-color:#FFFFFF; margin-left: auto; margin-right: auto; border:1px solid; margin-top: 10px; display:none; }
 #ed_cursor {text-decoration: blink; font-size: 30px}
@@ -29,7 +28,7 @@ body {position:absolute; top:0px; left:0px}
 .ed_switch_dialog {cursor: pointer; background-color: white;
 		   border: 1px solid; position:absolute; top:200px; left:200px; visibility:hidden}
 ul {list-style-type: circle; padding-left: 0; margin-left: 40px;}
-li {clear:both/*background: url(/public/images/ed_bullet.png) left center no-repeat*/; list-style-type: none; padding-right: 30px}
+li {/*background: url(/public/images/ed_bullet.png) left center no-repeat*/ list-style-type: none; padding-right: 30px}
 .ed_area {float:left}
 .ed_popup {margin-right: 15px;border: 10px solid;
 	   position:absolute; width: 100%; height:675px; top: 50px;
