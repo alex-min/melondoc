@@ -1,0 +1,22 @@
+Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{id}}">{{forum_name}}</a> > <strong> Creer un topic </strong> <br />
+
+<form action = "/forum/createTopic?id={{id}}" method = "POST">
+<table>
+<tr>
+<td><label for="titre">Titre :</label><input id="titre" type = "text" name = "titre" value = "{{titre}}" maxlength="80"></td></tr><tr>
+<td><label for="message">Message :</label><textarea id="message" name="message" rows = 10 cols = 80>
+{{message}}</textarea>
+</td>
+<td>
+<label for="type"> Genre : </label><br />
+<select name="type" id="type">
+	<option value="normal" selected="selected">Normal</option>
+	<option value="admin" {% if canAdmin == false %} disabled=disabled {% endif %}>Admin</option>
+	<option value="annonce" {% if canAnnonce == false %} disabled=disabled {% endif %}>Annonce</option>
+	</td>
+</tr>
+<tr>
+<td><input type="submit" value = "envoyer"></td>
+</tr>
+</table> 
+</form>

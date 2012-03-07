@@ -1,0 +1,15 @@
+Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{infos['forum_id']}}">{{infos['forum_name']}}</a> > <a href="/forum/viewTopic?id={{infos['topic_id']}}">{{infos['topic_name']}}</a> > <strong> Editer mon message </strong>
+
+<form action = "/forum/DoEditPost?id={{post['id']}}" method = "POST">
+<table>
+<tr>
+<td><textarea name="message" rows = 10 cols = 80>
+{{post['message']|raw}}
+</textarea>
+</td>
+</tr>
+<tr>
+<td><input type="submit" value = "modifier"></td>
+</tr>
+</table> 
+</form>

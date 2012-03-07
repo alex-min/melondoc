@@ -1,9 +1,7 @@
-Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{infos['id']}}">{{infos['name']}}</a> > <strong> Voir le forum </strong>
+Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{infos['id']}}">{{infos['name']}}</a> > <strong> moderer le forum </strong>
 <br /><br />
 {{linkCreate|raw}}
-{% if viewModerator == true %}
-<a href="/forum/moderate?id={{infos['id']}}">Moderer le forum</a>
-{% endif %}
+<form action = "/forum/moderate?id={{infos['id']}}" method = "POST" id="form">
 <table>
 <tr>
 <th> </th>
@@ -11,7 +9,10 @@ Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{inf
 <th class = "nombremessages">createur</th>
 <th class = "nombremessages">nombre de reponses</th>
 <th class = "nombremessages">nombre de vues</th>
-<th class = "derniermessage">dernier message</th></tr>
+<th class = "derniermessage">dernier message</th>
+<th> <input type="checkbox" name="selectAll" click="forum:checkboxAll"> </th>
+
+{% set i = 0 %}
 
 {% for value in topics.rows %}
 
@@ -30,6 +31,7 @@ Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{inf
 <td class = "nombremessagesAnnonce">{{value['views']}}</td>
 <td class = "derniermessageAnnonce"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">last message</a><br />
 at {{value['date']}}</td>
+<td> <input type="checkbox" name="topic[{{value['id']}}]" class="check"></td>
 {% elseif (value['genre'] == "admin") %}
 <td>
 	{% if (value['lock'] == 1) %}
@@ -42,6 +44,7 @@ at {{value['date']}}</td>
 <td class = "nombremessagesAdmin">{{value['views']}}</td>
 <td class = "derniermessageAdmin"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">last message</a><br />
 at {{value['date']}}</td>
+<td> <input type="checkbox" name="topic[{{value['id']}}]" class="check"></td>
 {% else %}
 <td>
 	{% if (value['lock'] == 1) %}
@@ -55,8 +58,23 @@ at {{value['date']}}</td>
 <td class = "nombremessages">{{value['views']}}</td>
 <td class = "derniermessage"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">last message</a><br />
 at {{value['date']}}</td>
+<td> <input type="checkbox" name="topic[{{value['id']}}]" class="check"></td>
 {% endif %}
 </tr>
 {% endif %}
+{% set i = i + 1 %}
 {% endfor %}
-</table
+</table>
+<table>
+	<tr>
+		<th> </th>
+		<th> </th>
+	</tr>
+<tr>
+	<td> <input type="submit" value="lock" name="lock"> </td>
+	<td> <input type="submit" value="unlock" name="unlock"> </td>
+	<td> <input type="submit" value="move" name="move"> </td>
+</tr>
+</table>
+</form>
+

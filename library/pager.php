@@ -147,8 +147,9 @@ class			pager
    */
   public function	getPagination($url)
   {
-    if (count($this->results) <= 0)
+    if (count($this->result) <= 0)
       return "";
+
     $url = str_replace("?".$_SERVER['QUERY_STRING'], "", $url);
     $get = "?page=";
     if (!isset($_GET['page']))

@@ -1,8 +1,8 @@
 $f.forum = {
    
    checkboxAll:function(e){
-   		
-   		var checkboxs = e.parent('form').children('input[type=checkbox]');
+   		var checkboxs = $("#form .check");
+         $f.log(checkboxs);
    		if ( e.is(":checked") ){
    			checkboxs.each(function(){
 	   			$(this).attr('checked', true);
@@ -12,6 +12,19 @@ $f.forum = {
 	   			$(this).attr('checked', false);
 	   		});
    		}
+   },
+
+   supCat:function(e){
+      $.ajax({
+         url: '/adminForum/manageCat',
+         type: 'POST',
+         dataType: 'json',
+         data: 'sup='+e.attr('name'),
+         success: function(data, textStatus) {
+            $f.log(data);
+         },
+         error: function () { $f.alert('error'); }
+      });
    }
    
 };
