@@ -1,15 +1,30 @@
+Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}} </a> > <a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']}}</a> >  <strong> voir le sujet</strong>
+<br />
+<h1> {{info['topic_name']}} </h1>
+
 <table>
-<?php foreach($posts as $value)
-{
-if (empty($value['id']))
-continue;
-?>
-<td id="<?php echo $value['id'];?>"><?php echo $value['id'].' '.$value['auteur'];?></td>
-<td class = "titlebox"><?php echo date("y/m/d", $value['date']);?><span style = "float : right;"><a href = "/forum/deletePost?id=<?php echo $value['id'];?>">supprimer le post</a></span></td>
+{% for value in posts %}
+
+{% if value['id'] is not empty  %}
+<td id="{{value['id']}}">{{value['id']}} | {{value['auteur']}}</td>
+<td class = "titlebox">{{value['date']}} 
+
+	{% if value['auteur'] == me %}<span style = "float : right;"><a href = "/forum/editPost?id={{value['id']}}">editer le message</a> <a href = "/forum/deletePost?id={{value['id']}}">supprimer le post</a></span>
+	{% endif %}
+</td>
 </tr>
 <tr>
 <td class = "autorbox">jsuis pas un pd</td>
-<td class = "messagebox"><?php echo nl2br($value['message']);?></td></tr>
-<?php } ?>
+<td class = "messagebox">{{value['message']|raw}}</td></tr>
+{% endif %}
+{% endfor %}
 </table>	
-<div style="text-align:center;"><?php echo $next;?></div>
+
+{% if canAnswer == true %}
+<form action="/forum/postAnswer?id={{info['topic_id']}}" method="POST">
+<label for="answer"> Poster une reponse:</label> 
+<textarea id="answer" name="answer"> </textarea> <br />
+<input type="submit" value="Envoyer"></input>
+</form>
+{% endif %}
+<div style="text-align:center;">{{next|raw}}</div>

@@ -3,13 +3,10 @@ class	forum
 {
 	private $class;
 	
-  public function __construct() {
-  }
-
-  public function loadLib($class) {
-    if (is_array($class))
-      foreach ($class AS $key => $value)
-	$this->$key = $value;
+  public function	__construct($class)
+  {
+   foreach ($class AS $key => $value)
+	    $this->$key = $value;
   }
 	
  public function __get($key)
@@ -66,6 +63,11 @@ class	forum
 		return $id_post;
 	}
 	
+	public function editPost($id, $message)
+	{
+		$this->db->query("update forum_posts set message = '".$message."' , `date` = '".time()."' where id ='".$id."'");
+	}
+	
 	public function	deletePost($id)
 	{
 		$ret = $this->db->query("select id_last_post, id_first_post from forum_topic where id = (select id_topic from forum_posts where id = '".$id."')");
@@ -92,6 +94,19 @@ class	forum
 		}
 	}
 	
+	public function getConfig()
+	{
+	  $config = $this->db->query("select * from forum_config");
+	  return $config;
+	}
+
+	public function getConfigFromKey($key)
+	{
+	  $config = $this->db->query("select * from forum_config where cle ='".$key."'");
+	 
+	  return $config->row['valeur'];
+	}
+
 	public function deleteTopic($id)
 	{
 		$id = $this->db->query("select id_first_post from forum_topic where id = '".$id."'");
@@ -104,6 +119,14 @@ class	forum
 		foreach ($topics->rows as $value)
 		$this->deleteTopic($value['id']);
 		$this->db->query("delete from forum_forum where id = '".$id."'");
+	}
+
+	public function deleteCategorie($id)
+	{
+		$forums = $this->db->query("select id from forum_forum where id_cat = '".$id."'");
+		foreach ($forums->rows as $value)
+			$this->deleteForum($value['id']);
+		$this->db->query("delete from forum_categorie where id = '".$id."'");
 	}
 	
 	public function	reorderCategorie($array)
@@ -127,11 +150,16 @@ class	forum
 		}
 	}
 	
-	public function	lockTopic($id)
+	public function	lockTopic($id, $value=1)
 	{
-		$this->db->query("update forum_topic set lock = 1 where id = '".$id."'");
+		$this->db->query("update forum_topic set lock = '".$value."' where id = '".$id."'");
 	}
 	
+	public function	lockTopicArray($array_id, $value = 1)
+	{
+		$this->db->query("update `forum_topic` set `lock` = '".$value."' where id in (".implode(',', $array_id).")") or die(mysql_error());
+	}
+
 	public function moveTopic($id, $to_forum_id)
 	{
 		$topic = $this->db->query("select * from forum_topic where id = '".$id."'");
@@ -142,16 +170,33 @@ class	forum
 	
 	public function getEverything()
 	{
-		$get = $this->db->query("select forum_categorie.id as 'id_categorie', forum_categorie.name as 'name_cat', forum_categorie.order as 'cat_order' , forum_forum.id as 'id_forum', forum_forum.id_cat, forum_forum.name as 'name_forum', forum_forum.desc,
-		forum_forum.right_view, forum_forum.moderators, forum_forum.last_post, forum_forum.order as 'forum_order', forum_forum.nb_topics, forum_forum.nb_reponses, forum_topic.id as 'id_topic', forum_topic.id_forum, forum_topic.id_last_post,
-		forum_posts.id as 'id_post' from forum_categorie
+		$get = $this->db->query("select forum_categorie.id as 'id_categorie', forum_categorie.name as 'name_cat', forum_categorie.order as 'cat_order' , forum_forum.id as 'id_forum1', forum_forum.id_cat, forum_forum.name as 'name_forum', forum_forum.desc,
+		forum_forum.right_view, forum_forum.moderators, forum_forum.last_post, forum_forum.order as 'forum_order', forum_forum.nb_topics, forum_forum.nb_reponses, forum_topic.id as 'id_topic1', forum_topic.id_forum as 'id_forum2', forum_topic.id_last_post,
+		forum_posts.id as 'id_post1' from forum_categorie
 		left join forum_forum on forum_categorie.id = forum_forum.id_cat
 		left join forum_posts on forum_forum.last_post = forum_posts.id
 		left join forum_topic on forum_posts.id_topic = forum_topic.id
 		order by forum_categorie.order, forum_forum.order asc");
 		return $get;
 	}
+
+	public function getCat()
+	{
+		$ret = $this->db->query("select * from forum_categorie");
+		return $ret;
+	}
 	
+	public function getCatMaxOrder()
+	{
+		$ret = $this->db->query("select MAX(`order`) as 'max' from forum_categorie");
+		return $ret;
+	}
+	public function getForumsAndCat()
+	{
+		$ret = $this->db->query("select forum_categorie.id as 'cat_id', forum_categorie.name as 'name_cat', forum_forum.name as 'name_forum', forum_forum.id as 'forum_id'
+			from forum_forum left join forum_categorie on forum_forum.id_cat = forum_categorie.id order by forum_categorie.id asc");
+		return $ret;
+	}
 	public function	forumExist($id)
 	{
 		$test = $this->db->query("select * from forum_forum where id = '".$id."'");
@@ -180,8 +225,8 @@ class	forum
 	public function	getTopicsFromForum($id_forum)
 	{
 		$ret = $this->db->query("select forum_topic.id as 'id', forum_topic.name as 'name', forum_topic.creator, forum_topic.genre, forum_topic.id_last_post,
-		forum_topic.id_first_post, forum_topic.views, forum_topic.reponses, forum_topic.genre, forum_posts.id as 'id_post', 
-		forum_posts.auteur, forum_posts.date from forum_topic left join forum_posts on forum_topic.id_last_post = forum_posts.id where id_forum = '".$id_forum."' order by forum_posts.date desc");
+		forum_topic.id_first_post, forum_topic.lock as 'lock', forum_topic.views, forum_topic.reponses, forum_topic.genre, forum_posts.id as 'id_post', 
+		forum_posts.auteur, forum_posts.date from forum_topic left join forum_posts on forum_topic.id_last_post = forum_posts.id where id_forum = '".$id_forum."' order by forum_topic.genre asc, forum_posts.date desc");
 		return $ret;
 	}
 	
@@ -191,6 +236,52 @@ class	forum
 	return $ret;
 	}
 	
+	public function isLocked($id_topic)
+	{
+		$ret = $this->db->query("select `lock` from forum_topic where id = '".$id_topic."'");
+		return ($ret->row['lock'] == 1) ? true : false;
+	}
+
+	public function amIOwner($id_post, $login)
+	{
+	$ret = $this->db->query("select auteur from forum_posts where id = '".$id_post."'");
+	if ($login == $ret->row['auteur'])
+	return true;
+	return false;
+	}
+	public function getPost($id)
+	{
+	$ret = $this->db->query("select * from forum_posts where id = '".$id."'");
+	return $ret;
+	}
+	
+	public function getForumById($id)
+	{
+	$ret = $this->db->query("select * from forum_forum where id = '".$id."'");
+	return $ret;
+	}
+	
+	public function getArianeFromPost($id_post)
+	{
+	 $ret = $this->db->query("select forum_posts.id_topic as 'topic_id', forum_topic.name as 'topic_name', forum_topic.id_forum as 'forum_id', forum_forum.name as 'forum_name'
+	  from forum_forum left join forum_topic on forum_forum.id = forum_topic.id_forum 
+	  left join forum_posts on forum_topic.id = forum_posts.id_topic where forum_posts.id = '".$id_post."'");
+	  return $ret;
+	}
+	public function getArianeFromTopic($id_post)
+	{
+	 $ret = $this->db->query("select forum_topic.id as 'topic_id', forum_topic.name as 'topic_name', forum_topic.id_forum as 'forum_id', forum_forum.name as 'forum_name', forum_forum.right_post as 'right_post'
+	  from forum_forum left join forum_topic on forum_forum.id = forum_topic.id_forum 
+	   where forum_topic.id = '".$id_post."'");
+	  return $ret;
+	}
+
+	public function getTopicById($id)
+	{
+		$ret = $this->db->query("select * from forum_topic where id = '".$id."'");
+		return $ret;
+	}
+
 	public function getForumByName($name)
 	{
 		$ret = $this->db->query("select * from forum_forum where name = '".$name."'");
