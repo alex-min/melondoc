@@ -35,6 +35,6 @@
 .derniermessageAdmin { width:250px; background-color:red;}
 .categorieAdmin { width:20px; background-color : red; }
 
-td { border: 1px solid black; background-color: rgb(253,244,223); vertical-align:top; }
-table { margin-left : 150px; background-color: rgb(237,224,213); border: 1px solid black; }
-th { background-color: rgb(243,250,223); border: 1px solid black; }
+td { /*border: 1px solid black; background-color: rgb(253,244,223);*/ vertical-align:top; }
+table { margin-left : 150px; /*background-color: rgb(237,224,213); border: 1px solid black;*/ }
+th { /*background-color: rgb(243,250,223); border: 1px solid black;*/ }

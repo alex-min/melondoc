@@ -7,8 +7,8 @@ $(document).ready( function() {
 	root: '',
 	script: '/home/getList',
 	folderEvent: 'click',
-	expandSpeed: 750,
-	collapseSpeed: 750,
+	expandSpeed: 0,
+	collapseSpeed: 0,
 	multiFolder: false
     }, function(file){});
 });

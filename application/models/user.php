@@ -17,5 +17,11 @@ class			userModel extends model
       return TRUE;
     return FALSE;
   }
+
+  public function saveMessage($from, $sujet, $message)
+  {
+    $query = "INSERT INTO `message` (`from`, `subject`, `message`) VALUES ('".$from."', '".$sujet."','".$message."')";
+    $this->db->query($query);
+  }
 }
 ?>

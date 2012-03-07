@@ -1,0 +1,52 @@
+<br/><br/>
+<form action="/user/contact" method="POST" class="form-horizontal" id="contact" style="width: 700px; margin: 0px auto;">
+	<fieldset>
+		<legend>Formulaire de contact</legend>
+		{% if from_error == true %}
+		<div class="control-group error">
+		{% else %}
+		<div class="control-group">
+		{% endif %}
+			<label for="from" class="control-label">De</label>
+			<div class="controls">
+				<input id="from" class="span3" name="from" type="text" value="{{ session.mail }}"/>
+			</div>
+		</div>
+		
+		<br>
+		
+		{% if sujet_error == true %}
+		<div class="control-group error">
+		{% else %}
+		<div class="control-group">
+		{% endif %}
+			<label for="sujet" class="control-label">Sujet</label>
+			<div class="controls">
+				<select id="sujet" class="span3" name="sujet">
+					<option click="contact:disable_precise">Bug</option>
+					<option click="contact:disable_precise">Suggestion</option>
+					<option click="contact:enable_precise">Autre</option>
+				</select><br>
+				<br>
+				<input class="span3" type="text" name="precise" disabled="true"/>
+			</div>
+		</div>
+
+		<br>
+
+		{% if message_error == true %}
+		<div class="control-group error">
+		{% else %}
+		<div class="control-group">
+		{% endif %}
+			<label for="message" class="control-label">Message</label>
+			<div class="controls">
+				<textarea id="message" class="span4" name="message" style="resize:vertical;"></textarea>
+			</div>
+		</div>
+
+		<div class="form-actions">
+        	<input type="submit" class="btn btn-success" value="Envoyer le message"/>
+        </div>
+	</fieldset>
+</form>

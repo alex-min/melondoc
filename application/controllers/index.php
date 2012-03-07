@@ -6,7 +6,6 @@ class indexController extends controller
   {
     $this->template->loadLanguage("index");
     $this->template->setView("index");
-    $this->template->toto = "tata";
   }
 }
 ?>

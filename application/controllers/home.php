@@ -19,33 +19,32 @@ class     homeController extends controller
     $this->user->needLogin();
     $this->template->loadLanguage("home");
     if (isset($_POST['dir']) && strlen($_POST['dir']) <= 0)
-      {
-	echo '<ul class="jqueryFileTree">';
-	if (($categorie = $this->model->getListCategorie()))
-	  foreach ($categorie AS $c)
-	    echo '<li class="directory collapsed"><a href="#" rel="'.$c['id_category'].'">'.$c['name'].'</a></li>';
-	echo '</ul>';
-      }
+    {
+      echo '<ul class="jqueryFileTree">';
+      if (($categorie = $this->model->getListCategorie()))
+        foreach ($categorie AS $c)
+          echo '<li class="directory collapsed"><a href="#" rel="'.$c['id_category'].'">'.$c['name'].'</a></li>';
+      echo '</ul>';
+    }
     if (isset($_POST['dir']) && strlen($_POST['dir']) > 0)
+    {
+      echo '<ul class="jqueryFileTree">';
+      if (($documents = $this->model->getDocumentsFromUserIDAndCategorie($_SESSION['user']['user_id'], $_POST['dir'])))
       {
-	echo '<ul class="jqueryFileTree">';
-	if (($documents = $this->model->getDocumentsFromUserIDAndCategorie($_SESSION['user']['user_id'], $_POST['dir'])))
-	  foreach ($documents AS $doc)
-	    {
-	      $rights = $this->model->getRightsFromDocID($doc['id_document']);
-	      echo "<div class='hide fade in modal' id='rights_".$doc['id_document']."'>";
-	      echo '<div class="modal-header"><h2>'.$this->template->language['home_edit_rights'].'"'.$doc['nom'].'"</h2></div>';
-	      echo '<div class="modal-body">';
-	      foreach ($rights AS $r)
-		{
-		  
-		}
-	      echo "</div></div>";
-	      echo '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove icon-white"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit icon-white"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
-	    }
-	echo '</ul>';
+    	  foreach ($documents AS $doc)
+        {
+          $rights = $this->model->getRightsFromDocID($doc['id_document']);
+          echo "<div class='hide fade in modal' id='rights_".$doc['id_document']."'>";
+          echo '<div class="modal-header"><h2>'.$this->template->language['home_edit_rights'].'"'.$doc['nom'].'"</h2></div>';
+          echo '<div class="modal-body">';
+          foreach ($rights AS $r){}
+          echo "</div></div>";
+          echo '<li><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove icon-white"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit icon-white"></i></a></li>';
+        }
       }
-    return ;
+      echo '</ul>';
+    }
+    return;
   }
 
   public function	listAction() // ici c'est l'home du mec
