@@ -1,4 +1,3 @@
-
 $f.filesbar = {
 
    open:function(e){

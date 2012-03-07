@@ -25,4 +25,7 @@ $_['header_forum'] = "Forum";
 $_['header_contact'] = "Contact";
 $_['header_files'] = "Mes documents";
 $_['header_create_new'] = "CrÃ©er un nouveau document";
+$_['header_owner'] = "Propriétaire";
+$_['header_read'] = "Lecture";
+$_['header_write'] = "Ecriture";
 ?>

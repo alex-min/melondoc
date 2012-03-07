@@ -135,7 +135,11 @@ class		template
   public function addJSON($array)
   {
     if (is_array($array))
-      $this->json = array_merge($this->json, $array);
+      {
+	foreach ($array AS $key => $val)
+	  $array[$key] = utf8_encode($val);
+	$this->json = array_merge($this->json, $array);
+      }
   }
 
   /**

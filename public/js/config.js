@@ -26,3 +26,4 @@ function dispatcher(e){$f.exec($(this).attr(e.type), $(this))};
 	$("[mouseleave]").live("mouseleave", dispatcher);
 	$("[focusin]").live("focusin", dispatcher);
 	$("[focusout]").live("focusout", dispatcher);
+$("[change]").live("change", dispatcher);
