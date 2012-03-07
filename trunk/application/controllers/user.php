@@ -68,14 +68,20 @@ class			userController extends controller
 
   public function		contactAction()
   {
-
     $this->template->loadLanguage("user");
     $this->template->setView("contact");
-    if (isset($this->POST['']))
-      {
-	
-	$this->template->redirect($this->template->language['contact_success'], TRUE, "/index/index");
-      }
+    if (( isset($this->POST['from']) && !empty($this->POST['from']) ) && 
+        ( isset($this->POST['sujet']) && !empty($this->POST['sujet']) ) &&
+        ( isset($this->POST['message']) && !empty($this->POST['message']) ))
+    {
+      $this->model->saveMessage($this->POST['from'], $this->POST['sujet'], $this->POST['message']);
+      $this->template->redirect($this->template->language['contact_success'], TRUE, "/index/index");
+    }
+    $this->template->from_error = (isset($this->POST['from']) && empty($this->POST['from'])) ? (true) : (false);
+    $this->template->sujet_error = (isset($this->POST['sujet']) && empty($this->POST['sujet'])) ? (true) : (false);
+    $this->template->message_error = (isset($this->POST['message']) && empty($this->POST['message'])) ? (true) : (false);
+    $this->template->session = $_SESSION['user'];
   }
+  
 }
 ?>

@@ -85,7 +85,7 @@ function $f_getform(id)
 	var elem = $("form#"+id).first();
 	var obj = new Object();
 	var count = 0;
-	elem.children("input,textarea,select").each(function(index){
+	$("form#"+id+" input, form#"+id+" textarea, form#"+id+" select").each(function(index){
 		var name = $(this).attr("name");
 		if (name == undefined){
 			name = "no_name_"+count++;
