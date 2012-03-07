@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 3.3.10deb1
+-- version 3.4.5
 -- http://www.phpmyadmin.net
 --
--- Serveur: localhost
--- Généré le : Lun 03 Octobre 2011 à 15:30
--- Version du serveur: 5.1.54
--- Version de PHP: 5.3.5-1ubuntu7.2
+-- Client: localhost
+-- Généré le : Mer 07 Mars 2012 à 13:23
+-- Version du serveur: 5.5.16
+-- Version de PHP: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -22,179 +23,166 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 -- --------------------------------------------------------
 
 --
--- Structure de la table `categories`
+-- Structure de la table `forum_categorie`
 --
 
-CREATE TABLE IF NOT EXISTS `categories` (
-  `id_category` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(32) NOT NULL,
-  `description` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_category`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `forum_categorie` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `order` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
--- Contenu de la table `categories`
+-- Contenu de la table `forum_categorie`
 --
 
+INSERT INTO `forum_categorie` (`id`, `name`, `order`) VALUES
+(1, 'test2', 2),
+(10, 'test3', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `comments`
+-- Structure de la table `forum_config`
 --
 
-CREATE TABLE IF NOT EXISTS `comments` (
-  `id_comment` int(11) NOT NULL AUTO_INCREMENT,
-  `comment_text` text NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `topic_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_comment`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `forum_config` (
+  `cle` text NOT NULL,
+  `valeur` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Contenu de la table `comments`
+-- Contenu de la table `forum_config`
 --
 
+INSERT INTO `forum_config` (`cle`, `valeur`) VALUES
+('right_post_admin', '3'),
+('right_post_annonce', '2'),
+('message_par_page', '20'),
+('topic_par_page', '15'),
+('right_admin', '3');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `documents`
+-- Structure de la table `forum_forum`
 --
 
-CREATE TABLE IF NOT EXISTS `documents` (
-  `id_document` int(11) NOT NULL AUTO_INCREMENT,
-  `path_template` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_document`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `forum_forum` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cat` int(11) NOT NULL,
+  `right_create` int(11) NOT NULL,
+  `right_view` int(11) NOT NULL,
+  `right_annonce` int(11) NOT NULL,
+  `moderators` text NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `desc` text NOT NULL,
+  `order` int(11) NOT NULL,
+  `nb_reponses` int(11) NOT NULL,
+  `last_post` int(11) NOT NULL,
+  `nb_topics` int(11) NOT NULL,
+  `right_post` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `documents`
+-- Contenu de la table `forum_forum`
 --
 
+INSERT INTO `forum_forum` (`id`, `id_cat`, `right_create`, `right_view`, `right_annonce`, `moderators`, `name`, `desc`, `order`, `nb_reponses`, `last_post`, `nb_topics`, `right_post`) VALUES
+(4, 1, 1, 1, 1, '', 'last_test', 'test final', 1, 31, 42, 4, 1),
+(5, 1, 1, 1, 1, 'a:2:{i:0;s:4:"test";i:1;s:5:"test2";}', 'last_test', 'test final', 1, 1, 43, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `groups`
+-- Structure de la table `forum_posts`
 --
 
-CREATE TABLE IF NOT EXISTS `groups` (
-  `id_group` int(11) NOT NULL AUTO_INCREMENT,
-  `group_name` varchar(32) NOT NULL,
-  PRIMARY KEY (`id_group`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+CREATE TABLE IF NOT EXISTS `forum_posts` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_topic` int(11) NOT NULL,
+  `message` text NOT NULL,
+  `auteur` varchar(255) NOT NULL,
+  `date` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
 
 --
--- Contenu de la table `groups`
+-- Contenu de la table `forum_posts`
 --
 
+INSERT INTO `forum_posts` (`id`, `id_topic`, `message`, `auteur`, `date`) VALUES
+(5, 3, 'da\r\ndas\r\nda\r\nsd\r\nas\r\ndas\r\n\r\n<a href="toto">toto</a>\r\n\r\n', 'me', 1329959150),
+(7, 3, 'message', 'me', 1324603760),
+(8, 4, 'ceci est un test', 'me', 1329831519),
+(10, 6, 'ceci est un test', 'me', 1329831637),
+(11, 7, 'mon nouveau topic qui poutre du poney', 'me', 1329840388),
+(12, 8, 'mon nouveau topic qui poutre du poney', 'me', 1329840389),
+(13, 8, ' salut', 'me', 1329921037),
+(14, 8, ' retest', 'me', 1329921057),
+(15, 8, ' ', 'me', 1329921100),
+(16, 8, 'dat imba test ', 'me', 1329921245),
+(17, 8, ' retest', 'toto', 1329921444),
+(18, 3, ' <a href="#">titi</a>', 'me', 1329959179),
+(19, 3, ' ddasd', 'me', 1330176449),
+(20, 3, ' as', 'me', 1330176453),
+(21, 3, ' s', 'me', 1330176457),
+(22, 3, ' s', 'me', 1330176461),
+(23, 3, ' qwe', 'me', 1330176468),
+(24, 3, ' qwe', 'me', 1330176473),
+(25, 3, ' qwe', 'me', 1330176476),
+(26, 3, ' qwe\r\n', 'me', 1330176482),
+(27, 3, ' \r\n]', 'me', 1330176491),
+(28, 3, ' ad', 'me', 1330176500),
+(29, 3, ' sd', 'me', 1330176511),
+(30, 3, ' asd', 'me', 1330176519),
+(31, 3, ' asd', 'me', 1330176524),
+(32, 3, 'asd', 'me', 1330176535),
+(33, 3, ' sd', 'me', 1330184511),
+(34, 3, ' asdasd', 'me', 1330184515),
+(35, 3, ' asd', 'me', 1330184522),
+(36, 3, ' asdsd', 'me', 1330184533),
+(37, 3, ' asdasd', 'me', 1330184540),
+(38, 3, ' asdasd', 'me', 1330184547),
+(39, 3, ' dasdasd', 'me', 1330184552),
+(40, 3, ' asd', 'me', 1330184564),
+(41, 3, ' asd', 'me', 1330184569),
+(42, 3, ' asdasd', 'me', 1330184577),
+(43, 7, ' salut', 'me', 1330202668);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `groups_members`
+-- Structure de la table `forum_topic`
 --
 
-CREATE TABLE IF NOT EXISTS `groups_members` (
-  `user_id` int(11) NOT NULL,
-  `group_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `forum_topic` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_forum` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `creator` varchar(255) NOT NULL,
+  `genre` enum('admin','annonce','normal') NOT NULL,
+  `id_first_post` int(11) NOT NULL,
+  `id_last_post` int(11) NOT NULL,
+  `lock` int(11) NOT NULL,
+  `reponses` int(11) NOT NULL,
+  `views` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
 --
--- Contenu de la table `groups_members`
+-- Contenu de la table `forum_topic`
 --
 
+INSERT INTO `forum_topic` (`id`, `id_forum`, `name`, `creator`, `genre`, `id_first_post`, `id_last_post`, `lock`, `reponses`, `views`) VALUES
+(3, 4, 'test', 'me', 'annonce', 5, 42, 0, 26, 0),
+(4, 4, 'test', 'me', 'admin', 8, 7, 0, 0, 0),
+(6, 4, 'test', 'me', 'normal', 10, 7, 0, 0, 0),
+(7, 5, 'this is an imba test', 'me', 'admin', 11, 43, 0, 1, 0),
+(8, 4, 'this is an imba test', 'me', 'admin', 12, 17, 0, 5, 0);
 
--- --------------------------------------------------------
-
---
--- Structure de la table `groups_rights`
---
-
-CREATE TABLE IF NOT EXISTS `groups_rights` (
-  `group_rights` enum('read','write') NOT NULL,
-  `id_group` int(11) NOT NULL,
-  `id_document` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `groups_rights`
---
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `templates`
---
-
-CREATE TABLE IF NOT EXISTS `templates` (
-  `template_id` int(11) NOT NULL AUTO_INCREMENT,
-  `template_path` varchar(100) NOT NULL,
-  `template_name` varchar(32) NOT NULL,
-  `template_description` varchar(100) NOT NULL,
-  PRIMARY KEY (`template_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `templates`
---
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `topics`
---
-
-CREATE TABLE IF NOT EXISTS `topics` (
-  `id_topic` int(11) NOT NULL AUTO_INCREMENT,
-  `topic_name` varchar(32) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  PRIMARY KEY (`id_topic`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `topics`
---
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `login` varchar(32) NOT NULL,
-  `firstname` varchar(32) NOT NULL,
-  `lastname` varchar(32) NOT NULL,
-  `mail` varchar(40) NOT NULL,
-  `password` varchar(32) NOT NULL,
-  `forum_rights` enum('admin','moderator','user') NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
---
--- Contenu de la table `users`
---
-
-
--- --------------------------------------------------------
-
---
--- Structure de la table `users_rights`
---
-
-CREATE TABLE IF NOT EXISTS `users_rights` (
-  `user_right` enum('owner','read','write') NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `document_id` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Contenu de la table `users_rights`
---
-
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
