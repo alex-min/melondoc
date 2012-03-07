@@ -66,29 +66,52 @@ class user
   
   private function	stockMyRights()
   {
-  	$this->user_rights = $this->getRights($_SESSION['user']['user_id']);
+    $_SESSION['user']['rights'] = $this->getRights($_SESSION['user']['user_id']);
   }
   
   public function	getRights($user_id)
   {
-  	$array = array();
-  	$query = $this->db->query('SELECT * FROM `users_rights` WHERE `user_id` = "'.$user_id.'"');
-  	if ($query->count > 0)
-	{
-		foreach ($query->rows AS $right)
-			$array[$right['document_id']] = $right['user_right'];
-		return $array;
-	}
-	return FALSE;
+    $array = FALSE;
+    $query = $this->db->query('SELECT * FROM `users_rights` WHERE `user_id` = "'.$user_id.'"');
+    if ($query->count > 0)
+      {
+	foreach ($query->rows AS $right)
+	  $array[$right['document_id']] = $right['user_right'];
+      }
+    // ajouter les droits de tes groupes ...
+    //    $query = $this->db->query('SELECT ');
+    return $array;
   }
   
+  public function	convertRight($right)
+  {
+    $this->template->loadLanguage("header");
+    switch ($right)
+      {
+      case "owner":
+	return $this->template->language['header_owner'];
+      case "read":
+	return $this->template->language['header_read'];
+      case "write":
+	return $this->template->language['header_write'];
+      }
+    return "NULL";
+  }
+
   public function	hasRight($doc_id, $type = "owner")
   {
-  	if (isset($this->user_rights[$doc_id]) && $this->user_rights[$doc_id] == $type)
-		return TRUE;
-	return FALSE;
+    if (isset($_SESSION['user']['rights'][$doc_id]) && $_SESSION['user']['rights'][$doc_id] == $type)
+      return TRUE;
+    return FALSE;
   }
   
+  public function	getRight($doc_id)
+  {
+    if (isset($_SESSION['user']['rights'][$doc_id]))
+      return $_SESSION['user']['rights'][$doc_id];
+    return FALSE;
+  }
+
   // return TRUE ou FALSE si le mec est loggue, check $_SESSION['user']
   public function isLogged()
   {

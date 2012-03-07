@@ -5,6 +5,5 @@ $(document).ready(function(){
             cases.attr('checked', true);
         else
             cases.attr('checked', false);
-    });
-    
+    });    
 });
