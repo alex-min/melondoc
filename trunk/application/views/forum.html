@@ -1,5 +1,72 @@
+<br/><br/>
+<a href="/adminForum/" class="btn btn-small"><i class="icon-cog"></i> Administration</a>
+<br/><br/>
+<ul class="breadcrumb">
+	<li class="active">
+    	<a href="/forum">Index</a> <span class="divider">/</span>
+    </li>
+</ul>
 
-Vous etes ici : <a href="/forum">Index</a> <br />
-<a href="/adminForum/"> acceder a l'administration</a>
-{{view|raw}}<br /><br />
+{% set cat = 0 %}
+
+<table class="table table-bordered">
+	{% for data in ret.rows %}
+		{%  if data.name_forum is not empty %}
+	
+{% if cat != data.id_categorie %}
+	<tr>
+		<th>{{ data.name_cat }}</th>
+	<tr>
+
+	<tr>
+    	<th>
+    		<strong>Forum</strong>
+    	</th>             
+        <th style="text-align: center;">
+        	<strong>Sujets</strong>
+        </th>
+        <th style="text-align: center;">
+        	<strong>Messages</strong>
+        </th>
+        <th style="text-align: center;">
+        	<strong>Dernier message</strong>
+        </th>
+    </tr>
+
+    {% set cat = data.id_categorie %}
+	
+{% endif %}
+	<tr>
+		<td class="titre">
+			<strong>
+				<a href='/forum/voirForum?id=".$data['id_forum1']."'>{{ data.name_forum }}</a>
+			</strong>
+			<br/>
+			{{ data.desc }}  
+      	{% if data.moderators is not empty %}
+        	<br/>
+        	<i>
+        		Moderateurs :"
+        		// FAIRE LES LIENS MODO
+        	</i>
+        {% endif %}
+    	</td>
+
+    	<td style="text-align: center;">
+    		{{ data.nb_topics }}
+    	</td>
+
+    	<td style="text-align: center;">
+    		{{ data.nb_reponses }}
+    	</td>
+
+    	<td style="text-align: center;">
+    		<a href="/forum/viewTopic?id={{ data.id_topic1 }}&amp;post={{ data.last_post}}">last message</a>
+    	</td>
+    </tr>
+      {% endif %}
+    {% endfor %}
+</table>
+
+
 <strong>powered by TaiTaiBB</strong>

@@ -1,9 +1,17 @@
-Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{infos['id']}}">{{infos['name']}}</a> > <strong> Voir le forum </strong>
+{% if viewModerator == true %}
+	<a href="/forum/moderate?id={{infos['id']}}" class="btn btn-small"><i class="icon-cog"></i> Moderer</a>
+{% endif %}
+<br/><br/>
+<ul class="breadcrumb">
+	<li>
+    	<a href="/forum">Index</a> <span class="divider">/</span>
+    </li>
+    <li class="active">
+    	<a href="/forum/voirForum?id={{infos['id']}}">{{infos['name']}}</a> <span class="divider">/</span>
+    </li>
+</ul>
 <br /><br />
 {{linkCreate|raw}}
-{% if viewModerator == true %}
-<a href="/forum/moderate?id={{infos['id']}}">Moderer le forum</a>
-{% endif %}
 <table>
 <tr>
 <th> </th>
