@@ -24,56 +24,85 @@ class			forumController extends controller
 	//$this->forum->deleteForum(2);
 	$_SESSION['user']['login'] = "me";
 	//$this->addCSS("forum", "design");
-	$this->ret = $this->forum->getEverything();
-  $this->template->view = $this->prepareView($this->ret);
+	$ret = $this->forum->getEverything();
+  //$this->template->view = $this->prepareView($this->ret);
+
+    $cat = 0;
+    foreach ($ret->rows as $data)
+    {
+      if (empty($data['name_forum'])){
+        continue;
+      }
+      if ($cat != $data['id_categorie'])
+      {
+        $data['name_cat'] = stripslashes(htmlspecialchars($data['name_cat']));
+        $cat = $data['id_categorie'];
+      }
+      $data['moderators'] = unserialize($data['moderators']);
+      $data['name_forum'] = stripslashes(htmlspecialchars($data['name_forum']));
+      $data['desc'] = nl2br(stripslashes(htmlspecialchars($data['desc'])));
+    }
+
+    $this->template->ret = $ret;
   
 	$this->template->setView("forum");
   }
   
   public function prepareView($ret)
   {
-$view = "";
+    $view = "";
     $view .= "<table>";
-   $cat = 0;
-   $mess = 0;
-   $i = 0;
-   foreach ($ret->rows as $data)
-{
-if (empty($data['name_forum']))
-continue;
-if ($cat != $data['id_categorie'])
-{
-$view .= '<tr>
-        
-        <th ><strong>'.stripslashes(htmlspecialchars($data['name_cat'])).'
-        </strong></th>             
-        <th ><strong>Sujets</strong></th>       
-        <th ><strong>Messages</strong></th>       
-        <th ><strong>Dernier message</strong></th>   
-        </tr>';
+    $cat = 0;
+    $mess = 0;
+    $i = 0;
+
+    foreach ($ret->rows as $data)
+    {
+      if (empty($data['name_forum'])){
+        continue;
+      }
+      if ($cat != $data['id_categorie'])
+      {
+        $data['name_cat'] = stripslashes(htmlspecialchars($data['name_cat']));
         $cat = $data['id_categorie'];
-   }
-   //print_r($data);
-   $mess += $data['nb_reponses'] + $data['nb_topics'];
-   $modo = unserialize($data['moderators']);
-   $mod ="";
-   $view .= "<tr>
-  <td class=\"titre\"><strong>
-      <a href='/forum/voirForum?id=".$data['id_forum1']."'>".
-  stripslashes(htmlspecialchars($data['name_forum']))."</a></strong>
-    <br />".nl2br(stripslashes(htmlspecialchars($data['desc'])));  
-    if (!empty($modo)) { 
-    $view .="<br />moderateurs :";  
-  $mod = implode(", ", $modo);
-  $view .= $mod;
-  } $view .= "</td>
-  <td >".$data['nb_topics']."</td>
-  <td >".$data['nb_reponses']."</td>
-  <td ><a href=\"/forum/viewTopic?id=".$data['id_topic1']."&amp;post=".$data['last_post']."\">last message</a></td>
-  </tr>";
-     }
-$view .="</table>";
-return $view;
+      }
+      $data['moderators'] = unserialize($data['moderators']);
+      $data['name_forum'] = stripslashes(htmlspecialchars($data['name_forum']));
+      $data['desc'] = nl2br(stripslashes(htmlspecialchars($data['desc'])));
+    }
+
+    $this->template->ret = $ret;
+
+    /*foreach ($ret->rows as $data)
+    {
+      if (empty($data['name_forum'])){
+        continue;
+      }
+      if ($cat != $data['id_categorie'])
+      {
+        $view .= '<tr>
+          <th ><strong>'.stripslashes(htmlspecialchars($data['name_cat'])).'
+          </strong></th>             
+          <th ><strong>Sujets</strong></th>       
+          <th ><strong>Messages</strong></th>       
+          <th ><strong>Dernier message</strong></th>   
+          </tr>';
+        $cat = $data['id_categorie'];
+      }
+      $mess += $data['nb_reponses'] + $data['nb_topics'];
+      $modo = unserialize($data['moderators']);
+      $mod ="";
+      $view .= "<tr><td class=\"titre\"><strong><a href='/forum/voirForum?id=".$data['id_forum1']."'>".stripslashes(htmlspecialchars($data['name_forum']))."</a></strong><br/>".nl2br(stripslashes(htmlspecialchars($data['desc'])));  
+      if (!empty($modo))
+      {
+        $view .="<br />moderateurs :";  
+        $mod = implode(", ", $modo);
+        $view .= $mod;
+      }
+      $view .= "</td><td >".$data['nb_topics']."</td><td >".$data['nb_reponses']."</td><td ><a href=\"/forum/viewTopic?id=".$data['id_topic1']."&amp;post=".$data['last_post']."\">last message</a></td></tr>";
+    }
+    $view .="</table>";*/
+    return $view;
   }
 
 

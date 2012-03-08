@@ -80,7 +80,8 @@ class			userController extends controller
     $this->template->from_error = (isset($this->POST['from']) && empty($this->POST['from'])) ? (true) : (false);
     $this->template->sujet_error = (isset($this->POST['sujet']) && empty($this->POST['sujet'])) ? (true) : (false);
     $this->template->message_error = (isset($this->POST['message']) && empty($this->POST['message'])) ? (true) : (false);
-    $this->template->session = $_SESSION['user'];
+    if (isset($_SESSION['user']))
+      $this->template->session = $_SESSION['user'];
   }
   
 }
