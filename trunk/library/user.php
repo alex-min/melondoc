@@ -112,6 +112,21 @@ class user
     return FALSE;
   }
 
+  public function getUserFromID($user_id)
+  {
+    $query = $this->db->query('SELECT * FROM `users` WHERE `user_id` = "'.$user_id.'" LIMIT 1');
+    if ($query->count == 1)
+      return $query->row;
+    return FALSE;
+  }
+  public function getGroupFromID($user_id)
+  {
+    $query = $this->db->query('SELECT * FROM `groups` WHERE `id_group` = "'.$user_id.'" LIMIT 1');
+    if ($query->count == 1)
+      return $query->row;
+    return FALSE;
+  }
+
   // return TRUE ou FALSE si le mec est loggue, check $_SESSION['user']
   public function isLogged()
   {

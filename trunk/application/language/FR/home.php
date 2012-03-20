@@ -14,4 +14,6 @@ $_['home_title_ind_rights'] = "Les utilisateurs : ";
 $_['home_title_group_rights'] = "Les groupes : ";
 $_['rights_change'] = "Changement effectué avec succès";
 $_['error'] = "une erreur est survenue";
+$_['home_add_rights_user'] =  "Ajouter des droits à un utilisateur";
+$_['home_add_rights_group'] =  "Ajouter des droits à un groupe";
 ?>
