@@ -20,10 +20,11 @@ window.$f  = {
 
 function dispatcher(e){$f.exec($(this).attr(e.type), $(this))};
 	
-	$("[click]").live("click", dispatcher);
-	$("[dbclick]").live("dbclick", dispatcher);
-	$("[mouseenter]").live("mouseenter", dispatcher);
-	$("[mouseleave]").live("mouseleave", dispatcher);
-	$("[focusin]").live("focusin", dispatcher);
-	$("[focusout]").live("focusout", dispatcher);
+$("[click]").live("click", dispatcher);
+$("[dbclick]").live("dbclick", dispatcher);
+$("[mouseenter]").live("mouseenter", dispatcher);
+$("[mouseleave]").live("mouseleave", dispatcher);
+$("[focusin]").live("focusin", dispatcher);
+$("[keyup]").live("keyup", dispatcher);
+$("[focusout]").live("focusout", dispatcher);
 $("[change]").live("change", dispatcher);

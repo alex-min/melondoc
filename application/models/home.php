@@ -6,6 +6,22 @@ class		homeModel extends model
     $this->db->query('UPDATE `documents` SET `deleted` = "1" WHERE `id_document` = "'.$doc_id.'"');
   }
 
+  public function	getUsersCompletion($letter)
+  {
+    $query = $this->db->query('SELECT `user_id`, `login`, firstname, lastname FROM `users` WHERE `login` LIKE "%'.$letter.'%" OR `firstname` LIKE "%'.$letter.'%" OR `lastname` LIKE "%'.$letter.'%"');
+    if ($query->count > 0)
+      return $query->rows;
+    return FALSE;
+  }
+
+  public function	getGroupsCompletion($letter)
+  {
+    $query = $this->db->query('SELECT * FROM `groups` WHERE `group_name` LIKE "%'.$letter.'%"');
+    if ($query->count > 0)
+      return $query->rows;
+    return FALSE;
+  }
+
   public function	verifyTypeTemplate($id)
   {
     $query = $this->db->query('SELECT `template_id` FROM `templates` WHERE `template_id` = "'.$id.'" LIMIT 1');

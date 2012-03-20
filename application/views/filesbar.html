@@ -1,9 +1,28 @@
 <div id="filesbar" class="span3 toggle_close" mouseenter="filesbar:open" mouseleave="filesbar:close" style="left: 20px">
 	
 	<span id="filesbar_open" class="toggle_filesbar">
-		<i class="icon-th-list icon-white"></i>
+	  <i class="icon-th-list icon-white"></i>
 	</span>
 
-	<div id="tree"></div>
+<a href="#modal_new" class="btn btn-primary" data-toggle="modal">{{_lang.home_doc_create}}</a>
+<div id="modal_new" class="modal hide fade in">
+  <div class="modal-header">
+    <h2>{{_lang.header_create_new}}</h2>
+  </div>
+  <div class="modal-body">
+    {% if noCategories is defined %}
+    {% for key, temp in categorie %}
+
+    <!-- ICI DES VISUELS POUR LES DIFFERENTS TYPE DE FICHIERS -->
+    <a href="/home/new?type={{temp.id_category}}"><img src="/public/images/{{temp.avatar}}" alt="{{temp.description}}" /></a>
+
+    {% endfor %}
+    {% else %}
+    {{noTemplates}}
+    {% endif %}
+  </div>
+</div>
+
+<div id="tree"></div>
 
 </div>
