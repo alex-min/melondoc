@@ -99,6 +99,20 @@ insert_text:function(open, close)
       msgfield.value += open + close;
       msgfield.focus();
    }
+ },
+
+ displayActions:function(e)
+ {
+    var name = e.attr('name');
+    $('.row[name='+name+'] .actions').stop().animate({'opacity': 1});
+    return false;
+ },
+
+ displayNoneActions:function(e)
+ {
+    var name = e.attr('name');
+    $('.row[name='+name+'] .actions').stop().animate({'opacity': 0});
+    return false;
  }
 
 };

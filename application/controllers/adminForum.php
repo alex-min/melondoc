@@ -20,7 +20,7 @@ class			adminForumController extends controller
 		}
 	}
 
-	publilc function manageCatAction(){
+	public function manageCatAction(){
 		if (isset($this->POST['sup']))
 		{
 			$id = 19;
@@ -38,5 +38,10 @@ class			adminForumController extends controller
 			$this->template->setView("manageCat");
 		}
 	}
+
+	public function deleteCatAction(){
+		echo "deleted";
+	}
+	
 }
 ?>
