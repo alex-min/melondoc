@@ -129,12 +129,12 @@ class			pager
     $array = array_keys($this->result);
     $key = 0;
     foreach ($array AS $k => $v)
-      if ($v == $id)
-	{
-	  $key = $k;
+      {
+	if ($v == $id)
 	  break;
-	}
-    return $key / $this->number_per_page;
+	$key++;
+      }
+    return (int) ($key / $this->number_per_page);
   }
 
   /**
