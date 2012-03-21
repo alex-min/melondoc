@@ -19,15 +19,27 @@ class	forum
     $this->class[$key] = $val;
   }
 
+public function bbcode_pre($texte)
+{
+$texte = preg_replace('/\[code=(.*)\](.*)\[\/code\]/isU','<pre class="code" lang="$1">$2</pre>',$texte);
+
+return $texte;	
+}
+
 public function bbcode($texte)
 {
  $texte = preg_replace('`\[b\](.+)\[/b\]`isU', '<strong>$1</strong>', $texte); 
  $texte = preg_replace('`\[i\](.+)\[/i\]`isU', '<em>$1</em>', $texte);
- $texte = preg_replace('`\[s\](.+)\[/s\]`isU', '<u>$1</u>', $texte);
- $texte = preg_replace('`\[r\](.+)\[/r\]`isU', '<strike>$1</strike>', $texte);
+ $texte = preg_replace('`\[u\](.+)\[/u\]`isU', '<u>$1</u>', $texte);
+ $texte = preg_replace('`\[s\](.+)\[/s\]`isU', '<strike>$1</strike>', $texte);
  $texte = preg_replace('/\[url=(.*)\](.*)\[\/url\]/U','<a href="$1" target="_blank">$2</a>',$texte);
- $texte = preg_replace('/\[quote=(.*)\](.*)\[\/quote\]/U','<strong>Citation $1</strong><br><cite>$2</cite>', $texte);
- $texte = preg_replace('/\[img=(.*)\](.*)\[\/img\]/U','<img src="$1" alt="$2">',$texte);
+  
+ $texte = preg_replace('/\[quote=(.*)\](.*)\[\/quote\]/U','<blockquote><p>$2</p><small>$1</small></blockquote>', $texte);
+  $texte = preg_replace('/\[img=(.*)\](.*)\[\/img\]/U','<img src="$1" alt="$2">',$texte);
+  $texte = preg_replace('`\[quote\](.+)\[/quote\]`isU', '<blockquote>$1</blockquote>', $texte);
+  $texte = preg_replace('`\[url\](.+)\[/url\]`isU', '<a href="$1" target="_blank">$1</a>', $texte);
+  $texte = preg_replace('`\[img\](.+)\[/img\]`isU', '<img src="$1" alt="img">', $texte);
+
  return $texte;
 }
 

@@ -364,7 +364,7 @@ class			forumController extends controller
       {
       $message = mysql_real_escape_string($_POST['answer']);
       $id_post = $this->forum->createPost($message, $_SESSION['user']['login'], $id_topic, false);
-      $this->template->redirect("Message poste avec succes", FALSE, "/forum/viewTopic?id=".$id_topic."#".$id_post);
+      $this->template->redirect("Message poste avec succes", FALSE, "/forum/viewTopic?id=".$id_topic."&post=".$id_post);
       }
     else
     {
@@ -376,11 +376,13 @@ class			forumController extends controller
 
   public function viewTopicAction()
   {
+    $this->addCss('documentation/highlight');
+    $this->addJavascript('documentation/highlight');
   $id_post = 0;
   $_SESSION['user']['rights'] = 3;
   $id_topic = intval($_GET['id']);
    $this->addCSS("forum", "design");
-  $this->addJavascript("forum");
+  //$this->addJavascript("forum");
 	if (!$this->forum->topicExist($id_topic)){
 	$this->template->redirect("ce topic n'existe pas ou plus", TRUE, "/forum");
 }
@@ -395,6 +397,8 @@ class			forumController extends controller
     {
    $id_post = intval($_GET['post']);
    $page = $this->pager->getPageFromID($id_post);
+   //echo $id_post."<br>".$page;
+   //exit(1);
    $this->template->redirect("", FALSE, "/forum/viewTopic?id=".$id_topic."&page=".$page."#".$id_post);
   }
 	$posts = $this->pager->getResult();
@@ -428,12 +432,15 @@ $this->template->canModerate = true;
   {
 
     $value['date'] = date("Y/M/D", ($value['date']));
+      
     $value['message'] = nl2br(stripslashes(htmlentities($value['message'])));
+     $value['message'] = $this->forum->bbcode_pre($value['message']);
     $value['message'] = $this->forum->bbcode($value['message']);
     $posts[$i] = $value;
-    //var_dump($this->template->posts);
+    
     $i++;
   }
+
 
 
 

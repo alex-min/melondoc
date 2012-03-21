@@ -11,7 +11,15 @@ Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{inf
 <th class = "nombremessages">nombre de vues</th>
 <th class = "derniermessage">dernier message</th>
 <th> <input type="checkbox" name="selectAll" click="forum:checkboxAll"> </th>
-
+<th> <div class="btn-group">
+          <a class="btn btn-primary" href="#"><i class="icon-cog icon-white"></i> Action</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          <li> <input type="submit" value="lock" name="lock"> </li>
+	 	  <li> <input type="submit" value="unlock" name="unlock"> </li>
+	 	  <li> <input type="submit" value="move" name="move"> </li>
+	 	</ul>
+	 </div> </th>
 {% set i = 0 %}
 
 {% for value in topics.rows %}
@@ -64,17 +72,6 @@ at {{value['date']}}</td>
 {% endif %}
 {% set i = i + 1 %}
 {% endfor %}
-</table>
-<table>
-	<tr>
-		<th> </th>
-		<th> </th>
-	</tr>
-<tr>
-	<td> <input type="submit" value="lock" name="lock"> </td>
-	<td> <input type="submit" value="unlock" name="unlock"> </td>
-	<td> <input type="submit" value="move" name="move"> </td>
-</tr>
 </table>
 </form>
 

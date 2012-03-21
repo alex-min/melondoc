@@ -46,6 +46,7 @@ insert_text:function(open, close)
       msgfield.value += open + close;
       msgfield.focus();
    }
+
  },
  
  insert_link:function()
@@ -99,4 +100,6 @@ insert_text:function(open, close)
       msgfield.focus();
    }
  }
+
 };
+
