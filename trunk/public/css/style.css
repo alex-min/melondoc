@@ -138,18 +138,18 @@ hr.soften {
 	background: url("http://static.senscritique.net/theme/bg_or.png") no-repeat scroll center center transparent;
 }
 
-.contact-footer{
+.contact-footer, .infos-footer{
 	text-align: center;
 }
-.contact-content{
+.contact-content, .infos-content{
 	border: 1px solid #BDBDBD;
 	width: 832px;
 	margin: 0 auto;
 }
-.contact-content form{
+.contact-content form, .infos-content form{
 	padding: 30px;
 }
-.contact-content h1{
+.contact-content h1, .infos-content h1{
 	 color: #3B3B3B;
 	 font-size: 28px;
 	 font-style: normal;
