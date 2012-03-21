@@ -355,17 +355,22 @@ class			forumController extends controller
        $this->template->redirect("ce topic est verrouiller", TRUE, "/forum/viewTopic?id=".$id_topic);
     }
 
-    if (isset($_POST['answer']) && !empty($_POST['answer']))
+    if (isset($_POST['answer']))
     {
+      $_POST['answer'] = trim($_POST['answer']);
+      
+      if (!empty($_POST['answer']))
+      {
       $message = mysql_real_escape_string($_POST['answer']);
       $id_post = $this->forum->createPost($message, $_SESSION['user']['login'], $id_topic, false);
       $this->template->redirect("Message poste avec succes", FALSE, "/forum/viewTopic?id=".$id_topic."#".$id_post);
-    }
+      }
     else
     {
       $this->template->topic_id = $id_topic;
       $this->template->setView("answerEditor");
     }
+  }
   }
 
   public function viewTopicAction()
@@ -374,7 +379,7 @@ class			forumController extends controller
   $_SESSION['user']['rights'] = 3;
   $id_topic = intval($_GET['id']);
    $this->addCSS("forum", "design");
-
+  $this->addJavascript("forum");
 	if (!$this->forum->topicExist($id_topic)){
 	$this->template->redirect("ce topic n'existe pas ou plus", TRUE, "/forum");
 }
@@ -402,10 +407,12 @@ class			forumController extends controller
 
     $value['date'] = date("Y/M/D", ($value['date']));
     $value['message'] = nl2br(stripslashes(htmlentities($value['message'])));
+    $value['message'] = $this->forum->bbcode($value['message']);
     $posts[$i] = $value;
     //var_dump($this->template->posts);
     $i++;
   }
+
 
 
 $this->template->posts = $posts;
