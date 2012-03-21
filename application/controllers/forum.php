@@ -120,6 +120,7 @@ class			forumController extends controller
   {
 
     $value['name'] = stripslashes($value['name']);
+    $value['name'] = $this->forum->bbcode($value['name']);
     $value['date'] = date("Y/M/D", ($value['date']));
     $this->template->topics->rows[$i] = $value;
     $i++;
@@ -175,9 +176,9 @@ class			forumController extends controller
   $id = intval($_GET['id']);
   $this->checkOwner($id);
  
-  if (!isset($_POST['message']))
+  if (!isset($_POST['answer']))
 	$this->template->redirect("le message est vide.", TRUE, getReferer());
-  $message = $_POST['message'];
+  $message = $_POST['answer'];
   $message = mysql_real_escape_string($message);
   $this->forum->editPost($id, $message);
   $this->template->redirect("message editer avec succes.", FALSE, "/forum/");
@@ -197,16 +198,16 @@ class			forumController extends controller
   if ($ret->row['right_create'] > $_SESSION['user']['rights'])
     $this->template->redirect("vous n'avez pas les permissions necessaire", TRUE, "/forum/");
 
-  if (isset($_POST['message']) || isset($_POST['titre']))
+  if (isset($_POST['answer']) || isset($_POST['titre']))
   {
-	 if (!isset($_POST['message']) || empty($_POST['message']))
+	 if (!isset($_POST['answer']) || empty($_POST['answer']))
 	 {
 	   $this->template->titre = $_POST['titre'];
 	   $this->template->redirect("vous n'avez pas ecris de message", TRUE, "/forum/createTopic?id=".$forum_id);
 	 }
 	 else if (!isset($_POST['titre']) || empty($_POST['titre']))
 	 {
-	  $this->template->message = $_POST['message'];
+	  $this->template->message = $_POST['answer'];
 	  $this->template->redirect("vous n'avez pas ecris de message", TRUE, "/forum/createTopic?id=".$forum_id);
 	 }
 	 else
@@ -218,7 +219,7 @@ class			forumController extends controller
          if ($_POST['type'] == "Admin" && $_SESSION['user']['rights'] < $configRightAdmin)
        $this->template->redirect("vous n'avez pas les permissions necessaire pour poster ce sujet en tant qu'Admin", FALSE, "/forum/createTopic?id=".$forum_id);
      }
-	   $message = mysql_real_escape_string($_POST['message']);
+	   $message = mysql_real_escape_string($_POST['answer']);
      $titre = mysql_real_escape_string($_POST['titre']);
      $type = $_POST['type'];
      $id_topic = $this->forum->createTopic($forum_id, $titre, $message, $_SESSION['user']['login'], $type);
@@ -384,7 +385,10 @@ class			forumController extends controller
 	$this->template->redirect("ce topic n'existe pas ou plus", TRUE, "/forum");
 }
 	$post = $this->forum->getPostsFromTopic($id_topic);
-  $this->template->info = $this->forum->getArianeFromTopic($id_topic)->row;
+  $name = $this->forum->getArianeFromTopic($id_topic)->row;
+
+  $name['topic_name'] = $this->forum->bbcode($name['topic_name']);
+  $this->template->info = $name;
 	$this->pager->setDatas($post->rows);
   $posts = array();
     if (isset($_GET['post']))
@@ -400,6 +404,24 @@ class			forumController extends controller
   $i = 0;
   $this->template->posts = array();
   $this->template->canAnswer = ($_SESSION['user']['rights'] >= $this->template->info['right_post']) ? true : false;
+  $this->template->infos = $this->forum->getForumById($name['forum_id'])->row;
+  $modo = unserialize($this->template->infos['moderators']) ;
+
+  $flag = false;
+  if ($modo != false)
+  {
+  foreach ($modo as $value) {
+    if ($value == $_SESSION['user']['login'])
+    {
+      $flag = true;
+      break;
+    }
+  }
+}
+if ($flag == false && $_SESSION['user']['rights'] < $this->forum->getConfigFromKey("right_admin"))
+$this->template->canModerate = false;
+else
+$this->template->canModerate = true;
   if ($this->forum->isLocked($id_topic))
     $this->template->canAnswer = false;
   foreach ($posts as $value)

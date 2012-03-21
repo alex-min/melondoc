@@ -13,6 +13,8 @@ $f.forum = {
 	   		});
    		}
    },
+
+
 insert_text:function(open, close)
 {
    msgfield = $("[name=answer]")[0];
@@ -63,5 +65,38 @@ insert_text:function(open, close)
    msgfield.selectionStart = msgfield.selectionEnd = endPos + open.length + close.length;
    msgfield.scrollTop = old_top;
    msgfield.focus();
+ },
+
+ quote:function(message, author) {
+     msgfield = $("[name=answer]")[0];
+   open = "[quote=" + author + "]" + message;
+   close = "[/quote]";
+
+   if (document.selection && document.selection.createRange)
+   {
+      msgfield.focus();
+      sel = document.selection.createRange();
+      sel.text = open + sel.text + close;
+      msgfield.focus();
+   }
+
+   // Moz support
+   else if (msgfield.selectionStart || msgfield.selectionStart == '0')
+   {
+      var startPos = msgfield.selectionStart;
+      var endPos = msgfield.selectionEnd;
+      var old_top = msgfield.scrollTop;
+      msgfield.value = msgfield.value.substring(0, startPos) + open + msgfield.value.substring(startPos, endPos) + close + msgfield.value.substring(endPos, msgfield.value.length);
+      msgfield.selectionStart = msgfield.selectionEnd = endPos + open.length + close.length;
+      msgfield.scrollTop = old_top;
+      msgfield.focus();
+   }
+
+   // Fallback support for other browsers
+   else
+   {
+      msgfield.value += open + close;
+      msgfield.focus();
+   }
  }
 };
