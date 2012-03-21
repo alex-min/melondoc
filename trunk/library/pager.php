@@ -134,7 +134,7 @@ class			pager
 	  break;
 	$key++;
       }
-    return (int) ($key / $this->number_per_page);
+    return ((int) ($key / $this->number_per_page)) + 1;
   }
 
   /**
