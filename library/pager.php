@@ -127,7 +127,7 @@ class			pager
   public function	getPageFromID($id)
   {
     $array = array_keys($this->result);
-    $key = 0;
+    $key = 1;
     foreach ($array AS $k => $v)
       {
 	if ($v == $id)
