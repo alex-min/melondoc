@@ -1,38 +1,43 @@
-<form method="POST" class="form-stacked" action="/home/index">
-  <div class="control-group">
-    <label class="control-label" for="form_firstname">{{_lang.header_firstname}} :</label>
-    <div class="controls">
-      <input type="text" name="form_firstname" value="{{infos.firstname}}"/><br />
-      <span class="help-inline hide">{{_lang.firstname_invalid}}</span>
+<br/><br/>
+<div class="infos-content">
+  <form method="POST" class="form-horizontal" action="/home/index" style="margin: 0px auto;">
+    <h1>Mes informations</h1>
+    <hr class="soften">
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" name="form_firstname" value="{{infos.firstname}}" placeholder="{{_lang.header_firstname}}" class="span5"/><br />
+        <span class="help-inline hide">{{_lang.firstname_invalid}}</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="form_lastname">{{_lang.header_lastname}} :</label>
-    <div class="controls">
-      <input type="text" name="form_lastname" value="{{infos.lastname}}"/><br />
-      <span class="help-inline hide">{{_lang.lastname_invalid}}</span>
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" name="form_lastname" value="{{infos.lastname}}" placeholder="{{_lang.header_lastname}}" class="span5"/><br />
+        <span class="help-inline hide">{{_lang.lastname_invalid}}</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="form_email">{{_lang.header_email}} :</label>
-    <div class="controls">
-      <input type="text" name="form_email" value="{{infos.mail}}"/><br />
-      <span class="help-inline hide">{{_lang.email_invalid}}</span>
+    <div class="control-group">
+      <div class="controls">
+        <input type="text" name="form_email" value="{{infos.mail}}" placeholder="{{_lang.header_email}}" class="span5"/><br />
+        <span class="help-inline hide">{{_lang.email_invalid}}</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="form_mdp">{{_lang.header_password}}</label>
-    <div class="controls">
-      <input type="password" name="form_mdp"/><br />
-      <span class="help-inline hide">{{_lang.password_invalid}}</span>
+    <div class="control-group">
+      <div class="controls">
+        <input type="password" name="form_mdp" placeholder="{{_lang.header_password}}" class="span5"/><br />
+        <span class="help-inline hide">{{_lang.password_invalid}}</span>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <label class="control-label" for="form_mdp2">{{_lang.header_verif_password}}</label>
-    <div class="controls">
-      <input type="password" name="form_mdp2" /><br />
-      <span class="help-inline hide">{{_lang.password_invalid}}</span>
+    <div class="control-group">
+      <div class="controls">
+        <input type="password" name="form_mdp2" placeholder="{{_lang.header_verif_password}}" class="span5"/><br />
+        <span class="help-inline hide">{{_lang.password_invalid}}</span>
+      </div>
     </div>
-  </div>
-  <input type="submit" class="btn-primary" value="{{_lang.header_inscription}}"/>
-</form>
+    <div style="text-align: center; padding: 30px;">
+      <input type="submit" class="btn_get" value="Enregistrer les modifications"/>
+    </div>
+  </form>
+</div>
+<div class="infos-footer">
+  <img src="/public/images/curved-drop-shadow.png" />
+</div>
