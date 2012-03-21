@@ -1,52 +1,55 @@
 <br/><br/>
-<form action="/user/contact" method="POST" class="form-horizontal" id="contact" style="width: 700px; margin: 0px auto;">
-	<fieldset>
-		<legend>Formulaire de contact</legend>
-		{% if from_error == true %}
-		<div class="control-group error">
-		{% else %}
-		<div class="control-group">
-		{% endif %}
-			<label for="from" class="control-label">De</label>
-			<div class="controls">
-				<input id="from" class="span3" name="from" type="text" value="{{ session.mail }}"/>
+<div class="contact-content">
+	<form action="/user/contact" method="POST" class="form-horizontal" id="contact" style="margin: 0px auto;">
+		<fieldset>
+			<h1>Formulaire de contact</h1>
+			<hr class="soften">
+			{% if from_error == true %}
+			<div class="control-group error">
+			{% else %}
+			<div class="control-group">
+			{% endif %}
+				<div class="controls">
+					<input id="from" class="span4" name="from" type="text" value="{{ session.mail }}" placeholder="De"/>
+				</div>
 			</div>
-		</div>
-		
-		<br>
-		
-		{% if sujet_error == true %}
-		<div class="control-group error">
-		{% else %}
-		<div class="control-group">
-		{% endif %}
-			<label for="sujet" class="control-label">Sujet</label>
-			<div class="controls">
-				<select id="sujet" class="span3" name="sujet">
-					<option click="contact:disable_precise">Bug</option>
-					<option click="contact:disable_precise">Suggestion</option>
-					<option click="contact:enable_precise">Autre</option>
-				</select><br>
-				<br>
-				<input class="span3" type="text" name="precise" disabled="true"/>
+			
+			<br>
+			
+			{% if sujet_error == true %}
+			<div class="control-group error">
+			{% else %}
+			<div class="control-group">
+			{% endif %}
+				<div class="controls">
+					<select id="sujet" class="span4" name="sujet" placeholder="Message">
+						<option click="contact:disable_precise">Bug</option>
+						<option click="contact:disable_precise">Suggestion</option>
+						<option click="contact:enable_precise">Autre</option>
+					</select><br>
+					<br>
+					<input class="span4" type="text" name="precise" disabled="true" placeholder="Autre..."/>
+				</div>
 			</div>
-		</div>
 
-		<br>
+			<br>
 
-		{% if message_error == true %}
-		<div class="control-group error">
-		{% else %}
-		<div class="control-group">
-		{% endif %}
-			<label for="message" class="control-label">Message</label>
-			<div class="controls">
-				<textarea id="message" class="span4" name="message" style="resize:vertical;"></textarea>
+			{% if message_error == true %}
+			<div class="control-group error">
+			{% else %}
+			<div class="control-group">
+			{% endif %}
+				<div class="controls">
+					<textarea id="message" class="span5" name="message" style="resize:vertical;" placeholder="Message"></textarea>
+				</div>
 			</div>
-		</div>
 
-		<div class="form-actions">
-        	<input type="submit" class="btn btn-success" value="Envoyer le message"/>
-        </div>
-	</fieldset>
-</form>
+			<div style="padding: 30px; text-align: center;">
+	        	<input type="submit" class="btn_get" value="Envoyer le message"/>
+	        </div>
+		</fieldset>
+	</form>
+</div>
+<div class="contact-footer">
+	<img src="/public/images/curved-drop-shadow.png" />
+</div>
