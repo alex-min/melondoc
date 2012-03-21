@@ -20,7 +20,7 @@ class			adminForumController extends controller
 		}
 	}
 
-	public function manageCatAction(){
+	publilc function manageCatAction(){
 		if (isset($this->POST['sup']))
 		{
 			$id = 19;

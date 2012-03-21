@@ -19,6 +19,17 @@ class	forum
     $this->class[$key] = $val;
   }
 
+public function bbcode($texte)
+{
+ $texte = preg_replace('`\[b\](.+)\[/b\]`isU', '<strong>$1</strong>', $texte); 
+ $texte = preg_replace('`\[i\](.+)\[/i\]`isU', '<em>$1</em>', $texte);
+ $texte = preg_replace('`\[s\](.+)\[/s\]`isU', '<u>$1</u>', $texte);
+  $texte = preg_replace('`\[r\](.+)\[/r\]`isU', '<strike>$1</strike>', $texte);
+ $texte = preg_replace('/\[url=(.*)\](.*)\[\/url\]/U','<a href="$1" target="_blank">$2</a>',$texte);
+ $texte = preg_replace('/\[img=(.*)\](.*)\[\/img\]/U','<img src="$1" alt="$2">',$texte);
+ return $texte;
+}
+
 	public function	createCategorie($name, $order)
 	{
 		$this->db->query("insert into forum_categorie set name = '".$name."', `order` = '".$order."'");

@@ -13,18 +13,55 @@ $f.forum = {
 	   		});
    		}
    },
-
-   supCat:function(e){
-      $.ajax({
-         url: '/adminForum/manageCat',
-         type: 'POST',
-         dataType: 'json',
-         data: 'sup='+e.attr('name'),
-         success: function(data, textStatus) {
-            $f.log(data);
-         },
-         error: function () { $f.alert('error'); }
-      });
+insert_text:function(open, close)
+{
+   msgfield = $("[name=answer]")[0];
+   console.log(msgfield);
+   // IE support
+   if (document.selection && document.selection.createRange)
+   {
+      msgfield.focus();
+      sel = document.selection.createRange();
+      sel.text = open + sel.text + close;
+      msgfield.focus();
    }
-   
+
+   // Moz support
+   else if (msgfield.selectionStart || msgfield.selectionStart == '0')
+   {
+      var startPos = msgfield.selectionStart;
+      var endPos = msgfield.selectionEnd;
+      var old_top = msgfield.scrollTop;
+      msgfield.value = msgfield.value.substring(0, startPos) + open + msgfield.value.substring(startPos, endPos) + close + msgfield.value.substring(endPos, msgfield.value.length);
+      msgfield.selectionStart = msgfield.selectionEnd = endPos + open.length + close.length;
+      msgfield.scrollTop = old_top;
+      msgfield.focus();
+   }
+
+   // Fallback support for other browsers
+   else
+   {
+      msgfield.value += open + close;
+      msgfield.focus();
+   }
+ },
+ 
+ insert_link:function()
+{
+   msgfield = $("[name=answer]")[0];
+  
+   var link = prompt("adresse du lien : ");
+   var text = prompt("Text du lien : ");
+
+   var open = "[url=" + link + "]";
+   var close = text + "[/url]";
+
+   var startPos = msgfield.selectionStart;
+   var endPos = msgfield.selectionEnd;
+   var old_top = msgfield.scrollTop;
+   msgfield.value = msgfield.value.substring(0, startPos) + open + msgfield.value.substring(startPos, endPos) + close + msgfield.value.substring(endPos, msgfield.value.length);
+   msgfield.selectionStart = msgfield.selectionEnd = endPos + open.length + close.length;
+   msgfield.scrollTop = old_top;
+   msgfield.focus();
+ }
 };
