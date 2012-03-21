@@ -201,6 +201,14 @@ class     homeController extends controller
       }
     $this->template->addJSON(array("html" => $html));
   }
+  public function	createAction()
+  {
+    $this->user->needLogin();
+    $this->template->loadLanguage("home");
+    $this->template->setView("new");
+    $this->template->categorie = $this->model->getListCategorie();
+  }
+
   public function	newAction()
   {
     $this->user->needLogin();
