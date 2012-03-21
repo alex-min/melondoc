@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client: localhost
--- Généré le : Mer 07 Mars 2012 à 13:23
+-- Généré le : Mer 21 Mars 2012 à 16:29
 -- Version du serveur: 5.5.16
 -- Version de PHP: 5.3.8
 
@@ -91,7 +91,7 @@ CREATE TABLE IF NOT EXISTS `forum_forum` (
 --
 
 INSERT INTO `forum_forum` (`id`, `id_cat`, `right_create`, `right_view`, `right_annonce`, `moderators`, `name`, `desc`, `order`, `nb_reponses`, `last_post`, `nb_topics`, `right_post`) VALUES
-(4, 1, 1, 1, 1, '', 'last_test', 'test final', 1, 31, 42, 4, 1),
+(4, 1, 1, 1, 1, '', 'last_test', 'test final', 1, 57, 74, 5, 1),
 (5, 1, 1, 1, 1, 'a:2:{i:0;s:4:"test";i:1;s:5:"test2";}', 'last_test', 'test final', 1, 1, 43, 1, 1);
 
 -- --------------------------------------------------------
@@ -107,7 +107,7 @@ CREATE TABLE IF NOT EXISTS `forum_posts` (
   `auteur` varchar(255) NOT NULL,
   `date` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=44 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=75 ;
 
 --
 -- Contenu de la table `forum_posts`
@@ -123,7 +123,6 @@ INSERT INTO `forum_posts` (`id`, `id_topic`, `message`, `auteur`, `date`) VALUES
 (13, 8, ' salut', 'me', 1329921037),
 (14, 8, ' retest', 'me', 1329921057),
 (15, 8, ' ', 'me', 1329921100),
-(16, 8, 'dat imba test ', 'me', 1329921245),
 (17, 8, ' retest', 'toto', 1329921444),
 (18, 3, ' <a href="#">titi</a>', 'me', 1329959179),
 (19, 3, ' ddasd', 'me', 1330176449),
@@ -150,7 +149,35 @@ INSERT INTO `forum_posts` (`id`, `id_topic`, `message`, `auteur`, `date`) VALUES
 (40, 3, ' asd', 'me', 1330184564),
 (41, 3, ' asd', 'me', 1330184569),
 (42, 3, ' asdasd', 'me', 1330184577),
-(43, 7, ' salut', 'me', 1330202668);
+(43, 7, ' salut', 'me', 1330202668),
+(45, 8, '', 'me', 1331727406),
+(46, 8, '[b][i][s] test[/s][/i][/b]', 'me', 1332251403),
+(47, 8, '[url=http://google.fr]google[/url]\r\n', 'me', 1332252018),
+(48, 8, '[url="http://google.fr"]google[/url]', 'me', 1332251576),
+(49, 8, '[url="http://google.fr"] google [/url]', 'me', 1332251591),
+(50, 8, '[URL="http://google.fr"]google[/URL]', 'me', 1332251647),
+(51, 8, '[URL=http://google.fr]google[/URL]', 'me', 1332251683),
+(52, 8, '[url=http://google.fr]google[/url]', 'me', 1332252033),
+(53, 8, 'var_dump($texte);', 'me', 1332252105),
+(54, 8, '[url=http://google.fr]google[/url]', 'me', 1332252112),
+(55, 8, '[url="http://google.fr"]google[/url]', 'me', 1332252143),
+(56, 8, '[url=http://google.fr]google[/url]', 'me', 1332252431),
+(57, 8, '[img=http://pierre.chachatelier.fr/programmation/images/mozodojo-original-image.jpg]image lol[/img]', 'me', 1332252707),
+(59, 8, '[r]toto[/r]\r\n', 'me', 1332258317),
+(60, 8, '[url=http://google.fr]google[/url]', 'me', 1332262159),
+(62, 10, 'test', 'me', 1332333559),
+(63, 10, '[quote=me]test[/quote][quote=me]test[/quote]', 'me', 1332336650),
+(64, 10, '[quote=me]test[/quote]', 'me', 1332336666),
+(65, 10, '[quote] TEST de quote[/quote]', 'me', 1332337334),
+(66, 8, '[code=html]<img src="/public/images/quote.gif" alt="citation" click="forum:insert_text(''[quote]'', ''[/quote]'')">\r\n<img src="/public/images/italic.gif" alt="italic" click="forum:insert_text(''[i]'', ''[/i]'')">\r\n<img src="/public/images/strike.gif" alt="barre" click="forum:insert_text(''[s]'', ''[/s]'')">\r\n<img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text(''[u]'', ''[/u]'')">\r\n<img src="/public/images/image.gif" alt="image" click="forum:insert_text(''[img]'', ''[/img]'')">\r\n<img src="/public/images/code.gif" alt="image" click="forum:insert_text(''[code=]'', ''[/code]'')">[/code]\r\n', 'me', 1332339209),
+(67, 8, '<img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('''', '''')">', 'me', 1332339758),
+(68, 8, '[code=html]<img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('''', '''')">[/code]', 'me', 1332339783),
+(69, 8, '[c=]<img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('''', '''')">[/c]', 'me', 1332340005),
+(70, 8, '[c=html]<img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('''', '''')">\r\n<img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('''', '''')">[/c]', 'me', 1332340053),
+(71, 8, '[b]test[/b]', 'me', 1332340351),
+(72, 8, 'test', 'me', 1332347007),
+(73, 8, 'asdasda', 'me', 1332347165),
+(74, 8, 'asdasda', 'me', 1332347166);
 
 -- --------------------------------------------------------
 
@@ -170,18 +197,19 @@ CREATE TABLE IF NOT EXISTS `forum_topic` (
   `reponses` int(11) NOT NULL,
   `views` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 --
 -- Contenu de la table `forum_topic`
 --
 
 INSERT INTO `forum_topic` (`id`, `id_forum`, `name`, `creator`, `genre`, `id_first_post`, `id_last_post`, `lock`, `reponses`, `views`) VALUES
-(3, 4, 'test', 'me', 'annonce', 5, 42, 0, 26, 0),
-(4, 4, 'test', 'me', 'admin', 8, 7, 0, 0, 0),
-(6, 4, 'test', 'me', 'normal', 10, 7, 0, 0, 0),
-(7, 5, 'this is an imba test', 'me', 'admin', 11, 43, 0, 1, 0),
-(8, 4, 'this is an imba test', 'me', 'admin', 12, 17, 0, 5, 0);
+(3, 4, 'test', 'me', 'annonce', 5, 57, 0, 26, 0),
+(4, 4, 'test', 'me', 'admin', 8, 57, 0, 0, 0),
+(6, 4, 'test', 'me', 'normal', 10, 57, 0, 0, 0),
+(7, 5, 'this is an imba test', 'me', 'admin', 11, 57, 0, 1, 0),
+(8, 4, 'this is an imba test', 'me', 'admin', 12, 74, 0, 28, 0),
+(10, 4, '[s]test[/s]', 'me', 'normal', 62, 65, 0, 3, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
