@@ -10,7 +10,7 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 <td class = "titlebox">{{value['date']}} 
 
 	
-	<span style = "float : right;"><div class="btn-group"></span>
+	<span style = "float : right;"><div class="btn-group">
           <a class="btn btn-primary" href="#"><i class="icon-cog icon-white"></i> Action</a>
           <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -20,7 +20,7 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
             {% endif %}
             <li><a href = "#" click="forum:quote('{{value['message']}}', '{{value['auteur']}}')"><i class="icon-share"></i> Citer</a></li>
           </ul>
-        </div>
+        </div></span>	
 	
 </td>
 </tr>
@@ -35,14 +35,18 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 <form action="/forum/postAnswer?id={{info['topic_id']}}" method="POST">
 <label for="answer"> Poster une reponse:</label> 
 <img src="/public/images/bold.gif" alt="gras" click="forum:insert_text('[b]', '[/b]')">
-<img src="/public/images/quote.gif" alt="citation" click="forum:insert_text('[q]', '[/q]')">
+<img src="/public/images/quote.gif" alt="citation" click="forum:insert_text('[quote]', '[/quote]')">
 <img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('[i]', '[/i]')">
 <img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('[s]', '[/s]')">
 <img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('[u]', '[/u]')">
-
+<img src="/public/images/image.gif" alt="image" click="forum:insert_text('[img]', '[/img]')">
+<img src="/public/images/code.gif" alt="image" click="forum:insert_text('[code=]', '[/code]')">
 <br>
 <textarea id="answer" name="answer" id="answer"> </textarea> <br />
 <input type="submit" value="Envoyer"></input>
 </form>
 {% endif %}
 <div style="text-align:center;">{{next|raw}}</div>
+<script>
+$('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+</script>
