@@ -1,6 +1,6 @@
-Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}} </a> > <a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']}}</a> >  <strong> voir le sujet</strong>
+Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}} </a> > <a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']|raw}}</a> >  <strong> voir le sujet</strong>
 <br />
-<h1> {{info['topic_name']}} </h1>
+<h1> {{info['topic_name']|raw}} </h1>
 
 <table>
 {% for value in posts %}
@@ -9,8 +9,19 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 <td id="{{value['id']}}">{{value['id']}} | {{value['auteur']}}</td>
 <td class = "titlebox">{{value['date']}} 
 
-	{% if value['auteur'] == me %}<span style = "float : right;"><a href = "/forum/editPost?id={{value['id']}}">editer le message</a> <a href = "/forum/deletePost?id={{value['id']}}">supprimer le post</a></span>
-	{% endif %}
+	
+	<span style = "float : right;"><div class="btn-group"></span>
+          <a class="btn btn-primary" href="#"><i class="icon-cog icon-white"></i> Action</a>
+          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+          	{% if value['auteur'] == me or canModerate == true %}
+            <li><a href = "/forum/editPost?id={{value['id']}}"><i class="icon-pencil"></i> Editer</a></li>
+            <li><a href = "/forum/deletePost?id={{value['id']}}"><i class="icon-trash"></i> Supprimer</a></li>
+            {% endif %}
+            <li><a href = "#" click="forum:quote('{{value['message']}}', '{{value['auteur']}}')"><i class="icon-share"></i> Citer</a></li>
+          </ul>
+        </div>
+	
 </td>
 </tr>
 <tr>
@@ -28,7 +39,7 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 <img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('[i]', '[/i]')">
 <img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('[s]', '[/s]')">
 <img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('[u]', '[/u]')">
-<img src="/public/images/link.gif" alt="url" click="forum:insert_link()">
+
 <br>
 <textarea id="answer" name="answer" id="answer"> </textarea> <br />
 <input type="submit" value="Envoyer"></input>

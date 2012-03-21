@@ -32,7 +32,7 @@
 	locked 
 	{% endif %}
 </td>
-<td class = "annonce">Annonce : <a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']}}</a></strong></td>
+<td class = "annonce">Annonce : <a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']|raw}}</a></strong></td>
 <td class = "nombremessagesAnnonce">{{value['creator']}} totot</td>
 <td class = "nombremessagesAnnonce">{{value['reponses']}}</td>
 <td class = "nombremessagesAnnonce">{{value['views']}}</td>
@@ -44,7 +44,7 @@ at {{value['date']}}</td>
 	locked 
 	{% endif %}
 </td>
-<td class = "Admin">Admin : <a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']}}</a></strong></td>
+<td class = "Admin">Admin : <a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']|raw}}</a></strong></td>
 <td class = "nombremessagesAdmin">{{value['creator']}}</td>
 <td class = "nombremessagesAdmin">{{value['reponses']}}</td>
 <td class = "nombremessagesAdmin">{{value['views']}}</td>
@@ -56,7 +56,7 @@ at {{value['date']}}</td>
 	locked 
 	{% endif %}
 </td>
-<td class = "titre"><a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']}}</a></strong></td>
+<td class = "titre"><a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']|raw}}</a></strong></td>
 
 <td class = "nombremessages">{{value['creator']}}</td>
 <td class = "nombremessages">{{value['reponses']}}</td>
