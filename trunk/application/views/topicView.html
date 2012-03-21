@@ -1,52 +1,79 @@
 Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}} </a> > <a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']|raw}}</a> >  <strong> voir le sujet</strong>
-<br />
-<h1> {{info['topic_name']|raw}} </h1>
 
-<table>
+<h1 style="text-align: center; margin-top: 30px; margin-bottom: -20px">{{info['topic_name']|raw}} </h1>
+<hr class="soften">
+
 {% for value in posts %}
 
 {% if value['id'] is not empty  %}
-<td id="{{value['id']}}">{{value['id']}} | {{value['auteur']}}</td>
-<td class = "titlebox">{{value['date']}} 
-
-	
-	<span style = "float : right;"><div class="btn-group">
-          <a class="btn btn-primary" href="#"><i class="icon-cog icon-white"></i> Action</a>
-          <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
-          <ul class="dropdown-menu">
-          	{% if value['auteur'] == me or canModerate == true %}
-            <li><a href = "/forum/editPost?id={{value['id']}}"><i class="icon-pencil"></i> Editer</a></li>
-            <li><a href = "/forum/deletePost?id={{value['id']}}"><i class="icon-trash"></i> Supprimer</a></li>
-            {% endif %}
-            <li><a href = "#" click="forum:quote('{{value['message']}}', '{{value['auteur']}}')"><i class="icon-share"></i> Citer</a></li>
-          </ul>
-        </div></span>	
-	
-</td>
-</tr>
-<tr>
-<td class = "autorbox">jsuis pas un pd</td>
-<td class = "messagebox">{{value['message']|raw}}</td></tr>
+<div name="{{value['id']}}" class="row" style="background: white;" mouseenter="forum:displayActions" mouseleave="forum:displayNoneActions">
+    <div class="span2">
+      <div  id="{{value['id']}}"><h3><span class="mp_welcome-step">{{value['id']}}</span>{{value['auteur']}}</h3></div>
+      <div class="datebox">{{value['date']}}</div>
+    </div>
+    <div class="span10">
+      <div style="border:1px solid #BDBDBD; min-height: 80px;">
+      <ul class="actions" style="list-style:none; padding: 0px; margin: 5px; float: right; opacity: 0;">
+      {% if value['auteur'] == me or canModerate == true %}
+        <li><a href = "/forum/editPost?id={{value['id']}}" title="Editer"><i class="icon-pencil"></i></a></li>
+        <li><a href = "/forum/deletePost?id={{value['id']}}" title="Supprimer"><i class="icon-trash"></i></a></li>
+      {% endif %}
+        <li><a href = "#" click="forum:quote('{{value['message']}}', '{{value['auteur']}}')" title="Citer"><i class="icon-share"></i></a></li>
+      </ul>
+      <div class="messagebox">{{value['message']|raw}}</div>
+      </div>
+      <div>
+        <img style="width: 970px;" src="/public/images/curved-drop-shadow.png" />
+      </div>
+    </div>
+</div>
 {% endif %}
 {% endfor %}
-</table>	
+
+{{next|raw}}
 
 {% if canAnswer == true %}
+<div class="row" style="background: white;">
+    <div class="span2">
+      <label for="answer"><h3>Repondre:</h3></label>
+      <div style="padding: 20px;">
+      <i class="icon-bold" click="forum:insert_text('[b]', '[/b]')"></i>
+      <i class="icon-share" click="forum:insert_text('[quote]', '[/quote]')"></i>
+      <i class="icon-italic" click="forum:insert_text('[i]', '[/i]')"></i>
+      <i class="icon-font" click="forum:insert_text('[s]', '[/s]')"></i>
+      <i class="icon-font" click="forum:insert_text('[u]', '[/u]')"></i>
+      <i class="icon-picture" click="forum:insert_text('[img]', '[/img]')"></i>
+      <i class="icon-font" click="forum:insert_text('[code]', '[/code]')"></i>
+    </div></div>
+    <div class="span10">
+      <div style="border:1px solid #BDBDBD; ">
+      <div class="messagebox">
+        <textarea id="answer" name="answer" id="answer" rows="7" style="width: 920px; resize:vertical;" placeholder="Ecrire son message ..."></textarea>
+      </div>
+      </div>
+      <div>
+        <img style="width: 970px;" src="/public/images/curved-drop-shadow.png" />
+      </div>
+        <div style="text-align: center; width: 100%;" ><input type="submit" value="Envoyer le message" class="btn_get"></input></div>
+    </div>
+</div>
+
+
+
+
 <form action="/forum/postAnswer?id={{info['topic_id']}}" method="POST">
-<label for="answer"> Poster une reponse:</label> 
-<img src="/public/images/bold.gif" alt="gras" click="forum:insert_text('[b]', '[/b]')">
+
+<!--<img src="/public/images/bold.gif" alt="gras" click="forum:insert_text('[b]', '[/b]')">
 <img src="/public/images/quote.gif" alt="citation" click="forum:insert_text('[quote]', '[/quote]')">
 <img src="/public/images/italic.gif" alt="italic" click="forum:insert_text('[i]', '[/i]')">
 <img src="/public/images/strike.gif" alt="barre" click="forum:insert_text('[s]', '[/s]')">
 <img src="/public/images/underline.gif" alt="souligner" click="forum:insert_text('[u]', '[/u]')">
 <img src="/public/images/image.gif" alt="image" click="forum:insert_text('[img]', '[/img]')">
-<img src="/public/images/code.gif" alt="image" click="forum:insert_text('[code=]', '[/code]')">
-<br>
-<textarea id="answer" name="answer" id="answer"> </textarea> <br />
-<input type="submit" value="Envoyer"></input>
+<img src="/public/images/code.gif" alt="image" click="forum:insert_text('[code=]', '[/code]')">-->
+<br/> <br />
+</div>
 </form>
 {% endif %}
-<div style="text-align:center;">{{next|raw}}</div>
 <script>
 $('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
 </script>

@@ -14,10 +14,19 @@
 .auteur2 { width:10px;background-color: lavender; }
 .derniermessage2 { width:250px;background-color: lavender; }
 
-.titlebox{ width: 500 px; background-color: lavender;}
-.autorbox{ width: 150px; background-color:rgb(243,250,223); float:left;}
-.messagebox{width: 1000px; background-color:rgb(237,224,213); border:1px solid black;}
-.footerbox{width:100%; background-color:white;}
+.datebox{
+	padding: 10px;
+	text-align: center;
+	font-style: italic;
+}
+.messagebox{
+	padding: 20px;
+	padding-left: 25px;
+	/*background-color:rgb(237,224,213);*/
+}
+.footerbox{
+	width:100%; background-color:white;
+}
 
 .Annonce {width: 500px; background-color: blue;}
 .nombremessagesAnnonce { width:150px; background-color: blue;}
