@@ -391,16 +391,24 @@ class			forumController extends controller
 
   $name['topic_name'] = $this->forum->bbcode($name['topic_name']);
   $this->template->info = $name;
-	$this->pager->setDatas($post->rows);
+	
   $posts = array();
     if (isset($_GET['post']))
     {
    $id_post = intval($_GET['post']);
+   $result = array();
+   foreach ($post->rows as $value) {
+     $result[$value['id']] = $value;
+   }
+
+   $this->pager->setDatas($result);
    $page = $this->pager->getPageFromID($id_post);
    //echo $id_post."<br>".$page;
    //exit(1);
    $this->template->redirect("", FALSE, "/forum/viewTopic?id=".$id_topic."&page=".$page."#".$id_post);
   }
+  else
+  $this->pager->setDatas($post->rows);
 	$posts = $this->pager->getResult();
 	$this->template->next = $this->pager->getPagination($_SERVER["REQUEST_URI"]);
     
