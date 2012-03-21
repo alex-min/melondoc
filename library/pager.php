@@ -131,7 +131,7 @@ class			pager
     foreach ($array AS $k => $v)
       if ($v == $id)
 	{
-	  $key = $k;
+	  $key = $v;
 	  break;
 	}
     return $key / $this->number_per_page;
