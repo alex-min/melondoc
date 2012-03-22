@@ -7,18 +7,18 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 
 {% if value['id'] is not empty  %}
 <div name="{{value['id']}}" class="row" style="background: white;" mouseenter="forum:displayActions" mouseleave="forum:displayNoneActions">
-<ul class="actions" style="list-style:none; padding: 0px; float: right; opacity: 0;">
+<ul class="actions span10 offset2">
       {% if value['auteur'] == me or canModerate == true %}
-        <li><a href = "/forum/editPost?id={{value['id']}}" title="Editer"><i class="icon-pencil"></i> Editer</a></li>
-        <li><a href = "/forum/deletePost?id={{value['id']}}" title="Supprimer"><i class="icon-trash"></i> Supprimer</a></li>
+        <li style=""><a href = "/forum/editPost?id={{value['id']}}" title="Editer"><i class="icon-pencil"></i> Editez</a></li>
+        <li style="display: inline;"><a href = "/forum/deletePost?id={{value['id']}}" title="Supprimer"><i class="icon-trash"></i> Supprimer</a></li>
       {% endif %}
-        <li><a href = "#" click="forum:quote('{{value['message']}}', '{{value['auteur']}}')" title="Citer"><i class="icon-share"></i> Citer</a></li>
+        <li style="display: inline;"><a href = "#" click="forum:quote('{{value['message']}}', '{{value['auteur']}}')" title="Citer"><i class="icon-share"></i> Citer</a></li>
 </ul>
     <div class="span2">
       <div  id="{{value['id']}}"><h3><span class="mp_welcome-step">{{value['id']}}</span>{{value['auteur']}}</h3></div>
       <div class="datebox">{{value['date']}}</div>
     </div>
-    <div class="offset2" style="width: 905px">
+    <div class="span10">
       <div style="border:1px solid #BDBDBD; min-height: 80px;">
       <div class="messagebox">{{value['message']|raw}}</div>
       </div>
