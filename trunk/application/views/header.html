@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <div class="container">
-      <a class="brand" href="#">
+      <a class="brand" href="/">
       <img src="/public/images/logo.png" width="100"/>
 	<!--{%  if _lang.project_name is defined  %}
 	{{ _lang.project_name }}
@@ -11,7 +11,7 @@
       </a>
       <div class="pull-right">
 	<ul class="nav">
-	  <li><a href="/index/index" title="{{_lang.header_index}}">{{_lang.header_index}}</a></li>
+	  <li><a href="/" title="{{_lang.header_index}}">{{_lang.header_index}}</a></li>
 	  {% if isLogged %}
 	  <li><a href="/home/index" title="{{_lang.header_account}}">{{_lang.header_account}}</a></li>
 	  {% endif %}
@@ -22,8 +22,8 @@
 	  {% else %}
 	  <li><a href="#modal_connexion" data-toggle="modal" title="{{_lang.header_connexion_inscription}}">{{_lang.header_connexion_inscription}}</a></li>
 	  {% endif %}
-	  <li><a href="#" title="Facebook"><img src="/public/images/logo-facebook.jpg" width="20"/></a></li>
-	  <li><a href="#" title="Twitter"><img src="/public/images/logo-twitter.jpg" width="20"/></a></li>
+	  <li><a href="http://www.facebook.fr" target="_blanck" title="Facebook"><img src="/public/images/logo-facebook.jpg" width="20"/></a></li>
+	  <li><a href="http://www.twitter.fr" target="_blanck" title="Twitter"><img src="/public/images/logo-twitter.jpg" width="20"/></a></li>
 	</ul>
       </div>
     </div>

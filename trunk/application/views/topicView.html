@@ -1,6 +1,10 @@
-Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}} </a> > <a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']|raw}}</a> >  <strong> voir le sujet</strong>
-
-<h1 style="text-align: center; margin-top: 30px; margin-bottom: -20px">{{info['topic_name']|raw}} </h1>
+<ul class="breadcrumb">
+  <li><a href="/forum">Index</a><span class="divider">/</span></li>
+  <li><a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}}</a><span class="divider">/</span></li>
+  <li class="active"><a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']|raw}}</a> [<strong>voir le sujet</strong>]</li>
+</ul>
+<br/>
+<h2 style="text-align: center; margin-top: 30px; margin-bottom: -20px; text-transform: uppercase;">{{info['topic_name']|raw}} </h2>
 <hr class="soften">
 
 {% for value in posts %}
