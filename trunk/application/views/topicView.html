@@ -34,6 +34,7 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 
 {% if canAnswer == true %}
 <div class="row" style="background: white;">
+  <form action="/forum/postAnswer?id={{info['topic_id']}}" method="POST">
     <div class="span2">
       <label for="answer"><h3>Repondre:</h3></label>
       <div style="padding: 20px;">
@@ -56,12 +57,12 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
       </div>
         <div style="text-align: center; width: 100%;" ><input type="submit" value="Envoyer le message" class="btn_get"></input></div>
     </div>
+</form>
 </div>
 
 
 
 
-<form action="/forum/postAnswer?id={{info['topic_id']}}" method="POST">
 
 <!--<img src="/public/images/bold.gif" alt="gras" click="forum:insert_text('[b]', '[/b]')">
 <img src="/public/images/quote.gif" alt="citation" click="forum:insert_text('[quote]', '[/quote]')">
@@ -72,7 +73,6 @@ Vous etes ici : <a href="/forum">Index</a> > <a href="/forum/voirForum?id={{info
 <img src="/public/images/code.gif" alt="image" click="forum:insert_text('[code=]', '[/code]')">-->
 <br/> <br />
 </div>
-</form>
 {% endif %}
 <script>
 $('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
