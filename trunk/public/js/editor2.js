@@ -267,7 +267,7 @@ function ed_renderToLatex()
     $.post("/latexview/index",
 	   {tek : ed_begin_document_demo},
 	   function (data) {
-	       $('.ed_frame').html(data);
+	       $('.ed_frame').html(data._html_);
 	       $('.ed_popup').css({display: 'block'});
 	       loadPage();	       
 	   });    
