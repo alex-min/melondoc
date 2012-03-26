@@ -152,16 +152,16 @@ class		template
    */
   public function fetchAjax($module = "")
   {
-    ob_start();
+    header("Content-Type: application/json");
     if ($this->countView() > 0)
       {
+	ob_start();
 	$this->loadView($module);
 	$this->json['_html_'] = ob_get_contents();
+	ob_end_clean();
       }
     $this->KLogger->logDebug($this->json);
-    ob_end_clean();
-    if (count($this->json) > 0)
-      echo json_encode($this->json);
+    echo json_encode($this->json);
     exit;
   }
 
@@ -216,8 +216,7 @@ class		template
   public function countView() {
     $i = 0;
     foreach ($this->vue AS $views)
-      if (file_exists($url))
-	$i++;
+      $i++;
     return $i;
   }
 
