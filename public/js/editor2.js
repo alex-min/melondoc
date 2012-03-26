@@ -270,7 +270,7 @@ function ed_renderToLatex()
 	       $('.ed_frame').html(data._html_);
 	       $('.ed_popup').css({display: 'block'});
 	       loadPage();	       
-	   });    
+	   }, "json");    
 }
 
 
