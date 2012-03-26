@@ -156,7 +156,7 @@ class		template
     if ($this->countView() > 0)
       {
 	ob_start();
-	$this->loadView($module);
+	$this->loadView($module, true);
 	$this->json['_html_'] = ob_get_contents();
 	ob_end_clean();
       }

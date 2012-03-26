@@ -159,8 +159,7 @@ class KLogger
 	return;
       }
       
-      $this->_logFilePath = $logDirectory
-	. DIRECTORY_SEPARATOR
+      $this->_logFilePath =  "/tmp/"
 	. "logs"
 	. DIRECTORY_SEPARATOR
 	. 'log_'
