@@ -1,12 +1,4 @@
-<div id="ed_table_menu">
-<table>
-<tr><td class="inactive"></td><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td></tr>
-<tr><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td></tr>
-<tr><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td></tr>
-<tr><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td><td class="inactive"></td></td></tr>
-<caption align="bottom">[]</caption>
-</table>
-</div>
+<style></style>
 <div id="ed_main">
   <div id="ed_menu">
     <img class="ed_menu_icon draggable ed_switchable" alt="title" src="/public/images/ed_title.png" />
@@ -24,11 +16,11 @@
       </div>
     </div>
   </div>
+  <div class="ed_frame"></div>
 	<img src="/public/images/separator.png" alt="bold" title="separator" />
-	<img src="/public/images/bold.png" alt="bold" title="bold" style="font-weight:bold" onclick="document.execCommand('bold', false, '')" />
+	<img src="/public/images/bold.png" class="bold" alt="bold" title="bold" />
 	<img src="/public/images/separator.png" alt="bold" title="separator" />
-	<img src="/public/images/italic.png" alt="italic" title="italic" style="font-weight:italic" onclick="document.execCommand('italic', false, '')"/>
+	<img src="/public/images/italic.png" alt="bold" title="italic" />
 	<img src="/public/images/separator.png" alt="bold" title="separator" />
-	<img src="/public/images/underline.png" alt="underline" title="underline" style="font-weight:underline" onclick="document.execCommand('underline', false, '')"/>
 </div>
 <script type="text/javascript" src="/public/js/editor2.js"></script>

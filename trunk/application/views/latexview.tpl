@@ -1,6 +1,5 @@
-<div id="lv_viewer">
 <div id="lv_body">
-   <p id="lv_latexcontent">{{ latexContent }}</p>
+   <p id="lv_latexcontent"><?php echo $latexContent ?></p>
 <div id="lv_menu">
    <a href="#" onclick="lv_zoomin();">
      <img class="lv_menu_icon" alt="zoom in" src="/public/images/lv_zoom-in.png" />
@@ -21,9 +20,6 @@
    <a href="#" onclick="lv_multiple();">
      <img class="lv_menu_icon" alt="multiple" src="/public/images/lv_multiple.png" />
    </a>
-   <a href="#" onclick="$('.ed_popup').css({display : 'none'});">
-      <img class="lv_menu_icon lv_close" alt="close" src="/public/images/lv_close.png">
-   </a>
 </div>
 <div id="lv_block">
 <div id="lv_render">
@@ -33,4 +29,4 @@
 </div>
    <div id="lv_bottom"></div> 
 <script>window.onload=loadPage</script>
-</div>
+   
