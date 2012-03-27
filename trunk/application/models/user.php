@@ -10,6 +10,10 @@ class			userModel extends model
     return TRUE;
   }
 
+  public function	addFacebookID($uid, $user_id)
+  {
+    $this->db->query('UPDATE `users` SET facebook_id = "'.$uid.'" WHERE `user_id` = "'.$user_id.'"');
+  }
   public function	emailExist($email)
   {
     $query = $this->db->query('SELECT `user_id` FROM `users` WHERE `mail` = "'.$email.'"');

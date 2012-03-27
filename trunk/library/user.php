@@ -27,8 +27,9 @@ class user
   {
     // `firstname` = "'.$array['form_first_name'].'", `lastname` = "'.$array['form_last_name'].'",
     $this->db->query('INSERT INTO `users` SET `login` = "'.$array['form_login'].'", `mail` = "'.$array['form_email'].'", `password` = "'.md5(SALT.$array['form_mdp']).'", `forum_rights` = "user"');
+    return $this->db->getLastId();
   }
-  
+
   public function deleteUser($id)
   {
     $this->db->query("DELETE FROM `users` WHERE id_user = '".$id."'");
@@ -47,6 +48,22 @@ class user
   }
 
   // recupere les donnees de l'user a mettre en session dans $_SESSION['user'], (pas le mdp),
+
+
+  public function	connectFB($uid)
+  {
+    $query = $this->db->query('SELECT * FROM `users` WHERE `facebook_id` = "'.$uid.'" LIMIT 1');
+    if ($query->count == 1)
+      {
+	$_SESSION['user'] = $query->row;
+	$this->stockMyRights();
+	unset($_SESSION['user']['password']);
+	return true;
+      }
+    return false;    
+  }
+
+
   // return true si ca a fonctionne, return false si ca a merde
   public function connectUser($email, $password)
   {

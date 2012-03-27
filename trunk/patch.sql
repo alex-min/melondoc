@@ -7,3 +7,4 @@ ALTER TABLE `documents` DROP `path_template`;
 ALTER TABLE `documents` ADD `template_id` INT NOT NULL;
 ALTER TABLE `categories` ADD `avatar` VARCHAR( 255 ) NOT NULL;
 ALTER TABLE `templates` ADD `categorie_id` INT NOT NULL;
+ALTER TABLE `users` ADD `facebook_id` INT NOT NULL ;

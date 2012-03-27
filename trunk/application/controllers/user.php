@@ -6,6 +6,26 @@ class			userController extends controller
     $this->template->loadLanguage("user");
   }
 
+  public function	connexionFBAction()
+  {
+    $this->template->loadLanguage("user");
+    if ($this->libfacebook->needFacebook() === FALSE)
+      $this->libfacebook->redirectFacebook("/user/connexionFB");
+    $uid = $this->libfacebook->getID();
+    $this->user->connectFB($uid);
+  }
+
+  public function	inscriptionFBAction()
+  {
+    $this->template->loadLanguage("user");
+    if ($this->libfacebook->needFacebook() === FALSE)
+      $this->libfacebook->redirectFacebook("/user/inscriptionFB");    
+    $infos = $this->libfacebook->getInfos();
+    $array = array("form_login" => "", "form_email" => "", "form_mdp" => "", "forum_rights" => "user");
+    $user_id = $this->user->addUser($array);
+    $this->user->addFacebookID($this->libfacebook->getID(), $user_id);
+  }
+
   public function connexionAction()
   {
     $this->template->loadLanguage("user");
