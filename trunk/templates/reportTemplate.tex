@@ -1,0 +1,48 @@
+\documentclass[a4paper]{report}
+ 
+% Différentes options pour la classe :
+% - taille de la fonte    : 10pt, 11pt, 12pt
+% - recto ou recto-verso    : oneside, twoside
+% - stade de développement    : draft, final
+ 
+% Chargement d'extensions
+\usepackage[utf8]{inputenc}    % Pour utiliser les lettres accentuées
+\usepackage[francais]{babel}    % Pour la langue française
+ 
+% Informations le titre, le(s) auteur(s), la date
+\title{Titre du livre}
+\author{Prénom 1 Nom 1 \and Prénom 2 Nom 2}
+\date{\today}
+ 
+% Début du document
+\begin{document}
+ 
+\maketitle
+ 
+    \chapter*{Introduction}
+    \addcontentsline{toc}{chapter}{Introduction}
+ 
+    \part{Une partie}
+    \chapter{Un chapitre}
+    \section{Une section}
+    \subsection{Une sous-section}
+    \subsubsection{Une sous-sous-section}
+    \paragraph{Une sous-sous-sous-sous-section}
+    \subparagraph{Une sous-sous-sous-sous-sous-section}
+ 
+    % Les annexes
+    \appendix
+ 
+    \chapter{Premier annexe}
+    \chapter{Second annexe}
+ 
+    \chapter*{Conclusion et discussion}
+    \addcontentsline{toc}{chapter}{Conclusion et discussion}
+ 
+    % Les différentes tables
+    \tableofcontents    % Table des matières
+    \listoffigures        % Liste des figures
+    \listoftables        % Liste des tableaux
+ 
+% Fin du document
+\end{document}
