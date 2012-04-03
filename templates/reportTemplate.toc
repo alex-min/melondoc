@@ -1,0 +1,12 @@
+\select@language {french}
+\contentsline {chapter}{Introduction}{1}
+\contentsline {part}{I\hspace {1em}Une partie}{2}
+\contentsline {chapter}{\numberline {1}Un chapitre}{3}
+\contentsline {section}{\numberline {1.1}Une section}{3}
+\contentsline {subsection}{\numberline {1.1.1}Une sous-section}{3}
+\contentsline {subsubsection}{Une sous-sous-section}{3}
+\contentsline {paragraph}{Une sous-sous-sous-sous-section}{3}
+\contentsline {subparagraph}{Une sous-sous-sous-sous-sous-section}{3}
+\contentsline {chapter}{\numberline {A}Premier annexe}{4}
+\contentsline {chapter}{\numberline {B}Second annexe}{5}
+\contentsline {chapter}{Conclusion et discussion}{6}

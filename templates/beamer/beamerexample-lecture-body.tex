@@ -1,0 +1,1864 @@
+
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>
+  rivanvx / beamer / source &mdash; Bitbucket
+</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <!--[if lt IE 9]>
+  <script src="https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/js/lib/html5.js"></script>
+  <![endif]-->
+
+  <script>
+    (function (window) {
+      // prevent stray occurrences of `console.log` from causing errors in IE
+      var console = window.console || (window.console = {});
+      console.log || (console.log = function () {});
+
+      var BB = window.BB || (window.BB = {});
+      BB.debug = false;
+      BB.cname = false;
+      BB.CANON_URL = 'https://bitbucket.org';
+      BB.MEDIA_URL = 'https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/';
+      BB.images = {
+        noAvatar: 'https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/img/no_avatar.png'
+      };
+      BB.user = {
+        isKbdShortcutsEnabled: true,
+        isSshEnabled: false
+      };
+      BB.user.has = (function () {
+        var betaFeatures = [];
+        betaFeatures.push('repo2');
+        return function (feature) {
+          return _.contains(betaFeatures, feature);
+        };
+      }());
+      BB.repo || (BB.repo = {});
+  
+  
+      BB.user.isAdmin = false;
+      BB.repo.id = 57460;
+    
+    
+      BB.repo.language = null;
+      BB.repo.pygmentsLanguage = null;
+    
+    
+      BB.repo.slug = 'beamer';
+    
+    
+      BB.repo.owner = {
+        username: 'rivanvx'
+      };
+    
+      // Coerce `BB.repo` to a string to get
+      // "davidchambers/mango" or whatever.
+      BB.repo.toString = function () {
+        return BB.cname ? this.slug : this.owner.username + '/' + this.slug;
+      }
+    
+    
+      BB.changeset = '2ff5461be705'
+    
+    
+  
+    }(this));
+  </script>
+
+  
+
+
+  <link rel="stylesheet" href="https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/bun/css/bundle.css"/>
+
+
+
+  <link rel="search" type="application/opensearchdescription+xml" href="/opensearch.xml" title="Bitbucket" />
+  <link rel="icon" href="https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/img/logo_new.png" type="image/png" />
+  <link type="text/plain" rel="author" href="/humans.txt" />
+
+
+  
+    <script src="https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/bun/js/bundle.js"></script>
+  
+
+
+
+</head>
+
+<body id="" class="">
+  <script>
+    if (navigator.userAgent.indexOf(' AppleWebKit/') === -1) {
+      $('body').addClass('non-webkit')
+    }
+    $('body')
+      .addClass($.client.os.toLowerCase())
+      .addClass($.client.browser.toLowerCase())
+  </script>
+  <!--[if IE 8]>
+  <script>jQuery(document.body).addClass('ie8')</script>
+  <![endif]-->
+  <!--[if IE 9]>
+  <script>jQuery(document.body).addClass('ie9')</script>
+  <![endif]-->
+
+  <div id="wrapper">
+
+
+
+  <div id="header-wrap">
+    <div id="header">
+    <ul id="global-nav">
+      <li><a class="home" href="http://www.atlassian.com">Atlassian Home</a></li>
+      <li><a class="docs" href="http://confluence.atlassian.com/display/BITBUCKET">Documentation</a></li>
+      <li><a class="support" href="/support">Support</a></li>
+      <li><a class="blog" href="http://blog.bitbucket.org">Blog</a></li>
+      <li><a class="forums" href="http://groups.google.com/group/bitbucket-users">Forums</a></li>
+    </ul>
+    <a href="/" id="logo">Bitbucket by Atlassian</a>
+
+    <div id="main-nav">
+    
+      <ul class="clearfix">
+        <li><a href="/plans">Pricing &amp; signup</a></li>
+        <li><a id="explore-link" href="/explore">Explore Bitbucket</a></li>
+        <li><a href="/account/signin/?next=/rivanvx/beamer/src/2ff5461be705/examples/a-lecture/beamerexample-lecture-body.tex">Log in</a></li>
+        
+
+<li class="search-box">
+  
+    <form action="/repo/all">
+      <input type="search" results="5" autosave="bitbucket-explore-search"
+             name="name" id="searchbox"
+             placeholder="owner/repo" />
+  
+  </form>
+</li>
+
+      </ul>
+    
+    </div>
+    </div>
+  </div>
+
+    <div id="header-messages">
+  
+  
+    
+    
+    
+    
+  
+
+    
+   </div>
+
+
+
+    <div id="content">
+      <div id="source">
+      
+  
+  
+
+
+
+
+
+  <script>
+    jQuery(function ($) {
+        var cookie = $.cookie,
+            cookieOptions, date,
+            $content = $('#content'),
+            $pane = $('#what-is-bitbucket'),
+            $hide = $pane.find('[href="#hide"]').css('display', 'block').hide();
+
+        date = new Date();
+        date.setTime(date.getTime() + 365 * 24 * 60 * 60 * 1000);
+        cookieOptions = { path: '/', expires: date };
+
+        if (cookie('toggle_status') == 'hide') $content.addClass('repo-desc-hidden');
+
+        $('#toggle-repo-content').click(function (event) {
+            event.preventDefault();
+            $content.toggleClass('repo-desc-hidden');
+            cookie('toggle_status', cookie('toggle_status') == 'show' ? 'hide' : 'show', cookieOptions);
+        });
+
+        if (!cookie('hide_intro_message')) $pane.show();
+
+        $hide.click(function (event) {
+            event.preventDefault();
+            cookie('hide_intro_message', true, cookieOptions);
+            $pane.slideUp('slow');
+        });
+
+        $pane.hover(
+            function () { $hide.fadeIn('fast'); },
+            function () { $hide.fadeOut('fast'); });
+
+      (function () {
+        // Update "recently-viewed-repos" cookie for
+        // the "repositories" drop-down.
+        var
+          id = BB.repo.id,
+          cookieName = 'recently-viewed-repos_' + BB.user.id,
+          rvr = cookie(cookieName),
+          ids = rvr? rvr.split(','): [],
+          idx = _.indexOf(ids, '' + id);
+
+        // Remove `id` from `ids` if present.
+        if (~idx) ids.splice(idx, 1);
+
+        cookie(
+          cookieName,
+          // Insert `id` as the first item, then call
+          // `join` on the resulting array to produce
+          // something like "114694,27542,89002,84570".
+          [id].concat(ids.slice(0, 4)).join(),
+          {path: '/', expires: 1e6} // "never" expires
+        );
+      }());
+    });
+  </script>
+
+
+
+  
+  
+  
+  
+  
+    <div id="what-is-bitbucket" class="new-to-bitbucket">
+      <h2>Vedran Miletić <span id="slogan">is sharing code with you</span></h2>
+      <img src="https://secure.gravatar.com/avatar/6490659fba1f4bd9d623b7c937bb571f?d=identicon&s=32" alt="" class="avatar" />
+      <p>Bitbucket is a code hosting site. Unlimited public and private repositories. Free for small teams.</p>
+      <div class="primary-action-link signup"><a href="/account/signup/?utm_source=internal&utm_medium=banner&utm_campaign=what_is_bitbucket">Try Bitbucket free</a></div>
+      <a href="#hide" title="Don't show this again">Don't show this again</a>
+    </div>
+  
+
+
+<div id="tabs" class="tabs">
+  <ul>
+    <li>
+      <a href="/rivanvx/beamer/overview" id="repo-overview-link">Overview</a>
+    </li>
+
+    <li>
+      <a href="/rivanvx/beamer/downloads" id="repo-downloads-link">Downloads (<span id="downloads-count">0</span>)</a>
+    </li>
+
+    
+
+    <li>
+      <a href="/rivanvx/beamer/pull-requests" id="repo-pr-link">Pull requests (0)</a>
+    </li>
+
+    <li class="selected">
+      
+        <a href="/rivanvx/beamer/src" id="repo-source-link">Source</a>
+      
+    </li>
+
+    <li>
+      <a href="/rivanvx/beamer/changesets" id="repo-commits-link">Commits</a>
+    </li>
+
+    <li id="wiki-tab" class="dropdown"
+      style="display:
+          block 
+        
+      ">
+      <a href="/rivanvx/beamer/wiki" id="repo-wiki-link">Wiki</a>
+    </li>
+
+    <li id="issues-tab" class="dropdown inertial-hover"
+      style="display:
+        block 
+        
+      ">
+      <a href="/rivanvx/beamer/issues?status=new&amp;status=open" id="repo-issues-link">Issues (45) &raquo;</a>
+      <ul>
+        <li><a href="/rivanvx/beamer/issues/new">Create new issue</a></li>
+        <li><a href="/rivanvx/beamer/issues?status=new">New issues</a></li>
+        <li><a href="/rivanvx/beamer/issues?status=new&amp;status=open">Open issues</a></li>
+        <li><a href="/rivanvx/beamer/issues?status=duplicate&amp;status=invalid&amp;status=resolved&amp;status=wontfix">Closed issues</a></li>
+        
+        <li><a href="/rivanvx/beamer/issues">All issues</a></li>
+        <li><a href="/rivanvx/beamer/issues/query">Advanced query</a></li>
+      </ul>
+    </li>
+
+    
+  </ul>
+
+  <ul>
+    <li>
+      <a href="/rivanvx/beamer/descendants" id="repo-forks-link">Forks/queues (5)</a>
+    </li>
+
+    <li>
+      <a href="/rivanvx/beamer/zealots">Followers (<span id="followers-count">98</span>)</a>
+    </li>
+  </ul>
+</div>
+
+
+
+ 
+
+  <div class="repo-menu" id="repo-menu">
+    <ul id="repo-menu-links">
+    
+      <li>
+        <a href="/rivanvx/beamer/rss" class="rss" title="RSS feed for beamer">RSS</a>
+      </li>
+
+      <li><a id="repo-fork-link" href="/rivanvx/beamer/fork" class="fork">fork</a></li>
+      
+        
+          <li><a id="repo-patch-queue-link" href="/rivanvx/beamer/hack" class="patch-queue">patch queue</a></li>
+        
+      
+      <li>
+        <a id="repo-follow-link" rel="nofollow" href="/rivanvx/beamer/follow" class="follow">follow</a>
+      </li>
+      
+          
+      
+      
+        <li class="get-source inertial-hover">
+          <a class="source">get source</a>
+          <ul class="downloads">
+            
+              
+              <li><a rel="nofollow" href="/rivanvx/beamer/get/2ff5461be705.zip">zip</a></li>
+              <li><a rel="nofollow" href="/rivanvx/beamer/get/2ff5461be705.tar.gz">gz</a></li>
+              <li><a rel="nofollow" href="/rivanvx/beamer/get/2ff5461be705.tar.bz2">bz2</a></li>
+            
+          </ul>
+        </li>
+      
+    </ul>
+
+  
+    <ul class="metadata">
+      
+      
+        <li class="branches inertial-hover">branches
+          <ul>
+            <li><a href="/rivanvx/beamer/src/2ff5461be705">default</a>
+              
+              
+            </li>
+            <li><a href="/rivanvx/beamer/src/10c7a1de136c">vendor</a>
+              
+              
+              <a rel="nofollow" class="menu-compare"
+                 href="/rivanvx/beamer/compare/vendor..default"
+                 title="Show changes between vendor and the main branch.">compare</a>
+              
+            </li>
+          </ul>
+        </li>
+      
+      
+      <li class="tags inertial-hover">tags
+        <ul>
+          <li><a href="/rivanvx/beamer/src/2ff5461be705">tip</a>
+            
+            </li>
+          <li><a href="/rivanvx/beamer/src/46e1bc9c9b76">version-3-13</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-13"
+                 title="Show changes between version-3-13 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/19e4c3c6fe54">version-3-12</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-12"
+                 title="Show changes between version-3-12 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/70f9d8411e54">version-3-11</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-11"
+                 title="Show changes between version-3-11 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/213fd269d3ef">version-3-10</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-10"
+                 title="Show changes between version-3-10 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/f4a1dee0d1b1">version-3-09</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-09"
+                 title="Show changes between version-3-09 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/034830dd53d9">version-3-08</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-08"
+                 title="Show changes between version-3-08 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/36e9898de35c">version-3-07</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-07"
+                 title="Show changes between version-3-07 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/d4628977abfc">version-3-06</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-3-06"
+                 title="Show changes between version-3-06 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/25c1d2087065">release-2-99</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..release-2-99"
+                 title="Show changes between release-2-99 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/33b4045ce69e">version-0-91</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-0-91"
+                 title="Show changes between version-0-91 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/d9ee75f22f0a">version-0-90</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-0-90"
+                 title="Show changes between version-0-90 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/10c7a1de136c">version-0-82</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..version-0-82"
+                 title="Show changes between version-0-82 and the main branch.">compare</a>
+            </li>
+          <li><a href="/rivanvx/beamer/src/10c7a1de136c">start</a>
+            
+            
+              <a rel="nofollow" class='menu-compare'
+                 href="/rivanvx/beamer/compare/..start"
+                 title="Show changes between start and the main branch.">compare</a>
+            </li>
+        </ul>
+      </li>
+     
+     
+    </ul>
+  
+</div>
+
+<div class="repo-menu" id="repo-desc">
+    <ul id="repo-menu-links-mini">
+      
+
+      
+      <li>
+        <a href="/rivanvx/beamer/rss" class="rss" title="RSS feed for beamer"></a>
+      </li>
+
+      <li><a href="/rivanvx/beamer/fork" class="fork" title="Fork"></a></li>
+      
+        
+          <li><a href="/rivanvx/beamer/hack" class="patch-queue" title="Patch queue"></a></li>
+        
+      
+      <li>
+        <a rel="nofollow" href="/rivanvx/beamer/follow" class="follow">follow</a>
+      </li>
+      
+          
+      
+      
+        <li>
+          <a class="source" title="Get source"></a>
+          <ul class="downloads">
+            
+              
+              <li><a rel="nofollow" href="/rivanvx/beamer/get/2ff5461be705.zip">zip</a></li>
+              <li><a rel="nofollow" href="/rivanvx/beamer/get/2ff5461be705.tar.gz">gz</a></li>
+              <li><a rel="nofollow" href="/rivanvx/beamer/get/2ff5461be705.tar.bz2">bz2</a></li>
+            
+          </ul>
+        </li>
+      
+    </ul>
+
+    <h3 id="repo-heading" class="public hg">
+      <a class="owner-username" href="/rivanvx">rivanvx</a> /
+      <a class="repo-name" href="/rivanvx/beamer/wiki/Home">beamer</a>
+    
+      <span><a href="http://www.inf.uniri.hr/~vmiletic/beamer.html">http://inf.uniri.hr/~vmiletic/beamer.html</a></span>
+    
+
+    
+    </h3>
+
+    
+      <p class="repo-desc-description">LaTeX Beamer class development repository.</p>
+    
+
+  <div id="repo-desc-cloneinfo">Clone this repository (size: 21.7 MB):
+    <a href="https://bitbucket.org/rivanvx/beamer" class="https">HTTPS</a> /
+    <a href="ssh://hg@bitbucket.org/rivanvx/beamer" class="ssh">SSH</a>
+    <pre id="clone-url-https">hg clone https://bitbucket.org/rivanvx/beamer</pre>
+    <pre id="clone-url-ssh">hg clone ssh://hg@bitbucket.org/rivanvx/beamer</pre>
+    
+  </div>
+
+        <a href="#" id="toggle-repo-content"></a>
+
+        
+
+</div>
+
+
+
+
+      
+  <div id="source-container">
+    
+
+  <div id="source-path">
+    <h1>
+      <a href="/rivanvx/beamer/src" class="src-pjax">beamer</a> /
+
+  
+    
+      <a href="/rivanvx/beamer/src/2ff5461be705/examples/" class="src-pjax">examples</a> /
+    
+  
+
+  
+    
+      <a href="/rivanvx/beamer/src/2ff5461be705/examples/a-lecture/" class="src-pjax">a-lecture</a> /
+    
+  
+
+  
+    
+      <span>beamerexample-lecture-body.tex</span>
+    
+  
+
+    </h1>
+  </div>
+
+  <div class="labels labels-csv">
+  
+    <dl>
+  
+    
+  
+  
+    
+  
+  
+    <dt>Branch</dt>
+    
+      
+        <dd class="branch unabridged"><a href="/rivanvx/beamer/changesets/tip/branch(%22default%22)" title="default">default</a></dd>
+      
+    
+  
+</dl>
+
+  
+  </div>
+
+
+  
+  <div id="source-view">
+    <div class="header">
+      <ul class="metadata">
+        <li><code>2ff5461be705</code></li>
+        
+          
+            <li>587 loc</li>
+          
+        
+        <li>18.8 KB</li>
+      </ul>
+      <ul class="source-view-links">
+        
+        <li><a id="embed-link" href="https://bitbucket.org/rivanvx/beamer/src/2ff5461be705/examples/a-lecture/beamerexample-lecture-body.tex?embed=t">embed</a></li>
+        
+        <li><a href="/rivanvx/beamer/history/examples/a-lecture/beamerexample-lecture-body.tex">history</a></li>
+        
+        <li><a href="/rivanvx/beamer/annotate/2ff5461be705/examples/a-lecture/beamerexample-lecture-body.tex">annotate</a></li>
+        
+        <li><a href="/rivanvx/beamer/raw/2ff5461be705/examples/a-lecture/beamerexample-lecture-body.tex">raw</a></li>
+        <li>
+          <form action="/rivanvx/beamer/diff/examples/a-lecture/beamerexample-lecture-body.tex" class="source-view-form">
+          
+            <input type="hidden" name="diff2" value="90e850259b8b" />
+            <select name="diff1">
+            
+              
+                <option value="90e850259b8b">90e850259b8b</option>
+              
+            
+            </select>
+            <input type="submit" value="diff" />
+          
+          </form>
+        </li>
+      </ul>
+    </div>
+  
+    <div>
+    <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><a href="#cl-1">  1</a>
+<a href="#cl-2">  2</a>
+<a href="#cl-3">  3</a>
+<a href="#cl-4">  4</a>
+<a href="#cl-5">  5</a>
+<a href="#cl-6">  6</a>
+<a href="#cl-7">  7</a>
+<a href="#cl-8">  8</a>
+<a href="#cl-9">  9</a>
+<a href="#cl-10"> 10</a>
+<a href="#cl-11"> 11</a>
+<a href="#cl-12"> 12</a>
+<a href="#cl-13"> 13</a>
+<a href="#cl-14"> 14</a>
+<a href="#cl-15"> 15</a>
+<a href="#cl-16"> 16</a>
+<a href="#cl-17"> 17</a>
+<a href="#cl-18"> 18</a>
+<a href="#cl-19"> 19</a>
+<a href="#cl-20"> 20</a>
+<a href="#cl-21"> 21</a>
+<a href="#cl-22"> 22</a>
+<a href="#cl-23"> 23</a>
+<a href="#cl-24"> 24</a>
+<a href="#cl-25"> 25</a>
+<a href="#cl-26"> 26</a>
+<a href="#cl-27"> 27</a>
+<a href="#cl-28"> 28</a>
+<a href="#cl-29"> 29</a>
+<a href="#cl-30"> 30</a>
+<a href="#cl-31"> 31</a>
+<a href="#cl-32"> 32</a>
+<a href="#cl-33"> 33</a>
+<a href="#cl-34"> 34</a>
+<a href="#cl-35"> 35</a>
+<a href="#cl-36"> 36</a>
+<a href="#cl-37"> 37</a>
+<a href="#cl-38"> 38</a>
+<a href="#cl-39"> 39</a>
+<a href="#cl-40"> 40</a>
+<a href="#cl-41"> 41</a>
+<a href="#cl-42"> 42</a>
+<a href="#cl-43"> 43</a>
+<a href="#cl-44"> 44</a>
+<a href="#cl-45"> 45</a>
+<a href="#cl-46"> 46</a>
+<a href="#cl-47"> 47</a>
+<a href="#cl-48"> 48</a>
+<a href="#cl-49"> 49</a>
+<a href="#cl-50"> 50</a>
+<a href="#cl-51"> 51</a>
+<a href="#cl-52"> 52</a>
+<a href="#cl-53"> 53</a>
+<a href="#cl-54"> 54</a>
+<a href="#cl-55"> 55</a>
+<a href="#cl-56"> 56</a>
+<a href="#cl-57"> 57</a>
+<a href="#cl-58"> 58</a>
+<a href="#cl-59"> 59</a>
+<a href="#cl-60"> 60</a>
+<a href="#cl-61"> 61</a>
+<a href="#cl-62"> 62</a>
+<a href="#cl-63"> 63</a>
+<a href="#cl-64"> 64</a>
+<a href="#cl-65"> 65</a>
+<a href="#cl-66"> 66</a>
+<a href="#cl-67"> 67</a>
+<a href="#cl-68"> 68</a>
+<a href="#cl-69"> 69</a>
+<a href="#cl-70"> 70</a>
+<a href="#cl-71"> 71</a>
+<a href="#cl-72"> 72</a>
+<a href="#cl-73"> 73</a>
+<a href="#cl-74"> 74</a>
+<a href="#cl-75"> 75</a>
+<a href="#cl-76"> 76</a>
+<a href="#cl-77"> 77</a>
+<a href="#cl-78"> 78</a>
+<a href="#cl-79"> 79</a>
+<a href="#cl-80"> 80</a>
+<a href="#cl-81"> 81</a>
+<a href="#cl-82"> 82</a>
+<a href="#cl-83"> 83</a>
+<a href="#cl-84"> 84</a>
+<a href="#cl-85"> 85</a>
+<a href="#cl-86"> 86</a>
+<a href="#cl-87"> 87</a>
+<a href="#cl-88"> 88</a>
+<a href="#cl-89"> 89</a>
+<a href="#cl-90"> 90</a>
+<a href="#cl-91"> 91</a>
+<a href="#cl-92"> 92</a>
+<a href="#cl-93"> 93</a>
+<a href="#cl-94"> 94</a>
+<a href="#cl-95"> 95</a>
+<a href="#cl-96"> 96</a>
+<a href="#cl-97"> 97</a>
+<a href="#cl-98"> 98</a>
+<a href="#cl-99"> 99</a>
+<a href="#cl-100">100</a>
+<a href="#cl-101">101</a>
+<a href="#cl-102">102</a>
+<a href="#cl-103">103</a>
+<a href="#cl-104">104</a>
+<a href="#cl-105">105</a>
+<a href="#cl-106">106</a>
+<a href="#cl-107">107</a>
+<a href="#cl-108">108</a>
+<a href="#cl-109">109</a>
+<a href="#cl-110">110</a>
+<a href="#cl-111">111</a>
+<a href="#cl-112">112</a>
+<a href="#cl-113">113</a>
+<a href="#cl-114">114</a>
+<a href="#cl-115">115</a>
+<a href="#cl-116">116</a>
+<a href="#cl-117">117</a>
+<a href="#cl-118">118</a>
+<a href="#cl-119">119</a>
+<a href="#cl-120">120</a>
+<a href="#cl-121">121</a>
+<a href="#cl-122">122</a>
+<a href="#cl-123">123</a>
+<a href="#cl-124">124</a>
+<a href="#cl-125">125</a>
+<a href="#cl-126">126</a>
+<a href="#cl-127">127</a>
+<a href="#cl-128">128</a>
+<a href="#cl-129">129</a>
+<a href="#cl-130">130</a>
+<a href="#cl-131">131</a>
+<a href="#cl-132">132</a>
+<a href="#cl-133">133</a>
+<a href="#cl-134">134</a>
+<a href="#cl-135">135</a>
+<a href="#cl-136">136</a>
+<a href="#cl-137">137</a>
+<a href="#cl-138">138</a>
+<a href="#cl-139">139</a>
+<a href="#cl-140">140</a>
+<a href="#cl-141">141</a>
+<a href="#cl-142">142</a>
+<a href="#cl-143">143</a>
+<a href="#cl-144">144</a>
+<a href="#cl-145">145</a>
+<a href="#cl-146">146</a>
+<a href="#cl-147">147</a>
+<a href="#cl-148">148</a>
+<a href="#cl-149">149</a>
+<a href="#cl-150">150</a>
+<a href="#cl-151">151</a>
+<a href="#cl-152">152</a>
+<a href="#cl-153">153</a>
+<a href="#cl-154">154</a>
+<a href="#cl-155">155</a>
+<a href="#cl-156">156</a>
+<a href="#cl-157">157</a>
+<a href="#cl-158">158</a>
+<a href="#cl-159">159</a>
+<a href="#cl-160">160</a>
+<a href="#cl-161">161</a>
+<a href="#cl-162">162</a>
+<a href="#cl-163">163</a>
+<a href="#cl-164">164</a>
+<a href="#cl-165">165</a>
+<a href="#cl-166">166</a>
+<a href="#cl-167">167</a>
+<a href="#cl-168">168</a>
+<a href="#cl-169">169</a>
+<a href="#cl-170">170</a>
+<a href="#cl-171">171</a>
+<a href="#cl-172">172</a>
+<a href="#cl-173">173</a>
+<a href="#cl-174">174</a>
+<a href="#cl-175">175</a>
+<a href="#cl-176">176</a>
+<a href="#cl-177">177</a>
+<a href="#cl-178">178</a>
+<a href="#cl-179">179</a>
+<a href="#cl-180">180</a>
+<a href="#cl-181">181</a>
+<a href="#cl-182">182</a>
+<a href="#cl-183">183</a>
+<a href="#cl-184">184</a>
+<a href="#cl-185">185</a>
+<a href="#cl-186">186</a>
+<a href="#cl-187">187</a>
+<a href="#cl-188">188</a>
+<a href="#cl-189">189</a>
+<a href="#cl-190">190</a>
+<a href="#cl-191">191</a>
+<a href="#cl-192">192</a>
+<a href="#cl-193">193</a>
+<a href="#cl-194">194</a>
+<a href="#cl-195">195</a>
+<a href="#cl-196">196</a>
+<a href="#cl-197">197</a>
+<a href="#cl-198">198</a>
+<a href="#cl-199">199</a>
+<a href="#cl-200">200</a>
+<a href="#cl-201">201</a>
+<a href="#cl-202">202</a>
+<a href="#cl-203">203</a>
+<a href="#cl-204">204</a>
+<a href="#cl-205">205</a>
+<a href="#cl-206">206</a>
+<a href="#cl-207">207</a>
+<a href="#cl-208">208</a>
+<a href="#cl-209">209</a>
+<a href="#cl-210">210</a>
+<a href="#cl-211">211</a>
+<a href="#cl-212">212</a>
+<a href="#cl-213">213</a>
+<a href="#cl-214">214</a>
+<a href="#cl-215">215</a>
+<a href="#cl-216">216</a>
+<a href="#cl-217">217</a>
+<a href="#cl-218">218</a>
+<a href="#cl-219">219</a>
+<a href="#cl-220">220</a>
+<a href="#cl-221">221</a>
+<a href="#cl-222">222</a>
+<a href="#cl-223">223</a>
+<a href="#cl-224">224</a>
+<a href="#cl-225">225</a>
+<a href="#cl-226">226</a>
+<a href="#cl-227">227</a>
+<a href="#cl-228">228</a>
+<a href="#cl-229">229</a>
+<a href="#cl-230">230</a>
+<a href="#cl-231">231</a>
+<a href="#cl-232">232</a>
+<a href="#cl-233">233</a>
+<a href="#cl-234">234</a>
+<a href="#cl-235">235</a>
+<a href="#cl-236">236</a>
+<a href="#cl-237">237</a>
+<a href="#cl-238">238</a>
+<a href="#cl-239">239</a>
+<a href="#cl-240">240</a>
+<a href="#cl-241">241</a>
+<a href="#cl-242">242</a>
+<a href="#cl-243">243</a>
+<a href="#cl-244">244</a>
+<a href="#cl-245">245</a>
+<a href="#cl-246">246</a>
+<a href="#cl-247">247</a>
+<a href="#cl-248">248</a>
+<a href="#cl-249">249</a>
+<a href="#cl-250">250</a>
+<a href="#cl-251">251</a>
+<a href="#cl-252">252</a>
+<a href="#cl-253">253</a>
+<a href="#cl-254">254</a>
+<a href="#cl-255">255</a>
+<a href="#cl-256">256</a>
+<a href="#cl-257">257</a>
+<a href="#cl-258">258</a>
+<a href="#cl-259">259</a>
+<a href="#cl-260">260</a>
+<a href="#cl-261">261</a>
+<a href="#cl-262">262</a>
+<a href="#cl-263">263</a>
+<a href="#cl-264">264</a>
+<a href="#cl-265">265</a>
+<a href="#cl-266">266</a>
+<a href="#cl-267">267</a>
+<a href="#cl-268">268</a>
+<a href="#cl-269">269</a>
+<a href="#cl-270">270</a>
+<a href="#cl-271">271</a>
+<a href="#cl-272">272</a>
+<a href="#cl-273">273</a>
+<a href="#cl-274">274</a>
+<a href="#cl-275">275</a>
+<a href="#cl-276">276</a>
+<a href="#cl-277">277</a>
+<a href="#cl-278">278</a>
+<a href="#cl-279">279</a>
+<a href="#cl-280">280</a>
+<a href="#cl-281">281</a>
+<a href="#cl-282">282</a>
+<a href="#cl-283">283</a>
+<a href="#cl-284">284</a>
+<a href="#cl-285">285</a>
+<a href="#cl-286">286</a>
+<a href="#cl-287">287</a>
+<a href="#cl-288">288</a>
+<a href="#cl-289">289</a>
+<a href="#cl-290">290</a>
+<a href="#cl-291">291</a>
+<a href="#cl-292">292</a>
+<a href="#cl-293">293</a>
+<a href="#cl-294">294</a>
+<a href="#cl-295">295</a>
+<a href="#cl-296">296</a>
+<a href="#cl-297">297</a>
+<a href="#cl-298">298</a>
+<a href="#cl-299">299</a>
+<a href="#cl-300">300</a>
+<a href="#cl-301">301</a>
+<a href="#cl-302">302</a>
+<a href="#cl-303">303</a>
+<a href="#cl-304">304</a>
+<a href="#cl-305">305</a>
+<a href="#cl-306">306</a>
+<a href="#cl-307">307</a>
+<a href="#cl-308">308</a>
+<a href="#cl-309">309</a>
+<a href="#cl-310">310</a>
+<a href="#cl-311">311</a>
+<a href="#cl-312">312</a>
+<a href="#cl-313">313</a>
+<a href="#cl-314">314</a>
+<a href="#cl-315">315</a>
+<a href="#cl-316">316</a>
+<a href="#cl-317">317</a>
+<a href="#cl-318">318</a>
+<a href="#cl-319">319</a>
+<a href="#cl-320">320</a>
+<a href="#cl-321">321</a>
+<a href="#cl-322">322</a>
+<a href="#cl-323">323</a>
+<a href="#cl-324">324</a>
+<a href="#cl-325">325</a>
+<a href="#cl-326">326</a>
+<a href="#cl-327">327</a>
+<a href="#cl-328">328</a>
+<a href="#cl-329">329</a>
+<a href="#cl-330">330</a>
+<a href="#cl-331">331</a>
+<a href="#cl-332">332</a>
+<a href="#cl-333">333</a>
+<a href="#cl-334">334</a>
+<a href="#cl-335">335</a>
+<a href="#cl-336">336</a>
+<a href="#cl-337">337</a>
+<a href="#cl-338">338</a>
+<a href="#cl-339">339</a>
+<a href="#cl-340">340</a>
+<a href="#cl-341">341</a>
+<a href="#cl-342">342</a>
+<a href="#cl-343">343</a>
+<a href="#cl-344">344</a>
+<a href="#cl-345">345</a>
+<a href="#cl-346">346</a>
+<a href="#cl-347">347</a>
+<a href="#cl-348">348</a>
+<a href="#cl-349">349</a>
+<a href="#cl-350">350</a>
+<a href="#cl-351">351</a>
+<a href="#cl-352">352</a>
+<a href="#cl-353">353</a>
+<a href="#cl-354">354</a>
+<a href="#cl-355">355</a>
+<a href="#cl-356">356</a>
+<a href="#cl-357">357</a>
+<a href="#cl-358">358</a>
+<a href="#cl-359">359</a>
+<a href="#cl-360">360</a>
+<a href="#cl-361">361</a>
+<a href="#cl-362">362</a>
+<a href="#cl-363">363</a>
+<a href="#cl-364">364</a>
+<a href="#cl-365">365</a>
+<a href="#cl-366">366</a>
+<a href="#cl-367">367</a>
+<a href="#cl-368">368</a>
+<a href="#cl-369">369</a>
+<a href="#cl-370">370</a>
+<a href="#cl-371">371</a>
+<a href="#cl-372">372</a>
+<a href="#cl-373">373</a>
+<a href="#cl-374">374</a>
+<a href="#cl-375">375</a>
+<a href="#cl-376">376</a>
+<a href="#cl-377">377</a>
+<a href="#cl-378">378</a>
+<a href="#cl-379">379</a>
+<a href="#cl-380">380</a>
+<a href="#cl-381">381</a>
+<a href="#cl-382">382</a>
+<a href="#cl-383">383</a>
+<a href="#cl-384">384</a>
+<a href="#cl-385">385</a>
+<a href="#cl-386">386</a>
+<a href="#cl-387">387</a>
+<a href="#cl-388">388</a>
+<a href="#cl-389">389</a>
+<a href="#cl-390">390</a>
+<a href="#cl-391">391</a>
+<a href="#cl-392">392</a>
+<a href="#cl-393">393</a>
+<a href="#cl-394">394</a>
+<a href="#cl-395">395</a>
+<a href="#cl-396">396</a>
+<a href="#cl-397">397</a>
+<a href="#cl-398">398</a>
+<a href="#cl-399">399</a>
+<a href="#cl-400">400</a>
+<a href="#cl-401">401</a>
+<a href="#cl-402">402</a>
+<a href="#cl-403">403</a>
+<a href="#cl-404">404</a>
+<a href="#cl-405">405</a>
+<a href="#cl-406">406</a>
+<a href="#cl-407">407</a>
+<a href="#cl-408">408</a>
+<a href="#cl-409">409</a>
+<a href="#cl-410">410</a>
+<a href="#cl-411">411</a>
+<a href="#cl-412">412</a>
+<a href="#cl-413">413</a>
+<a href="#cl-414">414</a>
+<a href="#cl-415">415</a>
+<a href="#cl-416">416</a>
+<a href="#cl-417">417</a>
+<a href="#cl-418">418</a>
+<a href="#cl-419">419</a>
+<a href="#cl-420">420</a>
+<a href="#cl-421">421</a>
+<a href="#cl-422">422</a>
+<a href="#cl-423">423</a>
+<a href="#cl-424">424</a>
+<a href="#cl-425">425</a>
+<a href="#cl-426">426</a>
+<a href="#cl-427">427</a>
+<a href="#cl-428">428</a>
+<a href="#cl-429">429</a>
+<a href="#cl-430">430</a>
+<a href="#cl-431">431</a>
+<a href="#cl-432">432</a>
+<a href="#cl-433">433</a>
+<a href="#cl-434">434</a>
+<a href="#cl-435">435</a>
+<a href="#cl-436">436</a>
+<a href="#cl-437">437</a>
+<a href="#cl-438">438</a>
+<a href="#cl-439">439</a>
+<a href="#cl-440">440</a>
+<a href="#cl-441">441</a>
+<a href="#cl-442">442</a>
+<a href="#cl-443">443</a>
+<a href="#cl-444">444</a>
+<a href="#cl-445">445</a>
+<a href="#cl-446">446</a>
+<a href="#cl-447">447</a>
+<a href="#cl-448">448</a>
+<a href="#cl-449">449</a>
+<a href="#cl-450">450</a>
+<a href="#cl-451">451</a>
+<a href="#cl-452">452</a>
+<a href="#cl-453">453</a>
+<a href="#cl-454">454</a>
+<a href="#cl-455">455</a>
+<a href="#cl-456">456</a>
+<a href="#cl-457">457</a>
+<a href="#cl-458">458</a>
+<a href="#cl-459">459</a>
+<a href="#cl-460">460</a>
+<a href="#cl-461">461</a>
+<a href="#cl-462">462</a>
+<a href="#cl-463">463</a>
+<a href="#cl-464">464</a>
+<a href="#cl-465">465</a>
+<a href="#cl-466">466</a>
+<a href="#cl-467">467</a>
+<a href="#cl-468">468</a>
+<a href="#cl-469">469</a>
+<a href="#cl-470">470</a>
+<a href="#cl-471">471</a>
+<a href="#cl-472">472</a>
+<a href="#cl-473">473</a>
+<a href="#cl-474">474</a>
+<a href="#cl-475">475</a>
+<a href="#cl-476">476</a>
+<a href="#cl-477">477</a>
+<a href="#cl-478">478</a>
+<a href="#cl-479">479</a>
+<a href="#cl-480">480</a>
+<a href="#cl-481">481</a>
+<a href="#cl-482">482</a>
+<a href="#cl-483">483</a>
+<a href="#cl-484">484</a>
+<a href="#cl-485">485</a>
+<a href="#cl-486">486</a>
+<a href="#cl-487">487</a>
+<a href="#cl-488">488</a>
+<a href="#cl-489">489</a>
+<a href="#cl-490">490</a>
+<a href="#cl-491">491</a>
+<a href="#cl-492">492</a>
+<a href="#cl-493">493</a>
+<a href="#cl-494">494</a>
+<a href="#cl-495">495</a>
+<a href="#cl-496">496</a>
+<a href="#cl-497">497</a>
+<a href="#cl-498">498</a>
+<a href="#cl-499">499</a>
+<a href="#cl-500">500</a>
+<a href="#cl-501">501</a>
+<a href="#cl-502">502</a>
+<a href="#cl-503">503</a>
+<a href="#cl-504">504</a>
+<a href="#cl-505">505</a>
+<a href="#cl-506">506</a>
+<a href="#cl-507">507</a>
+<a href="#cl-508">508</a>
+<a href="#cl-509">509</a>
+<a href="#cl-510">510</a>
+<a href="#cl-511">511</a>
+<a href="#cl-512">512</a>
+<a href="#cl-513">513</a>
+<a href="#cl-514">514</a>
+<a href="#cl-515">515</a>
+<a href="#cl-516">516</a>
+<a href="#cl-517">517</a>
+<a href="#cl-518">518</a>
+<a href="#cl-519">519</a>
+<a href="#cl-520">520</a>
+<a href="#cl-521">521</a>
+<a href="#cl-522">522</a>
+<a href="#cl-523">523</a>
+<a href="#cl-524">524</a>
+<a href="#cl-525">525</a>
+<a href="#cl-526">526</a>
+<a href="#cl-527">527</a>
+<a href="#cl-528">528</a>
+<a href="#cl-529">529</a>
+<a href="#cl-530">530</a>
+<a href="#cl-531">531</a>
+<a href="#cl-532">532</a>
+<a href="#cl-533">533</a>
+<a href="#cl-534">534</a>
+<a href="#cl-535">535</a>
+<a href="#cl-536">536</a>
+<a href="#cl-537">537</a>
+<a href="#cl-538">538</a>
+<a href="#cl-539">539</a>
+<a href="#cl-540">540</a>
+<a href="#cl-541">541</a>
+<a href="#cl-542">542</a>
+<a href="#cl-543">543</a>
+<a href="#cl-544">544</a>
+<a href="#cl-545">545</a>
+<a href="#cl-546">546</a>
+<a href="#cl-547">547</a>
+<a href="#cl-548">548</a>
+<a href="#cl-549">549</a>
+<a href="#cl-550">550</a>
+<a href="#cl-551">551</a>
+<a href="#cl-552">552</a>
+<a href="#cl-553">553</a>
+<a href="#cl-554">554</a>
+<a href="#cl-555">555</a>
+<a href="#cl-556">556</a>
+<a href="#cl-557">557</a>
+<a href="#cl-558">558</a>
+<a href="#cl-559">559</a>
+<a href="#cl-560">560</a>
+<a href="#cl-561">561</a>
+<a href="#cl-562">562</a>
+<a href="#cl-563">563</a>
+<a href="#cl-564">564</a>
+<a href="#cl-565">565</a>
+<a href="#cl-566">566</a>
+<a href="#cl-567">567</a>
+<a href="#cl-568">568</a>
+<a href="#cl-569">569</a>
+<a href="#cl-570">570</a>
+<a href="#cl-571">571</a>
+<a href="#cl-572">572</a>
+<a href="#cl-573">573</a>
+<a href="#cl-574">574</a>
+<a href="#cl-575">575</a>
+<a href="#cl-576">576</a>
+<a href="#cl-577">577</a>
+<a href="#cl-578">578</a>
+<a href="#cl-579">579</a>
+<a href="#cl-580">580</a>
+<a href="#cl-581">581</a>
+<a href="#cl-582">582</a>
+</pre></div></td><td class="code"><div class="highlight"><pre><a name="cl-1"></a><span class="c">% Copyright 2007 by Till Tantau</span>
+<a name="cl-2"></a><span class="c">%</span>
+<a name="cl-3"></a><span class="c">% This file may be distributed and/or modified</span>
+<a name="cl-4"></a><span class="c">%</span>
+<a name="cl-5"></a><span class="c">% 1. under the LaTeX Project Public License and/or</span>
+<a name="cl-6"></a><span class="c">% 2. under the GNU Public License.</span>
+<a name="cl-7"></a><span class="c">%</span>
+<a name="cl-8"></a><span class="c">% See the file doc/licenses/LICENSE for more details.</span>
+<a name="cl-9"></a>
+<a name="cl-10"></a><span class="c">%</span>
+<a name="cl-11"></a><span class="c">% DO NOT USE THIS FILE AS A TEMPLATE FOR YOUR OWN TALKSĄ!!</span>
+<a name="cl-12"></a><span class="c">%</span>
+<a name="cl-13"></a><span class="c">% Use a file in the directory solutions instead.</span>
+<a name="cl-14"></a><span class="c">% They are much better suited.</span>
+<a name="cl-15"></a><span class="c">%</span>
+<a name="cl-16"></a>
+<a name="cl-17"></a>
+<a name="cl-18"></a><span class="k">\lecture</span><span class="na">[1]</span><span class="nb">{</span>Syntax versus Semantik<span class="nb">}{</span>lecture-text<span class="nb">}</span>
+<a name="cl-19"></a>
+<a name="cl-20"></a><span class="k">\subtitle</span><span class="nb">{</span>Text und seine Bedeutung<span class="nb">}</span>
+<a name="cl-21"></a>
+<a name="cl-22"></a><span class="k">\date</span><span class="nb">{</span>27. Oktober 2006<span class="nb">}</span>
+<a name="cl-23"></a>
+<a name="cl-24"></a>
+<a name="cl-25"></a><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<a name="cl-26"></a>
+<a name="cl-27"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-28"></a>  <span class="k">\maketitle</span>
+<a name="cl-29"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-30"></a>
+<a name="cl-31"></a>
+<a name="cl-32"></a><span class="k">\section*</span><span class="nb">{</span>Ziele und Inhalt<span class="nb">}</span>
+<a name="cl-33"></a>
+<a name="cl-34"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Die Lernziele der heutigen Vorlesung und der Übungen.<span class="nb">}</span> 
+<a name="cl-35"></a>  <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-36"></a>  <span class="k">\item</span> Die Begriffe Syntax und Semantik erklären können
+<a name="cl-37"></a>  <span class="k">\item</span> Syntaktische und semantische Elemente natürlicher Sprachen und
+<a name="cl-38"></a>    von Programmiersprachen benennen können
+<a name="cl-39"></a>  <span class="k">\item</span> Die Begriffe Alphabet und Wort kennen
+<a name="cl-40"></a>  <span class="k">\item</span> Objekte als Worte kodieren können
+<a name="cl-41"></a>  <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-42"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-43"></a>
+<a name="cl-44"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span><span class="k">\frametitle</span>&lt;presentation&gt;<span class="nb">{</span>Gliederung<span class="nb">}</span>
+<a name="cl-45"></a>  <span class="k">\tableofcontents</span>
+<a name="cl-46"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-47"></a>
+<a name="cl-48"></a>
+<a name="cl-49"></a><span class="k">\section</span><span class="nb">{</span>Was ist Syntax?<span class="nb">}</span>
+<a name="cl-50"></a>
+<a name="cl-51"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Die zwei Hauptbegriffe der heutigen Vorlesung.<span class="nb">}</span>
+<a name="cl-52"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Grobe Definition (Syntax)<span class="nb">}</span>
+<a name="cl-53"></a>    Unter einer <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> verstehen wir <span class="k">\alert</span><span class="nb">{</span>Regeln<span class="nb">}</span>, nach denen
+<a name="cl-54"></a>    Texte <span class="k">\alert</span><span class="nb">{</span>strukturiert<span class="nb">}</span> werden dürfen. 
+<a name="cl-55"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-56"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Grobe Definition (Semantik)<span class="nb">}</span>
+<a name="cl-57"></a>    Unter einer <span class="k">\alert</span><span class="nb">{</span>Semantik<span class="nb">}</span> verstehen wir die Zuordnung von
+<a name="cl-58"></a>    <span class="k">\alert</span><span class="nb">{</span>Bedeutung<span class="nb">}</span> zu Text.
+<a name="cl-59"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-60"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-61"></a>
+<a name="cl-62"></a>
+<a name="cl-63"></a><span class="k">\subsection</span><span class="na">[Syntax \protect\\ natürlicher Sprachen]</span><span class="nb">{</span>Syntax natürlicher Sprachen<span class="nb">}</span>
+<a name="cl-64"></a>
+<a name="cl-65"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Beobachtungen zu einem ägyptischen Text.<span class="nb">}</span>
+<a name="cl-66"></a>  <span class="k">\includegraphicscopyright</span><span class="na">[width=6cm]</span><span class="nb">{</span>beamerexample-lecture-pic3.jpg<span class="nb">}</span>
+<a name="cl-67"></a>  <span class="nb">{</span>Copyright by Guillaume Blanchard, GNU Free Documentation License, Low Resultion<span class="nb">}</span>
+<a name="cl-68"></a>
+<a name="cl-69"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Beobachtungen<span class="nb">}</span>
+<a name="cl-70"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-71"></a>    <span class="k">\item</span> Wir haben keine Ahnung, was der Text bedeutet.
+<a name="cl-72"></a>    <span class="k">\item</span> Es gibt aber <span class="k">\alert</span><span class="nb">{</span>Regeln<span class="nb">}</span>, die offenbar eingehalten wurden,
+<a name="cl-73"></a>      wie ťHieroglyphen stehen in ZeilenŤ.
+<a name="cl-74"></a>    <span class="k">\item</span> Solche Regeln sind <span class="k">\alert</span><span class="nb">{</span>syntaktische Regeln<span class="nb">}</span> -- man kann sie
+<a name="cl-75"></a>      überprüfen, ohne den Inhalt zu verstehen.
+<a name="cl-76"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-77"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-78"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-79"></a>
+<a name="cl-80"></a>
+<a name="cl-81"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Beobachtungen zu einem kyrillischen Text.<span class="nb">}</span>
+<a name="cl-82"></a>
+<a name="cl-83"></a>  <span class="k">\includegraphicscopyright</span><span class="na">[width=6.75cm]</span><span class="nb">{</span>beamerexample-lecture-pic4.jpg<span class="nb">}</span>
+<a name="cl-84"></a>  <span class="nb">{</span>Copyright by Cristian Chirita, GNU Free Documentation License, Low Resultion<span class="nb">}</span>
+<a name="cl-85"></a>
+<a name="cl-86"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Beobachtungen<span class="nb">}</span>
+<a name="cl-87"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-88"></a>    <span class="k">\item</span> Wir haben keine Ahnung, was der Text bedeutet.
+<a name="cl-89"></a>    <span class="k">\item</span> Es gibt aber <span class="k">\alert</span><span class="nb">{</span>Regeln<span class="nb">}</span>, die offenbar eingehalten wurden.
+<a name="cl-90"></a>    <span class="k">\item</span> Wir kennen mehr Regeln als bei den Hieroglyphen.
+<a name="cl-91"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-92"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-93"></a>
+<a name="cl-94"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Zur Diskussion<span class="nb">}</span>
+<a name="cl-95"></a>    Welche syntaktischen Regeln fallen Ihnen ein, die bei dem Text
+<a name="cl-96"></a>    eingehalten wurden?
+<a name="cl-97"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-98"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-99"></a>
+<a name="cl-100"></a>
+<a name="cl-101"></a>
+<a name="cl-102"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Beobachtungen zu einem deutschen Text.<span class="nb">}</span>
+<a name="cl-103"></a>  <span class="k">\begin</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-104"></a>    Informatiker lieben Logiker.
+<a name="cl-105"></a>  <span class="k">\end</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-106"></a>
+<a name="cl-107"></a>  <span class="k">\bigskip</span>
+<a name="cl-108"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Beobachtungen<span class="nb">}</span>
+<a name="cl-109"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-110"></a>    <span class="k">\item</span> Auch hier werden viele syntaktische Regeln eingehalten.
+<a name="cl-111"></a>    <span class="k">\item</span> Es fällt uns aber <span class="k">\alert</span><span class="nb">{</span>schwerer<span class="nb">}</span>, diese zu erkennen.
+<a name="cl-112"></a>    <span class="k">\item</span> Der Grund ist, dass wir <span class="k">\alert</span><span class="nb">{</span>sofort über die Bedeutung
+<a name="cl-113"></a>        nachdenken<span class="nb">}</span>. 
+<a name="cl-114"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-115"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-116"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-117"></a>
+<a name="cl-118"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Zur Syntax von natürlichen Sprachen.<span class="nb">}</span>
+<a name="cl-119"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-120"></a>  <span class="k">\item</span> 
+<a name="cl-121"></a>    Die <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> einer natürlichen Sprache ist die Menge an
+<a name="cl-122"></a>    <span class="k">\alert</span><span class="nb">{</span>Regeln<span class="nb">}</span>, nach denen Sätze gebildet werden dürfen. 
+<a name="cl-123"></a>  <span class="k">\item</span> 
+<a name="cl-124"></a>    Die <span class="k">\alert</span><span class="nb">{</span>Bedeutung<span class="nb">}</span> oder der <span class="k">\alert</span><span class="nb">{</span>Sinn<span class="nb">}</span> der gebildeten Sätze
+<a name="cl-125"></a>    ist dabei unerheblich.
+<a name="cl-126"></a>  <span class="k">\item</span>
+<a name="cl-127"></a>    Jede Sprache hat ihre eigene Syntax; die Syntax verschiedener
+<a name="cl-128"></a>    Sprachen ähneln sich aber oft.
+<a name="cl-129"></a>  <span class="k">\item</span>
+<a name="cl-130"></a>    Es ist nicht immer klar, ob eine Regel noch zur Syntax gehört
+<a name="cl-131"></a>    oder ob es schon um den Sinn geht.
+<a name="cl-132"></a>
+<a name="cl-133"></a>    <span class="k">\ExampleInline</span><span class="nb">{</span>Substantive werden groß geschrieben.<span class="nb">}</span>
+<a name="cl-134"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-135"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-136"></a>
+<a name="cl-137"></a><span class="k">\subsection</span><span class="nb">{</span>Syntax von Programmiersprachen<span class="nb">}</span>
+<a name="cl-138"></a>
+<a name="cl-139"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Beobachtungen zu einem Programmtext.<span class="nb">}</span>
+<a name="cl-140"></a>  
+<a name="cl-141"></a><span class="k">\begin</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-142"></a><span class="k">\def\pgfpointadd</span>#1#2<span class="nb">{</span><span class="c">%</span>
+<a name="cl-143"></a>  <span class="k">\pgf</span>@process<span class="nb">{</span>#1<span class="nb">}</span><span class="c">%</span>
+<a name="cl-144"></a>  <span class="k">\pgf</span>@xa=<span class="k">\pgf</span>@x<span class="c">%</span>
+<a name="cl-145"></a>  <span class="k">\pgf</span>@ya=<span class="k">\pgf</span>@y<span class="c">%</span>
+<a name="cl-146"></a>  <span class="k">\pgf</span>@process<span class="nb">{</span>#2<span class="nb">}</span><span class="c">%</span>
+<a name="cl-147"></a>  <span class="k">\advance\pgf</span>@x by<span class="k">\pgf</span>@xa<span class="c">%</span>
+<a name="cl-148"></a>  <span class="k">\advance\pgf</span>@y by<span class="k">\pgf</span>@ya<span class="nb">}</span>
+<a name="cl-149"></a><span class="k">\end</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-150"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Beobachtungen<span class="nb">}</span>
+<a name="cl-151"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-152"></a>    <span class="k">\item</span> Der Programmtext sieht sehr kryptisch aus.
+<a name="cl-153"></a>    <span class="k">\item</span> Trotzdem gibt es offenbar wieder Regeln.
+<a name="cl-154"></a>    <span class="k">\item</span> So scheint einem Doppelkreuz eine Ziffer zu folgen und
+<a name="cl-155"></a>      Zeilen muss man offenbar mit Prozentzeichen beenden.
+<a name="cl-156"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-157"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-158"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-159"></a>
+<a name="cl-160"></a>
+<a name="cl-161"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Beobachtungen zu einem weiteren Programmtext.<span class="nb">}</span>
+<a name="cl-162"></a>  
+<a name="cl-163"></a><span class="k">\begin</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-164"></a>for (int i = 0; i &lt; 100; i++)
+<a name="cl-165"></a>  a[i] = a[i];
+<a name="cl-166"></a><span class="k">\end</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-167"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Beobachtungen<span class="nb">}</span>
+<a name="cl-168"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-169"></a>    <span class="k">\item</span> Wieder gibt es Regeln, die eingehalten werden.
+<a name="cl-170"></a>    <span class="k">\item</span> Wieder fällt es uns <span class="k">\alert</span><span class="nb">{</span>schwerer<span class="nb">}</span>, diese zu erkennen, da
+<a name="cl-171"></a>      wir <span class="k">\alert</span><span class="nb">{</span>sofort über den Sinn nachdenken<span class="nb">}</span>.
+<a name="cl-172"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-173"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-174"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-175"></a>
+<a name="cl-176"></a>
+<a name="cl-177"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Zur Syntax von Programmiersprachen<span class="nb">}</span>
+<a name="cl-178"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-179"></a>  <span class="k">\item</span> Die <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> einer Programmiersprache ist die
+<a name="cl-180"></a>    <span class="k">\alert</span><span class="nb">{</span>Menge von Regeln<span class="nb">}</span>, nach der Programmtexte gebildet werden 
+<a name="cl-181"></a>    dürfen.
+<a name="cl-182"></a>  <span class="k">\item</span> Die <span class="k">\alert</span><span class="nb">{</span>Bedeutung<span class="nb">}</span> oder der <span class="k">\alert</span><span class="nb">{</span>Sinn<span class="nb">}</span> der Programmtexte
+<a name="cl-183"></a>    ist dabei egal.
+<a name="cl-184"></a>  <span class="k">\item</span>
+<a name="cl-185"></a>    Jede Programmiersprache hat ihre eigene Syntax; die Syntax
+<a name="cl-186"></a>    verschiedener Sprachen ähneln sich aber oft.
+<a name="cl-187"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>  
+<a name="cl-188"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-189"></a>
+<a name="cl-190"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>5-Minuten-Aufgabe<span class="nb">}</span>
+<a name="cl-191"></a>  Welche der folgenden Regeln sind Syntax-Regeln?
+<a name="cl-192"></a>  <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-193"></a>  <span class="k">\item</span> Bezeichner dürfen nicht mit einer Ziffer anfangen.
+<a name="cl-194"></a>  <span class="k">\item</span> Programme müssen in endlicher Zeit ein Ergebnis produzieren.
+<a name="cl-195"></a>  <span class="k">\item</span> Öffnende und schließende geschweifte Klammern  müssen
+<a name="cl-196"></a>    ťbalanciertŤ sein. 
+<a name="cl-197"></a>  <span class="k">\item</span> Methoden von Null-Objekten dürfen nicht aufgerufen werden.
+<a name="cl-198"></a>  <span class="k">\item</span> Variablen müssen vor ihrer ersten Benutzung deklariert werden.
+<a name="cl-199"></a>  <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>  
+<a name="cl-200"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-201"></a>
+<a name="cl-202"></a>
+<a name="cl-203"></a><span class="k">\subsection</span><span class="na">[Syntax\protect\\ logischer Sprachen]</span><span class="nb">{</span>Syntax logischer Sprachen<span class="nb">}</span>
+<a name="cl-204"></a>
+<a name="cl-205"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Beobachtungen zu einer logischen Formel.<span class="nb">}</span>
+<a name="cl-206"></a>  <span class="k">\begin</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-207"></a>    <span class="s">$</span><span class="nb">p </span><span class="nv">\to</span><span class="nb"> q </span><span class="nv">\land</span><span class="nb"> </span><span class="nv">\neg</span><span class="nb"> q</span><span class="s">$</span>
+<a name="cl-208"></a>  <span class="k">\end</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-209"></a>
+<a name="cl-210"></a>  <span class="k">\bigskip</span>
+<a name="cl-211"></a>  <span class="k">\begin</span><span class="nb">{</span>block<span class="nb">}{</span>Beobachtungen<span class="nb">}</span>
+<a name="cl-212"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-213"></a>    <span class="k">\item</span> Auch logische Formeln haben eine syntaktische Struktur.
+<a name="cl-214"></a>    <span class="k">\item</span> So wäre es <span class="k">\alert</span><span class="nb">{</span>syntaktisch falsch<span class="nb">}</span>, statt einem Pfeil zwei
+<a name="cl-215"></a>      Pfeile zu benutzen.
+<a name="cl-216"></a>    <span class="k">\item</span> Es wäre aber <span class="k">\alert</span><span class="nb">{</span>syntaktisch richtig<span class="nb">}</span>, statt einem
+<a name="cl-217"></a>      Negationszeichen zwei Negationszeichen zu verwenden.
+<a name="cl-218"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-219"></a>  <span class="k">\end</span><span class="nb">{</span>block<span class="nb">}</span>
+<a name="cl-220"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-221"></a>
+<a name="cl-222"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Zur Syntax von logischen Sprachen<span class="nb">}</span>
+<a name="cl-223"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-224"></a>  <span class="k">\item</span> Die <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> einer logischen Sprache ist die
+<a name="cl-225"></a>    <span class="k">\alert</span><span class="nb">{</span>Menge von Regeln<span class="nb">}</span>, nach der Formeln gebildet werden 
+<a name="cl-226"></a>    dürfen.
+<a name="cl-227"></a>  <span class="k">\item</span> Die <span class="k">\alert</span><span class="nb">{</span>Bedeutung<span class="nb">}</span> oder der <span class="k">\alert</span><span class="nb">{</span>Sinn<span class="nb">}</span> der Formeln
+<a name="cl-228"></a>    ist dabei egal.
+<a name="cl-229"></a>  <span class="k">\item</span>
+<a name="cl-230"></a>    Jede logische Sprache hat ihre eigene Syntax; die Syntax
+<a name="cl-231"></a>    verschiedener Sprachen ähneln sich aber oft.
+<a name="cl-232"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>  
+<a name="cl-233"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-234"></a>
+<a name="cl-235"></a>
+<a name="cl-236"></a>
+<a name="cl-237"></a><span class="k">\section</span><span class="nb">{</span>Was ist Semantik?<span class="nb">}</span>
+<a name="cl-238"></a>
+<a name="cl-239"></a><span class="k">\subsection</span><span class="na">[Semantik\protect\\ natürlicher Sprachen]</span><span class="nb">{</span>Semantik natürlicher Sprachen<span class="nb">}</span>
+<a name="cl-240"></a>
+<a name="cl-241"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Was bedeutet ein Satz?<span class="nb">}</span>
+<a name="cl-242"></a>
+<a name="cl-243"></a>  <span class="k">\begin</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-244"></a>    Der Hörsaal ist groß.
+<a name="cl-245"></a>  <span class="k">\end</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-246"></a>
+<a name="cl-247"></a>  <span class="k">\bigskip</span>
+<a name="cl-248"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-249"></a>  <span class="k">\item</span> Dieser Satz hat eine <span class="k">\alert</span><span class="nb">{</span>Bedeutung<span class="nb">}</span>.
+<a name="cl-250"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Semantik<span class="nb">}</span> legt solche Bedeutungen fest.
+<a name="cl-251"></a>  <span class="k">\item</span> Syntaktisch falschen Sätzen wird im Allgemeinen keine
+<a name="cl-252"></a>    Bedeutung zugewiesen.
+<a name="cl-253"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-254"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-255"></a>
+<a name="cl-256"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Ein Satz, zwei Bedeutungen.<span class="nb">}</span>
+<a name="cl-257"></a>  <span class="k">\begin</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-258"></a>    Steter Tropfen höhlt den Stein.
+<a name="cl-259"></a>  <span class="k">\end</span><span class="nb">{</span>quotation<span class="nb">}</span>
+<a name="cl-260"></a>
+<a name="cl-261"></a>  <span class="k">\bigskip</span>
+<a name="cl-262"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-263"></a>  <span class="k">\item</span> Ein Satz kann <span class="k">\alert</span><span class="nb">{</span>mehrere Bedeutungen haben<span class="nb">}</span>, welche durch
+<a name="cl-264"></a>    <span class="k">\alert</span><span class="nb">{</span>unterschiedliche Semantiken<span class="nb">}</span> gegeben sind.
+<a name="cl-265"></a>  <span class="k">\item</span> In der <span class="k">\alert</span><span class="nb">{</span>wortwörtlichen Semantik<span class="nb">}</span> sagt der Satz aus, dass
+<a name="cl-266"></a>    Steine ausgehöhlte werden, wenn man jahrelang Wasser auf
+<a name="cl-267"></a>    sie tropft.
+<a name="cl-268"></a>  <span class="k">\item</span> In der <span class="k">\alert</span><span class="nb">{</span>übertragenen Semantik<span class="nb">}</span> sagt der Satz aus, dass
+<a name="cl-269"></a>    sich Beharrlichkeit auszahlt.
+<a name="cl-270"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-271"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-272"></a>
+<a name="cl-273"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Die Semantik der Hieroglyphen<span class="nb">}</span>
+<a name="cl-274"></a>  <span class="k">\includegraphicscopyright</span><span class="na">[height=8cm]</span><span class="nb">{</span>beamerexample-lecture-pic5.jpg<span class="nb">}</span>
+<a name="cl-275"></a>  <span class="nb">{</span>Unknown Author, Public Domain, Low Resolution<span class="nb">}</span>
+<a name="cl-276"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-277"></a>
+<a name="cl-278"></a>
+<a name="cl-279"></a><span class="k">\subsection</span><span class="nb">{</span>Semantik von Programmiersprachen<span class="nb">}</span>
+<a name="cl-280"></a>
+<a name="cl-281"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Was bedeutet ein Programm?<span class="nb">}</span>
+<a name="cl-282"></a><span class="k">\begin</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-283"></a>for (int i = 0; i &lt; 100; i++)
+<a name="cl-284"></a>  a[i] = a[i];
+<a name="cl-285"></a><span class="k">\end</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-286"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-287"></a>  <span class="k">\item</span> Auch dieser Programmtext ťbedeutet etwasŤ, wir ťmeinen etwasŤ
+<a name="cl-288"></a>    mit diesem Text.
+<a name="cl-289"></a>  <span class="k">\item</span> Die <span class="k">\alert</span><span class="nb">{</span>Semantik der Programmiersprache<span class="nb">}</span> legt fest,
+<a name="cl-290"></a>    was mit dem Programmtext gemeint ist.
+<a name="cl-291"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-292"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-293"></a>
+<a name="cl-294"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Ein Programm, zwei Bedeutungen.<span class="nb">}</span>
+<a name="cl-295"></a><span class="k">\begin</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-296"></a>for (int i = 0; i &lt; 100; i++)
+<a name="cl-297"></a>  a[i] = a[i];
+<a name="cl-298"></a><span class="k">\end</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-299"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-300"></a>  <span class="k">\item</span> Ein Programmtext kann <span class="k">\alert</span><span class="nb">{</span>mehrere Bedeutungen haben<span class="nb">}</span>,
+<a name="cl-301"></a>    welche durch <span class="k">\alert</span><span class="nb">{</span>unterschiedliche Semantiken<span class="nb">}</span> gegeben sind.
+<a name="cl-302"></a>  <span class="k">\item</span> In der <span class="k">\alert</span><span class="nb">{</span>operationalen Semantik<span class="nb">}</span> bedeutet der
+<a name="cl-303"></a>    Programmtext, dass die ersten einhundert Elemente eines Arrays
+<a name="cl-304"></a>    <span class="k">\verb</span>!a! nacheinander ihren eigenen Wert zugewiesen bekommen.
+<a name="cl-305"></a>  <span class="k">\item</span> In der <span class="k">\alert</span><span class="nb">{</span>denotationellen Semantik<span class="nb">}</span> bedeutet der
+<a name="cl-306"></a>    Programmtext, dass nichts passiert.
+<a name="cl-307"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-308"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-309"></a>
+<a name="cl-310"></a>
+<a name="cl-311"></a><span class="k">\subsection</span><span class="na">[Semantik\protect\\ logischer Sprachen]</span><span class="nb">{</span>Semantik logischer Sprachen<span class="nb">}</span>
+<a name="cl-312"></a>
+<a name="cl-313"></a>
+<a name="cl-314"></a>
+<a name="cl-315"></a>
+<a name="cl-316"></a><span class="k">\section</span><span class="nb">{</span>Grundlage der Syntax: Text<span class="nb">}</span>
+<a name="cl-317"></a>
+<a name="cl-318"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Eine mathematische Sicht auf Text.<span class="nb">}</span>
+<a name="cl-319"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-320"></a>  <span class="k">\item</span> Viele (aber nicht alle!) syntaktische Systeme bauen auf
+<a name="cl-321"></a>    <span class="k">\alert</span><span class="nb">{</span>Text<span class="nb">}</span> auf.
+<a name="cl-322"></a>  <span class="k">\item</span> Auch solche Systeme, die nicht auf Text aufbauen, lassen sich
+<a name="cl-323"></a>    trotzdem durch Text beschreiben. 
+<a name="cl-324"></a>  <span class="k">\item</span> Es ist deshalb nützlich, auf Text <span class="k">\text</span><span class="nb">{</span>Methoden der
+<a name="cl-325"></a>      Mathematik<span class="nb">}</span> anwenden zu können.
+<a name="cl-326"></a>  <span class="k">\item</span> Im Folgenden wird deshalb die <span class="k">\alert</span><span class="nb">{</span>mathematische Sicht<span class="nb">}</span> auf
+<a name="cl-327"></a>    Text eingeführt, die <span class="k">\alert</span><span class="nb">{</span>in der gesamten Theoretischen
+<a name="cl-328"></a>      Informatik<span class="nb">}</span> genutzt wird.
+<a name="cl-329"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>  
+<a name="cl-330"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-331"></a>
+<a name="cl-332"></a>
+<a name="cl-333"></a><span class="k">\subsection</span><span class="nb">{</span>Alphabete<span class="nb">}</span>
+<a name="cl-334"></a>
+<a name="cl-335"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Alphabete<span class="nb">}</span>
+<a name="cl-336"></a>  <span class="k">\begin</span><span class="nb">{</span>definition<span class="nb">}</span>[Alphabet]
+<a name="cl-337"></a>    Ein <span class="k">\alert</span><span class="nb">{</span>Alphabet<span class="nb">}</span> ist eine nicht-leere, endliche Menge von
+<a name="cl-338"></a>    <span class="k">\alert</span><span class="nb">{</span>Symbolen<span class="nb">}</span> (auch <span class="k">\alert</span><span class="nb">{</span>Buchstaben<span class="nb">}</span> genannt). 
+<a name="cl-339"></a>  <span class="k">\end</span><span class="nb">{</span>definition<span class="nb">}</span>
+<a name="cl-340"></a>  
+<a name="cl-341"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-342"></a>  <span class="k">\item</span> Alphabete werden häufig mit griechischen Großbuchstaben
+<a name="cl-343"></a>    bezeichnet, also <span class="s">$</span><span class="nv">\Gamma</span><span class="s">$</span> oder~<span class="s">$</span><span class="nv">\Sigma</span><span class="s">$</span>. Manchmal auch mit
+<a name="cl-344"></a>    lateinischen Großbuchstaben, also <span class="s">$</span><span class="nb">N</span><span class="s">$</span> oder~<span class="s">$</span><span class="nb">T</span><span class="s">$</span>.
+<a name="cl-345"></a>  <span class="k">\item</span> Ein Symbol oder ťBuchstabeŤ kann auch ein komplexes oder
+<a name="cl-346"></a>    komisches ťDingŤ sein wie ein Pointer oder ein Leerzeichen.
+<a name="cl-347"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-348"></a>
+<a name="cl-349"></a>  <span class="k">\begin</span><span class="nb">{</span>examples<span class="nb">}</span>
+<a name="cl-350"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-351"></a>    <span class="k">\item</span> Die Groß- und Kleinbuchstaben
+<a name="cl-352"></a>    <span class="k">\item</span> Die Menge <span class="s">$</span><span class="nv">\{</span><span class="m">0</span><span class="nb">,</span><span class="m">1</span><span class="nv">\}</span><span class="s">$</span> (bei Informatikern beliebt)
+<a name="cl-353"></a>    <span class="k">\item</span> Die Menge <span class="s">$</span><span class="nv">\{</span><span class="nb">A,C,G,T</span><span class="nv">\}</span><span class="s">$</span> (bei Biologen beliebt)
+<a name="cl-354"></a>    <span class="k">\item</span> Die Zeichenmenge des UNICODE.
+<a name="cl-355"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-356"></a>  <span class="k">\end</span><span class="nb">{</span>examples<span class="nb">}</span>
+<a name="cl-357"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-358"></a>
+<a name="cl-359"></a>
+<a name="cl-360"></a><span class="k">\subsection</span><span class="nb">{</span>Worte<span class="nb">}</span>
+<a name="cl-361"></a>
+<a name="cl-362"></a>
+<a name="cl-363"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Worte<span class="nb">}</span>
+<a name="cl-364"></a>  <span class="k">\begin</span><span class="nb">{</span>definition<span class="nb">}</span>[Wort]
+<a name="cl-365"></a>    Ein <span class="k">\alert</span><span class="nb">{</span>Wort<span class="nb">}</span> ist eine (endliche) Folge von Symbolen. 
+<a name="cl-366"></a>  <span class="k">\end</span><span class="nb">{</span>definition<span class="nb">}</span>
+<a name="cl-367"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-368"></a>    <span class="k">\item</span> ťWorteŤ sind im Prinzip dasselbe wie
+<a name="cl-369"></a>      Strings. Insbesondere können in Worten Leerzeichen als Symbole
+<a name="cl-370"></a>      auftauchen.
+<a name="cl-371"></a>    <span class="k">\item</span> Die Menge aller Worte über einem Alphabet <span class="s">$</span><span class="nv">\Sigma</span><span class="s">$</span> hat einen
+<a name="cl-372"></a>      besonderen Namen: <span class="s">$</span><span class="nv">\Sigma</span><span class="nb">^</span><span class="o">*</span><span class="s">$</span>.
+<a name="cl-373"></a>    <span class="k">\item</span> 
+<a name="cl-374"></a>      Deshalb schreibt man oft: ťSei <span class="s">$</span><span class="nb">w </span><span class="nv">\in</span><span class="nb"> </span><span class="nv">\Sigma</span><span class="nb">^</span><span class="o">*</span><span class="s">$</span>, <span class="k">\dots</span>Ť
+<a name="cl-375"></a>    <span class="k">\item</span> Es gibt auch ein <span class="k">\alert</span><span class="nb">{</span>leeres Wort<span class="nb">}</span>, abgekürzt
+<a name="cl-376"></a>      <span class="s">$</span><span class="nv">\epsilon</span><span class="s">$</span> oder <span class="s">$</span><span class="nv">\lambda</span><span class="s">$</span>, das dem String
+<a name="cl-377"></a>      <span class="k">\texttt</span><span class="nb">{</span><span class="k">\char</span>`<span class="k">\&quot;\char</span>`<span class="k">\&quot;</span><span class="nb">}</span> entspricht. 
+<a name="cl-378"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-379"></a>   
+<a name="cl-380"></a>  <span class="k">\begin</span><span class="nb">{</span>examples<span class="nb">}</span>
+<a name="cl-381"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-382"></a>    <span class="k">\item</span> <span class="k">\texttt</span><span class="nb">{</span>Hallo<span class="nb">}</span>
+<a name="cl-383"></a>    <span class="k">\item</span> <span class="k">\texttt</span><span class="nb">{</span>TATAAAATATTA<span class="nb">}</span>
+<a name="cl-384"></a>    <span class="k">\item</span> <span class="s">$</span><span class="nv">\epsilon</span><span class="s">$</span>
+<a name="cl-385"></a>    <span class="k">\item</span> <span class="k">\texttt</span><span class="nb">{</span>Hallo Welt.<span class="nb">}</span>
+<a name="cl-386"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-387"></a>  <span class="k">\end</span><span class="nb">{</span>examples<span class="nb">}</span> 
+<a name="cl-388"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-389"></a>
+<a name="cl-390"></a>
+<a name="cl-391"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>5-Minuten-Aufgabe<span class="nb">}</span>
+<a name="cl-392"></a>  Die folgenden Aufgaben sind nach Schwierigkeit sortiert. Lösen Sie
+<a name="cl-393"></a>  <span class="k">\alert</span><span class="nb">{</span>eine<span class="nb">}</span> der Aufgaben. 
+<a name="cl-394"></a>  <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-395"></a>  <span class="k">\item</span>
+<a name="cl-396"></a>    Schreiben Sie alle Worte der Länge höchstens <span class="s">$</span><span class="m">2</span><span class="s">$</span> über dem Alphabet
+<a name="cl-397"></a>    <span class="s">$</span><span class="nv">\Sigma</span><span class="nb"> </span><span class="o">=</span><span class="nb"> </span><span class="nv">\{</span><span class="m">0</span><span class="nb">,</span><span class="m">1</span><span class="nb">,</span><span class="o">*</span><span class="nv">\}</span><span class="s">$</span> auf.
+<a name="cl-398"></a>  <span class="k">\item</span>
+<a name="cl-399"></a>    Wie viele Worte der Länge <span class="s">$</span><span class="nb">n</span><span class="s">$</span> über dem Alphabet <span class="s">$</span><span class="nv">\Sigma</span><span class="nb"> </span><span class="o">=</span><span class="nb"></span>
+<a name="cl-400"></a><span class="nb">    </span><span class="nv">\{</span><span class="m">0</span><span class="nb">,</span><span class="m">1</span><span class="nb">,</span><span class="o">*</span><span class="nv">\}</span><span class="s">$</span>  gibt es?
+<a name="cl-401"></a>  <span class="k">\item</span>
+<a name="cl-402"></a>    Wie viele Worte der Länge höchstens <span class="s">$</span><span class="nb">n</span><span class="s">$</span> über einem Alphabet mit
+<a name="cl-403"></a>    <span class="s">$</span><span class="nb">q</span><span class="s">$</span> Buchstaben gibt es?
+<a name="cl-404"></a>  <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-405"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-406"></a>
+<a name="cl-407"></a>
+<a name="cl-408"></a><span class="k">\subsection</span><span class="nb">{</span>Sprachen<span class="nb">}</span>
+<a name="cl-409"></a>
+<a name="cl-410"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Sprachen<span class="nb">}{</span>Definition<span class="nb">}</span>
+<a name="cl-411"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-412"></a>  <span class="k">\item</span> Natürlichen Sprachen sind komplexe Dinge, bestehend aus
+<a name="cl-413"></a>    Wörtern, ihrer Ausprache, einer Grammatik, Ausnahmen, Dialekten,
+<a name="cl-414"></a>    und vielem mehr.
+<a name="cl-415"></a>  <span class="k">\item</span> Bei <span class="k">\alert</span><span class="nb">{</span>formalen Sprachen<span class="nb">}</span> vereinfacht man radikal.
+<a name="cl-416"></a>  <span class="k">\item</span> Formale Sprachen müssen weder sinnvoll noch interessant sein.      
+<a name="cl-417"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-418"></a>
+<a name="cl-419"></a>  <span class="k">\begin</span><span class="nb">{</span>definition<span class="nb">}</span>[Formale Sprache]
+<a name="cl-420"></a>    Eine <span class="k">\alert</span><span class="nb">{</span>formale Sprache<span class="nb">}</span> ist eine (oft unendliche!) Menge von
+<a name="cl-421"></a>    Worten für ein festes Alphabet.
+<a name="cl-422"></a>  <span class="k">\end</span><span class="nb">{</span>definition<span class="nb">}</span>
+<a name="cl-423"></a>
+<a name="cl-424"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-425"></a>  <span class="k">\item</span> Statt <span class="k">\frqq</span> formale Sprache<span class="k">\flqq\ </span>sagt man einfach <span class="k">\frqq</span> Sprache<span class="k">\flqq</span>.
+<a name="cl-426"></a>  <span class="k">\item</span> Als Menge von Worten ist eine Sprache eine Teilmenge von
+<a name="cl-427"></a>    <span class="s">$</span><span class="nv">\Sigma</span><span class="nb">^</span><span class="o">*</span><span class="s">$</span>.
+<a name="cl-428"></a>  <span class="k">\item</span> 
+<a name="cl-429"></a>    Deshalb schreibt man oft: <span class="k">\frqq</span> Sei <span class="s">$</span><span class="nb">L </span><span class="nv">\subseteq</span><span class="nb"> </span><span class="nv">\Sigma</span><span class="nb">^</span><span class="o">*</span><span class="s">$</span>,
+<a name="cl-430"></a>    <span class="k">\dots\flqq</span>
+<a name="cl-431"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-432"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-433"></a>
+<a name="cl-434"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Sprachen<span class="nb">}{</span>Einfache Beispiele<span class="nb">}</span>
+<a name="cl-435"></a>  <span class="k">\begin</span><span class="nb">{</span>examples<span class="nb">}</span>
+<a name="cl-436"></a>    <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-437"></a>    <span class="k">\item</span> Die Menge <span class="s">$</span><span class="nv">\{</span><span class="nb">AAA, AAC, AAT</span><span class="nv">\}</span><span class="s">$</span> (endliche Sprache).
+<a name="cl-438"></a>    <span class="k">\item</span> Die Menge aller Java-Programmtexte (unendliche Sprache).
+<a name="cl-439"></a>    <span class="k">\item</span> Die Menge aller Basensequenzen, die <span class="k">\texttt</span><span class="nb">{</span>TATA<span class="nb">}</span> enthalten
+<a name="cl-440"></a>      (unendliche Sprache).
+<a name="cl-441"></a>    <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-442"></a>  <span class="k">\end</span><span class="nb">{</span>examples<span class="nb">}</span> 
+<a name="cl-443"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-444"></a>
+<a name="cl-445"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Sprachen in der Medieninformatik<span class="nb">}</span>
+<a name="cl-446"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-447"></a>  <span class="k">\item</span> Ein Renderer produziert 3D-Bilder.
+<a name="cl-448"></a>  <span class="k">\item</span> Dazu erhält er eine <span class="k">\alert</span><span class="nb">{</span>Szenerie<span class="nb">}</span> als Eingabe.
+<a name="cl-449"></a>  <span class="k">\item</span> Diese Szenerie ist als <span class="k">\alert</span><span class="nb">{</span>Text<span class="nb">}</span>, also als ein <span class="k">\alert</span><span class="nb">{</span>Wort<span class="nb">}</span> gegeben.
+<a name="cl-450"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> beschreibt die (formale) Sprache, die alle
+<a name="cl-451"></a>    <span class="k">\alert</span><span class="nb">{</span>syntaktisch korrekten Szenerien<span class="nb">}</span>  enthält.
+<a name="cl-452"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Semantik<span class="nb">}</span> beschreibt, was diese Beschreibungen bedeuten.
+<a name="cl-453"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-454"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-455"></a>
+<a name="cl-456"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Formale Sprachen in der Medieninformatik<span class="nb">}{</span>Das
+<a name="cl-457"></a>    ťWortŤ, das eine Szenerie beschreibt<span class="k">\dots</span><span class="nb">}</span>
+<a name="cl-458"></a><span class="k">\only</span>&lt;presentation&gt;<span class="nb">{</span><span class="k">\scriptsize</span><span class="nb">}</span>
+<a name="cl-459"></a><span class="k">\begin</span><span class="nb">{</span>verbatim*<span class="nb">}</span>
+<a name="cl-460"></a>global<span class="nb">_</span>settings <span class="nb">{</span> assumed<span class="nb">_</span>gamma 1.0 <span class="nb">}</span>
+<a name="cl-461"></a>
+<a name="cl-462"></a>camera <span class="nb">{</span>
+<a name="cl-463"></a>  location  &lt;10.0, 10, -10.0&gt;
+<a name="cl-464"></a>  direction 1.5*z
+<a name="cl-465"></a>  right     x*image<span class="nb">_</span>width/image<span class="nb">_</span>height
+<a name="cl-466"></a>  look<span class="nb">_</span>at   &lt;0.0, 0.0,  0.0&gt;
+<a name="cl-467"></a><span class="nb">}</span>
+<a name="cl-468"></a>
+<a name="cl-469"></a>sky<span class="nb">_</span>sphere <span class="nb">{</span> pigment <span class="nb">{</span> color rgb &lt;0.6,0.7,1.0&gt; <span class="nb">}</span> <span class="nb">}</span>
+<a name="cl-470"></a>
+<a name="cl-471"></a>light<span class="nb">_</span>source <span class="nb">{</span>
+<a name="cl-472"></a>  &lt;0, 0, 0&gt;            // light&#39;s position (translated below)
+<a name="cl-473"></a>  color rgb &lt;1, 1, 1&gt;  // light&#39;s color
+<a name="cl-474"></a>  translate &lt;-30, 30, -30&gt;
+<a name="cl-475"></a>  shadowless
+<a name="cl-476"></a><span class="nb">}</span>
+<a name="cl-477"></a>
+<a name="cl-478"></a>#declare i = 0; 
+<a name="cl-479"></a>#declare Steps = 30;
+<a name="cl-480"></a>#declare Kugel = sphere<span class="nb">{</span>&lt;0,0,0&gt;,0.5 pigment<span class="nb">{</span>color rgb&lt;1,0,0&gt;<span class="nb">}}</span>;
+<a name="cl-481"></a>
+<a name="cl-482"></a>#while(i&lt;Steps)
+<a name="cl-483"></a>    object<span class="nb">{</span>Kugel  translate&lt;3,0,0&gt; rotate &lt;0,i * 360 / Steps, 0&gt; <span class="nb">}</span>
+<a name="cl-484"></a>  #declare i = i + 1;
+<a name="cl-485"></a>#end
+<a name="cl-486"></a><span class="k">\end</span><span class="nb">{</span>verbatim*<span class="nb">}</span>
+<a name="cl-487"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-488"></a>
+<a name="cl-489"></a>
+<a name="cl-490"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Sprachen in der Medieninformatik<span class="nb">}{</span><span class="k">\dots\ </span>und was es bedeutet.<span class="nb">}</span>
+<a name="cl-491"></a>  <span class="k">\includegraphicscopyright</span><span class="na">[width=9.5cm]</span><span class="nb">{</span>beamerexample-lecture-pic2.jpg<span class="nb">}</span>
+<a name="cl-492"></a>  <span class="nb">{</span>Copyright Matthias Kabel, GNU Free Documentation License, Low Resolution<span class="nb">}</span>
+<a name="cl-493"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-494"></a>
+<a name="cl-495"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Sprachen in der Medieninformatik<span class="nb">}{</span>Komplexeres Beispielbild, das ein Renderer produziert.<span class="nb">}</span>
+<a name="cl-496"></a>  <span class="k">\includegraphicscopyright</span><span class="na">[width=9.5cm]</span><span class="nb">{</span>beamerexample-lecture-pic1.jpg<span class="nb">}</span>
+<a name="cl-497"></a>  <span class="nb">{</span>Copyright Giorgio Krenkel and Alex Sandri, GNU Free Documentation License, Low Resolution<span class="nb">}</span>
+<a name="cl-498"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-499"></a>
+<a name="cl-500"></a>
+<a name="cl-501"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Formale Sprachen in der Bioinformatik<span class="nb">}</span>
+<a name="cl-502"></a>  <span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-503"></a>  <span class="k">\item</span> In der Bioinformatik untersucht man unter anderem Proteine.
+<a name="cl-504"></a>  <span class="k">\item</span> Dazu erhält man <span class="k">\alert</span><span class="nb">{</span>Molekülbeschreibungen<span class="nb">}</span> als Eingabe.
+<a name="cl-505"></a>  <span class="k">\item</span> Eine solche ist auch ein <span class="k">\alert</span><span class="nb">{</span>Wort<span class="nb">}</span>.
+<a name="cl-506"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> beschreibt die (formale) Sprache, die alle
+<a name="cl-507"></a>    <span class="k">\alert</span><span class="nb">{</span>syntaktisch korrekten Molkülbeschreibungen<span class="nb">}</span>  enthält.
+<a name="cl-508"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Semantik<span class="nb">}</span> beschreibt, was diese Beschreibungen bedeuten.
+<a name="cl-509"></a>  <span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+<a name="cl-510"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-511"></a>
+<a name="cl-512"></a>
+<a name="cl-513"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Formale Sprachen in der Bioinformatik<span class="nb">}</span>
+<a name="cl-514"></a>  <span class="nb">{</span>Das ťWortŤ, das ein Protein beschreibt<span class="k">\dots</span><span class="nb">}</span>
+<a name="cl-515"></a><span class="k">\only</span>&lt;presentation&gt;<span class="nb">{</span><span class="k">\tiny</span><span class="nb">}</span>  
+<a name="cl-516"></a><span class="k">\only</span>&lt;article&gt;<span class="nb">{</span><span class="k">\footnotesize</span><span class="nb">}</span>  
+<a name="cl-517"></a><span class="k">\begin</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-518"></a>HEADER    HYDROLASE                               25-JUL-03   1UJ1              
+<a name="cl-519"></a>TITLE     CRYSTAL STRUCTURE OF SARS CORONAVIRUS MAIN PROTEINASE                 
+<a name="cl-520"></a>TITLE    2 (3CLPRO)
+<a name="cl-521"></a>COMPND    MOL<span class="nb">_</span>ID: 1;                                                            
+<a name="cl-522"></a>COMPND   2 MOLECULE: 3C-LIKE PROTEINASE;                                        
+<a name="cl-523"></a>COMPND   3 CHAIN: A, B;                                                         
+<a name="cl-524"></a>COMPND   4 SYNONYM: MAIN PROTEINASE, 3CLPRO;                                    
+<a name="cl-525"></a>COMPND   5 EC: 3.4.24.-;                                                        
+<a name="cl-526"></a>COMPND   6 ENGINEERED: YES                                                      
+<a name="cl-527"></a>SOURCE    MOL<span class="nb">_</span>ID: 1;                                                            
+<a name="cl-528"></a>SOURCE   2 ORGANISM<span class="nb">_</span>SCIENTIFIC: SARS CORONAVIRUS;                               
+<a name="cl-529"></a>SOURCE   3 ORGANISM<span class="nb">_</span>COMMON: VIRUSES;                                            
+<a name="cl-530"></a>SOURCE   4 STRAIN: SARS;                                                        
+<a name="cl-531"></a>...
+<a name="cl-532"></a>REVDAT   1   18-NOV-03 1UJ1    0                                                
+<a name="cl-533"></a>JRNL        AUTH   H.YANG,M.YANG,Y.DING,Y.LIU,Z.LOU,Z.ZHOU,L.SUN,L.MO,          
+<a name="cl-534"></a>JRNL        AUTH 2 S.YE,H.PANG,G.F.GAO,K.ANAND,M.BARTLAM,R.HILGENFELD,          
+<a name="cl-535"></a>JRNL        AUTH 3 Z.RAO                                                        
+<a name="cl-536"></a>JRNL        TITL   THE CRYSTAL STRUCTURES OF SEVERE ACUTE RESPIRATORY           
+<a name="cl-537"></a>JRNL        TITL 2 SYNDROME VIRUS MAIN PROTEASE AND ITS COMPLEX WITH            
+<a name="cl-538"></a>JRNL        TITL 3 AN INHIBITOR                                                 
+<a name="cl-539"></a>JRNL        REF    PROC.NAT.ACAD.SCI.USA         V. 100 13190 2003              
+<a name="cl-540"></a>JRNL        REFN   ASTM PNASA6  US ISSN 0027-8424                               
+<a name="cl-541"></a>....
+<a name="cl-542"></a>ATOM      1  N   PHE A   3      63.478 -27.806  23.971  1.00 44.82           N  
+<a name="cl-543"></a>ATOM      2  CA  PHE A   3      64.607 -26.997  24.516  1.00 42.13           C  
+<a name="cl-544"></a>ATOM      3  C   PHE A   3      64.674 -25.701  23.723  1.00 41.61           C  
+<a name="cl-545"></a>ATOM      4  O   PHE A   3      65.331 -25.633  22.673  1.00 40.73           O  
+<a name="cl-546"></a>ATOM      5  CB  PHE A   3      65.912 -27.763  24.358  1.00 44.33           C  
+<a name="cl-547"></a>ATOM      6  CG  PHE A   3      67.065 -27.162  25.108  1.00 44.20           C  
+<a name="cl-548"></a>ATOM      7  CD1 PHE A   3      67.083 -27.172  26.496  1.00 43.35           C  
+<a name="cl-549"></a>ATOM      8  CD2 PHE A   3      68.135 -26.595  24.422  1.00 43.49           C  
+<a name="cl-550"></a>ATOM      9  CE1 PHE A   3      68.140 -26.631  27.187  1.00 43.21           C  
+<a name="cl-551"></a>ATOM     10  CE2 PHE A   3      69.210 -26.046  25.108  1.00 42.91           C  
+<a name="cl-552"></a>ATOM     11  CZ  PHE A   3      69.216 -26.062  26.493  1.00 43.22           C  
+<a name="cl-553"></a>ATOM     12  N   ARG A   4      64.007 -24.666  24.228  1.00 34.90           N  
+<a name="cl-554"></a>ATOM     13  CA  ARG A   4      63.951 -23.376  23.543  1.00 37.71           C  
+<a name="cl-555"></a>...
+<a name="cl-556"></a><span class="k">\end</span><span class="nb">{</span>verbatim<span class="nb">}</span>
+<a name="cl-557"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-558"></a>
+<a name="cl-559"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}</span>[fragile]<span class="nb">{</span>Formale Sprachen in der Bioinformatik<span class="nb">}</span>
+<a name="cl-560"></a>  <span class="nb">{</span><span class="k">\dots\ </span>und das Protein, das beschrieben wird.<span class="nb">}</span>
+<a name="cl-561"></a>
+<a name="cl-562"></a>  <span class="k">\includegraphicscopyright</span><span class="na">[width=9.5cm]</span><span class="nb">{</span>beamerexample-lecture-pic6.jpg<span class="nb">}</span>
+<a name="cl-563"></a>  <span class="nb">{</span>Copyright Till Tantau, Low Resultion<span class="nb">}</span>
+<a name="cl-564"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-565"></a>
+<a name="cl-566"></a>
+<a name="cl-567"></a><span class="k">\section</span>&lt;article&gt;<span class="nb">{</span>Zusammenfassung<span class="nb">}</span>
+<a name="cl-568"></a><span class="k">\section</span>&lt;presentation&gt;*<span class="nb">{</span>Zusammenfassung<span class="nb">}</span>
+<a name="cl-569"></a>
+<a name="cl-570"></a><span class="k">\begin</span><span class="nb">{</span>frame<span class="nb">}{</span>Zusammenfassung<span class="nb">}</span>
+<a name="cl-571"></a>  <span class="k">\begin</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-572"></a>  <span class="k">\item</span> Ein <span class="k">\alert</span><span class="nb">{</span>Wort<span class="nb">}</span> ist eine Folge von Symbolen aus einem
+<a name="cl-573"></a>    <span class="k">\alert</span><span class="nb">{</span>Alphabet<span class="nb">}</span>. 
+<a name="cl-574"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Syntax<span class="nb">}</span> besteht aus Regeln, nach denen
+<a name="cl-575"></a>    Worte (Texte) gebaut werden dürfen.
+<a name="cl-576"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>Semantik<span class="nb">}</span> legt fest, was Worte <span class="k">\alert</span><span class="nb">{</span>bedeuten<span class="nb">}</span>.
+<a name="cl-577"></a>  <span class="k">\item</span> Eine <span class="k">\alert</span><span class="nb">{</span>formale Sprache<span class="nb">}</span> ist eine Menge von Worten
+<a name="cl-578"></a>    über einem Alphabet.
+<a name="cl-579"></a>  <span class="k">\end</span><span class="nb">{</span>enumerate<span class="nb">}</span>
+<a name="cl-580"></a><span class="k">\end</span><span class="nb">{</span>frame<span class="nb">}</span>
+<a name="cl-581"></a>
+<a name="cl-582"></a><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</pre></div>
+</td></tr></table>
+    </div>
+  
+  </div>
+  
+
+
+  <div id="mask"><div></div></div>
+
+  </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div id="footer">
+    <ul id="footer-nav">
+      <li>Copyright © 2012 <a href="http://atlassian.com">Atlassian</a></li>
+      <li><a href="http://www.atlassian.com/hosted/terms.jsp">Terms of Service</a></li>
+      <li><a href="http://www.atlassian.com/about/privacy.jsp">Privacy</a></li>
+      <li><a href="//bitbucket.org/site/master/issues/new">Report a Bug to Bitbucket</a></li>
+      <li><a href="http://confluence.atlassian.com/x/IYBGDQ">API</a></li>
+      <li><a href="http://status.bitbucket.org/">Server Status</a></li>
+    </ul>
+    <ul id="social-nav">
+      <li class="blog"><a href="http://blog.bitbucket.org">Bitbucket Blog</a></li>
+      <li class="twitter"><a href="http://www.twitter.com/bitbucket">Twitter</a></li>
+    </ul>
+    <h5>We run</h5>
+    <ul id="technologies">
+      <li><a href="http://www.djangoproject.com/">Django 1.3.1</a></li>
+      <li><a href="//bitbucket.org/jespern/django-piston/">Piston 0.3dev</a></li>
+      <li><a href="http://git-scm.com/">Git 1.7.6</a></li>
+      <li><a href="http://www.selenic.com/mercurial/">Hg 1.9.2</a></li>
+      <li><a href="http://www.python.org">Python 2.7.2</a></li>
+      <li>554269dd6adc | bitbucket05</li>
+    </ul>
+  </div>
+
+  <script src="https://dwz7u9t8u8usb.cloudfront.net/m/057de5aa4e4d/js/lib/global.js"></script>
+
+
+
+
+
+
+  <script>
+    BB.gaqPush(['_trackPageview']);
+  
+    BB.gaqPush(['atl._trackPageview']);
+
+    
+
+    
+
+    (function () {
+        var ga = document.createElement('script');
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        ga.setAttribute('async', 'true');
+        document.documentElement.firstChild.appendChild(ga);
+    }());
+  </script>
+
+</body>
+</html>
