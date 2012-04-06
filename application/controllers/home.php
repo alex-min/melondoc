@@ -205,6 +205,15 @@ class     homeController extends controller
   {
     $this->user->needLogin();
     $this->template->loadLanguage("home");
+
+    $this->addJavascript('jquery.easing.1.3');
+    $this->addJavascript('jquery.mousewheel');
+    $this->addJavascript('jquery.contentcarousel');
+
+
+    $this->addCss('carousel');
+    $this->addCss('jquery.jscrollpane');
+
     $this->template->setView("new");
     $this->template->categorie = $this->model->getListCategorie();
   }
