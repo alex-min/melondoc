@@ -11,7 +11,7 @@ vous etes ici : <a href="/adminForum/"> Administration </a> > <a href="/adminFor
 	<tr>
 		<td><input type="text" value="{{value['name']}}" name="name_cat"></td>
 		<td><input type="number" value="{{value['order']}}" name="order"></td>
-		<td><input type="button" value="supprimer" name="sup[{{value['id']}}]" click="forum:supCat"></td>
+		<td><input type="button" value="supprimer" name="{{value['id']}}" click="forum:deleteCat"></td>
 	</tr>
 	{% endfor %}
 </table>

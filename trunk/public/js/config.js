@@ -2,6 +2,7 @@ window.$f  = {
 
 	config:{
 		separator			: 	':',
+		split				: 	';',
 		path				: 	"/public/js",
 		debug				: 	true
 	},
@@ -18,7 +19,14 @@ window.$f  = {
 	error		: 	$f_error, 
 }
 
-function dispatcher(e){$f.exec($(this).attr(e.type), $(this))};
+function dispatcher(e){
+	console.log($(this));
+	var attr = $(this).attr(e.type);
+	var stack = attr.split($f.config.split);
+	$each(stack , function(index, value) {
+		$f.exec(value, $(this))
+	});
+};
 	
 $("[click]").live("click", dispatcher);
 $("[dbclick]").live("dbclick", dispatcher);

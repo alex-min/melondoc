@@ -40,7 +40,8 @@ class			adminForumController extends controller
 	}
 
 	public function deleteCatAction(){
-		echo "deleted";
+		$data = array('test' => 2);
+		$this->template->addJSON($data);
 	}
 	
 }
