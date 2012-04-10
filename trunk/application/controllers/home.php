@@ -206,10 +206,6 @@ class     homeController extends controller
     $this->user->needLogin();
     $this->template->loadLanguage("home");
 
-    $this->addJavascript('jquery.easing.1.3');
-    $this->addJavascript('jquery.mousewheel');
-    $this->addJavascript('jquery.contentcarousel');
-
 
     $this->addCss('carousel');
     $this->addCss('jquery.jscrollpane');
@@ -227,7 +223,7 @@ class     homeController extends controller
     // ajout du document en bdd
     $doc_id = $this->model->addDocument($type, $_SESSION['user']['user_id'], "untitled document");
     // redirection vers le gestionnaire de document de minett / pierrick
-    // $this->template->redirect("", FALSE, "");
+    $this->template->redirect("", FALSE, "/editor2/?id=".$doc_id);
   }
   
   public function	deleteDocAction()
