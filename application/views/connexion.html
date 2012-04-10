@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="well span6">
+    <h1>{{_lang.header_connexion}}</h1>
+    <form method="POST" class="form-stacked" action="/login/index">
+      <label for="email">{{_lang.login_email}}</label>
+      <input type="text" name="login" />
+      <label for="login">{{_lang.login_mdp}}</label>
+      <input type="password" name="password" />
+      <div class="actions">
+	<input type="submit" class="btn primary" value="{{_lang.header_connexion}}" />
+      </div>
+    </form>
+  </div>
+  <div class="well span6">
+    <h1>{{_lang.header_inscription}}</h1>
+    <form method="POST" action="/login/inscription" class="form-stacked">
+      <label for="form_login">{{_lang.login_login}}</label></td><td><input type="text" name="form_login" />
+  <label for="form_first_name">{{_lang.login_first_name}}</label></td><td><input type="text" name="form_first_name" />
+  <label for="form_last_name">{{_lang.login_last_name}}</label></td><td><input type="text" name="form_last_name" />
+  <label for="form_email">{{_lang.login_email}}</label></td><td><input type="text" name="form_email" />
+  <label for="form_mdp">{{_lang.login_mdp}}</label></td><td><input type="password" name="form_mdp" />
+  <label for="form_mdp2">{{_lang.login_mdp2}}</label></td><td><input type="password" name="form_mdp2" />
+  <div class="actions">
+    <input class="btn primary" type="submit" value="{{_lang.header_inscription}}" />
+  </div>
+</form>
+</div>
+</div>

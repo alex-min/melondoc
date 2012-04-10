@@ -1,0 +1,591 @@
+<div id="controls" class="light">
+  <a href="#" class="prev"><img src="/public/images/documentation/icon_arrow-up_light.png" alt="" width="28" height="31" /></a>
+  <a href="#" class="next"><img src="/public/images/documentation/icon_arrow-down_light.png" alt="" width="28" height="31" /></a>
+</div>
+
+<div id="wrapper">
+  <div id="main">
+    <div style="text-align: center; padding: 40px;">
+      <h1><i>SingleFramework</i></h1>
+    </div>
+
+    <div class="section">
+      <h2>Introduction</h2><br/><br/>
+      <p>
+	Pourquoi <b>SingleFramework</b> ? Car historiquement ce framework a été crée dans le but de développer un projet d'envergure seul. Il est léger, orienté objet et très simple à comprendre.<br />
+	Ce framework ne plaira pas à tout le monde, il ne fait pas le café ni les sandwiches. Il trouvera son utilité auprès de ceux qui aiment savoir ce qu'ils font et comment fonctionnent leurs outils, les bidouilleurs, les geeks et les gens qui n'aiment pas utiliser seulement 10% d'un framework qui possède 15000 lignes de codes...<br />
+	Nous sommes ouvert à toutes critiques (constructives) mais l'essence même de ce framework est de rester simple et que ses utilisateurs puissent s'approprier le code rapidement.
+	Ce framework, une fois maîtrisé, vous fera gagner du temps mais pas trop, il est fait par et pour des gens qui aiment et comprennent ce qu'ils font.
+      </p>
+    </div>
+    <div class="section">
+      <h2>Arborescence</h2>
+      <ul>
+	<li><i class="icon-folder-open"></i> application</li>
+        <li>
+	  <ul>
+	    <li><i class="icon-folder-close"></i> controllers</li>
+            <li><i class="icon-folder-close"></i> models</li>
+            <li><i class="icon-folder-close"></i> views</li>
+            <li><i class="icon-folder-open"></i> language</li>
+	    <li>
+	      <ul>
+		<li><i class="icon-folder-close"></i> FR</li>
+		<li><i class="icon-folder-close"></i> EN</li>
+		<li><i class="icon-folder-close"></i> ...</li>
+	      </ul>
+	    </li>
+	  </ul>
+	</li>
+	<li><i class="icon-folder-open"></i> library</li>
+	<li>
+	  <ul>
+            <li><i class="icon-folder-close"></i> twig</li>
+            <li><i class="icon-file"></i> root.php</li>
+            <li><i class="icon-file"></i> template.php</li>
+            <li><i class="icon-file"></i> pager.php</li>
+            <li><i class="icon-file"></i> KLogger.php</li>
+            <li><i class="icon-file"></i> db.php</li>
+	    <li><i class="icon-file"></i> image.php</li>
+	    <li><i class="icon-file"></i> mail.php</li>
+	  </ul>
+	</li>
+	<li><i class="icon-folder-open"></i> public</li>
+	<li>
+	  <ul>
+	    <li><i class="icon-folder-close"></i> images</li>
+            <li><i class="icon-folder-close"></i> js</li>
+            <li><i class="icon-folder-close"></i> css</li>
+            <li><i class="icon-folder-close"></i> less</li>
+	  </ul>
+	</li>
+	<li><i class="icon-file"></i> index.php</li>
+	<li><i class="icon-file"></i> controller.php</li>
+	<li><i class="icon-file"></i> model.php</li>
+	<li><i class="icon-file"></i> define_base.php</li>
+	<li><i class="icon-file"></i> define.php</li>
+	<li><i class="icon-file"></i> .htaccess</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>Concept MVC</h2><br/><br/>
+      <br />
+      <h4>Introduction</h4>
+      <br />
+      <p>
+	Le concept du mvc est simple, séparer le model, la vue et le controller.
+	Lorsque nous avons développé le single framework nous avons interprété ce concept et l’avons mis en pratique à notre manière en y rajoutant une composante linguistique.
+	L’arborescence du dossier application est plutôt simple, un dossier pour chacune des composantes du design pattern MVC.
+	L'url possède donc son importance et se découpe comme ceci : http://monsite.com/module/controller/action<br />
+	La partie module est facultative et correspond à des sous dossiers dans l'architecture mvc, la partie controller correspond au controller que vous souhaitez appeler, la partie action correspond à l'action correspondante dans le controller précedemment spécifié que vous souhaitez appeler.
+      </p>
+      <h5>Exemple</h5>
+      <pre class="code" lang="html">
+	/*
+	** fonctionnement sans module, le plus couramment utilise :
+	*/
+	http://www.monsite.com/user/add
+	controller : user (/application/controller/user.php)
+	action : add (methode addAction dans la class userController)
+	
+	/*
+	** fonctionnement avec module
+	** dans ce cas le model, et les vues devront se trouver
+	** dans un sous dossier du meme nom que celui du controller
+	*/
+
+	http://www.monsite.com/party/user/add
+	module : party
+	controller : user (/application/controller/party/user.php)
+	action : add (methode addAction dans la class userController)
+	Ce qui se traduit par l'appel de la méthode addAction dans le controller user (user.php) dans le sous dossier party. 
+
+	http://www.monsite.com/party/february/user/add
+	module : party/february
+	controller : user (/application/controller/party/february/user.php)
+	action : add (méthode addAction dans la class userController)
+	
+      </pre>
+      <br />
+      <h4>Le controller</h4>
+      <br />
+      <p>Le controller est une class dont le nom doit se terminer par “Controller” qui hérite de la class “controller” qui se trouve à la racine. Cette class va contenir des méthodes publics dites “action” mais aussi les méthodes dont vous pourriez avoir besoin. Le controller fait la jonction entre le model (bdd), l’applicatif (php), la langue et la vue.</p>
+      <p>L’action est une méthode public dont le nom doit se terminer par “Action”, cette méthode représentera une page. La méthode indexAction est obligatoire car si une action est invalide le script redirige vers l’action index.</p>
+      <h5>Exemple</h5>
+      <p>Vous écrivez le controller user.php (“userController”) et l’action stat (statAction), pour accéder à cette page, vous devrez vous rendre sur : “http://monsite.com/user/stat”.</p>
+      <p>Le controller essaye de charger le model du même nom (par exemple userController essayera de charger userModel), néanmoins s’il n’existe pas, aucune erreure ne sera jetée.</p>
+      <h5>Code</h5>
+      <pre class="code" lang="php">
+	/*
+	** /application/controller/user.php
+	*/
+	class		userController extends controller
+	{
+		public function	indexAction()
+		{
+			/* ici votre code pour cette action */
+		}
+	
+		public function	statAction()
+		{
+			/* ici le code pour cette action */
+		}
+	}
+
+      </pre>
+     <br />
+      <h4>Le model</h4>
+      <br />
+      <p>Le model est une class dont le nom doit se terminer par “Model” et qui doit hériter de model (situé à la racine). Ses méthodes publics seront accessibles via le controller de cette manière : $this->model->method(); Dans le MVC, seul le model accède à la base de donnée, il fait office d’interface entre la base de donnée et le controller.</p>
+      <p>Le model est lié à la librarie db.php (développé pour mysql), pour accéder à la base de donnée il faut donc faire comme ceci $this->db->query("SELECT * FROM ...");
+      Nous détaillerons plus tard comment fonctionne les differentes librairies de base.</p>
+      <h5>Exemple</h5>
+      <p>Reprenons notre exemple du controller user.php (/application/controller/user.php), par défaut il essayera de charger le model correspondant user.php (/application/model/user.php)</p>
+      <h5>Code</h5>
+      <pre class="code" lang="php">
+	/*
+	** /application/model/user.php
+	*/
+	class		userModel extends model
+	{
+		public function	getStatsUser()
+		{
+			$this->db->query('SELECT * FROM ...'); // ici on effectue une requete sql via la librairie db
+			return "test";
+		}
+	}
+      </pre>
+      <pre class="code" lang="php">
+	/*
+	** /application/controller/user.php
+	*/
+	class		userController extends controller
+	{
+		public function	indexAction()
+		{
+			$res = $this->model->getStatsUser(); // ici on accède à notre model chargé par défaut
+			// il est possible de charger un autre model pour éviter la duplication de code
+			$myModel = $this->loadModel("stat"); // va charger le model /application/model/stat.php
+		}
+	}
+      </pre>
+      <br />
+      <h4>la vue</h4>
+      <br />
+      <p>La vue est un fichier html qui doit être définie dans chaque action, nous utilisons un moteur de template (TWIG) pour pouvoir méler proprement le php à l’html.</p>
+      <p>Il est possible de charger plusieurs vues les unes derrières les autres via le controller mais aussi directement via Twig <a href="http://twig.sensiolabs.org/doc/templates.html">voir la doc officielle</a></p>
+      <p>De plus il est possible de passer à nos vues des variables issus de votre controller</p>
+      <h5>Exemple</h5>
+      <p>Notre controller user.php à besoin d'afficher quelque chose, chargeons la vue /application/views/stat.html</p>
+      <h5>Code</h5>
+      <pre class="code" lang="php">
+	/*
+	** /application/controller/user.php
+	*/
+	class		userController extends controller
+	{
+		public function	indexAction()
+		{
+			$res = $this->db->getStatsUser(); // ici on accède à notre model chargé par défaut
+			$this->template->setView("stat"); // on demande à charger la vue stat.html
+			$this->template->maVariable = "test"; // ici on crée une variable dans template qui sera envoyé au moteur de template TWIG pour être accessible via la vue.
+		}
+	}
+      </pre>
+      <pre class="code" lang="html">
+	/*
+	** /application/views/stat.html
+	** Moteur de template utilise est twig
+	*/
+	{{maVariable}} // ici on affiche le contenu de la variable "maVariable"
+      </pre>
+      <br />
+      <h4>la langue</h4>
+      <br />
+      <p>Les fichiers de langue sont de simples fichiers PHP, définissant un tableau ($_). Exemple : $_[‘welcome_user’] = “Bienvenue !”;</p>
+      <p>Il faudra charger dans chaque action où celà se trouve être nécessaire les fichiers de langues via la librairie template ($this->template->loadLanguage(“fichier”);</p>
+      <p>La langue utilisé est par défaut le dossier FR, et est stocké en session $_SESSION['lang'] = "FR"; et les variables de langue seront directement accessibles dans la vue.</p>
+      <h5>Exemple</h5>
+      <p>Notre controller user.php nécessite l'affichage de texte destiné à être traduit dans plusieurs langues. Voici comment procéder.</p>
+      <h5>Code</h5>
+      <pre class="code" lang="php">
+	/*
+	** /application/language/FR/stat.php
+	** Fichier de langue version Francaise
+	**
+	*/
+	$_['variable_test'] = "test";
+      </pre>
+      <pre class="code" lang="php">
+	/*
+	** /application/controller/user.php
+	*/
+	class		userController extends controller
+	{
+		public function	indexAction()
+		{
+			$res = $this->db->getStatsUser(); // ici on accède à notre model chargé par défaut
+			$this->template->setView("stat"); // on demande à charger la vue stat.html
+			$this->template->maVariable = "test";// ici on crée une variable dans template qui sera envoyé au moteur de template TWIG pour être accessible via la vue.
+			$this->template->loadLanguage("stat"); // ici on charge le fichier /application/language/FR/stat.php
+		}
+	}
+      </pre>
+      <pre class="code" lang="html">
+	/*
+	** /application/views/stat.html
+	** Moteur de template utilise est twig
+	*/
+	{{maVariable}} // ici on affiche le contenu de la variable "maVariable"
+	{{maVariableLang}} // ici on affiche la variable de langue contenu dans /application/language/FR/stat.php
+      </pre>
+      <br />
+      <h4>Les librairies</h4>
+      <br />
+      <p>Les librairies sont des fichiers se trouvant dans le dossier /library/, ce sont de simples class. Tous les controllers accèdent à ces class et les librairies se voient entre elles. Vous pouvez vous même en créer mais il faudra ajouter quelques méthodes prédéfinis.</p>
+      <p>Le nom de la class et du fichier php doivent être identiques, à cela s'ajoute les méthodes de base et obligatoire ci-dessous. Seulement si vous respectez tout cela, votre librairie sera accessible via n'importe quels controllers et autres librairies simplement comme ceci : $this->nom_de_la_librairie->maMethode(); </p>
+      <h5>Exemple</h5>
+      <p>Admettons que votre système de stat utilisateur devrait être accessible sur n'importe quelle page, vous n'allez pas dupliquer le code dans chacun des controllers. Les librairies sont faites pour ca, vous définirez une librairie /library/stat.php comme ceci : </p>
+      <h5>Code</h5>
+      <pre class="code" lang="php">
+	/*
+	** /library/stat.php
+	** exemple de librairie de stat
+	*/
+	class		stat
+	{
+		private $class; // variable obligatoire
+		public function __construct() {
+			/* si vous définissez du code ici il sera appelé à chaque chargement de page */
+		}
+		// méthode obligatoire pour le chargement des libs
+		public function loadLib($class)
+		{
+			if (is_array($class))
+			   foreach ($class AS $key => $value)
+			    $this->$key = $value;
+		}
+
+		// méthode obligatoire pour accéder aux libs
+		public function __get($key)
+		{
+			return ((isset($this->class[$key])) ? $this->class[$key] : NULL);
+		}
+
+		// méthode obligatoire pour sauvegarder les objs des libs
+		public function	__set($key, $val)
+		{
+			$this->class[$key] = $val;
+		}
+	
+		// ici vos méthodes
+		public function getStat()
+		{
+			return 3;
+		}
+	}
+      </pre>
+      <pre class="code" lang="php">
+	/*
+	** /application/controller/user.php
+	*/
+	class		userController extends controller
+	{
+		public function	indexAction()
+		{
+			$res = $this->db->getStatsUser(); // ici on accède à notre model chargé par défaut via la lib db
+			$this->template->setView("stat"); // on demande à charger la vue stat.html
+			$this->template->maVariable = "test";// ici on crée une variable dans template qui sera envoyé au moteur de template TWIG pour être accessible via la vue.
+			$this->template->loadLanguage("stat"); // ici on charge le fichier /application/language/FR/stat.php
+			$this->stat->getStat(); // ici on accède à la librairie stat via le controller 
+		}
+	}
+      </pre>
+      <br />
+    </div>
+    <div class="section">
+      <h2>Configuration</h2><br /><br />
+      <h4>define.php</h4><br />
+      <p>Vous pouvez y définir et modifier pas mal de choses, nous vous déconseillons de modifier les variables de chemins relatifs</p>
+      <h5>Variables : </h5>
+      <pre class="code" lang="php">
+	/* permet d'afficher les requêtes sql, les variables de sessions et de créer un fichier de log 0 = desactive / 1 = active */
+	define("DEBUG", 0);
+
+	/* ne pas toucher */
+	define("PATH_CONTROLLERS", "application/controllers/");
+	define("PATH_VIEWS", "application/views/");
+	define("PATH_MODELS", "application/models/");
+	define("PATH_LIB", "library/");
+	define("PATH_LANG", "application/language/");
+	
+	// Utilisation du bootstrap de twitter, 0 = désactive / 1 = active
+	define("BOOTSTRAP", 1);
+	define("PATH_BOOTSTRAP_CSS", "bootstrap/");
+	define("PATH_BOOTSTRAP_JS", "bootstrap/");
+	
+	// Paths pour les ressources
+	define("IMAGES", "/public/images");
+	define("CSS", "/public/css");
+	define("JS", "/public/js");
+
+      </pre>
+      <br />
+      <h4>define_base.php</h4>
+      <br />
+      <p>Dans ce fichier se trouvent les variables de connexion pour la base de donnee mysql.</p>
+      <pre class="code" lang="php">
+	/* utilisateur de la bdd */
+	define("DB_USER", "");
+	/* le password */
+	define("DB_PASSW", "");
+	/* l'hote (adresse) */
+	define("DB_HOST", "");
+	/* le nom de la bdd */
+	define("DB_BASE", "");
+      </pre>
+    </div>
+    <div class="section">
+      <h2>Librairies du singleFramework</h2><br /><br />
+      <h4>Introduction</h4><br />
+      <p>Au fur et à mesure que nous avançons dans le développement de ce framework nous avons développé des librairies essentiels et pratiques. Voici les différentes librairies et leurs méthodes.</p>
+      <p>Dans cette partie nous ne vous présenterons uniquement les méthodes qui peuvent vous servir lors de l'utilisation du framework, si vous souhaitez en savoir plus commencez par regarder le code et n'hésitez pas à nous contacter.
+      <br />
+      <h4>root</h4>
+      <br />
+      <p>Cette librairie permet de parser l'url et vérifier les erreurs éventuelles avant le dispatch. En théorie vous n'avez pas a vous soucier du fonctionnement de cette librairie, de plus, elle est essentielle au fonctionnement du framework.</p>
+      <h5>méthodes : </h5>
+      <pre class="code" lang="php">
+	/* retourne la string correspondant au controller demande via l'url */
+	root::getController();
+
+	/* retourne la string correspondant au module demande via l'url */
+	root::getModule();
+
+	/* retourne la string correspondant au model par défaut dépendant du controller */
+	root::getModel();
+
+	/* retourne un boolean définissant si la requête http est une requete ajax ou non */
+	root::isAjax();
+	
+      </pre>
+      <br />
+      <h4>Template</h4>
+      <br />
+      <p>Cette librairie effectue de nombreuses tâches dédiés aux vues, aux langues et redirections</p>
+      <h5>méthodes : </h5>
+      <pre class="code" lang="php">
+	/* 
+	** Cette méthode permet de rediriger le script vers une autre page du site, 
+	** en y spécifiant un message, un boolean qui définit si c'est une erreure ou non,
+	** et l'url en question.
+	** En définissant un message, il s'affichera sur la page correspondante ($url),
+	** une gestion interne des erreurs est donc déjà faite pour vous.
+	** Dans le cas d'une requête asynchrone aucun soucis, le script ne sera pas redirigé néanmoins votre message
+	** d'erreur ou de succès sera transmis en json au javascript avec les autres valeurs définis via la fonction template::addJSON(array);
+	*/
+	template::redirect($message (string), $isError (bool), $url (string));
+
+	/*
+	** Permet d'ajouter du contenu à écrire en reponse à une requete ajax,
+	** En faisant appel à cette méthode vous n'aurez pas besoin de faire un echo
+	** de vos données, le tableau php sera encodé en json et écrit en réponse
+	** à la requête asynchrone lors de l'appel automatique à la méthode fetchAjax
+	*/
+	template::addJSON($tab (array));
+
+	/*
+	** Permet d'ajouter une vue, les vues seront affichés dans l'ordre
+	** d'appel de cette méthode
+	*/
+	template::setView($view (string));
+
+	/*
+	** Permet d'ajouter les variables d'un fichier de langue
+	** dans les données accessibles depuis la vue
+	*/
+	template::loadLanguage($file (string));
+      </pre>
+      <br />
+      <h4>db</h4>
+      <br />
+      <p>Cette librairie est une surcouche aux fonctions php pour mysql, vous permettant de faire des requêtes sql en toute simplicité.</p>
+      <h5>methodes : </h5>
+      <pre class="code" lang="php">
+	/*
+	** Permet de récuperer l'id auto incrementé d'un insert en base de donnée 
+	*/
+	db::getLastId();
+	
+	/*
+	** Permet d'effectuer une requête sql de n'importe quel type,
+	** les paramètres extérieurs que vous pourriez éventuellement y insérer
+	** devront être sécurisés par vos soins
+	** Cette méthode vous renvoie un objet de type stdClass, contenant 3 variables
+	** count, cette variable contient le nombre de lignes du résultat renvoyé par mysql
+	** row, cette variable contient la première ligne de résultat
+	** rows, cette variable contient toutes les lignes de résultat
+	*/
+	db::query($query (string));
+      </pre>
+      <br />
+      <h4>pager</h4>
+      <br />
+      <p>pager est une librairie de gestion de pagination, actuellement dans sa première version elle reste stable mais possède quelques inconvénients, par exemple ne peut gerer qu'une seule pagination par page.</p>
+      <pre class="code" lang="php">
+	/*
+	** permet d'ajouter un tableau de données 
+	** (correspondant à toutes le données de toutes les pages)
+	*/
+	pager::setDatas($data (Array));
+
+	/*
+	** permet de récuperer toutes les données (les mêmes que celles de setDatas
+	*/
+	pager::getDatas();
+	
+	/*
+	** récuperer les données en fonction de la page voulue et
+	** le nombre d'éléments souhaités par page
+	** néanmoins si la variable $_GET['page'] est définie alors
+	** la variable $page ne sera pas prise en compte
+	*/
+	pager::getResult($page (int, par defaut 1), $number_per_page (int, par defaut 20));
+
+	/*
+	** permet de récupérer la page d'un élément en fonction de sa clef dans le tableau
+	*/
+	pager::getPageFromID($id (mixed));
+
+	/*
+	** retourne le code html correspondant a la pagination
+	** son paramêtre est l'url sur laquelle la pagination se trouve pour les liens 
+	*/
+	pager::getPagination($url (string));
+      </pre>
+      <br />
+      <h4>KLogger</h4>
+      <br />
+      <p>Cette class à été crée par <a href="http://codefury.net">Kenny Katzgrau</a>, nous n'avons fait que reprendre son travail et l'adapter à notre framework. Cette librairie permet de logguer des informations dans un fichier avec différents niveau</p>
+      <pre class="code" lang="php">
+      /*
+      ** ces fonctions écrivent dans un fichier le message que vous lui donnez
+      */
+      KLogger::logInfo($msg (string));
+      KLogger::logFatal($msg (string));
+      KLogger::logDebug($msg (string));
+      </pre>
+      <br />
+      <h4>image</h4>
+      <br />
+      <p>Cette librairie permet de manipuler des images.</p>
+      <pre class="code" lang="php">
+	/*
+	** charge une image
+	*/
+	image::setImage($file (string));
+
+	/*
+	** Après avoir fait vos modifications sur l'image
+	** vous pouvez sauvegarder le résultat dans un fichier via cette méthode
+	** $file correspond au path de la nouvelle image à créer
+	*/
+	image::save($file (string), $quality (int, defaut a 100));
+
+	/*
+	** resize l'image en cours
+	** $width est la largeur 
+	** $height est la hauteur
+	*/
+	image::resize($width (int), $height (int));
+      </pre>
+
+      <br />
+      <h4>mail</h4>
+      <br />
+      <p>Cette librairie permet d'envoyer des mails, elle ne gère pas l'envoie de centaines de mails.</p>
+      <pre class="code" lang="php">
+	/*
+	** permet l'envoie d'un mail en mode text
+	** $dest est l'email de destination
+	** $subject est le sujet du mail
+	** $message est son message
+	*/
+	mail::sendMail($dest (string), $subject (string), $message (string));
+
+	/*
+	** permet l'envoie d'un mail en html
+	** mêmes paramètres que la methode sendMail ci-dessus.
+	*/
+	mail::sendMailHtml($dest (string), $subject (string), $message (string));
+      </pre>
+    </div>
+    <div class="section">
+      <h2>jQuery</h2><br /><br />
+      <p>Le framework est couplé avec jquery mais nous avons développé une surcouche pour en simplifier l'utilisation appelé <a href="/documentation/easyJquery" target="_blank">easyJquery</a>.</p>
+    </div>
+    <div class="section">
+      <h2>Bootstrap</h2><br /><br />
+      <p>Nous avons décidé d'ajouter <a href="http://twitter.github.com/bootstrap/">bootstrap 2.0</a> et <a href="http://lesscss.org/">less</a> à ce framework pour une mise en page simple et rapide.</p>
+      <p>Néanmoins rien ne vous oblige à utiliser bootstrap et less, il vous suffit de mettre le define (define.php) bootstrap à 0</p>
+    </div>
+  </div>
+</div>
+    <script type="text/javascript">
+      
+      $(document).ready(function(){
+      
+      // instantiate page scroller plugin
+      
+      var navLabel = new Array(
+      'Introduction',
+      'Arborescence',
+      'Concept MVC',
+      'Configuration',
+      'Librairies du SingleFramework',
+      'jQuery',
+      'Bootstrap'
+  );
+  
+  $('#main').pageScroller({ navigation: navLabel });
+  
+  /*	AVAILABLE OPTIONS:
+  *	currentSection 				starting position
+  *	sectionClass				class of each section
+  *	navigationClass 			navigation element class
+  *	scrollOffset				offset target area from top of section
+  *	animationSpeed	 			change duration of animation in miliseconds
+  *	animationBefore 		 	callback: assign a function before animation
+  *	animationComplete 	 		callback: assign a function after animation
+  *	onChange					callback: assign a function for when section changes
+  */		
+  
+  // assigns "next" API function to button
+  
+  $('.next').click(function(e){
+  e.preventDefault();
+  pageScroller.next();
+  });
+  
+  //assigns "prev" API function to button	
+  
+  $('.prev').click(function(e){
+  e.preventDefault();
+  pageScroller.prev();
+  });
+  
+  $('.jumpTo').click(function(e){
+  e.preventDefault();
+  pageScroller.goTo(4);
+  });
+  
+  });
+  
+</script>
+
+
+<script type="text/javascript">
+  $(document).ready(function(){
+  $('pre.code').highlight({source:1, zebra:1, indent:'space', list:'ol'});
+  });
+</script>

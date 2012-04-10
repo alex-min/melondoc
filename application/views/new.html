@@ -1,0 +1,7 @@
+<h2>{{_lang.header_create_new}}</h2>
+{% for key, temp in categorie %}
+
+<!-- ICI DES VISUELS POUR LES DIFFERENTS TYPE DE FICHIERS -->
+<a href="/home/new?type={{temp.id_category}}"><img src="/public/images/{{temp.avatar}}" alt="{{temp.description}}" /></a>
+
+{% endfor %}

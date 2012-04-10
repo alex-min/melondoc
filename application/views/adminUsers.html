@@ -1,0 +1,3 @@
+{% for u in users %}
+<p>{{u.login}} {{u.firstname}} {{u.lastname}} <a href="/admin/ModifyUsers?id={{u.user_id}}">Editer</a> <a href="/admin/DelUsers?id={{u.user_id}}">Supprimer</a></p>
+{% endfor %}
