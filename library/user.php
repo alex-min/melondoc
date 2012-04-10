@@ -38,9 +38,10 @@ class user
 
   // si le mec n'est pas loggue, on le redirige vers la page de connection
   // sinon on fait rien
-  public function needLogin()
+  public function needLogin($type = 0)
   {
-    if (!isset($_SESSION['user']))
+    if (!isset($_SESSION['user']) ||
+	(isset($_SESSION['user']) && $type == 1 && $_SESSION['user']['isAdmin'] == 0))
 	{
 	  $this->template->loadLanguage("header");
 	  $this->template->redirect($this->template->language['header_need_login'], TRUE,"/index/index");

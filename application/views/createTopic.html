@@ -17,10 +17,10 @@ Vous etes ici : <a href="/forum/">Index</a> > <a href="/forum/voirForum?id={{id}
 <td>
 <label for="type"> Genre : </label><br />
 <select name="type" id="type">
-	<option value="normal" selected="selected">Normal</option>
+  <option value="normal" selected="selected">Normal</option>
 	<option value="admin" {% if canAdmin == false %} disabled=disabled {% endif %}>Admin</option>
 	<option value="annonce" {% if canAnnonce == false %} disabled=disabled {% endif %}>Annonce</option>
-	</td>
+</td>
 </tr>
 <tr>
 <td><input type="submit" value = "envoyer"></td>
