@@ -1,11 +1,12 @@
-<ul class="breadcrumb" style="position: fixed; top: 65px;">
-  <li><a href="/forum">Index</a><span class="divider">/</span></li>
-  <li><a href="/forum/voirForum?id={{info['forum_id']}}">{{info['forum_name']}}</a><span class="divider">/</span></li>
-  <li class="active"><a href="/forum/viewTopic?id={{info['topic_id']}}">{{info['topic_name']|raw}}</a> [<strong>voir le sujet</strong>]</li>
-</ul>
 <br/>
-<h2 style="text-align: center; margin-top: 30px; margin-bottom: -20px; text-transform: uppercase;">{{info['topic_name']|raw}} </h2>
-<hr class="soften">
+<h2 style="text-align: center; margin-top: 30px; margin-bottom: -20px; text-transform: uppercase;">{{info['topic_name']|raw}} </h2><br/>
+
+<hr class="soften_wm">
+<div style="text-align:center;">
+  <a class="btn_get" href="/forum">Retour au forum</a>
+  <a class="btn_get" href="/forum/voirForum?id={{info['forum_id']}}">Retour {{info['forum_name']}}</a>
+</div>
+<hr class="soften_wm">
 
 {% for value in posts %}
 

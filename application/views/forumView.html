@@ -1,70 +1,106 @@
-{% if viewModerator == true %}
-	<a href="/forum/moderate?id={{infos['id']}}" class="btn btn-small"><i class="icon-cog"></i> Moderer</a>
-{% endif %}
-<br/><br/>
-<ul class="breadcrumb">
-	<li>
-    	<a href="/forum">Index</a> <span class="divider">/</span>
-    </li>
-    <li class="active">
-    	<a href="/forum/voirForum?id={{infos['id']}}">{{infos['name']}}</a> <span class="divider">/</span>
-    </li>
-</ul>
-<br /><br />
-{{linkCreate|raw}}
-<table>
-<tr>
-<th> </th>
-<th class = "titre">Titre du topic</th>
-<th class = "nombremessages">createur</th>
-<th class = "nombremessages">nombre de reponses</th>
-<th class = "nombremessages">nombre de vues</th>
-<th class = "derniermessage">dernier message</th></tr>
+<br/>
+<h2 style="text-align: center; margin-top: 30px; margin-bottom: -20px; text-transform: uppercase;">{{infos['name']}} </h2><br/>
+
+<hr class="soften_wm">
+<div style="text-align:center;">
+  <a class="btn_get" href="/forum">Retour au forum</a>
+</div>
+<hr class="soften_wm">
+
+
+<table class="span12">
+	<thead>
+		<tr>
+			<th></th>
+			<th class = "titre">Sujet</th>
+			<th class = "nombremessages">Auteur</th>
+			<th class = "nombremessages">Réponses</th>
+			<th class = "nombremessages">Vues</th>
+			<th class = "derniermessage">Message</th>
+		</tr>
+	</thead>
 
 {% for value in topics.rows %}
-
-
 {% if value.id is not empty %}
-<tr>
-{% if (value.genre == "annonce") %}
-<td>
-	{% if (value['lock'] == 1) %}
-	locked 
+	{% if (value.genre == "annonce") %}
+	<tr class="annonce">
+		<td>
+		{% if (value['lock'] == 1) %}
+			locked 
+		{% endif %}
+		</td>
+		<td class="subject">
+			Annonce<br/><a href="/forum/viewTopic?id={{value['id']}}">{{value['name']|raw}}</a>
+		</td>
+		<td class="author">
+			{{value['creator']}} totot
+		</td>
+		<td class="nbresponse">
+			{{value['reponses']}}
+		</td>
+		<td class="nbview">
+			{{value['views']}}
+		</td>
+		<td>
+			<a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br/>Posté le {{value['date']}}
+		</td>
+	{% elseif (value['genre'] == "admin") %}
+	<tr class="admin">
+		<td>
+		{% if (value['lock'] == 1) %}
+			locked 
+		{% endif %}
+		</td>
+		<td class="subject">
+			Admin<br/><a href="/forum/viewTopic?id={{value['id']}}">{{value['name']|raw}}</a>
+		</td>
+		<td class="author">
+			{{value['creator']}}
+		</td>
+		<td class="nbresponse">
+			{{value['reponses']}}
+		</td>
+		<td class="nbview">
+			{{value['views']}}
+		</td>
+		<td>
+			<a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br /> Posté le {{value['date']}}
+		</td>
+	{% else %}
+	<tr>
+		<td>
+		{% if (value['lock'] == 1) %}
+			locked 
+		{% endif %}
+		</td>
+		<td class="subject">
+			<a href="/forum/viewTopic?id={{value['id']}}">{{value['name']|raw}}</a>
+		</td>
+		<td class="author">
+			{{value['creator']}}
+		</td>
+		<td class="nbresponse">
+			{{value['reponses']}}
+		</td>
+		<td class="nbview">
+			{{value['views']}}
+		</td>
+		<td class = "derniermessage"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br/>Posté le {{value['date']}}
+		</td>
 	{% endif %}
-</td>
-<td class = "annonce">Annonce : <a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']|raw}}</a></strong></td>
-<td class = "nombremessagesAnnonce">{{value['creator']}} totot</td>
-<td class = "nombremessagesAnnonce">{{value['reponses']}}</td>
-<td class = "nombremessagesAnnonce">{{value['views']}}</td>
-<td class = "derniermessageAnnonce"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">last message</a><br />
-at {{value['date']}}</td>
-{% elseif (value['genre'] == "admin") %}
-<td>
-	{% if (value['lock'] == 1) %}
-	locked 
-	{% endif %}
-</td>
-<td class = "Admin">Admin : <a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']|raw}}</a></strong></td>
-<td class = "nombremessagesAdmin">{{value['creator']}}</td>
-<td class = "nombremessagesAdmin">{{value['reponses']}}</td>
-<td class = "nombremessagesAdmin">{{value['views']}}</td>
-<td class = "derniermessageAdmin"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">last message</a><br />
-at {{value['date']}}</td>
-{% else %}
-<td>
-	{% if (value['lock'] == 1) %}
-	locked 
-	{% endif %}
-</td>
-<td class = "titre"><a href="/forum/viewTopic?id={{value['id']}}"><strong>{{value['name']|raw}}</a></strong></td>
-
-<td class = "nombremessages">{{value['creator']}}</td>
-<td class = "nombremessages">{{value['reponses']}}</td>
-<td class = "nombremessages">{{value['views']}}</td>
-<td class = "derniermessage"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">last message</a><br />
-at {{value['date']}}</td>
-{% endif %}
-</tr>
+	</tr>
 {% endif %}
 {% endfor %}
 </table>
+
+<img class=" span12" src="/public/images/curved-drop-shadow.png">
+
+{% if viewModerator == true %}
+<div style="float: right">
+	<a href="/forum/moderate?id={{infos['id']}}" class="btn_get"><i class="icon-cog"></i> Moderer</a>
+</div>
+{% endif %}
+
+<div style="float: right">
+	<a class="btn_get" href="/forum/createTopic?id={{id}}"><i class="icon-pencil"></i> Nouveau Topic</a>
+</div>

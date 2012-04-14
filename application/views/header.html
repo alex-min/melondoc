@@ -2,7 +2,7 @@
   <div class="navbar-inner">
     <div class="container">
       <a class="brand" href="/">
-      <img src="/public/images/logo.png" width="100"/>
+      <img src="/public/images/melon.png" width="100"/>
 	<!--{%  if _lang.project_name is defined  %}
 	{{ _lang.project_name }}
 	{% else %}
@@ -16,13 +16,15 @@
 	  <li><a href="/home/index" title="{{_lang.header_account}}">{{_lang.header_account}}</a></li>
 	  {% endif %}
 	  <li><a href="/user/contact" title="{{_lang.header_contact}}">{{_lang.header_contact}}</a></li>
-	  <li><a href="/forum" title="{{_lang.header_forum}}">{{_lang.header_forum}}</a></li>
+	  <li>
+	  	<a href="/forum" title="{{_lang.header_forum}}">{{_lang.header_forum}}</a>
+	  </li>
 	  {% if isLogged %}
 	  <li><a href="/user/deconnexion" title="{{_lang.header_deconnexion}}">{{_lang.header_deconnexion}}</a></li>
 	  {% else %}
 	  <li><a href="#modal_connexion" data-toggle="modal" title="{{_lang.header_connexion_inscription}}">{{_lang.header_connexion_inscription}}</a></li>
 	  {% endif %}
-	  <li><a href="http://www.facebook.fr" target="_blanck" title="Facebook"><img src="/public/images/logo-facebook.jpg" width="20"/></a></li>
+	  <li><a href="https://www.facebook.com/pages/Melondoc/284503654962124" target="_blanck" title="Facebook"><img src="/public/images/logo-facebook.jpg" width="20"/></a></li>
 	  <li><a href="http://www.twitter.fr" target="_blanck" title="Twitter"><img src="/public/images/logo-twitter.jpg" width="20"/></a></li>
 	</ul>
       </div>

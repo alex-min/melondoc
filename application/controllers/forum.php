@@ -23,7 +23,7 @@ class			forumController extends controller
 // $this->forum->reorderCategorie($array);
 	//$this->forum->deleteForum(2);
 	$_SESSION['user']['login'] = "me";
-	//$this->addCSS("forum", "design");
+	$this->addCSS("forum", "design");
 	$ret = $this->forum->getEverything();
   //$this->template->view = $this->prepareView($this->ret);
 
@@ -108,13 +108,14 @@ class			forumController extends controller
 
   public function voirForumAction()
   {
+    
   $this->addCSS("forum", "design");
 	$id = intval($_GET['id']);
 	if (!$this->forum->forumExist($id))
 	echo 'error';
 	$this->template->topics = $this->forum->getTopicsFromForum($id);
   $this->template->infos = $this->forum->getForumById($id)->row;
-  $this->template->linkCreate = '<a href="/forum/createTopic?id='.$id.'">Nouveau Topic</a>';
+  $this->template->id = $id;
   $i = 0;
   foreach ($this->template->topics->rows as $value)
   {

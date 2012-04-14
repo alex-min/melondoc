@@ -1,11 +1,5 @@
-<div id="filesbar" class="span3 toggle_close" mouseenter="filesbar:open" mouseleave="filesbar:close" style="left: 20px">
-	
-	<span id="filesbar_open" class="toggle_filesbar">
-	  <i class="icon-th-list icon-white"></i>
-	</span>
-
-<a href="/home/create" class="btn btn-primary">{{_lang.home_doc_create}}</a>
-
-<div id="tree"></div>
-
+<div id="filesbar" class="toggle_close">
+	<a href="/home/create" class="btn_get">{{_lang.home_doc_create}}</a>
+	<div id="tree"></div>
+	<span id="filesbar_open" class="toggle_filesbar" click="filesbar:toggle"><i class="icon-th-list icon-black"></i>&nbsp;&nbsp;Fichiers</span>
 </div>
