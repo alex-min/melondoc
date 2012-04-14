@@ -25,7 +25,11 @@ body, p, div, td, h1, h2, h3, h4, li {
 	font-size: 12px;
 	font-weight: bold;
 	line-height: 4;
+	text-align: center;
 	}
+ .btn_get:hover {
+ 	color: white;
+ }
  .btn_get {
 	background: #69b249;
 	background: -moz-linear-gradient(top,  #86DF4C 0%,  #6AC42F 100%);
@@ -107,6 +111,15 @@ body, p, div, td, h1, h2, h3, h4, li {
 hr.soften {
   height: 1px;
   margin: 54px 0;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
+  border: 0;
+}
+
+hr.soften_wm{
+  height: 1px;
   background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));
   background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,.1), rgba(0,0,0,0));

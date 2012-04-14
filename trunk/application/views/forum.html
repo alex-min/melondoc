@@ -1,36 +1,31 @@
-<br/><br/>
-<a href="/adminForum/" class="btn btn-small"><i class="icon-cog"></i> Administration</a>
-<br/><br/>
-<ul class="breadcrumb">
-	<li class="active">
-    	<a href="/forum">Index</a> <span class="divider">/</span>
-    </li>
-</ul>
+<br/>
+<h2 style="text-align: center; margin-top: 30px; margin-bottom: -20px; text-transform: uppercase;">Forum</h2><br/>
+<hr class="soften">
 
 {% set cat = 0 %}
 
-<table class="table table-bordered">
+<table class="span12">
+
 	{% for data in ret.rows %}
 		{%  if data.name_forum is not empty %}
 	
 {% if cat != data.id_categorie %}
-	<tr>
-		<th>{{ data.name_cat }}</th>
-	<tr>
+    <tr class="categorie"><th>{{ data.name_cat }}</th></tr>
+
 
 	<tr>
-    	<th>
+    	<td>
     		<strong>Forum</strong>
-    	</th>             
-        <th style="text-align: center;">
+    	</td>             
+        <td style="text-align: center;">
         	<strong>Sujets</strong>
-        </th>
-        <th style="text-align: center;">
+        </td>
+        <td style="text-align: center;">
         	<strong>Messages</strong>
-        </th>
-        <th style="text-align: center;">
+        </td>
+        <td style="text-align: center;">
         	<strong>Dernier message</strong>
-        </th>
+        </td>
     </tr>
 
     {% set cat = data.id_categorie %}
@@ -61,12 +56,18 @@
     	</td>
 
     	<td style="text-align: center;">
-    		<a href="/forum/viewTopic?id={{ data.id_topic1 }}&amp;post={{ data.last_post}}">last message</a>
+    		<a href="/forum/viewTopic?id={{ data.id_topic1 }}&amp;post={{ data.last_post}}">Dernier message</a>
     	</td>
     </tr>
       {% endif %}
     {% endfor %}
 </table>
 
+<div style="row">
 
 <strong>powered by TaiTaiBB</strong>
+
+<div style="float: right">
+<a href="/adminForum/" class="btn_get"><i class="icon-cog"></i> Administration</a>
+</div>
+</div>

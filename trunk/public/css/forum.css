@@ -44,10 +44,34 @@
 .derniermessageAdmin { width:250px; background-color:red;}
 .categorieAdmin { width:20px; background-color : red; }
 
-td { /*border: 1px solid black; background-color: rgb(253,244,223);*/ vertical-align:top; }
-table { margin-left : 150px; /*background-color: rgb(237,224,213); border: 1px solid black;*/ }
-th { /*background-color: rgb(243,250,223); border: 1px solid black;*/ }
+table a {
+	color: black;
+}
+table tr{ border: 1px solid #BDBDBD;}
+table tr.categorie{ border: none; background-color: none;}
 
+table tr.categorie th{ background-color: #fff; padding: 10px; text-align: left; font-size: 20px; text-transform: capitalize; color: #86DF4C;}
+
+table tr td{
+	 padding: 10px; 
+}
+table thead th {
+	padding: 10px;
+}
+table .annonce .subject {
+	color: #86DF4C;
+}
+table .admin .subject{
+	font-weight: blod;
+	color: #FF9617;
+}
+
+.subject{
+	text-transform: capitalize;
+}
+.nbview, .nbresponse, .author{
+	text-align: center;
+}
 .actions{
 	text-align: right; list-style:none; padding: 0px; opacity: 0;
 }
