@@ -68,12 +68,25 @@ insert_text:function(open, close)
    msgfield.focus();
  },
 
- quote:function(message, author) {
-     msgfield = $("[name=answer]")[0];
-   open = "[quote=" + author + "]" + message;
+   quote:function(id, author) {
+     
+   var obj = {};
+   obj.id = id;
+   obj.author = author;
+console.log("test");
+$.ajax({
+ url: "/forum/getMessageById",
+type: "POST",
+dataType: "JSON",
+data: obj,
+success: function(data){
+
+    msgfield = $("[name=answer]")[0];
+   
+   open = '[quote=' + data.author + ']' + data.message.message;
    close = "[/quote]";
 
-   if (document.selection && document.selection.createRange)
+    if (document.selection && document.selection.createRange)
    {
       msgfield.focus();
       sel = document.selection.createRange();
@@ -92,15 +105,18 @@ insert_text:function(open, close)
       msgfield.scrollTop = old_top;
       msgfield.focus();
    }
-
    // Fallback support for other browsers
    else
    {
       msgfield.value += open + close;
       msgfield.focus();
    }
- },
-
+ }
+})
+},
+   
+    
+ 
  displayActions:function(e)
  {
     var name = e.attr('name');

@@ -311,5 +311,11 @@ public function bbcode($texte)
 		$ret = $this->db->query("select * from forum_forum where name = '".$name."'");
 		return $ret;
 	}
+
+	public function getPostById($id)
+	{
+		$ret = $this->db->query("select * from forum_posts where id = '".$id."'");
+		return $ret->row;
+	}
 }
 ?>

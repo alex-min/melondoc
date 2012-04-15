@@ -21,28 +21,37 @@ class			adminForumController extends controller
 	}
 
 	public function manageCatAction(){
-		if (isset($this->POST['sup']))
+		$cat = $this->forum->getCat()->rows;
+		if (isset($_POST['value']))
 		{
-			$id = 19;
-			$array = @array_keys($this->POST['sup']);
-			echo json_encode(array('toto'=> 'test'));
-			foreach ($array as $value) {
-				$id = $value;
+			$order = array();
+			$i = 0;
+			foreach ($_POST['value'] as $value)
+			{
+				if (array_search($value['id'], $order) === true)
+					$this->template->redirect("/adminForum", TRUE, "il y a deja une categorie avec cet ordre");
+				$order[$i]['pos'] = $value['order'];
+				$order[$i]['id'] = $value['id'];
+				$i++;
 			}
-			
-			//exit(1);
-			//$this->forum->deleteCategorie($id);
+			$this->forum->reorderCategorie($order);
 		}
-		else {
-			$this->template->cat = $this->forum->getCat()->rows;
+			$this->template->cat = $cat;
 			$this->template->setView("manageCat");
-		}
 	}
 
 	public function deleteCatAction(){
-		$data = array('test' => 2);
-		$this->template->addJSON($data);
+		if (isset($_GET['id']))
+		{
+			$id = intval($_GET['id']);
+		$this->forum->deleteCategorie($id);
+		$this->template->redirect("/adminForum/manageCat", FALSE, "");
+	   }	
 	}
-	
+
+	public function addForumAction(){
+		$this->template->cat = $this->forum->getCat()->rows;
+		$this->template->setView("addForum");
+	}
 }
 ?>
