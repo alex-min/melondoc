@@ -135,6 +135,14 @@ class user
     return FALSE;
   }
 
+  public function	getCategorieFromID($id)
+  {
+    $query = $this->db->query('SELECT * FROM `categories` WHERE `id_category` = "'.$id.'"');
+    if ($query->count > 0)
+      return $query->row;
+    return FALSE;
+  }
+
   public function getUserFromID($user_id)
   {
     $query = $this->db->query('SELECT * FROM `users` WHERE `user_id` = "'.$user_id.'" LIMIT 1');

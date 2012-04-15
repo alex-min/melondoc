@@ -29,4 +29,6 @@ $_['header_create_new'] = "CrÃ©er un nouveau document";
 $_['header_owner'] = "Propriétaire";
 $_['header_read'] = "Lecture";
 $_['header_write'] = "Ecriture";
+$_['home_doc_create'] = "Nouveau";
 ?>
+
