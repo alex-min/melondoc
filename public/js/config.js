@@ -20,11 +20,15 @@ window.$f  = {
 }
 
 function dispatcher(e){
-	console.log($(this));
+	var stack = new Array();
 	var attr = $(this).attr(e.type);
-	var stack = attr.split($f.config.split);
+	var el = $(this);
+	if (attr.indexOf($f.config.split) == -1)
+		stack.push(attr);
+	else
+		stack = attr.split($f.config.split);
 	$.each(stack , function(index, value) {
-	    $f.exec(value, $(this))
+	    $f.exec(value, el)
 	});
 };
 
