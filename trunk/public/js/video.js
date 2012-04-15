@@ -3093,7 +3093,7 @@ _V_.flash = _V_.PlaybackTech.extend({
 
         params = _V_.merge({
           allowScriptAccess: "always",
-          wmode: "opaque",
+          wmode: "transparent",
           bgcolor: "#000000"
         }, options.params),
 
