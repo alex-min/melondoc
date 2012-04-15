@@ -1,3 +1,4 @@
+$(document).ready(function(){
 var txt_area_begin = '<div contenteditable="true" class="ed_area" title="Title">';
 var txt_area_end = '</div>\n';
 var txt_area = txt_area_begin + txt_area_end;
@@ -723,3 +724,5 @@ $("#ed_table_menu td").hover(
     function(){
 	}
 );
+
+});

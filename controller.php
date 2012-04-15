@@ -48,6 +48,7 @@ class				controller
     $dont = array("rooter" => 0, "error" => 0);
     include_once("model.php");
     $this->root = $rooter;
+    $this->class['root'] = $rooter;
     $array = glob("./".PATH_LIB."*.php");
     foreach ($array AS $value)
       {

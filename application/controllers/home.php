@@ -166,7 +166,7 @@ class     homeController extends controller
 	    $html .= "<h3>".$this->template->language['home_add_rights_group']."</h3>";
 	    $html .= "<input type='text' name='rights_group_".$doc['id_document']."' autocomplete='off' onblur='fill_search_group(\"\", this);' keyup='header:completion_group' doc_id='".$doc['id_document']."'>".$select_right;
 	    $html .= '<div class="suggestionsBox" id="suggestions_group_'.$doc['id_document'].'" style="display: none;"><div class="suggestionList" id="autoSuggestionsList_group_'.$doc['id_document'].'">&nbsp;</div></div></div></div>';
-	    $html .= '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove icon-white"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit icon-white"></i></a><a href="/editor/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
+	    $html .= '<li><a href="/home/deleteDoc?doc='.$doc['id_document'].'"><i class="icon-remove"></i></a><a data-toggle="modal" href="#rights_'.$doc['id_document'].'"><i class="icon-edit"></i></a><a href="/editor2/?id='.$doc['id_document'].'" rel="'.$doc['id_document'].'">'.$doc['nom'].'</a></li>';
 	  }
       $html .= '</ul>';
     }
@@ -181,10 +181,11 @@ class     homeController extends controller
     $doc_id = intval($_POST['id']);
     $res = $this->model->getUsersCompletion($letter);
     $html = "";
-    foreach ($res AS $u)
-      {
-	$html .= "<li onClick=\"fill_search('".$u['user_id']."', '".$doc_id."');\"><div class='label notice'>".$u['firstname']." ".$u['lastname']." (".$u['login'].")</div></li>";
-      }
+    if ($res)
+      foreach ($res AS $u)
+	{
+	  $html .= "<li onClick=\"fill_search('".$u['user_id']."', '".$doc_id."');\"><div class='label notice'>".$u['firstname']." ".$u['lastname']." (".$u['login'].")</div></li>";
+	}
     $this->template->addJSON(array("html" => $html));
   }
 
@@ -195,10 +196,11 @@ class     homeController extends controller
     $doc_id = intval($_POST['id']);
     $res = $this->model->getGroupsCompletion($letter);
     $html = "";
-    foreach ($res AS $u)
-      {
-	$html .= "<li onClick=\"fill_search_group('".$u['id_group']."', '".$doc_id."');\"><div class='label notice'>".$u['group_name']."</div></li>";
-      }
+    if ($res)
+      foreach ($res AS $u)
+	{
+	  $html .= "<li onClick=\"fill_search_group('".$u['id_group']."', '".$doc_id."');\"><div class='label notice'>".$u['group_name']."</div></li>";
+	}
     $this->template->addJSON(array("html" => $html));
   }
   public function	createAction()

@@ -8,7 +8,7 @@
    			"MelonDoc"
    		{% endif %}
    </title>
-   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
    <script> /* Provisory for dev environment: */ localStorage.clear(); </script>
    {{  cssArray|raw  }}
    {{  jsArray|raw  }}
@@ -21,16 +21,18 @@
 {% endif %}
 <div class="container" id="main-content">
   <div class="row">
+    {% if isAdmin %}
     {% include 'filesbar.html' %}
+    {% endif %}
     <div id="start_site">
-    {%  if __error is defined %}
+      {%  if __error is defined %}
   	  <div class="alert alert-error">
-  		  <a class="close" data-dismiss="alert" href="#">x</a>
-  			  {{  __error|raw}}
-  		</div>
-  	{% elseif __success is defined %}
+  	    <a class="close" data-dismiss="alert" href="#">x</a>
+  	    {{  __error|raw}}
+  	  </div>
+  	  {% elseif __success is defined %}
 		  <div class="alert alert-success">
-			  <a class="close" data-dismiss="alert" href="#">x</a>
-			  {{  __success|raw}}
+		    <a class="close" data-dismiss="alert" href="#">x</a>
+		    {{  __success|raw}}
 		  </div>
-    {%  endif%}
+		  {%  endif%}
