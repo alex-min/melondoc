@@ -30,4 +30,7 @@ $_['header_owner'] = "Propriétaire";
 $_['header_read'] = "Lecture";
 $_['header_write'] = "Ecriture";
 $_['home_doc_create'] = "Nouveau";
+
+$_['action_success'] = "Changements effectués avec succès";
+$_['rights_needed'] = "Vous n'avez pas les droits nécessaires à l'édition du titre de ce document";
 ?>

@@ -75,12 +75,12 @@ insert_text:function(open, close)
    obj.author = e.attr('author');
 
 $.ajax({
- url: "/forum/getMessageById",
+ url: "/forum/getMessageByIdAction",
 type: "POST",
 dataType: "JSON",
 data: obj,
 success: function(data){
-console.log(data);
+    console.log(data);
     msgfield = $("[name=answer]")[0];
    
    open = '[quote=' + data.author + ']' + data.message.message;

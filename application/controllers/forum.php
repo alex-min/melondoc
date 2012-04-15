@@ -390,7 +390,7 @@ class			forumController extends controller
     $data['id'] = $ret['id'];
     $data['author'] = $this->POST['author'];
     $data['message'] =$ret['message'];
-     $this->template->addJSON($data);
+    $this->template->addJSON($data);
   }
 
   public function viewTopicAction()
