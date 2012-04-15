@@ -17,7 +17,7 @@
         <li style=""><a href = "/forum/editPost?id={{value['id']}}" title="Editer"><i class="icon-pencil"></i> Editez</a></li>
         <li style="display: inline;"><a href = "/forum/deletePost?id={{value['id']}}" title="Supprimer"><i class="icon-trash"></i> Supprimer</a></li>
       {% endif %}
-        <li style="display: inline;"><a href = "#" click="forum:quote('{{value['id']}}', '{{value['auteur']}}')" title="Citer"><i class="icon-share"></i> Citer</a></li>
+        <li style="display: inline;"><a href = "#" click="forum:quote" id="{{value['id']}}" author="{{value['author']}}" title="Citer"><i class="icon-share"></i> Citer</a></li>
 </ul>
     <div class="span2">
       <div  id="{{value['id']}}"><h3><span class="mp_welcome-step">{{value['id']}}</span>{{value['auteur']}}</h3></div>
