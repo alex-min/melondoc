@@ -35,6 +35,11 @@ class user
     $this->db->query("DELETE FROM `users` WHERE id_user = '".$id."'");
   }
   
+  public function	addFacebookID($id, $user_id)
+  {
+    $this->db->query('UPDATE `users` SET `facebook_id` = "'.$id.'" WHERE `user_id` = "'.$user_id.'"');
+  }
+
 
   // si le mec n'est pas loggue, on le redirige vers la page de connection
   // sinon on fait rien
