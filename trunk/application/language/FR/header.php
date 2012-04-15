@@ -31,4 +31,3 @@ $_['header_read'] = "Lecture";
 $_['header_write'] = "Ecriture";
 $_['home_doc_create'] = "Nouveau";
 ?>
-
