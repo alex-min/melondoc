@@ -50,7 +50,7 @@ table a {
 table tr{ border: 1px solid #BDBDBD;}
 table tr.categorie{ border: none; background-color: none;}
 
-table tr.categorie th{ background-color: #fff; padding: 10px; text-align: left; font-size: 20px; text-transform: capitalize; color: #86DF4C;}
+table tr.categorie th{ background-color: #fff; padding: 10px; text-align: left; font-size: 20px; text-transform: uppercase; color: #86DF4C;}
 
 table tr td{
 	 padding: 10px; 

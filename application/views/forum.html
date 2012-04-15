@@ -34,7 +34,9 @@
 	<tr>
 		<td class="titre">
 			<strong>
-				<a href='/forum/voirForum?id={{data.id_forum1}}'>{{ data.name_forum }}</a>
+                
+				<a href='/forum/voirForum?id={{data.id_forum1}}'>{% filter upper %}{{ data.name_forum }}{% endfilter %}</a>
+                
 			</strong>
 			<br/>
 			{{ data.desc }}  
@@ -63,11 +65,8 @@
     {% endfor %}
 </table>
 
-<div style="row">
-
-<strong>powered by TaiTaiBB</strong>
-
-<div style="float: right">
-<a href="/adminForum/" class="btn_get"><i class="icon-cog"></i> Administration</a>
-</div>
+<img class=" span12" src="/public/images/curved-drop-shadow.png">
+<div class="span12">
+<!--powered by TaiTaiBB -->
+<a href="/adminForum/" class="btn_get" style="float: right;"><i class="icon-cog"></i> Administration</a>
 </div>
