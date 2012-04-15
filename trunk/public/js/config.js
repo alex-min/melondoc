@@ -24,7 +24,7 @@ function dispatcher(e){
 	var attr = $(this).attr(e.type);
 	var stack = attr.split($f.config.split);
 	$.each(stack , function(index, value) {
-		$f.exec(value, $(this))
+	    $f.exec(value, $(this))
 	});
 };
 

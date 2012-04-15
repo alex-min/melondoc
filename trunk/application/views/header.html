@@ -11,6 +11,9 @@
       </a>
       <div class="pull-right">
 	<ul class="nav">
+	  {% if isAdmin %}
+	  <li><a href="/admin/index" title="{{_lang.header_admin}}">{{_lang.header_admin}}</a></li>
+	  {% endif %}
 	  <li><a href="/" title="{{_lang.header_index}}">{{_lang.header_index}}</a></li>
 	  {% if isLogged %}
 	  <li><a href="/home/index" title="{{_lang.header_account}}">{{_lang.header_account}}</a></li>
@@ -74,29 +77,29 @@
       <div class="tab-pane" id="tab_inscription">
       <div class="row">
 
-	    <div class="span3" style="padding-top: 65px; padding-left: 20px;">
-	    	<a class="" href="/user/inscriptionFB" title="{{_lang.header_facebook}}">
-	    		<div class="fb_button_inscription"></div>
-		     </a>
-		</div>
-		<div class="span1 bg_modal_separator"></div>
-		<div class="span3" style="padding-top: 20px;">
-		<form method="POST" class="form-stacked" action="/user/inscription">
-	  <div class="control-group">
-	    <div class="controls">
-	      <input type="text" name="form_login" placeholder="{{_lang.header_login}}"/><br />
-	      <span class="help-inline hide">{{_lang.login_invalid}}</span>
+	<div class="span3" style="padding-top: 65px; padding-left: 20px;">
+	  <a class="" href="/user/inscriptionFB" title="{{_lang.header_facebook}}">
+	    <div class="fb_button_inscription"></div>
+	  </a>
+	</div>
+	<div class="span1 bg_modal_separator"></div>
+	<div class="span3" style="padding-top: 20px;">
+	  <form method="POST" class="form-stacked" action="/user/inscription">
+	    <div class="control-group">
+	      <div class="controls">
+		<input type="text" name="form_login" placeholder="{{_lang.header_login}}"/><br />
+		<span class="help-inline hide">{{_lang.login_invalid}}</span>
+	      </div>
 	    </div>
-	  </div>
-	  <div class="control-group">
-	    <div class="controls">
-	      <input type="text" name="form_email" placeholder="{{_lang.header_email}}"/><br />
-	      <span class="help-inline hide">{{_lang.email_invalid}}</span>
+	    <div class="control-group">
+	      <div class="controls">
+		<input type="text" name="form_email" placeholder="{{_lang.header_email}}"/><br />
+		<span class="help-inline hide">{{_lang.email_invalid}}</span>
+	      </div>
 	    </div>
-	  </div>
-	  <div class="control-group">
-	    <div class="controls">
-	      <input type="password" name="form_mdp" placeholder="{{_lang.header_password}}"/><br />
+	    <div class="control-group">
+	      <div class="controls">
+		<input type="password" name="form_mdp" placeholder="{{_lang.header_password}}"/><br />
 	      <span class="help-inline hide">{{_lang.password_invalid}}</span>
 	    </div>
 	  </div>

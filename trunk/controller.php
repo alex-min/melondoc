@@ -121,6 +121,7 @@ class				controller
     $this->template->cssArray = $this->cssArray;
     $this->template->isLogged = $this->user->isLogged();
     $this->template->COUNTDOWN = COUNTDOWN;
+    $this->template->isAdmin = $this->user->isAdmin();
     if ($this->root->isAjax() == FALSE)
       {
       	$this->template->fetch($this->module, $disableHeader);
