@@ -22,12 +22,12 @@
 			<div class="control-group">
 			{% endif %}
 				<div class="controls">
-					<select id="sujet" class="span4" name="sujet" placeholder="Message">
-						<option click="contact:disable_precise">Bug</option>
-						<option click="contact:disable_precise">Suggestion</option>
-						<option click="contact:enable_precise">Autre</option>
-					</select><br>
-					<br>
+					<select id="sujet" class="span4" name="sujet" placeholder="Message" change="contact:precise_fonction">
+						<option value="bug">Bug</option>
+						<option value="sugg">Suggestion</option>
+						<option value="other">Autre</option>
+					</select><br/>
+					<br/>
 					<input class="span4" type="text" name="precise" disabled="true" placeholder="Autre..."/>
 				</div>
 			</div>

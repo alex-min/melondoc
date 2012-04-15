@@ -12,6 +12,14 @@ $f.contact = {
 
    send_formulaire:function(e){
       $f.sendform('#contact');
+   },
+
+   precise_fonction:function(e){
+      var precise = $('#contact input[name=precise]');
+      if (e.val() == "other")
+         precise.removeAttr('disabled');
+      else
+         precise.attr('disabled', 'true');
    }
    
 };
