@@ -151,6 +151,11 @@ class user
     return ((isset($_SESSION['user'])) ? TRUE : FALSE);
   }
 
+  public function isAdmin()
+  {
+    return ((isset($_SESSION['user']['isAdmin'])) ? TRUE : FALSE);
+  }
+
   // session_destroy et redirection vers l'accueil : $this->template->redirect (voir prototypage)
   public function disconnectUser()
   {

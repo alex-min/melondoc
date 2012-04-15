@@ -206,7 +206,6 @@ class     homeController extends controller
     $this->user->needLogin();
     $this->template->loadLanguage("home");
 
-
     $this->addCss('carousel');
     $this->addCss('jquery.jscrollpane');
 
@@ -230,7 +229,7 @@ class     homeController extends controller
   {
     $this->user->needLogin();
     $this->template->loadLanguage("home");
-    $this->model->deleteDoc($this->GET['doc']);
+    $this->model->deleteDoc(intval($this->GET['doc']));
     if ($this->root->isAjax() === true)
       return ;
     $this->template->redirect($this->template->language['home_success_delete'], FALSE, "/home/index");
