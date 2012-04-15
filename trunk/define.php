@@ -24,5 +24,4 @@ define("FB_SECRET_KEY", "40f2260249c5a9fcf3dbc797333399a4");
 define("COUNTDOWN", 0);
 // Include des define pour la bdd
 include('define_base.php');
-
 ?>
