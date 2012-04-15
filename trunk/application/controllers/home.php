@@ -171,7 +171,7 @@ class     homeController extends controller
       $html .= '</ul>';
     }
     echo utf8_encode($html);
-    return ;
+    exit;
   }
 
   public function	getUsersCompletion()
