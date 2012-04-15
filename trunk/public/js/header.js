@@ -134,3 +134,30 @@ $f.header = {
 	       }, "json");
     }
 };
+
+
+function addError(data)
+{
+    var html = "";
+    if (data._error_ != undefined)
+    {
+	html += '<div class="alert alert-error">';
+  	html += '<a class="close" data-dismiss="alert" href="#">x</a>';
+	html += data._error_;
+  	html += '</div>';
+	$("#start_site").prepend(html);
+    }
+}
+
+function addSuccess(data)
+{
+    var html = "";
+    if (data._success_ != undefined)
+    {
+	html += '<div class="alert alert-success">';
+  	html += '<a class="close" data-dismiss="alert" href="#">x</a>';
+	html += data._success_;
+  	html += '</div>';
+	$("#start_site").prepend(html);
+    }
+}
