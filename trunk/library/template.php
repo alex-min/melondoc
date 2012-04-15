@@ -6,6 +6,7 @@ class		template
   private	$vue = array();
   private	$json = array();
   public	$language;
+  private	$root;
   private	$KLogger;
   private	$twig;
 
@@ -22,6 +23,7 @@ class		template
     if (!isset($_SESSION['lang']))
       $_SESSION['lang'] = "FR";
     $this->KLogger = $class['KLogger'];
+    $this->root = $class['root'];
     if (isset($_SESSION['__error']) && $_SESSION['__error'])
       {
 	$this->__set("__error", $_SESSION['__error']);
@@ -51,6 +53,15 @@ class		template
    */
   public function redirect($msg, $isError, $url = "SELF")
   {
+    if ($this->root->isAjax())
+      {
+	if ($isError)
+	  $array = array("_error_" => $msg);
+	else
+	  $array = array("_success_" => $msg);
+	$this->addJSON($array);
+	$this->fetchAjax();
+      }
     if ($isError == TRUE)
       $this->setError($msg);
     else
@@ -132,12 +143,23 @@ class		template
    * @param array               
    * @return		
    */
+
+  private function	json_clean($data)
+  {
+    if (is_array($data))
+      foreach ($data AS $key => $val)
+	$data[$key] = $this->json_clean($val);
+    else
+      $data = utf8_encode($data);
+    return $data;
+  }
+
   public function addJSON($array)
   {
     if (is_array($array))
       {
 	foreach ($array AS $key => $val)
-	  $array[$key] = utf8_encode($val);
+	  $array[$key] = $this->json_clean($val);
 	$this->json = array_merge($this->json, $array);
       }
   }
