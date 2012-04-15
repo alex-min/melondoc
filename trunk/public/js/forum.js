@@ -68,19 +68,19 @@ insert_text:function(open, close)
    msgfield.focus();
  },
 
-   quote:function(id, author) {
+   quote:function(e) {
      
    var obj = {};
-   obj.id = id;
-   obj.author = author;
-console.log("test");
+   obj.id = e.attr('id');
+   obj.author = e.attr('author');
+
 $.ajax({
  url: "/forum/getMessageById",
 type: "POST",
 dataType: "JSON",
 data: obj,
 success: function(data){
-
+console.log(data);
     msgfield = $("[name=answer]")[0];
    
    open = '[quote=' + data.author + ']' + data.message.message;

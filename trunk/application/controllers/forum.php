@@ -382,7 +382,7 @@ class			forumController extends controller
   }
   }
 
-  public function getMessageById()
+  public function getMessageByIdAction()
   {
     $id = intval($this->POST['id']);
     $ret = $this->forum->getPostById($id);
@@ -390,9 +390,9 @@ class			forumController extends controller
     $data['id'] = $ret['id'];
     $data['author'] = $this->POST['author'];
     $data['message'] =$ret['message'];
-    echo json_encode($data);
+     $this->template->addJSON($data);
   }
-  
+
   public function viewTopicAction()
   {
     $this->addCss('documentation/highlight');
