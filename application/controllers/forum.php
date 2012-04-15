@@ -28,19 +28,27 @@ class			forumController extends controller
   //$this->template->view = $this->prepareView($this->ret);
 
     $cat = 0;
+    $i = 0;
     foreach ($ret->rows as $data)
     {
       if (empty($data['name_forum'])){
         continue;
+        $i++;
       }
+      $i++;
       if ($cat != $data['id_categorie'])
       {
-        $data['name_cat'] = stripslashes(htmlspecialchars($data['name_cat']));
+        $ret->rows[$i]['name_cat'] = stripslashes(htmlspecialchars($data['name_cat']));
         $cat = $data['id_categorie'];
       }
-      $data['moderators'] = unserialize($data['moderators']);
-      $data['name_forum'] = stripslashes(htmlspecialchars($data['name_forum']));
-      $data['desc'] = nl2br(stripslashes(htmlspecialchars($data['desc'])));
+      if (!empty($data['moderators']))
+      {
+        $tmp= unserialize($data['moderators']);
+        $ret->rows[$i]['moderators'] = implode(", ", $tmp);
+      }
+      $ret->rows[$i]['name_forum'] = stripslashes(htmlspecialchars($data['name_forum']));
+      $ret->rows[$i]['desc'] = nl2br(stripslashes(htmlspecialchars($data['desc'])));
+      
     }
 
     $this->template->ret = $ret;
@@ -126,7 +134,6 @@ class			forumController extends controller
     $this->template->topics->rows[$i] = $value;
     $i++;
   }
-  $this->template->viewModerator = true;
    $modo = unserialize($this->template->infos['moderators']) ;
    $flag = true;
    if ($modo != false)
@@ -375,6 +382,17 @@ class			forumController extends controller
   }
   }
 
+  public function getMessageById()
+  {
+    $id = intval($this->POST['id']);
+    $ret = $this->forum->getPostById($id);
+    $data = array();
+    $data['id'] = $ret['id'];
+    $data['author'] = $this->POST['author'];
+    $data['message'] =$ret['message'];
+    echo json_encode($data);
+  }
+  
   public function viewTopicAction()
   {
     $this->addCss('documentation/highlight');
