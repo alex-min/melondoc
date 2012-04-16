@@ -155,7 +155,7 @@ class     homeController extends controller
 	foreach ($documents AS $doc)
 	  {
 	    $rights = $this->model->getRightsFromDocID($doc['id_document']);
-	    $html .= "<div class='hide fade in modal' id='rights_".$doc['id_document']."'>";
+	    $html .= "<div class='hide modal fade in' id='rights_".$doc['id_document']."'>";
 	    $html .= '<div class="modal-header"><h2>'.$this->template->language['home_edit_rights'].'"'.$doc['nom'].'"</h2></div>';
 	    $html .= '<div class="modal-body">';
 	    $myright = $this->user->getRight($doc['id_document']);
@@ -289,8 +289,9 @@ class     homeController extends controller
       $this->template->redirect($this->template->language['home_fail_select_template'], TRUE, "/home/index");
     // ajout du document en bdd
     $doc_id = $this->model->addDocument($type, $_SESSION['user']['user_id'], "untitled document");
+    $this->user->stockMyRights();
     // redirection vers le gestionnaire de document de minett / pierrick
-    $this->template->redirect("", FALSE, "/editor2/?id=".$doc_id);
+    $this->template->redirect("", FALSE, "/editor2/index?id=".$doc_id);
   }
   
   public function	deleteDocAction()

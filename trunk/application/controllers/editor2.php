@@ -1,6 +1,6 @@
 <?php
 
-class Editor2Controller extends controller
+class editor2Controller extends controller
 {
   public function indexAction()
   {
