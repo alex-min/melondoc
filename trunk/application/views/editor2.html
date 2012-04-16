@@ -1,3 +1,15 @@
+<script type="text/javascript">
+ $(document).ready( function() {
+    $('#tree2').fileTree({
+	root: '',
+	script: '/home/getList',
+	folderEvent: 'click',
+	expandSpeed: 0,
+	collapseSpeed: 0,
+	multiFolder: false
+    }, function(file){});    
+});
+</script>
 <input type="texte" value="{{doc_name}}" id="doc_name_change"/>
 <a href="#" class="btn btn-primary" doc_id="{{doc_id}}" click="editor22:changeName">Ok</a>
 <div id="ed_table_menu">

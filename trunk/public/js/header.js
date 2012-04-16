@@ -1,5 +1,5 @@
  $(document).ready( function() {
-    $('#tree').fileTree({
+    $('#tree2').fileTree({
 	root: '',
 	script: '/home/getList',
 	folderEvent: 'click',
