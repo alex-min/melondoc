@@ -1,6 +1,5 @@
-$(document).ready(function(){
-var txt_area_begin = '<div contenteditable="true" class="ed_area" title="Title">';
-var txt_area_end = '</div>\n';
+var txt_area_begin = '<div contenteditable="true" class="ed_area" title="Title" style="font-weight: normal;">';
+var txt_area_end = '</div>';
 var txt_area = txt_area_begin + txt_area_end;
 var ed_switch_dialog = '<div class="ed_switch_dialog">'
 +  '<img class="ed_menu_icon draggable" alt="title" src="/public/images/ed_title.png" />'
@@ -9,7 +8,7 @@ var ed_switch_dialog = '<div class="ed_switch_dialog">'
 var ed_switch_dialog_begin = '<div class="ed_switch_dialog">';
 var ed_switch_dialog_end = '</div>';
 var ed_context_modifier = '<img class="ed_switch" src="/public/images/ed_arrow_down.png" />' +  
-    '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete" />\n';
+    '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete" />';
 var ed_switch_dialog = '';
 var ed_title_begin = '<div class="ed_block ed_title">'
     + ed_context_modifier + txt_area_begin;
@@ -20,11 +19,13 @@ var ed_paragraph_begin = '<div class="ed_block ed_paragraph">' +
     ed_context_modifier + txt_area_begin;
 var ed_paragraph_end = txt_area_end + '</div>';
 var ed_inside_paragraph = ed_context_modifier + txt_area;
-var ed_droppable = '<div class="droppable"></div>\n';
+var ed_droppable = '<div class="droppable"></div>';
 var ed_bullets_begin = '<img class="ed_delete ed_bullets" src="/public/images/ed_delete_bullets.png"/><ul>\n';
 var ed_bullets_end = '</ul>\n';
 var latex_assoc = new Array();
 var ed_begin_document_demo = "\n\\documentclass{article}\n\n\\begin{document}\n\\title{This is a titlw}\n\\author{Alexandre MINETTE \\\\\n  \\texttt{\\dddddfdf{email:andyr@comp.leeds.ac.uk}}}\n\\date{Mai 2011}\n\n\\section{Introduction}\nMath XXX                               %%%(class number and section) \n\\hfill vjdioguiiuih ihsio osoh \\\\\n\\hfill oshfh osf hsoh sfoh sofh sfo hs fosfh. \\\\\n\\hfill sdihf i o s h f ohsfoho hsfos fhos fhohfo shohsfofhs. \\\\\n\\hfill jfospfj osfho shsof hsofh soh ososfhso. \\\\\n\\hfill shfo sjhfosf oshfoshf oshshf oshf osh sofjsofh sofhsofh snfosjfoshfs sofhsofh. \\\\\n\n\\paragraph{\nMdr.}\n\n\\newpage\n\nodfjposdjfpsdjfp spjf psjfps jpsjfp jpjf pj p jp pfj\n\n\\end{document}\n\n";
+var ed_begin_document = "\n\\documentclass{article}\n\n\\begin{document}\n"
+var ed_end_document = "\n\n\\end{document}\n\n";
 var doc_x = 0;
 var doc_y = 0;
 var ed_menu_spacer = '<div style="ed_menu_spacer"></div>';
@@ -36,10 +37,10 @@ var ed_row_end = '</tr>';
 var ed_item_begin = '<td class="ed_item">';
 var ed_item_end = '</td>';
 
-latex_assoc['ed_title'] = new Array('<title>', '</title>\n');
-latex_assoc['ed_paragraph'] = new Array('<paragraph>', '</paragraph>\n');
-latex_assoc['ed_bullets'] = new Array('<bullets>\n', '</bullets>\n');
-latex_assoc['li'] = new Array('<item> ', '</item>\n');
+latex_assoc['ed_title'] = new Array('<title>', '</title>');
+latex_assoc['ed_paragraph'] = new Array('<paragraph>', '</paragraph>');
+latex_assoc['ed_bullets'] = new Array('<bullets>', '</bullets>');
+latex_assoc['li'] = new Array('<item> ', '</item>');
 
 function resizeTextarea(t) {
     lines = t.value.split('\n');
@@ -79,10 +80,10 @@ function rec_extract_real_xml(elem) {
 	    if ($(child[t]).hasClass('ed_title'))
 	    {
 		var r = html_to_latex($($(child[t]).find('div')[0]).html());
+		console.log(r);
 		if (r) {
-		    txt += latex_assoc['ed_title'][0] 
-			+ r +
-			+ latex_assoc['ed_title'][1];
+		    txt += latex_assoc['ed_title'][0]
+			+ r +  latex_assoc['ed_title'][1];
 		}
 	    }
 	   else if ($(child[t]).hasClass('ed_paragraph'))
@@ -90,24 +91,24 @@ function rec_extract_real_xml(elem) {
 		var r = html_to_latex($($(child[t]).find('div')[0]).html())
 		if (r)
 		    txt += latex_assoc['ed_paragraph'][0] 
-		    +  html_to_latex($($(child[t]).find('div')[0]).html())
-		    + latex_assoc['ed_paragraph'][1];
+		    	+  html_to_latex($($(child[t]).find('div')[0]).html())
+		    	+  latex_assoc['ed_paragraph'][1];
 	    }
 	   else if ($(child[t]).hasClass('ed_bullets'))
 	    {
-		txt += rec_extract_real_xml($(child[t]));
+			txt += rec_extract_real_xml($(child[t]));
 	    }
 	   else if ($(child[t]).hasClass('ed_table_content'))
 	    {
-		var t2 = rec_extract_real_xml($(child[t]));
-		if (t2)
-		    txt += '<table>' + t2 + '</table>';
+			var t2 = rec_extract_real_xml($(child[t]));
+			if (t2)
+		    	txt += '<table>' + t2 + '</table>';
 	    }
 	   else if ($(child[t]).hasClass('ed_item'))
 	    {
-		var t2 = rec_extract_real_xml($(child[t]));
-		if (t2)
-		    txt += '<item>' + t2 + '</item>';
+			var t2 = rec_extract_real_xml($(child[t]));
+			if (t2)
+		    	txt += '<item>' + t2 + '</item>';
 	    }
 	   else if ($(child[t]).hasClass('ed_row'))
 	    {
@@ -195,7 +196,7 @@ function rec_extract(elem) {
 }
 
 
-var xml_str = '<xml> <droppable/><paragraph>Paragraph example</paragraph><droppable /><title>Title example</title><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /><table><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /></item><item><droppable /></item></row><row><item><droppable /></item><item><droppable /></item><item><droppable /></item></row></table><droppable /> </xml>';
+var xml_str = '<xml><title>Loading text ...</title></xml>';
 
 function xml_to_dom (string) {
     var balise=string.match(/(<.*?>)|([^><]*)/g);
@@ -245,7 +246,6 @@ function xml_to_dom (string) {
 	default:
 	    html += balise[i];
 	}
-	html += '\n';
     }
     $($(".ed_documentarea")[0]).html(html);
 }
@@ -254,24 +254,32 @@ function xml_to_dom (string) {
 xml_to_dom(xml_str);
 	
 function ed_generateLatex() {
-    var txt = '<xml>\n';
+    var txt = '<xml>';
     $('.ed_documentarea').each(function () {
 	txt += rec_extract_real_xml($(this));
     });
-    txt += '\n</xml>';
-    alert(txt);
+    txt += '</xml>';
+    console.log(txt);
+     $.post("/xmltolatex/convertAction",
+	   {tek : txt},
+	   function (data) {
+	   	ed_renderToLatex(ed_begin_document + data._html_ + ed_end_document);
+	   }, "json");    
 }
 
 
-function ed_renderToLatex()
+function ed_renderToLatex(documentdata)
 {
-    $.post("/latexview/indexAction",
-	   {tek : ed_begin_document_demo},
+	var udoc = documentdata;
+	console.log('udoc  : ' + udoc);
+	$.post("/latexview/indexAction",
+	   {tek : udoc},
 	   function (data) {
+	   	console.log(data._html_);
 	       $('.ed_frame').html(data._html_);
 	       $('.ed_popup').css({display: 'block'});
 	       loadPage();	       
-	   }, "json");    
+	   });    
 }
 
 
@@ -357,6 +365,10 @@ function ed_switchHandler (event) {
 }
 
 
+$(".ed_area").click(function() {
+	console.log($(this));
+})
+
 $("#ed_textzone").append('<div ieclass="ed_documentarea" class="ed_documentarea"></div>');
 $('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
 
@@ -399,8 +411,51 @@ function dropEvent(event, ui) {
     $('.ed_switch').bind('click', ed_switchHandler);
 }
 
+function saveDocument() {
+	var id = $(location).attr('search').split('?')[1].split('/')[0];
+	var txt = '<xml>';
+    $('.ed_documentarea').each(function () {
+	txt += rec_extract($(this));
+    });
+    txt += '</xml>';
+   $.post('/savedoc/index?' + id, {doc:txt, id: id.split('=')[1]});
+    console.log(txt);
+}
 
 $(document).ready(function () {
+	var id = $(location).attr('search').split('?')[1].split('/')[0];
+	//$(location).attr('')
+	$.get('/getdoc/index?' + id, function (data) {
+		var d = eval(data);
+		xml_to_dom(d[0].content);
+		$('.draggable').each(function () { $(this).draggable(
+	{
+	    cursor : 'move',
+	    helper: draggableHelper,
+	    drag : dragCall,
+	    drop : dropEvent
+	}
+    );});
+
+    $('.droppable').droppable( {
+	drop: dropEvent,
+	over: overEvent,
+	out: outEvent
+    } );
+    resizeAllTextArea();
+    $('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
+    if ($(".ed_switch_dialog").length == 0) {
+	ed_switch_dialog += ed_switch_dialog_begin;
+	$('.ed_switchable').each(function () {
+	    if ($(this).hasClass("ed_switchable")) {
+		ed_switch_dialog += ed_menu_spacer + $(this).clone().wrap('<div>').parent().html();
+	    }
+	});
+	ed_switch_dialog += ed_switch_dialog_end;
+	$("body").html(ed_switch_dialog + $("body").html());
+	$(".ed_switch_dialog").slideToggle(800);
+    }
+	});
     var x = $(document).width() - $(document).width() / 3;
   //  var y = $(document).height();
     var y = 5000;
@@ -725,4 +780,3 @@ $("#ed_table_menu td").hover(
 	}
 );
 
-});
