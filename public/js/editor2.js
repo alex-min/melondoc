@@ -196,7 +196,7 @@ function rec_extract(elem) {
 }
 
 
-var xml_str = '<xml><title>Loading text ...</title></xml>';
+var xml_str = '<xml><droppable/><paragraph>Hello world</paragraph><droppable/></xml>';
 
 function xml_to_dom (string) {
     var balise=string.match(/(<.*?>)|([^><]*)/g);
@@ -369,8 +369,8 @@ $(".ed_area").click(function() {
 	console.log($(this));
 })
 
-$("#ed_textzone").append('<div ieclass="ed_documentarea" class="ed_documentarea"></div>');
-$('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
+$("#ed_textzone").append('<div ieclass="ed_documentarea" class="ed_documentarea offset1 span10"></div><img class="offset1 span10" style="padding: 0px 10px 0px 10px" src="/public/images/curved-drop-shadow.png" />');
+//$('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
 
 $("#ed_menu").live('click', function () {
     // remove draggable propertie
@@ -422,56 +422,61 @@ function saveDocument() {
     console.log(txt);
 }
 
-$(document).ready(function () {
+$(document).ready(function (){
+
 	var id = $(location).attr('search').split('?')[1].split('/')[0];
 	//$(location).attr('')
-	$.get('/getdoc/index?' + id, function (data) {
+	var url = "/getdoc/index?"+id;
+	$f.log(url);
+	$.get(url, function (data) {
+		$f.log(data);
 		var d = eval(data);
 		xml_to_dom(d[0].content);
-		$('.draggable').each(function () { $(this).draggable(
-	{
-	    cursor : 'move',
-	    helper: draggableHelper,
-	    drag : dragCall,
-	    drop : dropEvent
-	}
-    );});
+		$('.draggable').each(function () {
+			$(this).draggable({
+				cursor : 'move',
+	    		helper: draggableHelper,
+		    	drag : dragCall,
+		    	drop : dropEvent
+			});
+		});
 
-    $('.droppable').droppable( {
-	drop: dropEvent,
-	over: overEvent,
-	out: outEvent
-    } );
-    resizeAllTextArea();
-    $('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
-    if ($(".ed_switch_dialog").length == 0) {
-	ed_switch_dialog += ed_switch_dialog_begin;
-	$('.ed_switchable').each(function () {
-	    if ($(this).hasClass("ed_switchable")) {
-		ed_switch_dialog += ed_menu_spacer + $(this).clone().wrap('<div>').parent().html();
-	    }
+	    $('.droppable').droppable( {
+			drop: dropEvent,
+			over: overEvent,
+			out: outEvent
+	    });
+   		//resizeAllTextArea();
+    	//$('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
+    	if ($(".ed_switch_dialog").length == 0) {
+			ed_switch_dialog += ed_switch_dialog_begin;
+			$('.ed_switchable').each(function () {
+			    if ($(this).hasClass("ed_switchable")) {
+					ed_switch_dialog += ed_menu_spacer + $(this).clone().wrap('<div>').parent().html();
+			    }
+			});
+			ed_switch_dialog += ed_switch_dialog_end;
+			$("body").html(ed_switch_dialog + $("body").html());
+			$(".ed_switch_dialog").slideToggle(800);
+    	}
 	});
-	ed_switch_dialog += ed_switch_dialog_end;
-	$("body").html(ed_switch_dialog + $("body").html());
-	$(".ed_switch_dialog").slideToggle(800);
-    }
-	});
-    var x = $(document).width() - $(document).width() / 3;
+
+   /* var x = $(document).width() - $(document).width() / 3;
   //  var y = $(document).height();
     var y = 5000;
     if (navigator.appVersion.match(/MSIE/) || 1) { // FIX IE8 BUG
 	$('.ed_documentarea').css({display: 'block', width: x + 'px', height: y + 'px'});
 	doc_x = x;
 	doc_y = y;
-/*	$("style").append('<div inside=".ed_documentarea {display:block'
+	$("style").append('<div inside=".ed_documentarea {display:block'
 			  + ';width:' + x + 'px'
-			  + ';height:' + y + 'px' + '}"></div>');*/
+			  + ';height:' + y + 'px' + '}"></div>');
     }
     else {
 	$("style").append('.ed_documentarea {display:block'
 			  + ';width:' + x + 'px'
 			  + ';height:' + y + 'px' + '}');
-    }
+    }*/
     $('.draggable').each(function () { $(this).draggable(
 	{
 	    cursor : 'move',
@@ -487,7 +492,7 @@ $(document).ready(function () {
 	out: outEvent
     } );
     resizeAllTextArea();
-    $('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
+    //$('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
     if ($(".ed_switch_dialog").length == 0) {
 	ed_switch_dialog += ed_switch_dialog_begin;
 	$('.ed_switchable').each(function () {
@@ -779,4 +784,3 @@ $("#ed_table_menu td").hover(
     function(){
 	}
 );
-

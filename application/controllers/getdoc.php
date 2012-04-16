@@ -4,9 +4,8 @@ class getdocController extends controller
 {
   public function indexAction()
   {
-  	$var = $this->model->retreiveDoc($_GET['id']);
+  	$var = $this->model->retreiveDoc($this->GET['id']);
   	echo json_encode($var);
-  	exit;
   }
 
   public function disableHeader()
