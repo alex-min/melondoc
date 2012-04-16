@@ -1,0 +1,3 @@
+{% for c in categories %}
+<p>{{c.name}} <a href="/admin/ModifyCategories?id={{c.id_category}}">Editer</a> <a href="/admin/DelCategories?id={{c.id_category}}">Supprimer</a></p>
+{% endfor %}

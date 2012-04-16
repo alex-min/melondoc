@@ -38,7 +38,7 @@ class		template
     unset($_SESSION['__success']);
 
     $loader = new Twig_Loader_Filesystem(PATH_VIEWS);
-    $this->twig = new Twig_Environment($loader, array('cache' => false));
+    $this->twig = new Twig_Environment($loader, array('cache' => false, 'charset' => 'iso-8859-1'));
   }
 
   /**
@@ -179,7 +179,7 @@ class		template
       {
 	ob_start();
 	$this->loadView($module, true);
-	$this->json['_html_'] = ob_get_contents();
+	$this->json['_html_'] = utf8_encode(ob_get_contents());
 	ob_end_clean();
       }
     $this->KLogger->logDebug($this->json);

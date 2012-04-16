@@ -6,6 +6,26 @@ class		homeModel extends model
     $this->db->query('UPDATE `documents` SET `deleted` = "1" WHERE `id_document` = "'.$doc_id.'"');
   }
 
+  public function	delGroup($id)
+  {
+    $this->db->query('DELETE FROM `groups` WHERE `id_group` = "'.$id.'"');
+    $this->db->query('DELETE FROM `groups_rights` WHERE `id_group` = "'.$id.'"');
+    $this->db->query('DELETE FROM `groups_members` WHERE `group_id` = "'.$id.'"');
+  }
+
+  public function	createGroup($name, $user_id)
+  {
+    $this->db->query('INSERT INTO `groups` SET group_name = "'.$name.'", `id_owner` = "'.$user_id.'"');
+    $id = $this->db->getLastID();
+    $this->db->query('INSERT INTO `groups_members` SET `user_id` = "'.$user_id.'", `group_id` = "'.$id.'"');
+    return $id;
+  }
+
+  public function	addUserToGroup($group_id, $user_id)
+  {
+    $this->db->query('INSERT INTO `groups_members` SET `user_id` = "'.$user_id.'", `group_id` = "'.$group_id.'"');
+  }
+
   public function	getUsersCompletion($letter)
   {
     $query = $this->db->query('SELECT `user_id`, `login`, firstname, lastname FROM `users` WHERE `login` LIKE "%'.$letter.'%" OR `firstname` LIKE "%'.$letter.'%" OR `lastname` LIKE "%'.$letter.'%"');

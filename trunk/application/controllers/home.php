@@ -10,6 +10,57 @@ class     homeController extends controller
     $this->template->infos = $_SESSION['user'];
   }
 
+  public function	groupsAction()
+  {
+    $this->user->needLogin();
+    $this->template->loadLanguage("home");
+    $groups = $this->user->getMyGroups();
+    $html = "";
+    if ($groups)
+      {
+	foreach ($groups AS $g)
+	  $html .= "<tr><td><a href='#' click='groups:delGroups' id_group='".$g['id_group']."'><i class='icon-remove'></i></a></td><td><a href='#'><i class='icon-edit'></i></a></td><td>".$g['group_name']."</td></tr>";
+	$this->template->pageGroup = $html;
+      }
+    else
+      $this->template->pageGroup = $this->template->language['home_no_groups'];
+    $this->template->setView("groups");
+  }
+  
+  public function	createGroup()
+  {
+    $this->user->needLogin();
+    if (!isset($_POST['name']))
+      $name = "new group";
+    else
+      $name = mysql_real_escape_string($_POST['name']);
+    $id = $this->model->createGroup($name, $_SESSION['user']['user_id']);
+    $html = "<<tr><td><a href='#' click='groups:delGroups' id_group='".$id."'><i class='icon-remove'></i></a></td><td><a href='#'><i class='icon-edit'></i></a></td><td>".$name."</td></tr>";
+    $this->template->addJSON(array("html" => $html));
+  }
+
+  public function	addUserToGroup()
+  {
+    $this->user->needLogin();
+    if (!isset($_POST['user_id']) || !isset($_POST['group_id']))
+      $this->template->redirect($this->template->language['rights_needed'], TRUE, "/home/groups");
+    $this->model->addUserToGroup(intval($_POST['group_id']), intval($_POST['user_id']));
+    $this->template->redirect($this->template->language['action_success'], FALSE, "/home/groups");
+  }
+
+  public function	delGroups()
+  {
+    $this->user->needLogin();
+    if (!isset($_POST['id']))
+      $this->template->redirect($this->template->language['rights_needed'], TRUE, "/home/groups");
+    $id = intval($_POST['id']);
+    $group = $this->user->getGroupFromID($id);
+    if (!$group || $group['id_owner'] != $_SESSION['user']['user_id'])
+      $this->template->redirect($this->template->language['rights_needed'], TRUE, "/home/groups");
+    $this->model->delGroup($id);
+    $this->template->redirect($this->template->language['action_success'], FALSE, "/home/groups");
+  }
+
   public function	addGroupRights()
   {
     $this->user->needLogin();

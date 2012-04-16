@@ -1,0 +1,9 @@
+<form method="POST" action="/admin/ModifyUsers">
+  <span class="">{{_lang.header_login}}</span>:<br /><input type="text" name="form_login" value="{{user.login}}"/><br />
+  <span class="">{{_lang.header_firstname}}</span>:<br /><input type="text" name="form_firstname" value="{{user.firstname}}"/><br />
+  <span class="">{{_lang.header_lastname}}</span>:<br /><input type="text" name="form_lastname" value="{{user.lastname}}"/><br />
+  <span class="">{{_lang.header_email}}</span>:<br /><input type="text" name="form_email" value="{{user.mail}}"/><br />
+  <span class="">{{_lang.header_password}}</span>:<br /><input type="text" name="form_mdp"/><br />
+  <input type="hidden" value="{{user.user_id}}" name="user_id" />
+    <input type="submit" class="btn btn-primary" value="OK"/>
+</form>
