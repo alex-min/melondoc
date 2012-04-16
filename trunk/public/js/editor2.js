@@ -7,7 +7,7 @@ var ed_switch_dialog = '<div class="ed_switch_dialog">'
 '</div>';
 var ed_switch_dialog_begin = '<div class="ed_switch_dialog">';
 var ed_switch_dialog_end = '</div>';
-var ed_context_modifier = '<img class="ed_switch" src="/public/images/ed_arrow_down.png" />' +  
+var ed_context_modifier = '' +  
     '<img class="ed_delete" src="/public/images/ed_delete.png" alt="delete" />';
 var ed_switch_dialog = '';
 var ed_title_begin = '<div class="ed_block ed_title">'
