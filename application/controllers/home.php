@@ -259,30 +259,26 @@ class     homeController extends controller
     $this->user->needLogin();
     $this->template->loadLanguage("home");
 
+    $categories = $this->model->getListCategorie();
+
     $document_type = array();
     $document_element = array();
 
-    $document_element["name"] = "CV";
-    $document_element["description"] = "Creez votre cv en toute simplicite";
-    $document_element["value"] = "cv";
-    array_push($document_type, $document_element);
-
-    $document_element["name"] = "Lettre";
-    $document_element["description"] = "Creez vos lettre en toute simplicite";
-    $document_element["value"] = "lettre";
-    array_push($document_type, $document_element);
-
-    $document_element["name"] = "Presentation";
-    $document_element["description"] = "Creez vos presentations en toute simplicite";
-    $document_element["value"] = "presentation";
-    array_push($document_type, $document_element);
+    foreach ($categories as $key => $value) {
+      $document_element["name"] = $value['name'];
+      $document_element["description"] = $value['description'];
+      $document_element["value"] = $value['id_category'];
+      array_push($document_type, $document_element);
+    }
 
     $this->template->document_type = $document_type;
 
     if (isset($this->GET) && isset($this->GET['type']) && !empty($this->GET['type'])){
-      $this->template->redirect("", FALSE, "/editor2/index");
+
+      $this->newAction();
     }
-    
+          echo "ici";
+      exit(1);
     $this->template->setView("new");
     $this->template->categorie = $this->model->getListCategorie();
   }
