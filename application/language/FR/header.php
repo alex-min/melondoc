@@ -12,6 +12,7 @@ $_['header_password'] = "Mot de passe";
 $_['header_verif_password'] = "Vérification du mot de passe";
 $_['header_admin'] = "Administration";
 $_['header_forum'] = "Forum";
+$_['header_groups'] = "Mes groupes";
 $_['header_files'] = "Mes Fichiers";
 $_['header_inscription'] = "Inscription";
 $_['header_login'] = "Login";

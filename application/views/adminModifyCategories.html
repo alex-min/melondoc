@@ -1,0 +1,7 @@
+<form method="POST" action="/admin/ModifyCategories" enctype="multipart/form-data">
+  Nom : <input type="text" name="name" value="{{categorie.name}}" /><br />
+  Description : <textarea name="description">{{categorie.description}}</textarea><br />
+  <input type="hidden" name="id_category" value="{{categorie.id_category}}" />
+  image : <input type="file" name="avatar" /><br />
+  <input type="submit" class="btn btn-primary" />
+</form>

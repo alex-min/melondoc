@@ -106,6 +106,14 @@ class user
     return $array;
   }
   
+  public function	getMyGroups()
+  {
+    $query = $this->db->query('SELECT g.* FROM `groups` g LEFT JOIN `groups_members` gm ON (gm.group_id = g.id_group) WHERE gm.user_id = "'.$_SESSION['user']['user_id'].'"');
+    if ($query->count > 0)
+      return $query->rows;
+    return FALSE;
+  }
+
   public function	convertRight($right)
   {
     $this->template->loadLanguage("header");
