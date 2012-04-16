@@ -180,3 +180,46 @@ hr.soften_wm{
     line-height: 0;
     visibility: hidden;
 }
+
+@font-face {
+    font-family: Lobster;
+    src: url(../fonts/Lobster.otf);
+    font-weight: 0;
+}
+
+ h1.new_doc_title {
+	font-family: Lobster;
+}
+
+ul.new_doc_type {
+	margin-top: 50px;
+	margin-left: 100px;
+}
+.new_doc_type li {
+	list-style-image: url(../images/puce_melon.png);
+	padding: 10px;
+	margin-top: 10px;
+}
+.new_doc_type li input[type=radio]
+{
+	display: none;
+}
+
+.new_doc_type li label {
+	display: inline;
+	margin: 0px;
+	padding: 0px;
+	cursor: pointer;
+	font-size: 25px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.new_doc_type li label.selected {
+	font-weight: bold;
+	font-size: 28px;
+}
+
+
+.new_doc_type li p {
+	text-align: justify;
+}

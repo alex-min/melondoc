@@ -1,8 +1,15 @@
 <br/><br/><br/>
-<form>
-<ul>
-	{% for type in document_type %}
-	<li>{{ type }}</li>
-	{% endfor %}
-<ul>
+<form class="span10">
+	<h1 class="new_doc_title">Choisissez le type de document que vous souhaitez creer : </h1>
+	<ul class="new_doc_type">
+		{% for elem in document_type %}
+		<li>
+			<label click="document:toggle" for="{{ elem.value }}">{{ elem.name }}</label><input id="{{ elem.value  }}" type="radio" name="type" value="{{ elem.value }}" /><br/><br/>
+			<p><em>{{ elem.description}}</em></p>
+		</li>
+		{% endfor %}
+	</ul>
+	<div style="margin: 50px 0px 0px 50px;">
+		<button class="btn_get span2">C'est partie !</button>
+	</div>
 </form>

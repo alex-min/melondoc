@@ -260,10 +260,28 @@ class     homeController extends controller
     $this->template->loadLanguage("home");
 
     $document_type = array();
-    array_push($document_type, "CV");
-    array_push($document_type, "Lettre");
-    array_push($document_type, "Présentation");
-	$this->template->document_type = $document_type;
+    $document_element = array();
+
+    $document_element["name"] = "CV";
+    $document_element["description"] = "Creez votre cv en toute simplicite";
+    $document_element["value"] = "cv";
+    array_push($document_type, $document_element);
+
+    $document_element["name"] = "Lettre";
+    $document_element["description"] = "Creez vos lettre en toute simplicite";
+    $document_element["value"] = "lettre";
+    array_push($document_type, $document_element);
+
+    $document_element["name"] = "Presentation";
+    $document_element["description"] = "Creez vos presentations en toute simplicite";
+    $document_element["value"] = "presentation";
+    array_push($document_type, $document_element);
+
+    $this->template->document_type = $document_type;
+
+    if (isset($this->GET) && isset($this->GET['type']) && !empty($this->GET['type'])){
+      $this->template->redirect("", FALSE, "/editor2/index");
+    }
     
     $this->template->setView("new");
     $this->template->categorie = $this->model->getListCategorie();
