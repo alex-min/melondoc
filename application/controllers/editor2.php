@@ -12,8 +12,10 @@ class editor2Controller extends controller
     if ($id_doc === FALSE || $right === false)
       $this->template->redirect($this->template->language['rights_needed'], TRUE, "/home/index");
     $this->addCss("editor2");
+    $this->addCss("latexview");
     $this->addJavascript("jquery-ui-1.8.16.custom.min");
     $this->addJavascript("textarea");
+    $this->addJavascript("latexview");
     $this->template->setView("editor2");
     $this->template->title = "Editor 2";
     $this->template->doc_id = $id_doc;

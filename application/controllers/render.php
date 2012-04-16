@@ -6,9 +6,10 @@ class		renderController extends controller
   {
     $this->template->title = "MELONDOC";
     if (isset($_POST["tek"])) {
-      $str = $_POST["tek"];
-      exec("latex --quiet -halt-on-error -output-directory '/tmp' $str", $output, $return);
+      $str = $_POST["tek"];      
+      exec("cd /tmp && latex --quiet -halt-on-error -output-directory '/tmp' $str", $output, $return);
       $this->template->result = $return;
+      $return = 0;
       $errorList = array();
       $i = 0;
       foreach ($output as $line) {
@@ -17,6 +18,7 @@ class		renderController extends controller
 	}
       }
       if ($return == 0) {
+
 	$str = str_replace("/tmp/", "", $str);
 	exec("dvipng -T '17cm,29cm' -q /tmp/$str.dvi -o " . RENDER_DIR . "$str-%d.png", $output, $return);
 	if ($return != 0) {
@@ -31,8 +33,7 @@ class		renderController extends controller
     }
     else {
       //$this->template->setView("index");
-      $this->template->rows = $this->model->test()->rows;
-      $this->template->testdevar = "TOTO";
+      echo 'this file cannot be called alone.';
     }
   }
 
