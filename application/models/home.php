@@ -119,7 +119,7 @@ class		homeModel extends model
 
   public function	getDocumentsFromUserIDAndCategorie($user_id, $categorie_id)
   {
-    $query = $this->db->query('SELECT d.*, t.*, c.* FROM `documents` d LEFT JOIN `templates` t ON (d.`template_id` = t.`template_id`) LEFT JOIN `categories` c ON (t.`categorie_id` = c.`id_category`) WHERE d.`user_id` = "'.$user_id.'" AND d.`deleted` = 0 AND t.`categorie_id` = "'.$categorie_id.'"');
+    $query = $this->db->query('SELECT d.*, c.* FROM `documents` d LEFT JOIN `categories` c ON (d.`template_id` = c.`id_category`) WHERE d.`user_id` = "'.$user_id.'" AND d.`deleted` = 0 AND d.`template_id` = "'.$categorie_id.'"');
     if ($query->count > 0)
       return $query->rows;
     return FALSE;

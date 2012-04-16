@@ -87,7 +87,7 @@ class user
     return false;
   }
   
-  private function	stockMyRights()
+  public function	stockMyRights()
   {
     $_SESSION['user']['rights'] = $this->getRights($_SESSION['user']['user_id']);
   }
