@@ -277,8 +277,6 @@ class     homeController extends controller
 
       $this->newAction();
     }
-          echo "ici";
-      exit(1);
     $this->template->setView("new");
     $this->template->categorie = $this->model->getListCategorie();
   }
