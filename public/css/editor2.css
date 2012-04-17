@@ -43,7 +43,7 @@
 	height:100%;
 	width:100%
 }
-#ed_menu {
+#ed_menu2 {
 	margin-top: 65px;
 	position:fixed;
 	top:40px;
@@ -53,12 +53,19 @@
 	border: 1px solid;
 }
 
+#ed_menu {
+	margin-top: 65px;
+	float: right;
+	top:40px;
+	width: 50px;
+	background-color: #F2F1F0;	
+	border: 1px solid;
+}
+
 .ed_menu_icon {
 	text-decoration:  none;
-	width:30px;
-	height:30px;
-	margin-top: 5px;
-	margin-right:5px;
+	padding: 5px;
+	width: 40px;
 }
 .ed_documentarea {
 	width: 816px;
@@ -196,4 +203,8 @@ li {
 	padding: 15px;
 	font-size: 22px;
 	border-radius: 10px 0px 0px 10px
+}
+
+.draggable{
+	cursor: move;
 }
