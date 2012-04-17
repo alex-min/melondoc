@@ -18,16 +18,19 @@ class			forumController extends controller
         continue;
         $i++;
       }
-      $i++;
+      
       if ($cat != $data['id_categorie'])
       {
         $ret->rows[$i]['name_cat'] = stripslashes(htmlspecialchars($data['name_cat']));
         $cat = $data['id_categorie'];
       }
-      if (!empty($data['moderators']))
+      if (!empty($data['moderators']) && $data['moderators'] != NULL)
       {
         $tmp= unserialize($data['moderators']);
+        if ($tmp != NULL)
         $ret->rows[$i]['moderators'] = implode(", ", $tmp);
+        else
+          $ret->rows[$i]['moderators'] = NULL;
       }
       $ret->rows[$i]['name_forum'] = stripslashes($data['name_forum']);
       $ret->rows[$i]['desc'] = nl2br(stripslashes($data['desc']));
@@ -35,10 +38,10 @@ class			forumController extends controller
         $ret->rows[$i]['view'] = false;
       else
          $ret->rows[$i]['view'] = true;
+       $i++;
     }
 
     $this->template->ret = $ret;
-  
   $this->template->setView("forum");
   }
   

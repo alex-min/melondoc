@@ -10,7 +10,7 @@
 		{%  if data.name_forum is not empty %}
 	
 {% if cat != data.id_categorie %}
-    <tr class="categorie"><th>{{ data.name_cat }}</th></tr>
+    <tr class="categorie"><th>{{ data.name_cat }} {{data.id_categorie}}</th></tr>
 
 
 	<tr>
@@ -63,7 +63,10 @@
     	</td>
     </tr>
         {% endif %}
+
       {% endif %}
+   
+
     {% endfor %}
 </table>
 
