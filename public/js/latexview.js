@@ -78,12 +78,12 @@ function loadPage() {
     if (stat == undefined)
 	return ;
     $.post(
-	"/render/index",
+	"/render/indexAction",
 	{tek : stat.innerHTML},
 	function(data) {
 	    var lv_s = document.getElementById("lv_status");
 	    lv_s.style.display = "none";
-	    var res = eval(data);
+	    var res = eval(data._html_);
 	    if (res[0] == 0) {		
 		var pages = createPages(res[1]);
 		lv_s.parentNode.insertBefore(pages, lv_s);		
@@ -100,7 +100,7 @@ function loadPage() {
 		var err = createError("Viewer error", res[1]);
 		lv_s.parentNode.insertBefore(err, lv_s);
 	    }
-	}
+	}, "json"
     );
 }
 
