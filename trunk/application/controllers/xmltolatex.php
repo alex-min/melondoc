@@ -1,5 +1,11 @@
 <?php
 
+function str_lreplace($search, $replace, $subject)
+{
+    return preg_replace('~(.*)' . preg_quote($search, '~') . '~', '$1' . $replace, $subject, 1);
+}
+
+
 class			xmltolatexController extends controller
 {
 	public function convertAction() {
@@ -13,6 +19,16 @@ class			xmltolatexController extends controller
 		$render = str_replace('<br />', "\n//\n", $render);
 		$render = str_replace('<title>', '\title{', $render);
 		$render = str_replace('</title>', "}", $render);
+		$render = preg_replace('/\<paragraph\>/', '\begin{letter}{', $render, 1);
+		$render = preg_replace('/\<\/paragraph\>/', "}\n\pagestyle{plain}\n", $render, 1);
+		$render = preg_replace('/\<paragraph\>/', '\name{', $render, 1);
+		$render = preg_replace('/\<\/paragraph\>/', "}\n", $render, 1);
+		$render = preg_replace('/\<paragraph\>/', '\opening{', $render, 1);
+		$render = preg_replace('/\<\/paragraph\>/', "}\n", $render, 1);
+
+		$render = str_lreplace('<paragraph>', '\closing{', $render);
+		$render = str_lreplace('</paragraph>', '}', $render);
+
 		$render = str_replace('<paragraph>', '', $render);
 		$render = str_replace('</paragraph>', '', $render);
 		$render = str_replace('<item>', '\item ', $render);
