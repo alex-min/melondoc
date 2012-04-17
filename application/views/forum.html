@@ -15,7 +15,7 @@
 
 	<tr>
     	<td>
-    		<strong>Forum</strong>
+    		<strong>Forums</strong>
     	</td>             
         <td style="text-align: center;">
         	<strong>Sujets</strong>
@@ -31,6 +31,7 @@
     {% set cat = data.id_categorie %}
 	
 {% endif %}
+{% if data.view == true %}
 	<tr>
 		<td class="titre">
 			<strong>
@@ -39,7 +40,7 @@
                 
 			</strong>
 			<br/>
-			{{ data.desc }}  
+			{{ data.desc|raw }}  
       	{% if data.moderators is not empty %}
         	<br/>
         	<i>
@@ -61,6 +62,7 @@
     		<a href="/forum/viewTopic?id={{ data.id_topic1 }}&amp;post={{ data.last_post}}">Dernier message</a>
     	</td>
     </tr>
+        {% endif %}
       {% endif %}
     {% endfor %}
 </table>

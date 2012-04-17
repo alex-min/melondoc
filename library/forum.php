@@ -34,9 +34,11 @@ public function bbcode($texte)
  $texte = preg_replace('`\[s\](.+)\[/s\]`isU', '<strike>$1</strike>', $texte);
  $texte = preg_replace('/\[url=(.*)\](.*)\[\/url\]/U','<a href="$1" target="_blank">$2</a>',$texte);
   
- $texte = preg_replace('/\[quote=(.*)\](.*)\[\/quote\]/U','<blockquote><p>$2</p><small>$1</small></blockquote>', $texte);
+$texte = preg_replace('#\[quote=(&\#039;|&quot;|"|\'|)(.*?)\\1\]#e', '"<small>".str_replace(array(\'[\', \'\\"\'), array(\'&#91;\', \'"\'), \'$2\')." a ecrit:</small><blockquote><p>"', $texte);
+    $texte = preg_replace('#\[quote\]\s*#', '</p><blockquote>', $texte);
+    $texte = preg_replace('#\s*\[\/quote\]#S', '</p></blockquote>', $texte);
   $texte = preg_replace('/\[img=(.*)\](.*)\[\/img\]/U','<img src="$1" alt="$2">',$texte);
-  $texte = preg_replace('`\[quote\](.+)\[/quote\]`isU', '<blockquote>$1</blockquote>', $texte);
+  
   $texte = preg_replace('`\[url\](.+)\[/url\]`isU', '<a href="$1" target="_blank">$1</a>', $texte);
   $texte = preg_replace('`\[img\](.+)\[/img\]`isU', '<img src="$1" alt="img">', $texte);
 
@@ -215,6 +217,12 @@ public function bbcode($texte)
 		$ret = $this->db->query("select MAX(`order`) as 'max' from forum_categorie");
 		return $ret;
 	}
+
+	public function getForumMaxOrder($id_cat)
+	{
+		$ret = $this->db->query("select MAX(`order`) as `max` from forum_forum where `id_cat` = '".$id_cat."'");
+		return $ret;
+	}
 	public function getForumsAndCat()
 	{
 		$ret = $this->db->query("select forum_categorie.id as 'cat_id', forum_categorie.name as 'name_cat', forum_forum.name as 'name_forum', forum_forum.id as 'forum_id'
@@ -294,7 +302,7 @@ public function bbcode($texte)
 	}
 	public function getArianeFromTopic($id_post)
 	{
-	 $ret = $this->db->query("select forum_topic.id as 'topic_id', forum_topic.name as 'topic_name', forum_topic.id_forum as 'forum_id', forum_forum.name as 'forum_name', forum_forum.right_post as 'right_post'
+	 $ret = $this->db->query("select forum_topic.id as 'topic_id', forum_topic.name as 'topic_name', forum_topic.id_forum as 'forum_id', forum_forum.name as 'forum_name', forum_forum.right_view as 'right_view', forum_forum.right_post as 'right_post'
 	  from forum_forum left join forum_topic on forum_forum.id = forum_topic.id_forum 
 	   where forum_topic.id = '".$id_post."'");
 	  return $ret;
