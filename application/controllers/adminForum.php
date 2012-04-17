@@ -21,9 +21,9 @@ class			adminForumController extends controller
 	}
 
 	public function manageForumAction(){
-		
+
 	}
-	
+
 	public function manageCatAction(){
 		$cat = $this->forum->getCat()->rows;
 		if (isset($_POST['value']))
@@ -63,7 +63,10 @@ class			adminForumController extends controller
 			$right_post = intval($_POST['right_post']);
 			$right_create = intval($_POST['right_create']);
 			$right_annonce = intval($_POST['right_annonce']);
-			$moderators = $_POST['moderateur'];
+			if (isset($_POST['moderateur']))
+				$moderators = $_POST['moderateur'];
+			else
+				$moderateur = 0;
 			$order = $this->forum->getForumMaxOrder($cat)->row['max'] + 1; 	
 			$this->forum->createForum($name, $cat, $right_create, $right_view, $right_post, $right_annonce, $moderators, $desc, $order);
 		}
