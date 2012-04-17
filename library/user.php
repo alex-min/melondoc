@@ -105,7 +105,7 @@ class user
 
   public function	getModos()
   {
-    $query = $this->db->query('SELECT `user_id`, `login` WHERE `forum_rights` = "moderator"');
+    $query = $this->db->query('SELECT `user_id`, `login` FROM `users` WHERE `forum_rights` = "moderator"');
     if ($query->count > 0)
       return $query->rows;
     return FALSE;
