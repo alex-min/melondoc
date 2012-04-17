@@ -34,4 +34,5 @@ $_['home_doc_create'] = "Nouveau";
 
 $_['action_success'] = "Changements effectués avec succès";
 $_['rights_needed'] = "Vous n'avez pas les droits nécessaires pour éditer ce document";
+$_['already_added'] = "Ce membre fait déjà partie du groupe";
 ?>

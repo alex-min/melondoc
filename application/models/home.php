@@ -21,7 +21,14 @@ class		homeModel extends model
     return $id;
   }
 
-  public function	addUserToGroup($group_id, $user_id)
+  public function	getUserGroup($group_id, $user_id){
+    $query = $this->db->query('SELECT * FROM groups_members WHERE `user_id` = "'.$user_id.'" AND `group_id` = "'.$group_id.'"');
+    if ($query->count > 0)
+      return $query->row;
+    return FALSE;
+  }
+
+  public function	addUserToGroups($group_id, $user_id)
   {
     $this->db->query('INSERT INTO `groups_members` SET `user_id` = "'.$user_id.'", `group_id` = "'.$group_id.'"');
   }

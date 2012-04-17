@@ -4,8 +4,7 @@ class     adminController extends controller
   public function		indexAction()
   {
     $this->user->needLogin(1);
-    $this->template->setView("admin");
-    
+    $this->template->setView("admin");    
   }
 
   public function		usersAction()
