@@ -7,7 +7,7 @@
   <a class="btn_get" href="/forum/voirForum?id={{info['forum_id']}}">Retour {{info['forum_name']}}</a>
 </div>
 <hr class="soften_wm">
-
+{% set i = 0 %}
 {% for value in posts %}
 
 {% if value['id'] is not empty  %}
@@ -15,12 +15,12 @@
 <ul class="actions span10 offset2">
       {% if value['auteur'] == me or canModerate == true %}
         <li style=""><a href = "/forum/editPost?id={{value['id']}}" title="Editer"><i class="icon-pencil"></i> Editez</a></li>
-        <li style="display: inline;"><a href = "/forum/deletePost?id={{value['id']}}" title="Supprimer"><i class="icon-trash"></i> Supprimer</a></li>
+        <li style="display: inline;"><a href = "/forum/deletePost?id={{value['id']}}&topic={{info['topic_id']}}" title="Supprimer"><i class="icon-trash"></i> Supprimer</a></li>
       {% endif %}
         <li style="display: inline;"><a href = "#answer" click="forum:quote" id="{{value['id']}}" author="{{value['auteur']}}" title="Citer"><i class="icon-share"></i> Citer</a></li>
 </ul>
     <div class="span2">
-      <div  id="{{value['id']}}"><h3><span class="mp_welcome-step">{{value['id']}}</span>{{value['auteur']}}</h3></div>
+      <div  id="{{value['id']}}"><h3><span class="mp_welcome-step">{{i}}</span>{{value['auteur']}}</h3></div>
       <div class="datebox">{{value['date']}}</div>
     </div>
     <div class="span10">
@@ -32,6 +32,7 @@
       </div>
     </div>
 </div>
+{% set i = i + 1 %}
 {% endif %}
 {% endfor %}
 
@@ -43,13 +44,13 @@
     <div class="span2">
       <label for="answer"><h3>Repondre:</h3></label>
       <div style="padding: 20px;">
-      <i class="icon-bold" click="forum:insert_text('[b]', '[/b]')"></i>
-      <i class="icon-share" click="forum:insert_text('[quote]', '[/quote]')"></i>
-      <i class="icon-italic" click="forum:insert_text('[i]', '[/i]')"></i>
-      <i class="icon-font" click="forum:insert_text('[s]', '[/s]')"></i>
-      <i class="icon-font" click="forum:insert_text('[u]', '[/u]')"></i>
-      <i class="icon-picture" click="forum:insert_text('[img]', '[/img]')"></i>
-      <i class="icon-font" click="forum:insert_text('[code]', '[/code]')"></i>
+      <i class="icon-bold" click="forum:insert_text" op="[b]" close="[/b]"></i>
+      <i class="icon-share" click="forum:insert_text" op="[quote]" close="[/quote]"></i>
+      <i class="icon-italic" click="forum:insert_text" op="[i]" close="[/i]"></i>
+      <i class="icon-font" click="forum:insert_text" op="[s]" close="[/s]"></i>
+      <i class="icon-font" click="forum:insert_text" op="[u]" close="[/u]"></i>
+      <i class="icon-picture" click="forum:insert_text" op="[img]" close="[/img]"></i>
+      <i class="icon-font" click="forum:insert_text" op="[code]" close="[/code]"></i>
     </div></div>
     <div class="span10">
       <div style="border:1px solid #BDBDBD; ">
