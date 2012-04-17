@@ -83,7 +83,7 @@ success: function(data){
     console.log(data);
     msgfield = $("[name=answer]")[0];
    
-   open = '[quote=' + data.author + ']' + data.message.message;
+   open = '[quote=' + data.author + ']' + data.message;
    close = "[/quote]";
 
     if (document.selection && document.selection.createRange)

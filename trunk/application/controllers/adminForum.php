@@ -50,7 +50,21 @@ class			adminForumController extends controller
 	}
 
 	public function addForumAction(){
+		if (isset($_POST['cat_id']))
+		{
+			$cat = intval($_POST['cat_id']);
+			$name = mysql_real_escape_string($_POST['nom']);
+			$desc = mysql_real_escape_string($_POST['desc']);
+			$right_view = intval($_POST['right_view']);
+			$right_post = intval($_POST['right_post']);
+			$right_create = intval($_POST['right_create']);
+			$right_annonce = intval($_POST['right_annonce']);
+			$moderators = $_POST['moderateur'];
+			$order = $this->forum->getForumMaxOrder($cat)->row['max'] + 1; 	
+			$this->forum->createForum($name, $cat, $right_create, $right_view, $right_post, $right_annonce, $moderators, $desc, $order);
+		}
 		$this->template->cat = $this->forum->getCat()->rows;
+		$this->template->modo = $this->user->getModos();
 		$this->template->setView("addForum");
 	}
 }

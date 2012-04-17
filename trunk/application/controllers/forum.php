@@ -46,9 +46,12 @@ class			forumController extends controller
         $tmp= unserialize($data['moderators']);
         $ret->rows[$i]['moderators'] = implode(", ", $tmp);
       }
-      $ret->rows[$i]['name_forum'] = stripslashes(htmlspecialchars($data['name_forum']));
-      $ret->rows[$i]['desc'] = nl2br(stripslashes(htmlspecialchars($data['desc'])));
-      
+      $ret->rows[$i]['name_forum'] = stripslashes($data['name_forum']);
+      $ret->rows[$i]['desc'] = nl2br(stripslashes($data['desc']));
+      if ($_SESSION['user']['rights'] < $ret->rows[$i]['right_view'])
+        $ret->rows[$i]['view'] = false;
+      else
+         $ret->rows[$i]['view'] = true;
     }
 
     $this->template->ret = $ret;
@@ -121,10 +124,13 @@ class			forumController extends controller
 	$id = intval($_GET['id']);
 	if (!$this->forum->forumExist($id))
 	echo 'error';
+ 
 	$this->template->topics = $this->forum->getTopicsFromForum($id);
   $this->template->infos = $this->forum->getForumById($id)->row;
   $this->template->id = $id;
   $i = 0;
+  if ($_SESSION['user']['rights'] < $this->template->infos['right_view'])
+     $this->template->redirect("Vous n'avez pas les droits pour voir ce forum", TRUE, "/forum/");
   foreach ($this->template->topics->rows as $value)
   {
 
@@ -150,7 +156,8 @@ class			forumController extends controller
   {
     $this->template->viewModerator = false;
   }
-
+  else
+    $this->template->viewModerator = true;
 	$this->template->setView("forumView");
 	
   }
@@ -407,7 +414,8 @@ class			forumController extends controller
 }
 	$post = $this->forum->getPostsFromTopic($id_topic);
   $name = $this->forum->getArianeFromTopic($id_topic)->row;
-
+  if ($_SESSION['user']['rights'] < $name['right_view'])
+     $this->template->redirect("Vous n'avez pas les droits pour voir ce topic", TRUE, "/forum/");
   $name['topic_name'] = $this->forum->bbcode($name['topic_name']);
   $this->template->info = $name;
 	
