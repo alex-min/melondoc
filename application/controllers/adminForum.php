@@ -20,6 +20,10 @@ class			adminForumController extends controller
 		}
 	}
 
+	public function manageForumAction(){
+		
+	}
+	
 	public function manageCatAction(){
 		$cat = $this->forum->getCat()->rows;
 		if (isset($_POST['value']))
