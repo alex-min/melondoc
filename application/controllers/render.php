@@ -20,12 +20,13 @@ class		renderController extends controller
       if ($return == 0) {
 
 	$str = str_replace("/tmp/", "", $str);
-	exec("dvipng -T '17cm,29cm' -q /tmp/$str.dvi -o " . RENDER_DIR . "$str-%d.png", $output, $return);
+  exec("convert -density 200  /tmp/$str.dvi " . RENDER_DIR . "$str-%d.jpg");
+//	exec("dvipng -T '17cm,29cm' -q /tmp/$str.dvi -o " . RENDER_DIR . "$str-%d.png", $output, $return);
 	if ($return != 0) {
 	  $this->template->result = $return;
 	  $this->template->errorList = array("Convert to png error occured");
 	}
-	$renderImages = glob(RENDER_DIR . "$str*.png");
+	$renderImages = glob(RENDER_DIR . "$str*.jpg");
 	$this->template->renderImages = $renderImages;
       }
       $this->template->errorList = $errorList;
