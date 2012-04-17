@@ -24,8 +24,8 @@ var ed_bullets_begin = '<img class="ed_delete ed_bullets" src="/public/images/ed
 var ed_bullets_end = '</ul>\n';
 var latex_assoc = new Array();
 var ed_begin_document_demo = "\n\\documentclass{article}\n\n\\begin{document}\n\\title{This is a titlw}\n\\author{Alexandre MINETTE \\\\\n  \\texttt{\\dddddfdf{email:andyr@comp.leeds.ac.uk}}}\n\\date{Mai 2011}\n\n\\section{Introduction}\nMath XXX                               %%%(class number and section) \n\\hfill vjdioguiiuih ihsio osoh \\\\\n\\hfill oshfh osf hsoh sfoh sofh sfo hs fosfh. \\\\\n\\hfill sdihf i o s h f ohsfoho hsfos fhos fhohfo shohsfofhs. \\\\\n\\hfill jfospfj osfho shsof hsofh soh ososfhso. \\\\\n\\hfill shfo sjhfosf oshfoshf oshshf oshf osh sofjsofh sofhsofh snfosjfoshfs sofhsofh. \\\\\n\n\\paragraph{\nMdr.}\n\n\\newpage\n\nodfjposdjfpsdjfp spjf psjfps jpsjfp jpjf pj p jp pfj\n\n\\end{document}\n\n";
-var ed_begin_document = "\n\\documentclass{article}\n\n\\begin{document}\n"
-var ed_end_document = "\n\n\\end{document}\n\n";
+var ed_begin_document = "\\documentclass[12pt,origdate]{lettre}\n\\usepackage[francais]{babel}\n\\usepackage[OT1]{fontenc}\n\\usepackage{mltex}\n\\begin{document}\n";
+var ed_end_document = "\n\\end{letter}\n\n\\end{document}\n\n";
 var doc_x = 0;
 var doc_y = 0;
 var ed_menu_spacer = '<div style="ed_menu_spacer"></div>';
@@ -196,7 +196,7 @@ function rec_extract(elem) {
 }
 
 
-var xml_str = '<xml><droppable/><paragraph>Hello world</paragraph><droppable/></xml>';
+var xml_str = '<xml><droppable/><paragraph>Soutenance Projet Libre</paragraph><droppable/><paragraph>Chuck Norris</paragraph><droppable/><paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non p0roident, sunt in culpa qui officia deserunt mollit anim id est laborum.</paragraph><droppable/><paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non p0roident, sunt in culpa qui officia deserunt mollit anim id est laborum.</paragraph><droppable/><paragraph>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non p0roident, sunt in culpa qui officia deserunt mollit anim id est laborum.</paragraph><droppable/><paragraph>Best regards,</paragraph><droppable/></xml>';
 
 function xml_to_dom (string) {
     var balise=string.match(/(<.*?>)|([^><]*)/g);
