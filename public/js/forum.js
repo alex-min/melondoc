@@ -15,11 +15,13 @@ $f.forum = {
    },
 
 
-insert_text:function(open, close)
+insert_text:function(e)
 {
    msgfield = $("[name=answer]")[0];
-   console.log(msgfield);
-   // IE support
+
+   var open = e.attr('op');
+   console.log(e.attr('op'));
+   var close = e.attr('close');
    if (document.selection && document.selection.createRange)
    {
       msgfield.focus();

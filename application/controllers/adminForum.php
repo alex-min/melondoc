@@ -2,7 +2,7 @@
 class			adminForumController extends controller
 {
 	public function indexAction(){
-		if ($_SESSION['user']['rights'] < $this->forum->getConfigFromKey("right_admin"))
+		if ($_SESSION['user']['forum_rights'] < $this->forum->getConfigFromKey("right_admin"))
 			$this->template->redirect("Vous n'avez pas les permissions necessaires", TRUE, "/forum/");
 		$this->template->setView("adminForumIndex");
 	}

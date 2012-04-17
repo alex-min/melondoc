@@ -6,26 +6,9 @@ class			forumController extends controller
   public function indexAction()
   {
 
-// $toto = $this->forum->createForum("last_test", 1, 1, 1, 1, 1, $moderators, "test final", 1);
-// $id = $this->forum->createTopic(4, "test", "ceci est un test", "me", "normal");
- // $this->forum->createPost("message", "me", 3, 0);
-// $this->forum->createPost("message", "me", 19, 0);
-// $this->forum->deletePost(30);
- //$this->forum->createCategorie("test2", 2);
-//$this->forum->createCategorie("test3", 3);
-// $first['pos'] = 1;
-// $second['pos'] = 2;
-// $third['pos'] = 3;
-// $first['id'] = 1;
-// $second['id'] = 18;
-// $third['id'] = 19;
-// $array = array($first, $second, $third);
-// $this->forum->reorderCategorie($array);
-	//$this->forum->deleteForum(2);
-	$_SESSION['user']['login'] = "me";
+  $this->user->needLogin();
 	$this->addCSS("forum", "design");
 	$ret = $this->forum->getEverything();
-  //$this->template->view = $this->prepareView($this->ret);
 
     $cat = 0;
     $i = 0;
@@ -48,7 +31,7 @@ class			forumController extends controller
       }
       $ret->rows[$i]['name_forum'] = stripslashes($data['name_forum']);
       $ret->rows[$i]['desc'] = nl2br(stripslashes($data['desc']));
-      if ($_SESSION['user']['rights'] < $ret->rows[$i]['right_view'])
+      if ($_SESSION['user']['forum_rights'] < $ret->rows[$i]['right_view'])
         $ret->rows[$i]['view'] = false;
       else
          $ret->rows[$i]['view'] = true;
@@ -119,7 +102,7 @@ class			forumController extends controller
 
   public function voirForumAction()
   {
-    
+     $this->user->needLogin();
   $this->addCSS("forum", "design");
 	$id = intval($_GET['id']);
 	if (!$this->forum->forumExist($id))
@@ -129,7 +112,7 @@ class			forumController extends controller
   $this->template->infos = $this->forum->getForumById($id)->row;
   $this->template->id = $id;
   $i = 0;
-  if ($_SESSION['user']['rights'] < $this->template->infos['right_view'])
+  if ($_SESSION['user']['forum_rights'] < $this->template->infos['right_view'])
      $this->template->redirect("Vous n'avez pas les droits pour voir ce forum", TRUE, "/forum/");
   foreach ($this->template->topics->rows as $value)
   {
@@ -152,7 +135,7 @@ class			forumController extends controller
     }
   }
 }
-  if ($flag == false && $_SESSION['user']['rights'] < $this->forum->getConfigFromKey("right_admin"))
+  if ($flag == false && $_SESSION['user']['forum_rights'] < $this->forum->getConfigFromKey("right_admin"))
   {
     $this->template->viewModerator = false;
   }
@@ -169,7 +152,8 @@ class			forumController extends controller
 	if (!$this->forum->postExist($id))
 	echo 'error';
 	$this->forum->deletePost($id);
-	$this->template->redirect("it works", FALSE, $_SERVER["HTTP_REFERER"]);
+    $topic = intval($_GET['topic']);
+	$this->template->redirect("post supprime avec succes", FALSE, "/forum/viewTopic?id=".$topic);
   }
   
   
@@ -188,6 +172,7 @@ class			forumController extends controller
   
   public function DoEditPostAction()
   {
+     $this->user->needLogin();
   $id = intval($_GET['id']);
   $this->checkOwner($id);
  
@@ -200,8 +185,8 @@ class			forumController extends controller
   }
   
   public function	createTopicAction()
-  {
-  $_SESSION['user']['rights'] = 3;	
+  {	
+     $this->user->needLogin();
   if (!isset($_GET['id']))
    $this->template->redirect("ce forum n'existe pas", TRUE, "/forum");
   $forum_id = intval($_GET['id']);
@@ -210,7 +195,7 @@ class			forumController extends controller
   $ret = $this->forum->getForumById($forum_id);
   $configRightAdmin = $this->forum->getConfigFromKey("right_post_admin");
    $configRightAnnonce = $ret->row['right_annonce'];
-  if ($ret->row['right_create'] > $_SESSION['user']['rights'])
+  if ($ret->row['right_create'] > $_SESSION['user']['forum_rights'])
     $this->template->redirect("vous n'avez pas les permissions necessaire", TRUE, "/forum/");
 
   if (isset($_POST['answer']) || isset($_POST['titre']))
@@ -229,9 +214,9 @@ class			forumController extends controller
 	 {
      if ($_POST['type'] != "normal")
      {
-       if ($_POST['type'] == "Annonce" && $_SESSION['user']['rights'] < $configRightAnnonce)
+       if ($_POST['type'] == "Annonce" && $_SESSION['user']['forum_rights'] < $configRightAnnonce)
        $this->template->redirect("vous n'avez pas les permissions necessaire pour poster ce sujet en tant qu'annonce", FALSE, "/forum/createTopic?id=".$forum_id);
-         if ($_POST['type'] == "Admin" && $_SESSION['user']['rights'] < $configRightAdmin)
+         if ($_POST['type'] == "Admin" && $_SESSION['user']['forum_rights'] < $configRightAdmin)
        $this->template->redirect("vous n'avez pas les permissions necessaire pour poster ce sujet en tant qu'Admin", FALSE, "/forum/createTopic?id=".$forum_id);
      }
 	   $message = mysql_real_escape_string($_POST['answer']);
@@ -249,8 +234,8 @@ class			forumController extends controller
 	   $this->template->titre = "";
   
    
-   $this->template->canAdmin = ($_SESSION['user']['rights'] >= $configRightAdmin) ? true : false;
-   $this->template->canAnnonce = ($_SESSION['user']['rights'] >= $configRightAnnonce) ? true : false;
+   $this->template->canAdmin = ($_SESSION['user']['forum_rights'] >= $configRightAdmin) ? true : false;
+   $this->template->canAnnonce = ($_SESSION['user']['forum_rights'] >= $configRightAnnonce) ? true : false;
 	 $this->template->id = $forum_id;
    $this->template->forum_name = $ret->row['name'];
 	 $this->template->setView("createTopic");
@@ -259,13 +244,13 @@ class			forumController extends controller
   
   public function checkOwner($id)
   {
-  $_SESSION['user']['rights'] = 0;
-  if (!$this->forum->amIOwner($id, $_SESSION['user']['login']) && $_SESSION['user']['rights'] < 1)
+  if (!$this->forum->amIOwner($id, $_SESSION['user']['login']) && $_SESSION['user']['forum_rights'] < 1)
     $this->template->redirect("vous n'avez pas les permission necessaire", TRUE, $this->getReferer()); 
   }
   
   public function moderateAction()
   {
+     $this->user->needLogin();
     $id = intval($_GET['id']);
       if (!$this->forum->forumExist($id))
     echo 'error';
@@ -284,7 +269,7 @@ class			forumController extends controller
     }
   }
 }
-  if ($flag == false && $_SESSION['user']['rights'] < $this->forum->getConfigFromKey("right_admin"))
+  if ($flag == false && $_SESSION['user']['forum_rights'] < $this->forum->getConfigFromKey("right_admin"))
   {
     $this->template->redirect("Vous n'avez pas les permissions necessaire", TRUE, "/forum/voirForum?id=".$id);
   }
@@ -359,6 +344,7 @@ class			forumController extends controller
   
   public function postAnswerAction()
   {
+     $this->user->needLogin();
     $id_topic = intval($_GET['id']);
 
     if (!isset($_GET['id']) || !$this->forum->topicExist($id_topic))
@@ -402,10 +388,11 @@ class			forumController extends controller
 
   public function viewTopicAction()
   {
+     $this->user->needLogin();
     $this->addCss('documentation/highlight');
     $this->addJavascript('documentation/highlight');
   $id_post = 0;
-  $_SESSION['user']['rights'] = 3;
+ 
   $id_topic = intval($_GET['id']);
    $this->addCSS("forum", "design");
   //$this->addJavascript("forum");
@@ -414,7 +401,7 @@ class			forumController extends controller
 }
 	$post = $this->forum->getPostsFromTopic($id_topic);
   $name = $this->forum->getArianeFromTopic($id_topic)->row;
-  if ($_SESSION['user']['rights'] < $name['right_view'])
+  if ($_SESSION['user']['forum_rights'] < $name['right_view'])
      $this->template->redirect("Vous n'avez pas les droits pour voir ce topic", TRUE, "/forum/");
   $name['topic_name'] = $this->forum->bbcode($name['topic_name']);
   $this->template->info = $name;
@@ -442,7 +429,7 @@ class			forumController extends controller
 
   $i = 0;
   $this->template->posts = array();
-  $this->template->canAnswer = ($_SESSION['user']['rights'] >= $this->template->info['right_post']) ? true : false;
+  $this->template->canAnswer = ($_SESSION['user']['forum_rights'] >= $this->template->info['right_post']) ? true : false;
   $this->template->infos = $this->forum->getForumById($name['forum_id'])->row;
   $modo = unserialize($this->template->infos['moderators']) ;
 
@@ -457,7 +444,7 @@ class			forumController extends controller
     }
   }
 }
-if ($flag == false && $_SESSION['user']['rights'] < $this->forum->getConfigFromKey("right_admin"))
+if ($flag == false && $_SESSION['user']['forum_rights'] < $this->forum->getConfigFromKey("right_admin"))
 $this->template->canModerate = false;
 else
 $this->template->canModerate = true;
