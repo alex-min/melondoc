@@ -418,7 +418,7 @@ function saveDocument() {
 	txt += rec_extract($(this));
     });
     txt += '</xml>';
-   $.post('/savedoc/index?' + id, {doc:txt, id: id.split('=')[1]});
+   $.post('/savedoc/index?' + id, {doc:txt, id: id.split('=')[1], name: $('#doc_name_change').val()});
     console.log(txt);
 }
 
