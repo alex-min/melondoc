@@ -10,6 +10,8 @@ class     homeController extends controller
     $this->template->infos = $_SESSION['user'];
   }
 
+
+
   public function	groupsAction()
   {
     $this->user->needLogin();
@@ -18,8 +20,12 @@ class     homeController extends controller
     $html = "";
     if ($groups)
       {
+	$i = 0;
 	foreach ($groups AS $g)
-	  $html .= "<tr><td><a href='#' click='groups:delGroups' id_group='".$g['id_group']."'><i class='icon-remove'></i></a></td><td><a href='#'><i class='icon-edit'></i></a></td><td>".$g['group_name']."</td></tr>";
+	  {
+	    $html .= "<tr><td><a href='#' click='groups:delGroups' id_group='".$g['id_group']."'><i class='icon-remove'></i></a></td><td><a href='#' click='groups:showSearch' search_id='".$i."'><i class='icon-plus'></i></a></td><td><a href='#' data-toggle='modal'><i class='icon-user'></i></a></td><td>".$g['group_name']."</td><td><input class='hide input_search_group' type='text' id='searchG_".$i."' group_id='".$g['id_group']."'/><span class='help-inline'><a id='searchB_".$i."' href='#' click='groups:searchUser' search_id='".$i."' class='btn_search_group hide btn btn-primary'>Ok</a></span><div id='search_result_".$i."' class='search_result_group'></div></td></tr>";
+	    $i++;
+	  }
 	$this->template->pageGroup = $html;
       }
     else
@@ -37,15 +43,6 @@ class     homeController extends controller
     $id = $this->model->createGroup($name, $_SESSION['user']['user_id']);
     $html = "<<tr><td><a href='#' click='groups:delGroups' id_group='".$id."'><i class='icon-remove'></i></a></td><td><a href='#'><i class='icon-edit'></i></a></td><td>".$name."</td></tr>";
     $this->template->addJSON(array("html" => $html));
-  }
-
-  public function	addUserToGroup()
-  {
-    $this->user->needLogin();
-    if (!isset($_POST['user_id']) || !isset($_POST['group_id']))
-      $this->template->redirect($this->template->language['rights_needed'], TRUE, "/home/groups");
-    $this->model->addUserToGroup(intval($_POST['group_id']), intval($_POST['user_id']));
-    $this->template->redirect($this->template->language['action_success'], FALSE, "/home/groups");
   }
 
   public function	delGroups()
@@ -240,6 +237,36 @@ class     homeController extends controller
     $this->template->addJSON(array("html" => $html));
   }
 
+  public function	getUsersGroupsCompletion()
+  {
+    $this->user->needLogin();
+    $letter = $_POST['letter'];
+    $doc_id = intval($_POST['group_id']);
+    $res = $this->model->getUsersCompletion($letter);
+    $html = "";
+    if ($res)
+      foreach ($res AS $u)
+	{
+	  $html .= "<li click='groups:addUserGroup' group_id='".$doc_id."' user_id='".$u['user_id']."' style='cursor:pointer;'><div class='label notice'>".$u['firstname']." ".$u['lastname']." (".$u['login'].")</div></li>";
+	}
+    $this->template->addJSON(array("html" => $html));
+  }
+
+  public function	addUserToGroup()
+  {
+    $this->user->needLogin();
+    if (!isset($_POST['user_id']) || !isset($_POST['group_id']))
+      $this->template->redirect($this->template->language['rights_needed'], TRUE, "/home/groups");
+    $user_id = intval($_POST['user_id']);
+    $group_id = intval($_POST['group_id']);
+    if (($user = $this->model->getUserGroup($group_id, $user_id)) === FALSE)
+      {
+	$this->model->addUserToGroups($group_id, $user_id);
+	$this->template->redirect($this->template->language['action_success'], FALSE, "/home/groups");
+      }
+    $this->template->redirect($this->template->language['already_added'], TRUE, "/home/groups");
+  }
+
   public function	getGroupsCompletion()
   {
     $this->user->needLogin();
@@ -254,7 +281,8 @@ class     homeController extends controller
 	}
     $this->template->addJSON(array("html" => $html));
   }
-  public function	createAction()
+ 
+ public function	createAction()
   {
     $this->user->needLogin();
     $this->template->loadLanguage("home");
