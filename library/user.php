@@ -63,6 +63,7 @@ class user
       {
 	$_SESSION['user'] = $query->row;
 	$this->stockMyRights();
+	$_SESSION['user']['forum_rights'] = $this->transformForumRights($_SESSION['user']['forum_rights']);
 	unset($_SESSION['user']['password']);
 	return true;
       }
@@ -81,12 +82,35 @@ class user
       {
 	$_SESSION['user'] = $query->row;
 	$this->stockMyRights();
+	$_SESSION['user']['forum_rights'] = $this->transformForumRights($_SESSION['user']['forum_rights']);
 	unset($_SESSION['user']['password']);
 	return true;
       }
     return false;
   }
   
+  public function	transformForumRights($string)
+  {
+    switch ($string) 
+      {
+      case "user":
+	return 1;
+      case "moderator":
+	return 2;
+      case "admin":
+	return 3;
+      }
+    return 1;
+  }
+
+  public function	getModos()
+  {
+    $query = $this->db->query('SELECT `user_id`, `login` WHERE `forum_rights` = "moderator"');
+    if ($query->count > 0)
+      return $query->rows;
+    return FALSE;
+  }
+
   public function	stockMyRights()
   {
     $_SESSION['user']['rights'] = $this->getRights($_SESSION['user']['user_id']);
