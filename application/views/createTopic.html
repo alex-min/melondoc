@@ -46,11 +46,11 @@
 			<div class="control-group">
 			{% endif %}
 				<div class="controls">
-					<img src="/public/images/png/32x32/bold.png" alt="gras" click="forum:insert_text('[b]', '[/b]')">
-					<img src="/public/images/png/32x32/italic.png" alt="italic" click="forum:insert_text('[i]', '[/i]')">
-					<img src="/public/images/png/32x32/underline.png" alt="souligner" click="forum:insert_text('[u]', '[/u]')">
-					<img src="/public/images/png/32x32/strike_trough.png" alt="barre" click="forum:insert_text('[s]', '[/s]')">
-					<img src="/public/images/png/32x32/blockquote.png" alt="citation" click="forum:insert_text('[q]', '[/q]')"><br/>
+					<img src="/public/images/png/32x32/bold.png" alt="gras" click="forum:insert_text" op="[b]" close="[/b]">
+					<img src="/public/images/png/32x32/italic.png" alt="italic" click="forum:insert_text" op="[i]" close="[/i]">
+					<img src="/public/images/png/32x32/underline.png" alt="souligner" click="forum:insert_text" op="[u]" close="[/u]">
+					<img src="/public/images/png/32x32/strike_trough.png" alt="barre" click="forum:insert_text" op="[v]" close="[/v]">
+					<img src="/public/images/png/32x32/blockquote.png" alt="citation" click="forum:insert_text" op="[q]" close="[/q]"><br/>
 					<textarea style="resize: vertical;" class="span5" id="message" name="answer" rows="10" cols="80" placeholder="Message">{{message}}</textarea>
 				</div>
 			</div>
