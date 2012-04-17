@@ -16,9 +16,11 @@ class latexviewController extends controller
   {
     if (!isset($_POST["tek"])) {
       $this->template->setView("postlatex");
+      $this->template->title = 'the unknown world';
     }
     else {
-      $str = str_replace("/tmp/", "", $this->createTekFile($_POST["tek"]));
+      $tek = ($_POST["tek"]);
+      $str = str_replace("/tmp/", "", $this->createTekFile($tek));
       $this->addJavascript("latexview");
       $this->addCss("latexview");
       $this->addCss("error");
@@ -26,6 +28,9 @@ class latexviewController extends controller
       $this->template->setView("latexview");
     }
   }
+
+  public function disableHeader()
+  { return (TRUE); }
 
 }
 

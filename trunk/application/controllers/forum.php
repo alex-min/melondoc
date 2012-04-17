@@ -39,7 +39,7 @@ class			forumController extends controller
 
     $this->template->ret = $ret;
   
-	$this->template->setView("forum");
+  $this->template->setView("forum");
   }
   
   public function prepareView($ret)
