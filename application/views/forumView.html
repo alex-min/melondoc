@@ -14,7 +14,7 @@
 			<th></th>
 			<th class = "titre">Sujet</th>
 			<th class = "nombremessages">Auteur</th>
-			<th class = "nombremessages">Réponses</th>
+			<th class = "nombremessages">R&eacute;ponses</th>
 			<th class = "nombremessages">Vues</th>
 			<th class = "derniermessage">Message</th>
 		</tr>
@@ -42,7 +42,7 @@
 			{{value['views']}}
 		</td>
 		<td>
-			<a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br/>Posté le {{value['date']}}
+			<a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br/>Post&eacute; le {{value['date']}}
 		</td>
 	{% elseif (value['genre'] == "admin") %}
 	<tr class="admin">
@@ -64,7 +64,7 @@
 			{{value['views']}}
 		</td>
 		<td>
-			<a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br /> Posté le {{value['date']}}
+			<a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br /> Post&eacute; le {{value['date']}}
 		</td>
 	{% else %}
 	<tr>
@@ -85,7 +85,7 @@
 		<td class="nbview">
 			{{value['views']}}
 		</td>
-		<td class = "derniermessage"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br/>Posté le {{value['date']}}
+		<td class = "derniermessage"><a href = "/forum/viewTopic?id={{value['id']}}&amp;post={{value['id_last_post']}}">Dernier Message</a><br/>Post&eacute; le {{value['date']}}
 		</td>
 	{% endif %}
 	</tr>
