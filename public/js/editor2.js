@@ -369,7 +369,7 @@ $(".ed_area").click(function() {
 	console.log($(this));
 })
 
-$("#ed_textzone").append('<div ieclass="ed_documentarea" class="ed_documentarea offset1 span10"></div><img class="offset1 span10" style="padding: 0px 10px 0px 10px" src="/public/images/curved-drop-shadow.png" />');
+//$("#ed_textzone").append('<div ieclass="ed_documentarea" class="ed_documentarea offset1 span10"></div><img class="offset1 span10" style="padding: 0px 10px 0px 10px" src="/public/images/curved-drop-shadow.png" />');
 //$('.ed_documentarea').css({display: 'block', width: doc_x + 'px', height: doc_y + 'px'});
 
 $("#ed_menu").live('click', function () {
