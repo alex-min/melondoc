@@ -21,7 +21,7 @@ class			adminForumController extends controller
 	}
 
 	public function manageForumAction(){
-
+		$this->template->redirect("/adminForum", TRUE, "non.");
 	}
 
 	public function manageCatAction(){
@@ -39,6 +39,7 @@ class			adminForumController extends controller
 				$i++;
 			}
 			$this->forum->reorderCategorie($order);
+			$this->template->redirect("/adminForum/manageCat", FALSE, "");
 		}
 			$this->template->cat = $cat;
 			$this->template->setView("manageCat");
