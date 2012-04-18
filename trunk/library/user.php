@@ -115,7 +115,7 @@ class user
   {
     $_SESSION['user']['rights'] = $this->getRights($_SESSION['user']['user_id']);
   }
-  
+
   public function	getRights($user_id)
   {
     $array = FALSE;
