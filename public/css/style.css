@@ -13,7 +13,8 @@ body
 
 
 body, p, div, td, h1, h2, h3, h4, li {
-	font-family: 'Happy Monkey', cursive,'Antic Slab', serif, 'Gudea', sans-serif;
+	font-family: 'Gudea', sans-serif;
+	font-size: 15px;
 	line-height: 1.5;
  }
 
@@ -226,4 +227,12 @@ ul.new_doc_type {
 
 .new_doc_type li p {
 	text-align: justify;
+}
+
+#group_create_button{
+	margin: 0px auto;
+	width: 50%;
+	padding: 15px;
+	font-size: 22px;
+	border-radius: 10px 0px 0px 10px
 }
