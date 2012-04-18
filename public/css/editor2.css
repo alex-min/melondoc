@@ -1,14 +1,12 @@
 #ed_table_menu {
 	display: none;
 	position:absolute;
-	top:0px; 
-	left:0px
+	z-index: 1000;
 }
 
 #ed_table_menu table {
 	border: 1px solid;
 	border-collapse: separate;
-	width: 50px !important;
 	background-color: #FFFFFF;
 	border-spacing: 3px
 }
@@ -20,8 +18,8 @@
 #ed_table_menu tr td {
 	margin-right: 10px;
 	border: 1px solid;
-	height:1px;
-	width: 1px;
+	height:40px;
+	width: 40px;
 	border-color: black
 }
 
@@ -30,7 +28,7 @@
 }
 
 #ed_table_menu table {
-	margin: 0; border:1 px solid black; width:100%;
+	margin: 0; border: 1px solid black; width:100%;
 }
 
 #ed_table_menu caption {
