@@ -460,7 +460,7 @@ $this->template->canModerate = true;
       
     $value['message'] = nl2br(stripslashes(htmlentities($value['message'])));
      $value['message'] = $this->forum->bbcode_pre($value['message']);
-    $value['message'] = utf8_decode($this->forum->bbcode($value['message']));
+    $value['message'] = $this->forum->bbcode($value['message']);
     $posts[$i] = $value;
     
     $i++;
