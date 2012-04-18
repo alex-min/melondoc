@@ -172,8 +172,6 @@ li {
 }
 
 .ed_popup {
-	border-left: 1px solid black;
-	border-right: 1px solid black;
 	width: 80%;
 	position: absolute;
 	left: 10%;

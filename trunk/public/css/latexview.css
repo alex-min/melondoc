@@ -2,12 +2,17 @@ body {background-color : white;height:100%; width:100%;}
 
 .lv_close {float: right; margin-right: 20px;}
 #lv_menu {
-	background-color: #F2F1F0;
+	background-color: white;
 	height: 40px;
-	border-top: 1px solid black;
-	border-bottom: 1px solid black;
-
+	border: 1px solid #BDBDBD;
+	border-radius: 10px 10px 0px 0px;
 }
+
+#lv_bottom {background-color:white; width: 100%; height: 40px; border: 1px #BDBDBD; position: relative;border-radius: 0px 0px 10px 10px}
+
+
+
+
 .lv_menu_icon {text-decoration:  none; width:30px; height:30px; margin-top: 5px; margin-right:5px}
 #lv_block {overflow-y:scroll;}
 #lv_render {
@@ -19,12 +24,11 @@ body {background-color : white;height:100%; width:100%;}
 	position: relative
 }
 #lv_status {display:block; margin-left: auto; margin-right: auto; margin-top:50px}
-.lv_page {display:block; margin-left: auto; margin-right: auto; border: 1px solid; border-color: #CCCCCC; text-align:center; float : none; margin-bottom:10px;}
+.lv_page {display:block; margin-left: auto; margin-right: auto; border: 4px solid; border-color: #CCCCCC; text-align:center; float : none; margin-bottom:10px;}
 .lv_spacer {margin-top : 10px}
 #lv_latexcontent {display : none}
 #lv_pagenumber {display:inline; vertical-align:10px; margin-left:20px; margin-right: 100px}
-#lv_bottom {background-color: #F2F1F0; width: 100%; height: 40px; border: 1px solid; position: relative;}
-#lv_body {}
+#lv_body {border:0;}
 #lv_render {background-color: white;}	
 
 
