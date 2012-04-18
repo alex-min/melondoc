@@ -2,7 +2,7 @@
 $_['login_success'] = "Bienvenue ";
 $_['login_error'] = "Le login ou le mot de passe est incorrect.";
 $_['error_login'] = "- Le login doit être composé d'au moins 4 caractères alphanumériques. Les tirets et underscores sont tolérés.<br />";
-$_['error_mdp'] = "- Pour des raisons de sÃ©curitÃ© le mot de passe doit être supérieur à 5 caractères.<br />";
+$_['error_mdp'] = "- Pour des raisons de sécurité le mot de passe doit être supérieur à 5 caractères.<br />";
 $_['error_bidon_mail'] = "- Email jetable interdite !<br />";
 $_['error_mail'] = "- Email incorrecte <br />";
 $_['error_mdp2'] = "- Le deuxieme mot de passe n'est pas identique au premier.<br />";
