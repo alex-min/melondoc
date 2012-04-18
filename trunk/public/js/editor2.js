@@ -20,7 +20,7 @@ var ed_paragraph_begin = '<div class="ed_block ed_paragraph">' +
 var ed_paragraph_end = txt_area_end + '</div>';
 var ed_inside_paragraph = ed_context_modifier + txt_area;
 var ed_droppable = '<div class="droppable"></div>';
-var ed_bullets_begin = '<img class="ed_delete ed_bullets" src="/public/images/ed_delete_bullets.png"/><ul>\n';
+var ed_bullets_begin = '<img class="ed_delete ed_bullets" src="/public/images/ed_delete.png"/><ul>\n';
 var ed_bullets_end = '</ul>\n';
 var latex_assoc = new Array();
 var ed_begin_document_demo = "\n\\documentclass{article}\n\n\\begin{document}\n\\title{This is a titlw}\n\\author{Alexandre MINETTE \\\\\n  \\texttt{\\dddddfdf{email:andyr@comp.leeds.ac.uk}}}\n\\date{Mai 2011}\n\n\\section{Introduction}\nMath XXX                               %%%(class number and section) \n\\hfill vjdioguiiuih ihsio osoh \\\\\n\\hfill oshfh osf hsoh sfoh sofh sfo hs fosfh. \\\\\n\\hfill sdihf i o s h f ohsfoho hsfos fhos fhohfo shohsfofhs. \\\\\n\\hfill jfospfj osfho shsof hsofh soh ososfhso. \\\\\n\\hfill shfo sjhfosf oshfoshf oshshf oshf osh sofjsofh sofhsofh snfosjfoshfs sofhsofh. \\\\\n\n\\paragraph{\nMdr.}\n\n\\newpage\n\nodfjposdjfpsdjfp spjf psjfps jpsjfp jpjf pj p jp pfj\n\n\\end{document}\n\n";
@@ -41,6 +41,13 @@ latex_assoc['ed_title'] = new Array('<title>', '</title>');
 latex_assoc['ed_paragraph'] = new Array('<paragraph>', '</paragraph>');
 latex_assoc['ed_bullets'] = new Array('<bullets>', '</bullets>');
 latex_assoc['li'] = new Array('<item> ', '</item>');
+
+
+
+$(document).mousemove(function (e) {
+	window.mouseX = e.pageX;
+	window.mouseY = e.pageY;
+});
 
 function resizeTextarea(t) {
     lines = t.value.split('\n');
@@ -379,8 +386,9 @@ $("#ed_menu").live('click', function () {
 });
 
 function dropTable(active_element) {
-    $("#ed_table_menu").css({top: active_element.position().top + 'px',
-			     left: active_element.position().left + 'px',
+	console.log(window.mouseY + "" + window.mouseX);
+    $("#ed_table_menu").css({top: window.mouseY + 'px',
+			     left: window.mouseX + 'px',
 			     display : 'block'
 			    });
     ed_table_menu_parent = active_element;
