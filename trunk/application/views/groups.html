@@ -1,4 +1,10 @@
-<input type="text" id="group_create_button" /><span class="help-inline"><a href="#" click="groups:createGroup" class="btn btn-primary">{{_lang.home_create_group}}</a></span><br />
-<table class="table-striped" id="groups_array">
-{{pageGroup | raw}}
-</table>
+<div style="text-align: center;">
+  <input type="text" id="group_create_button" />
+  	<a href="#" click="groups:createGroup" class="btn_get" style="padding: 15px; border-radius: 0px 10px 10px 0px; margin-left: -4px;" href="#">{{_lang.home_create_group}}</a>
+</div>
+			<hr class="soften">
+<div class="span12" style="text-align: center;">
+	<table class="table-striped" id="groups_array">
+	{{pageGroup | raw}}
+	</table>
+</div>
